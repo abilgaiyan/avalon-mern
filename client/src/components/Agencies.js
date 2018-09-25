@@ -18,7 +18,7 @@ Do you run a marketing, Advertising, Event Planning Agency? Do you help enterpri
 <p>
 
 You can become our Affiliate and use our platform to create these engaging stories for your customers. <br />
-Earn payouts from Sale of Vidzai technology when you promote us.
+Earn payouts from Sale of Avalon technology when you promote us.
 
 </p>
 <p>
