@@ -12,7 +12,7 @@ require('./services/passport');
 //console.log(keys.mongodbURL)
 
 mongoose.connect(keys.mongodbURL);
-//mongoose.connect('mongodb://vidzai:vidzai@ds145178.mlab.com:45178/vidzai-dev');
+//mongoose.connect('mongodb://Avalon:Avalon@ds145178.mlab.com:45178/Avalon-dev');
 
 
 const app = express();

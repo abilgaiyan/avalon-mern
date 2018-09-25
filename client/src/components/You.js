@@ -38,7 +38,7 @@ const You = () => {
         <div className="container-fluid wow fadeInUp marginTop40 marginBottom40">
 <div className="col-sm-5 col-xs-12 youleft">
 <h3>Creativity + Customer Context + Technology</h3>
-<h1>How Vidzai can help You</h1>
+<h1>How Avalon can help You</h1>
 </div>
 <div className="col-sm-7 col-xs-12 youright"><p> 
 

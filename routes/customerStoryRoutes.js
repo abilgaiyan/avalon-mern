@@ -25,7 +25,7 @@ module.exports = app =>{
         { id: 2
           , name: 'Retail'
           , heading:'A Retail Buyer’s Story'
-          , desctiption:'A Japanese firm*, uses Vidzai to leverage its customer buying information and the loyalty points to provide an unbeatable offer for next purchase. Rich visuals including dynamic images seals the deal.'
+          , desctiption:'A Japanese firm*, uses Avalon to leverage its customer buying information and the loyalty points to provide an unbeatable offer for next purchase. Rich visuals including dynamic images seals the deal.'
           , videourl: 'Retail.mp4' 
           , posterurl:'/poster/Retail.jpg' 
           , published: '1'
@@ -34,7 +34,7 @@ module.exports = app =>{
         { id: 3
           , name: 'Smart Hospital'
           , heading:'A Patient Story'
-          , desctiption:'One of the Asia’s largest hospitals* – A front runner tech enabled institution, used Vidzai to generate Personalized video for their international patients to provide information on the medical process. Video aims to augment various stages of the customer journey for the hospital.'
+          , desctiption:'One of the Asia’s largest hospitals* – A front runner tech enabled institution, used Avalon to generate Personalized video for their international patients to provide information on the medical process. Video aims to augment various stages of the customer journey for the hospital.'
           , videourl: 'SmartHospital.mp4'
           , posterurl:'/poster/SmartHospital.jpg'
           , published: '1'
@@ -43,7 +43,7 @@ module.exports = app =>{
         { id: 4
             , name: 'DPS'
             , heading:'An Event Invitation Story'
-            , desctiption:'Delhi Public School used the Vidzai to generate Personalized video invitations for its Annual Day function. Personalization through Parent’s names coupled with the rich visuals created an engaging experience.'
+            , desctiption:'Delhi Public School used the Avalon to generate Personalized video invitations for its Annual Day function. Personalization through Parent’s names coupled with the rich visuals created an engaging experience.'
             , videourl: 'DPS_Akbar.mp4'
             , posterurl:'/poster/DPS_Akbar.jpg'
             , published: '1'
@@ -52,7 +52,7 @@ module.exports = app =>{
           { id: 5
             , name: 'HR'
             , heading:'A Recruitment Story'
-            , desctiption:'A Japanese HR firm* specializing in Recruitment*, runs a AI engine that matches the demand with the candidate profiles. Vidzai could be used to distribute the recommendations to its customers (currently at a prototype stage).'
+            , desctiption:'A Japanese HR firm* specializing in Recruitment*, runs a AI engine that matches the demand with the candidate profiles. Avalon could be used to distribute the recommendations to its customers (currently at a prototype stage).'
             , videourl: 'RecruitmentStory.mp4'
             , posterurl:'/poster/RecruitmentStory.jpg'
             , published: '0'
