@@ -14,7 +14,7 @@ Installation instructions
 
 5) change directory to cd avalon-mern/client 
 
-6) install client side npm dependies with - npm install
+6) install client side npm dependencies  with - npm install
 
 7) run the local project with - npm run dev
 
