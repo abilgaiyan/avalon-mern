@@ -8,7 +8,7 @@ class ContactusList extends Component{
         this.props.fetchContactus();
     }   
    
-    renderSurveyList(){
+    renderContactusList(){
         if(!this.props.contactus)      
           return;
 
