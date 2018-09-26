@@ -7,6 +7,7 @@ const productPlanSchema = new Schema({
     planName: String,
     planDate: Date,
     active: Boolean,
+    displayorder:number,
     createDate: Date,
     updateDate: Date
 

@@ -4,10 +4,11 @@ const { Schema } = mongoose;
 
 //define schema for our product Plan
 const productSchema = new Schema({ 
-    oldTempalte = Boolean,
-    liquidTemplate = Boolean,
-    responsiveTemplate = Boolean,
-    jewelExchange = Boolean,
+    name:String,
+    version:String,
+    productrelasedate:date,
+    active:boolean,
+    displayorder:number,
     createDate: Date,
     updateDate: Date
 }); 
