@@ -9,6 +9,7 @@ require('./models/Survey');
 require('./models/Contactus');
 require('./models/CustomerStory');
 require('./services/passport');
+require('./models/Customer');
 //console.log(keys.mongodbURL)
 
 mongoose.connect(keys.mongodbURL);
@@ -34,6 +35,8 @@ require('./routes/surveyRoutes')(app);
 require('./routes/contactusRoutes')(app);
 require('./routes/mediaRoutes')(app);
 require('./routes/customerStoryRoutes')(app);
+require('./routes/customerRoutes')(app);
+
 
 // For Production environment
 if (process.env.NODE_ENV ==='production'){
