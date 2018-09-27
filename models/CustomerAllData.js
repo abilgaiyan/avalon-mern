@@ -6,6 +6,7 @@ const { Schema } = mongoose;
 //define schema for our customer
 
 const customeralldataSchema = new Schema({
+    sr: String,
     jewelsoftId: String,
     customerName: String,
     websiteUrl: String,
