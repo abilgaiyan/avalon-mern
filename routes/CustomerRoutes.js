@@ -7,11 +7,15 @@ const Customer = mongoose.model('customer');
 
 module.exports = app =>{
     //Get Customer By ID
-    app.get('/api/customer', async(req, res) =>{
-        const customer = await Customer.find({_customer: req.Customer.id});
+    app.get('/api/customer/:customerid', async(req, res) =>{
+
+        if (req.params.customerid) {
+            movieFileName = req.params.videourl;
+        
+        const customer = await Customer.find({_customer: req.params.customerid});
 
         res.send(customer);
-        
+        }
     });
 
     //Get Customer List

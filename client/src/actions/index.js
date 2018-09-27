@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_SURVEYS, FETCH_CONTACTUS, FETCH_STORIES } from './types';
+import { FETCH_USER, FETCH_SURVEYS, FETCH_CONTACTUS, FETCH_STORIES,FETCH_CUSTOMERS,FETCH_CUSTOMER } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -51,4 +51,22 @@ export const fetchStories = () => async dispatch => {
 
   //const res = storylist;
   dispatch({ type: FETCH_STORIES, payload: res.data });
+};
+
+// Fetch All Customers all data
+export const fetchCustomers = () => async dispatch => {
+  const res = await axios.get('/api/customeralldata');
+
+  //const res = storylist;
+  dispatch({ type: FETCH_CUSTOMERS, payload: res.data });
+};
+
+
+// Fetch all information by Customer id 
+export const fetchCustomer = (customerId) => async dispatch => {
+  //console.log(customerId)
+  const res = await axios.get('/api/customeralldatabyid/'+ customerId);
+
+  //const res = storylist;
+  dispatch({ type: FETCH_CUSTOMER, payload: res.data });
 };

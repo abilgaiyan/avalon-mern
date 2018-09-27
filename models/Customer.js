@@ -12,6 +12,9 @@ const customerSchema = new Schema({
     createDate: Date,
     updateDate: Date,
     address: [AddressSchema],
+    customersince:String,
+    comment:String,
+    plan:{type: Schema.Types.ObjectId, ref: 'ProductPlan'},
 });
 // create modal based on schema
 mongoose.model('customer', customerSchema);
