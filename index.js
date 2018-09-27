@@ -10,6 +10,7 @@ require('./models/Contactus');
 require('./models/CustomerStory');
 require('./services/passport');
 require('./models/Customer');
+require('./models/CustomerAllData');
 //console.log(keys.mongodbURL)
 
 mongoose.connect(keys.mongodbURL);
@@ -36,6 +37,7 @@ require('./routes/contactusRoutes')(app);
 require('./routes/mediaRoutes')(app);
 require('./routes/customerStoryRoutes')(app);
 require('./routes/customerRoutes')(app);
+require('./routes/customerAllDataRoutes')(app);
 
 
 // For Production environment
