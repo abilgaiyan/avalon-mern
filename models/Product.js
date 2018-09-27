@@ -4,11 +4,11 @@ const { Schema } = mongoose;
 
 //define schema for our product Plan
 const productSchema = new Schema({ 
-    name:String,
-    version:String,
-    productrelasedate:date,
-    active:boolean,
-    displayorder:number,
+    name: String,
+    version: String,
+    productrelasedate: Date,
+    active: Boolean,
+    displayorder: Number,
     createDate: Date,
     updateDate: Date
 }); 

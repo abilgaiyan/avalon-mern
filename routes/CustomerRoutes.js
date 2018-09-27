@@ -6,9 +6,11 @@ const Customer = mongoose.model('customer');
 //const contactusTemplate = require('../services/emailTemplate/contactusTemplate');
 
 module.exports = app =>{
+    
     //Get Customer By ID
-    app.get('/api/customer', async(req, res) =>{
-        const customer = await Customer.find({_customer: req.Customer.id});
+    app.get('/api/customer/:customerId', async(req, res) =>{
+        var customerid = req.params.customerId
+        const customer = await Customer.find({_customer: customerid});
 
         res.send(customer);
         
