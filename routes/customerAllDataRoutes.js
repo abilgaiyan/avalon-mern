@@ -8,8 +8,8 @@ const CustomerAllData = mongoose.model('customerdata');
 module.exports = app =>{
     //Get Customer all data List
     app.get('/api/customeralldata', async(req, res) =>{
-        const customeralldata = await CustomerAllData.find().select({sr, jewelsoftId });
-
+        const customeralldata = await CustomerAllData.find({});
+        console.log(customeralldata);
         res.send(customeralldata);
         
     });

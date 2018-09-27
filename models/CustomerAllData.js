@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-//const CustomerSchema = require('./Customer');
-//const AddressSchema = require('./Address');
+const CustomeralldataSchema = require('./CustomerAllData');
 
 //define schema for our customer
 
@@ -22,7 +21,7 @@ const customeralldataSchema = new Schema({
     salesPersonName: String,
     liquidDesign: String,
     monthlyPlan: String,
-    hostingAmount: String,
+    hostingAmount: Number,
     holdyear: String,
     yearlyPlan: String,
     responsiveUpgrade: String,
@@ -32,4 +31,4 @@ const customeralldataSchema = new Schema({
     responsiveWebsiteWithSmallSlider: String,
 });
 // create modal based on schema
-mongoose.model('customerdata', customeralldataSchema);
+mongoose.model('customerdata', customeralldataSchema, 'customerdata');
