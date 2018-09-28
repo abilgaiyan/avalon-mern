@@ -8,12 +8,14 @@ const Customer = mongoose.model('customer');
 module.exports = app =>{
     
     //Get Customer By ID
-    app.get('/api/customer/:customerId', async(req, res) =>{
-        var customerid = req.params.customerId
-        const customer = await Customer.find({_customer: customerid});
+    app.get('/api/customer/:customerid', async(req, res) =>{
+
+        if (req.params.customerid) {
+            
+        const customer = await Customer.find({_customer: req.params.customerid});
 
         res.send(customer);
-        
+        }
     });
 
     //Get Customer List
