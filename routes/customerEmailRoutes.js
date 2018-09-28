@@ -11,9 +11,11 @@ module.exports = app =>{
 
      //Get Customer Email Communication
      app.get('/api/customeremail/:customerId', async(req, res) =>{
-         var customerid = req.params.customerId
-        const customeremail = await Customer.find({_customer: customerid});
+        const customerid = req.params.customerId;
+       // console.log(customerid);
 
+        const customeremail = await CustomerEmail.find({_customer: customerid});
+        console.log(customeremail);
         res.send(customeremail);
         
     });
@@ -32,11 +34,11 @@ module.exports = app =>{
     app.post('/api/customeremail', async (req,res) =>{
 
         console.log('/api/customeremail',req.body )
-        const {subject,message} = req.body;
+        const {subject,message,customerId } = req.body;
         const CustomerEmaildata = new CustomerEmail({
             subject,
             message,
-            _customer: req.customerId,
+            _customer: customerId,
             displayorder:0,
             status:'Active',
             createDate:Date.now(),

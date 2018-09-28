@@ -75,11 +75,12 @@ export const fetchCustomer = (customerId) => async dispatch => {
 
 // Fetch last email communication data by Customer id 
 export const fetchEmail = (customerId) => async dispatch => {
-  //console.log(customerId)
+  
+  console.log(customerId)
   const res = await axios.get('/api/customeremail/'+ customerId);
 
   //const res = storylist;
-  dispatch({ type: FETCH_EMAILS, payload: res.data[0] });
+  dispatch({ type: FETCH_EMAILS, payload: res.data[0] || {}});
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
 };
 
@@ -100,7 +101,8 @@ export const fetchPhonecall = (customerId) => async dispatch => {
   const res = await axios.get('/api/customerphones/'+ customerId);
 
   //const res = storylist;
-  dispatch({ type: FETCH_PHONECALL, payload: res.data[0] });
+
+  dispatch({ type: FETCH_PHONECALL, payload: res.data[0] || {}});
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
 };
 

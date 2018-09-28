@@ -9,6 +9,7 @@ class Email extends Component{
     componentWillMount(){
           
           const customerId = this.props.customerId;
+          console.log(customerId);
           this.props.fetchEmail(customerId);
           
     }   

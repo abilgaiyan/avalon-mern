@@ -53,8 +53,8 @@ class CustomerDetails extends Component{
                 {this.renderCustomer()}
                 
                <Email  customerId={this.props.match.params.customerId} />
-               <PhoneCall  customerId={this.props.match.params.customerId} />
-               <CustomerQuery  customerId={this.props.match.params.customerId} />
+                <PhoneCall  customerId={this.props.match.params.customerId} />
+                 {/* <CustomerQuery  customerId={this.props.match.params.customerId} /> */}
 
                
                
