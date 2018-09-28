@@ -18,9 +18,8 @@ module.exports = app =>{
    
     //Post Request to Customer Telephonic Communication
     app.post('/api/customerphones', async (req,res) =>{
-        const {subject,message,customerId } = req.body;
-        const CustomerPhonesData = new customerphones({
-            subject,
+        const {message,customerId } = req.body;
+        const CustomerPhonesData = new CustomerPhones({
             message,
             _customer: customerId,
             displayorder:0,

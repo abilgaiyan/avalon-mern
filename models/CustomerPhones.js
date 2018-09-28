@@ -8,7 +8,7 @@ const customerphonesSchema = new Schema({
     message: String,
     _customer: {type: Schema.Types.ObjectId, ref: 'customer'},
     displayorder: Number,
-    phonedate: String,
+    // phonedate: String,
     status: String,
     createDate: Date,
     updateDate: Date
