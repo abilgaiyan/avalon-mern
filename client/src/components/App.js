@@ -38,7 +38,7 @@ class  App extends Component {
             <Header />
            <Route exact={true} path="/" component={Landing} /> 
            <Route exact={true} path="/customers" component={Dashboard} />
-           <Route exact={true} path="/customerdetails" component={CustomerDetails} />
+           <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
            {/* <Route exact={true} path="/surveys" component={Dashboard} />
            <Route path="/surveys/new" component={SurveyNew} />
            <Route path="/aboutus" component={Aboutus} />

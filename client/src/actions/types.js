@@ -9,3 +9,9 @@ export const FETCH_STORIES ='fetch_stories';
 export const FETCH_CUSTOMERS ='fetch_customers';
 
 export const FETCH_CUSTOMER ='fetch_customer';
+
+export const FETCH_EMAILS ='fetch_emails';
+
+export const FETCH_PHONECALL ='fetch_phonecall';
+
+export const FETCH_QUERY ='fetch_query';

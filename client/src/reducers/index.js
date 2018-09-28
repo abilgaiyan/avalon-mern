@@ -5,7 +5,13 @@ import surveyReducer from './surveyReducers';
 import contactusReducer from './contactusReducers';
 import storiesReducer from './storyReducer';
 import customersReducers from './customersReducers';
-import customerReducers from './customersReducers';
+import customerReducers from './customerReducers';
+
+import emailReducers from './emailReducer';
+import phoneReducer from './phoneReducer';
+
+import queryReducer from './queryReducer';
+
 
 export default combineReducers({
   auth : authReducer,
@@ -16,5 +22,8 @@ export default combineReducers({
   contactusForm: reduxForm,
   contactus: contactusReducer,
   customers:customersReducers,
-  customer:customerReducers
+  customer:customerReducers,
+  email:emailReducers,
+  phonecall:phoneReducer,
+  query:queryReducer
 });

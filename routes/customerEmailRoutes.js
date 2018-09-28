@@ -2,7 +2,8 @@ const _ = require('lodash');
 const Path = require('path-parser');
 const { URL } = require('url');
 const mongoose = require('mongoose');
-const CustomerEmailSchema = require('./CustomerEmail');
+const CustomerEmail = mongoose.model('customeremail');
+
 
 
 module.exports = app =>{
@@ -17,17 +18,35 @@ module.exports = app =>{
         
     });
    
+   
+    // subject: String,
+    // message: String,
+    // _customer: {type: Schema.Types.ObjectId, ref: 'customer'},
+    // displayorder: {type: Number, default:0},
+    // emaildate: Date,
+    // status: String,
+    // createDate: Date,
+    // updateDate: Date  
+   
     //Post Request to Customer Email Communication
     app.post('/api/customeremail', async (req,res) =>{
-        const {message} = req.body;
-        const CustomerEmail = new CustomerEmailSchema({
+
+        console.log('/api/customeremail',req.body )
+        const {subject,message} = req.body;
+        const CustomerEmaildata = new CustomerEmail({
+            subject,
             message,
             _customer: req.customerId,
-            dateSend: Date.now()
-            
+            displayorder:0,
+            status:'Active',
+            createDate:Date.now(),
+            updateDate: Date.now()  
+
+           
         });
 
         //Save Data
-        await CustomerEmail.save();
+        await CustomerEmaildata.save();
+        res.end();
     });
 }

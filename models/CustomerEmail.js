@@ -8,7 +8,7 @@ const customeremailSchema = new Schema({
     subject: String,
     message: String,
     _customer: {type: Schema.Types.ObjectId, ref: 'customer'},
-    displayorder: Number,
+    displayorder: {type: Number, default:0},
     emaildate: Date,
     status: String,
     createDate: Date,

@@ -2,7 +2,7 @@ const _ = require('lodash');
 const Path = require('path-parser');
 const { URL } = require('url');
 const mongoose = require('mongoose');
-const CustomerPhoneSchema = require('./CustomerPhones');
+const CustomerPhoneSchema = require('../models/CustomerPhones');
 
 
 module.exports = app =>{

@@ -11,6 +11,9 @@ require('./models/CustomerStory');
 require('./services/passport');
 require('./models/Customer');
 require('./models/CustomerAllData');
+require('./models/CustomerEmail');
+require('./models/CustomerPhones');
+require('./models/CustomerQueries');
 //console.log(keys.mongodbURL)
 
 mongoose.connect(keys.mongodbURL);
@@ -38,6 +41,9 @@ require('./routes/mediaRoutes')(app);
 require('./routes/customerStoryRoutes')(app);
 require('./routes/customerRoutes')(app);
 require('./routes/customerAllDataRoutes')(app);
+require('./routes/customerPhonesRoutes')(app);
+require('./routes/customerQueriesRoutes')(app);
+require('./routes/customerEmailRoutes')(app);
 
 
 // For Production environment
