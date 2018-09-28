@@ -18,7 +18,7 @@ module.exports = app =>{
     });
    
     //Post Request to Customer Email Communication
-    app.post('/api/customer', async (req,res) =>{
+    app.post('/api/customeremail', async (req,res) =>{
         const {message} = req.body;
         const CustomerEmail = new CustomerEmailSchema({
             message,

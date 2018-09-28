@@ -18,7 +18,7 @@ module.exports = app =>{
     });
    
     //Post Request to Customer Telephonic Communication
-    app.post('/api/customer', async (req,res) =>{
+    app.post('/api/customerphones', async (req,res) =>{
         const {message} = req.body;
         const CustomerPhones = new CustomerPhoneSchema({
             message,

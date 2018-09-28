@@ -18,7 +18,7 @@ module.exports = app =>{
     });
    
     //Post Request to Customer Queries Communication
-    app.post('/api/customer', async (req,res) =>{
+    app.post('/api/customerqueries', async (req,res) =>{
         const {message} = req.body;
         const CustomerQueries = new CustomerQueriesSchema({
             message,
