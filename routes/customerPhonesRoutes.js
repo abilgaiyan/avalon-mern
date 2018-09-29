@@ -11,7 +11,7 @@ module.exports = app =>{
      //Get Customer Telephonic Communication
      app.get('/api/customerphones/:customerId', async(req, res) =>{
          var customerid = req.params.customerId
-        const customerphones = await CustomerPhones.find({_customer: customerid}).sort('createDate','-1').limit(1);
+        const customerphones = await CustomerPhones.find({_customer: customerid}).sort({createDate: -1});
         res.send(customerphones);
        
     });
