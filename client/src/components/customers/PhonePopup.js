@@ -28,6 +28,7 @@ class PhonePopup extends Component {
             referrer: "no-referrer", // no-referrer, *client
             body: JSON.stringify(data), // body data type must match "Content-Type" header
         })
+
     }
 
     render() {
@@ -40,20 +41,35 @@ class PhonePopup extends Component {
                                 <button type="button" className="close" data-dismiss="modal">
                                     &times;
                 </button>
-                                <h4 className="modal-title">Query</h4>
+                                <h4 className="modal-title">Phone Call Details</h4>
                             </div>
                             <div className="modal-body ">
-                                <form>
+                                <form className="form-horizontal">
                                     {/* <form onSubmit={this.handleSubmit("name")}> */}
                                     {/* <label htmlFor="subject">Enter Subject</label>
                                     <input id="subject" name="subject" type="text" /> */}
 
-                                    <label htmlFor="message">Enter Message</label>
-                                    <input id="message" name="message" type="text" />
+                                    <div className="form-group">
+                                        <label className="control-label col-sm-3" htmlFor="message">Enter Message:</label>
 
-                                    <div className="modal-footer">
+                                        <div className="col-sm-9">
+                                            <input type="text" name="subjmessagect" className="form-control" id="message" placeholder="Enter Message" />
+                                        </div>
+                                    </div>
 
-                                        <button type="button" className="btn btn-success" onClick={e => { this.handleSubmit(); }}>Save</button>
+
+
+
+
+
+
+
+                                    {/* <label htmlFor="message">Enter Message</label>
+                                    <input id="message" name="message" type="text" /> */}
+
+                                    <div className="modal-footer text-center paddingTop20 paddingBottom10">
+
+                                        <button type="button" className="btn btn-success" onClick={e => { this.handleSubmit(); }} data-dismiss="modal">Save</button>
                                     </div>
                                 </form>
                             </div>

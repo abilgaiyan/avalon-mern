@@ -33,7 +33,7 @@ class PhoneCall extends Component {
             // </div>
             //   </div>
             <div className="container ">
-                <form className="form-horizontal">
+                <div className="form-horizontal">
                     <div className="form-group">
                         <label className="control-label col-sm-2" htmlFor="pwd">Call Message:</label>
                         <div className="col-sm-10">
@@ -49,12 +49,12 @@ class PhoneCall extends Component {
                     <div className="form-group">
                         <div className="col-sm-offset-2 col-sm-10">
                             {/* <button type="submit" class="btn btn-default">Submit</button> */}
-                            <button type="submit" data-toggle="modal" className="btn btn-success">Add </button>
-
+                            <button type="submit" data-toggle="modal" className="btn btn-success" data-target="#phonepopup">Add </button>
+                            <PhonePopup customerId={this.props.customerId} />
                         </div>
                     </div>
 
-                </form>
+                </div>
             </div>
         )
     }

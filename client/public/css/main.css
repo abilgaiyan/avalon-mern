@@ -599,9 +599,21 @@ body.mobile .bg.fix {
     }
 
 p {
-    font-size: 13px;
-    line-height: 20px;
-    font-weight: 300;
+    font-size: 15px;
+    line-height: 25px;
+    font-weight: 500;
+}
+.table-striped .col-sm-12 {
+    width: 100%;
+    border: solid 1px #ccc;
+    padding: 10px;
+    background: #eee;
+}
+.alink {
+    padding-top: 25px;
+    margin-top: 25px;
+    line-height: 39px;
+
 }
 
 .h1 {
@@ -5423,11 +5435,18 @@ button {
     padding-top: 30px;
     height: 100px;
     margin-bottom: 10px;
+    
+    border-bottom: solid 1px #ccc;
 }
 
     .tt-header .c-btn {
         float: right;
     }
+.table .table-striped p{
+    font-size: 15px !important;
+    line-height: 25px!important;
+    font-weight: 500!important;
+}
 
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/

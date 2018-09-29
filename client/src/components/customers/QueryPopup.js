@@ -11,11 +11,11 @@ class QueryPopup extends Component {
 
     handleSubmit() {
         //let subject = document.getElementById("subject").value;
-        let message = document.getElementById("message").value;
+        let messagequery = document.getElementById("messagequery").value;
         let customerId = this.props.customerId;
 
         let data = {
-            'message': message,
+            'message': messagequery,
             'customerId': customerId
         };
         console.log(data)
@@ -30,7 +30,9 @@ class QueryPopup extends Component {
             redirect: "follow", // manual, *follow, error
             referrer: "no-referrer", // no-referrer, *client
             body: JSON.stringify(data), // body data type must match "Content-Type" header
+
         })
+
     }
 
     render() {
@@ -46,17 +48,31 @@ class QueryPopup extends Component {
                                 <h4 className="modal-title">Query</h4>
                             </div>
                             <div className="modal-body ">
-                                <form>
+                                <form className="form-horizontal">
                                     {/* <form onSubmit={this.handleSubmit("name")}> */}
                                     {/* <label htmlFor="subject">Enter Subject</label>
                                     <input id="subject" name="subject" type="text" /> */}
+                                    <div className="form-group">
+                                        <label className="control-label col-sm-3" htmlFor="message">Enter Message:</label>
 
-                                    <label htmlFor="message">Enter Message</label>
-                                    <input id="message" name="message" type="text" />
+                                        <div className="col-sm-9">
+                                            <input type="text" name="messagequery" className="form-control" id="messagequery" placeholder="Enter Message" />
+                                        </div>
+                                    </div>
 
-                                    <div className="modal-footer">
 
-                                        <button type="button" className="btn btn-success" onClick={e => { this.handleSubmit(); }}>Save</button>
+
+
+
+
+
+
+                                    {/* <label htmlFor="message">Enter Message</label>
+                                    <input id="messagequery" name="message" type="text" /> */}
+
+                                    <div className="modal-footer text-center paddingTop20 paddingBottom10">
+
+                                        <button type="button" className="btn btn-success" onClick={e => { this.handleSubmit(); }} data-dismiss="modal">Save</button>
                                     </div>
                                 </form>
                             </div>

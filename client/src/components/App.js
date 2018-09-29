@@ -13,7 +13,7 @@ import Dashboard from './customers/Dashboard';
 // import CustomerStories1 from './CustomerStories1';
 // import Agencies from './Agencies';
 // import You from './You';
- import Footer from './Footer';
+import Footer from './Footer';
 import CustomerDetails from './customers/CustomerDetails';
 // import Workforus from './Workforus';
 // import CustomerVideo from './CustomerVideo';
@@ -25,21 +25,21 @@ import CustomerDetails from './customers/CustomerDetails';
 
 
 
-class  App extends Component {
-  componentDidMount(){
+class App extends Component {
+  componentDidMount() {
     this.props.fetchUser();
-}
+  }
 
-  render(){
-  return (
+  render() {
+    return (
       <div>
         <BrowserRouter>
-        <div>
+          <div>
             <Header />
-           <Route exact={true} path="/" component={Landing} /> 
-           <Route exact={true} path="/customers" component={Dashboard} />
-           <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
-           {/* <Route exact={true} path="/surveys" component={Dashboard} />
+            <Route exact={true} path="/" component={Dashboard} />
+            <Route exact={true} path="/customers" component={Dashboard} />
+            <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
+            {/* <Route exact={true} path="/surveys" component={Dashboard} />
            <Route path="/surveys/new" component={SurveyNew} />
            <Route path="/aboutus" component={Aboutus} />
            <Route path="/contactus" component={Contactus} />
@@ -51,12 +51,12 @@ class  App extends Component {
            <Route path="/workforus" component={Workforus} />
            <Route path="/customervideo" component={CustomerVideo} />
            <Route path="/story/new" component={StoryNew} /> */}
-           <Footer />
-        </div>
-        </BrowserRouter>  
+            <Footer />
+          </div>
+        </BrowserRouter>
       </div>
-      );
+    );
   }
 }
 
-export default connect(null, actions)( App);
+export default connect(null, actions)(App);
