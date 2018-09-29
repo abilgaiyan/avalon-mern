@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_SURVEYS, FETCH_CONTACTUS, FETCH_STORIES,FETCH_CUSTOMERS,FETCH_CUSTOMER,FETCH_EMAILS,FETCH_PHONECALL,FETCH_QUERY} from './types';
+import { FETCH_USER, FETCH_SURVEYS, FETCH_CONTACTUS, FETCH_STORIES, FETCH_CUSTOMERS, FETCH_CUSTOMER, FETCH_EMAILS, FETCH_PHONECALL, FETCH_QUERY } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -65,7 +65,7 @@ export const fetchCustomers = () => async dispatch => {
 // Fetch all information by Customer id 
 export const fetchCustomer = (customerId) => async dispatch => {
   //console.log(customerId)
-  const res = await axios.get('/api/customeralldatabyid/'+ customerId);
+  const res = await axios.get('/api/customeralldatabyid/' + customerId);
 
   //const res = storylist;
   dispatch({ type: FETCH_CUSTOMER, payload: res.data[0] });
@@ -75,12 +75,12 @@ export const fetchCustomer = (customerId) => async dispatch => {
 
 // Fetch last email communication data by Customer id 
 export const fetchEmail = (customerId) => async dispatch => {
-  
+
   console.log(customerId)
-  const res = await axios.get('/api/customeremail/'+ customerId);
+  const res = await axios.get('/api/customeremail/' + customerId);
 
   //const res = storylist;
-  dispatch({ type: FETCH_EMAILS, payload: res.data[0] || {}});
+  dispatch({ type: FETCH_EMAILS, payload: res.data[0] || {} });
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
 };
 
@@ -98,18 +98,18 @@ export const submitEmail = (values, history) => async dispatch => {
 // Fetch last phone call communication data by Customer id 
 export const fetchPhonecall = (customerId) => async dispatch => {
   //console.log(customerId)
-  const res = await axios.get('/api/customerphones/'+ customerId);
+  const res = await axios.get('/api/customerphones/' + customerId);
 
   //const res = storylist;
 
-  dispatch({ type: FETCH_PHONECALL, payload: res.data[0] || {}});
+  dispatch({ type: FETCH_PHONECALL, payload: res.data[0] || {} });
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
 };
 
 
 // Set phone call communication data by Customer id 
 export const submitPhonecall = (values, history) => async dispatch => {
-    const res = await axios.post('/api/customerphones', values);
+  const res = await axios.post('/api/customerphones', values);
 
   //const res = storylist;
   dispatch({ type: FETCH_PHONECALL, payload: res.data[0] });
@@ -121,7 +121,7 @@ export const submitPhonecall = (values, history) => async dispatch => {
 // Fetch last phone call communication data by Customer id 
 export const fetchQuery = (customerId) => async dispatch => {
   //console.log(customerId)
-  const res = await axios.get('/api/customerqueries/'+ customerId);
+  const res = await axios.get('/api/customerqueries/' + customerId);
 
   //const res = storylist;
   dispatch({ type: FETCH_QUERY, payload: res.data[0] });
