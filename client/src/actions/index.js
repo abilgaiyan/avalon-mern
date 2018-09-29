@@ -124,7 +124,7 @@ export const fetchQuery = (customerId) => async dispatch => {
   const res = await axios.get('/api/customerqueries/'+ customerId);
 
   //const res = storylist;
-  dispatch({ type: FETCH_QUERY, payload: res.data[0] });
+  dispatch({ type: FETCH_QUERY, payload: res.data[0] || {}});
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
 };
 

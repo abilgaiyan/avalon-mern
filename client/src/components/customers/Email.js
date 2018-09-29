@@ -27,16 +27,29 @@ class Email extends Component{
             return (
             // <div key={customer._id} class="card blue-grey darken-1">
             <div className="container card-content white-text">
-            
-              <p>sub : {email.subject}</p>
-              <p>Message :{email.message}</p>
-              <button type="submit" data-toggle="modal" data-target="#myModal" >Add </button>
-              <EmailPopup/>
-              
-    
-  
-            </div>
-        //   </div>
+     
+             <div className="form-horizontal">       
+ <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="pwd">sub:</label>
+      <div className="col-sm-10">          
+        <label className="control-label" htmlFor="email">{email.subject}</label>
+      </div>
+    </div>
+    <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="pwd">Message:</label>
+      <div className="col-sm-10">          
+        <label className="control-label" htmlFor="email">{email.message}</label>
+      </div>
+    </div>
+    <div className="form-group">        
+      <div className="col-sm-offset-2 col-sm-10">              
+        <button type="submit" data-toggle="modal" className="btn btn-success" data-target="#myModal" >Add </button>        
+              <EmailPopup/>              
+      </div>
+    </div>
+    </div>
+    </div>
+
             )
     } 
     render(){

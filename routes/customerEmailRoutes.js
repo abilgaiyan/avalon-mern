@@ -14,7 +14,7 @@ module.exports = app =>{
         const customerid = req.params.customerId;
        // console.log(customerid);
 
-        const customeremail = await CustomerEmail.find({_customer: customerid});
+        const customeremail = await CustomerEmail.find({_customer: customerid}).sort('createDate','-1').limit(1);
         console.log(customeremail);
         res.send(customeremail);
         

@@ -25,14 +25,32 @@ class CustomerQuery extends Component{
             return (
             // <div key={customer._id} class="card blue-grey darken-1">
             <div className="container card-content white-text">
-            
+     
+            <div className="form-horizontal">    
+            <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="pwd">Query Message:</label>
+      <div className="col-sm-10">          
+        <label className="control-label" htmlFor="email">{query.message}</label>
+      </div>
+    </div>
+    <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="pwd">Query DateTime:</label>
+      <div className="col-sm-10">          
+        <label className="control-label" htmlFor="email">{query.createDate}</label>
+      </div>
+    </div>
               {/* <p>Subject : {query.subject}</p> */}
-              <p>Query Message :{query.message}</p>
-              <p>Query DateTime :{query.createDate}</p>
-
-              <button type="submit" >Add </button>
-            </div>
-        //   </div>
+              {/* <p>Query Message :{query.message}</p>
+              <p>Query DateTime :{query.createDate}</p> */}
+ <div className="form-group">        
+      <div className="col-sm-offset-2 col-sm-10">              
+        <button type="submit" data-toggle="modal" className="btn btn-success" data-target="#myModal" >Add </button> 
+      </div>
+    </div>
+              {/* <button type="submit" >Add </button> */}
+           
+              </div>
+           </div>
             )
     } 
     render(){

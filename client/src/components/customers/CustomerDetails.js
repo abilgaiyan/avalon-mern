@@ -28,21 +28,87 @@ class CustomerDetails extends Component{
             
             return (
             // <div key={customer._id} class="card blue-grey darken-1">
-            <div className="container card-content white-text">
-              <span className="card-title">{customer.jewelsoftId}</span>
-              <p>Customer Name :{customer.customerName}</p>
-              <p>sr :{customer.sr}</p>
-              <p>jewelsoftId :{customer.jewelsoftId}</p>
-              <p>Contact Person Name :{customer.contactPersonName}</p>
-              <p>address1 :{customer.address1}</p>
-              <p>City:{customer.city}</p>
+            <div className="container ">
+            
+  <form className="form-horizontal">
+  <div className="form-group">
+   <label className="control-label col-sm-2" htmlFor="email">Jewel Soft ID:</label>
 
-              <p>State:{customer.state}</p>
-              <p>Sales Person Name:{customer.salesPersonName}</p>
-              <p>Website Url:{customer.websiteUrl}</p>
-              <p>Website Release Month :{customer.websiteReleaseMonth}</p>
-              <p>Website Release Year:{customer.websiteReleaseYear}</p>
-            </div>
+<div className="col-sm-10">
+      <label className="control-label" htmlFor="email">{customer.jewelsoftId}</label>
+    </div>
+</div>
+    <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="email">Customer Name:</label>
+      <div className="col-sm-10">
+        <label className="control-label" htmlFor="email">{customer.customerName}</label>
+      </div>
+    </div>
+    <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="pwd">sr:</label>
+      <div className="col-sm-10">          
+        <label className="control-label" htmlFor="email">{customer.sr}</label>
+      </div>
+    </div>
+     <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="pwd">jewelsoftId:</label>
+      <div className="col-sm-10">          
+        <label className="control-label" htmlFor="email">{customer.jewelsoftId}</label>
+      </div>
+    </div>
+     <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="pwd">Contact Person Name:</label>
+      <div className="col-sm-10">          
+        <label className="control-label" htmlFor="email">{customer.contactPersonName}</label>
+      </div>
+    </div>
+     <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="pwd">address1:</label>
+      <div className="col-sm-10">          
+        <label className="control-label" htmlFor="email">{customer.address1}</label>
+      </div>
+    </div>
+     <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="pwd">City:</label>
+      <div className="col-sm-10">          
+        <label className="control-label" htmlFor="email">{customer.city}</label>
+      </div>
+    </div>
+     <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="pwd">State:</label>
+      <div className="col-sm-10">          
+        <label className="control-label" htmlFor="email">{customer.state}</label>
+      </div>
+    </div>
+     <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="pwd">Sales Person Name:</label>
+      <div className="col-sm-10">          
+        <label className="control-label" htmlFor="email">{customer.salesPersonName}</label>
+      </div>
+    </div>
+    <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="pwd">Website Url:</label>
+      <div className="col-sm-10">          
+        <label className="control-label" htmlFor="email">{customer.websiteUrl}</label>
+      </div>
+    </div>
+    <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="pwd">Website Release Month:</label>
+      <div className="col-sm-10">          
+        <label className="control-label" htmlFor="email">{customer.websiteReleaseMonth}</label>
+      </div>
+    </div>
+    <div className="form-group">
+      <label className="control-label col-sm-2" htmlFor="pwd">Website Release Year:</label>
+      <div className="col-sm-10">          
+        <label className="control-label" htmlFor="email">{customer.websiteReleaseYear}</label>
+      </div>
+    </div>
+    
+    
+    
+  </form>
+</div>
           
         //   </div>
             )
@@ -50,11 +116,18 @@ class CustomerDetails extends Component{
     render(){
         return (
             <div>
+                <table><tbody><tr><td>
                 {this.renderCustomer()}
-                
-               <Email  customerId={this.props.match.params.customerId} />
+                </td><td>
+                <table><tbody><tr><td><strong> Emails </strong>
+                 <Email  customerId={this.props.match.params.customerId} />
+                 </td></tr>
+                 <tr><td> <strong>Phone</strong>
                 <PhoneCall  customerId={this.props.match.params.customerId} />
+                </td></tr><tr><td><strong> Query</strong>
                 <CustomerQuery  customerId={this.props.match.params.customerId} /> 
+                </td></tr></tbody></table>
+                </td></tr></tbody></table>
 
                
                

@@ -4,7 +4,7 @@ const EmailPopup = () =>{
 
     return(
         <div>
-            <div class="modal fade" id="myModal" role="dialog">
+            <div className="modal fade" id="myModal" role="dialog">
                 <div className="modal-dialog">
                 
                 

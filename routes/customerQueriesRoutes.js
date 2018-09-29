@@ -12,7 +12,7 @@ module.exports = app =>{
      //Get Customer Queries Communication
      app.get('/api/customerqueries/:customerId', async(req, res) =>{
          var customerid = req.params.customerId
-        const customerqueries = await CustomerQueries.find({_customer: customerid});
+        const customerqueries = await CustomerQueries.find({_customer: customerid}).sort('createDate','-1').limit(1);
         res.send(customerqueries);      
     });
    

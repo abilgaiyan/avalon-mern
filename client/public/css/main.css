@@ -130,8 +130,8 @@ body * {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
-    font-size: 13px;
-    color: #676a6a;
+    font-size: 15px;
+    color: #333;
 }
 
 input:focus,
@@ -5422,6 +5422,7 @@ button {
 .tt-header {
     padding-top: 30px;
     height: 100px;
+    margin-bottom: 10px;
 }
 
     .tt-header .c-btn {
@@ -5918,6 +5919,7 @@ strong, b {
 .marginTop50 {
     margin-top: 50px;
 }
+
 .marginBottom10 {
     margin-bottom: 10px !important;
 }
@@ -5958,7 +5960,7 @@ strong, b {
     background: #fff;
     border: none;
     box-shadow: none;
-    z-index: 9999;
+    /* z-index: 9999; */
 }
 .navbar-default .navbar-nav > li > a {
     font-size: 18px;
