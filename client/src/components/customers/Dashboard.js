@@ -19,9 +19,9 @@ class Dashboard extends Component{
           
         return this.props.customers.map(customer=>{
             return (
-            <div key={customer._id} class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">{customer.jewelsoftId}</span>
+            <div key={customer._id} className="card blue-grey darken-1">
+            <div className="card-content white-text">
+              <span className="card-title">{customer.jewelsoftId}</span>
               {/* <p>{customer.customerName}</p><Link to={'customers/'+ customer._id }>Got To Details</Link> */}
               <p>{customer.customerName}</p><Link to={'customers/'+ customer._id }>Got To Details</Link>
               

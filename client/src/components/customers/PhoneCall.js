@@ -24,15 +24,38 @@ class PhoneCall extends Component {
 
         return (
             // <div key={customer._id} class="card blue-grey darken-1">
-            <div className="container card-content white-text">
+            // <div className="container card-content white-text">
 
-                <p>Call Message :{phonecall.message}</p>
-                <p>Call DateTime :{phonecall.createDate}</p>
+            //   <p>Call Message :{phonecall.message}</p>
+            //   <p>Call DateTime :{phonecall.createDate}</p>
 
-                <button type="submit" data-toggle="modal" data-target="#phonepopup">Add</button>
-                <PhonePopup customerId={this.props.customerId} />
-            </div>
+            //   <button type="submit" >Add </button>
+            // </div>
             //   </div>
+            <div className="container ">
+                <form className="form-horizontal">
+                    <div className="form-group">
+                        <label className="control-label col-sm-2" htmlFor="pwd">Call Message:</label>
+                        <div className="col-sm-10">
+                            <label className="control-label" htmlFor="email">{phonecall.message}</label>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label className="control-label col-sm-2" htmlFor="pwd">Call DateTime:</label>
+                        <div className="col-sm-10">
+                            <label className="control-label" htmlFor="email">{phonecall.createDate}</label>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <div className="col-sm-offset-2 col-sm-10">
+                            {/* <button type="submit" class="btn btn-default">Submit</button> */}
+                            <button type="submit" data-toggle="modal" className="btn btn-success">Add </button>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
         )
     }
     render() {
