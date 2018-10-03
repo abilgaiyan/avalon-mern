@@ -89,8 +89,11 @@ export const fetchEmail = (customerId) => async dispatch => {
 export const submitEmail = (values, history) => async dispatch => {
   const res = await axios.post('/api/customeremail', values);
 
-  history.push('/stories');
+  history.push('/customers/' + values.customerId);
+  
   dispatch({ type: FETCH_EMAILS, payload: res.data });
+  
+  
 };
 
 
