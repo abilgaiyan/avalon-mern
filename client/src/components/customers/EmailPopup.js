@@ -1,39 +1,18 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { fetchEmail } from '../../actions';
 
-
-// const EmailPopup = () =>{
-
-//     return(
-// <div>
-//     <div class="modal fade" id="myModal" role="dialog">
-//         <div className="modal-dialog">
-
-//             <div className="modal-content">
-//             <div className="modal-header">
-//                 <button type="button" className="close" data-dismiss="modal">&times;</button>
-//                 <h4 className="modal-title">Modal Header</h4>
-//             </div>
-//             <div className="modal-body ">
-//                 <div className="form-group"><label><strong>Subject:</strong></label><input type="text" className="form-control"/></div><br/>
-//                 <div className="form-group"><label><strong>Comments:</strong></label><input type="text" className="form-control"/></div>
-//             </div>
-//             <div className="modal-footer">
-//                 <button type="button" className="btn btn-default" data-dismiss="modal">Save</button>
-//             </div>
-//             </div>
-
-//         </div>
-//     </div>
-// </div>
-
-//     )
-// }
 
 class EmailPopup extends Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  resetFields = () => {
+    document.getElementById("my-email-form").reset();
+  }
+
 
   handleSubmit() {
     let subject = document.getElementById("subject").value;
@@ -45,7 +24,7 @@ class EmailPopup extends Component {
       'message': comment,
       'customerId': customerId
     };
-    console.log(data);
+    // console.log(data);
     // const data = new FormData(event.target);
     // console.log(data);
     // submitEmail(data);
@@ -61,8 +40,7 @@ class EmailPopup extends Component {
       redirect: "follow", // manual, *follow, error
       referrer: "no-referrer", // no-referrer, *client
       body: JSON.stringify(data), // body data type must match "Content-Type" header
-    })
-    // document.getElementsById('myModal').hide()
+    }).then(this.props.fetchEmail(customerId)).then(this.resetFields)
   }
 
   render() {
@@ -78,7 +56,7 @@ class EmailPopup extends Component {
                 <h4 className="modal-title">Email Details</h4>
               </div>
               <div className="modal-body ">
-                <form className="form-horizontal">
+                <form id="my-email-form" className="form-horizontal">
                   {/* <form onSubmit={this.handleSubmit("name")}> */}
                   <div className="form-group">
                     <label className="control-label col-sm-3" htmlFor="subject">Enter Subject:</label>
@@ -96,26 +74,8 @@ class EmailPopup extends Component {
                   </div>
 
 
-
-
-
-
-
-                  {/* <label htmlFor="subject">Enter Subject</label>
-                  <input id="subject" name="subject" type="text" />
-
-                  <label htmlFor="comments">Enter Comments</label>
-                  <input id="comments" name="comments" type="text" /> */}
-
                   <div className="modal-footer text-center paddingTop20 paddingBottom10">
-                    {/* <button
-                      type="button"
-                      className="btn btn-default"
-                      data-dismiss="modal"
-                      onClick={e => {
-                        this.handleSubmit(item);
-                      }}
-                    > </button>*/}
+
                     <button
                       type="button"
                       className="btn btn-success"
@@ -137,4 +97,4 @@ class EmailPopup extends Component {
   }
 }
 
-export default EmailPopup;
+export default connect(null, { fetchEmail })(EmailPopup);

@@ -1,9 +1,14 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { fetchPhonecall } from '../../actions';
 
 class PhonePopup extends Component {
     constructor() {
         super();
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    resetFields = () => {
+        document.getElementById("my-phone-form").reset();
     }
 
     handleSubmit() {
@@ -15,7 +20,7 @@ class PhonePopup extends Component {
             'message': message,
             'customerId': customerId
         };
-        console.log(data)
+        //console.log(data)
         fetch('/api/customerphones', {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             mode: "cors", // no-cors, cors, *same-origin
@@ -27,7 +32,7 @@ class PhonePopup extends Component {
             redirect: "follow", // manual, *follow, error
             referrer: "no-referrer", // no-referrer, *client
             body: JSON.stringify(data), // body data type must match "Content-Type" header
-        })
+        }).then(this.props.fetchPhonecall(customerId)).then(this.resetFields)
 
     }
 
@@ -44,10 +49,7 @@ class PhonePopup extends Component {
                                 <h4 className="modal-title">Phone Call Details</h4>
                             </div>
                             <div className="modal-body ">
-                                <form className="form-horizontal">
-                                    {/* <form onSubmit={this.handleSubmit("name")}> */}
-                                    {/* <label htmlFor="subject">Enter Subject</label>
-                                    <input id="subject" name="subject" type="text" /> */}
+                                <form id="my-phone-form" className="form-horizontal">
 
                                     <div className="form-group">
                                         <label className="control-label col-sm-3" htmlFor="message">Enter Message:</label>
@@ -57,15 +59,6 @@ class PhonePopup extends Component {
                                         </div>
                                     </div>
 
-
-
-
-
-
-
-
-                                    {/* <label htmlFor="message">Enter Message</label>
-                                    <input id="message" name="message" type="text" /> */}
 
                                     <div className="modal-footer text-center paddingTop20 paddingBottom10">
 
@@ -81,4 +74,4 @@ class PhonePopup extends Component {
     }
 }
 
-export default PhonePopup;
+export default connect(null, { fetchPhonecall })(PhonePopup);

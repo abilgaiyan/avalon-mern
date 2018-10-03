@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import { connect } from 'react-redux';
+import { fetchQuery } from '../../actions';
 
 
 
@@ -8,6 +9,11 @@ class QueryPopup extends Component {
         super();
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    resetFields = () => {
+        document.getElementById("my-query-form").reset();
+    }
+
 
     handleSubmit() {
         //let subject = document.getElementById("subject").value;
@@ -18,7 +24,7 @@ class QueryPopup extends Component {
             'message': messagequery,
             'customerId': customerId
         };
-        console.log(data)
+        //console.log(data)
         fetch('/api/customerqueries', {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             mode: "cors", // no-cors, cors, *same-origin
@@ -31,7 +37,7 @@ class QueryPopup extends Component {
             referrer: "no-referrer", // no-referrer, *client
             body: JSON.stringify(data), // body data type must match "Content-Type" header
 
-        })
+        }).then(this.props.fetchQuery(customerId)).then(this.resetFields)
 
     }
 
@@ -48,7 +54,7 @@ class QueryPopup extends Component {
                                 <h4 className="modal-title">Query</h4>
                             </div>
                             <div className="modal-body ">
-                                <form className="form-horizontal">
+                                <form id="my-query-form" className="form-horizontal">
                                     {/* <form onSubmit={this.handleSubmit("name")}> */}
                                     {/* <label htmlFor="subject">Enter Subject</label>
                                     <input id="subject" name="subject" type="text" /> */}
@@ -59,16 +65,6 @@ class QueryPopup extends Component {
                                             <input type="text" name="messagequery" className="form-control" id="messagequery" placeholder="Enter Message" />
                                         </div>
                                     </div>
-
-
-
-
-
-
-
-
-                                    {/* <label htmlFor="message">Enter Message</label>
-                                    <input id="messagequery" name="message" type="text" /> */}
 
                                     <div className="modal-footer text-center paddingTop20 paddingBottom10">
 
@@ -84,4 +80,4 @@ class QueryPopup extends Component {
     }
 }
 
-export default QueryPopup;
+export default connect(null, { fetchQuery })(QueryPopup);
