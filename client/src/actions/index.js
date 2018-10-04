@@ -87,9 +87,10 @@ export const fetchEmail = (customerId) => async dispatch => {
 
 // Set email communication data by Customer id 
 export const submitEmail = (values, history) => async dispatch => {
+  debugger;
   const res = await axios.post('/api/customeremail', values);
 
-  history.push('/customers/' + values.customerId);
+  //history.push('/customers/' + values.customerId);
   
   dispatch({ type: FETCH_EMAILS, payload: res.data });
   

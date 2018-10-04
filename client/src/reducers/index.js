@@ -24,6 +24,7 @@ export default combineReducers({
   customers:customersReducers,
   customer:customerReducers,
   email:emailReducers,
+  emailForm:emailReducers,
   phonecall:phoneReducer,
   query:queryReducer
 });
