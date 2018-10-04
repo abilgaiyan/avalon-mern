@@ -6,7 +6,7 @@ const CustomerSchema = require('./Customer');
 
 const customeremailSchema = new Schema({
     subject: String,
-    message: String,
+    comments: String,
     _customer: {type: Schema.Types.ObjectId, ref: 'customer'},
     displayorder: {type: Number, default:0},
     emaildate: Date,

@@ -35,10 +35,10 @@ module.exports = app =>{
     app.post('/api/customeremail', async (req,res) =>{
 
         console.log('/api/customeremail',req.body )
-        const {subject,message,customerId } = req.body;
+        const {subject,comments,customerId } = req.body;
         const CustomerEmaildata = new CustomerEmail({
             subject,
-            message,
+            comments,
             _customer: customerId,
             displayorder:0,
             status:'Active',

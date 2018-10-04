@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchEmail } from '../../actions';
-import EmailPopup from "./EmailPopup"
+// import EmailPopup from "./EmailPopup";
+import EmailForm from "./forms/email/EmailForm";
 
 
 class Email extends Component {
@@ -44,7 +45,7 @@ class Email extends Component {
                     <div className="form-group">
                         <div className="col-sm-offset-2 col-sm-10">
                             <button type="submit" data-toggle="modal" className="btn btn-success" data-target="#myModal" >Add </button>
-                            <EmailPopup customerId={this.props.customerId} />
+                            <EmailForm customerId={this.props.customerId} />
                         </div>
                     </div>
                 </div>
