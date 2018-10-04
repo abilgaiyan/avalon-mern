@@ -1,0 +1,12 @@
+label {
+    line-height: 50px;
+    text-align: right;
+}
+
+.form-control{border-radius:5px; }
+
+.form-email{
+    background: #f7f7f7;
+
+padding: 50px 15px;
+}

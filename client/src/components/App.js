@@ -19,6 +19,8 @@ import CustomerDetails from './customers/CustomerDetails';
 // import CustomerVideo from './CustomerVideo';
 // import StoryNew from './stories/StoryNew';
 
+import Email from "./customers/forms/email/EmailHeader"
+
 
 
 
@@ -39,6 +41,7 @@ class App extends Component {
             <Route exact={true} path="/" component={Dashboard} />
             <Route exact={true} path="/customers" component={Dashboard} />
             <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
+            <Route exact={true} path="/emailForm" component={Email} />
             {/* <Route exact={true} path="/surveys" component={Dashboard} />
            <Route path="/surveys/new" component={SurveyNew} />
            <Route path="/aboutus" component={Aboutus} />
