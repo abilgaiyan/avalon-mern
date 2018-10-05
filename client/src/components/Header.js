@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Payments from './Payments';
 import { Link } from 'react-router-dom';
+import  './Header.css';
 
 class Header extends Component {
 

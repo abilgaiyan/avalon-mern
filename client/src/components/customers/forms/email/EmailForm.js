@@ -30,13 +30,25 @@ class EmailForm extends Component {
     render() {
         return (
             <div className="col-xs-12 col-sm-6 col-sm-offset-3 modal fade" id="myModal" role="dialog">
+                <div className="modal-dialog">
+                <div className="modal-content">
+                <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal">
+                  &times;
+                </button>
+                <h4 className="modal-title">Email Details</h4>
+              </div>
+                <div className="modal-body">
                 <form className="form-email marginTop40" onSubmit={() => this.props.handleSubmit(this.props.submitEmail(this.props.formValues, this.props.customerId, this.props.history))}>
                     {this.renderFields()}
-                    <div className="btn-group">
-                        <Link to="/Email" className="btn btn-default">Cancel</Link>
+                    <div className="btn-group pull-right">
+                        <Link to="/Email" className="btn btn-default" data-dismiss="modal">Cancel</Link>
                         <button type="submit" className="btn btn-primary" >Save</button>
                     </div>
                 </form>
+                </div>
+                </div>
+                </div>
             </div>
         );
     }

@@ -54,21 +54,21 @@ class QueryPopup extends Component {
                                 <h4 className="modal-title">Query</h4>
                             </div>
                             <div className="modal-body ">
-                                <form id="my-query-form" className="form-horizontal">
+                                <form id="my-query-form" className="form-horizontal form-email">
                                     {/* <form onSubmit={this.handleSubmit("name")}> */}
                                     {/* <label htmlFor="subject">Enter Subject</label>
                                     <input id="subject" name="subject" type="text" /> */}
                                     <div className="form-group">
-                                        <label className="control-label col-sm-3" htmlFor="message">Enter Message:</label>
+                                        <label className="col-sm-3" htmlFor="message">Enter Message:</label>
 
                                         <div className="col-sm-9">
-                                            <input type="text" name="messagequery" className="form-control" id="messagequery" placeholder="Enter Message" />
+                                            <input type="text" name="messagequery" className="form-control" id="messagequery" placeholder="Enter Message" style={{ margin: '5px' }}/>
                                         </div>
                                     </div>
 
-                                    <div className="modal-footer text-center paddingTop20 paddingBottom10">
-
-                                        <button type="button" className="btn btn-success" onClick={e => { this.handleSubmit(); }} data-dismiss="modal">Save</button>
+                                    <div  className="btn-group pull-right ">
+                                    <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <button type="button" className="btn btn-primary" onClick={e => { this.handleSubmit(); }} data-dismiss="modal">Save</button>
                                     </div>
                                 </form>
                             </div>

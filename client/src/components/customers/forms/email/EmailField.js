@@ -10,7 +10,7 @@ const EmailField = ({ input, label, meta: { touched, error } }) => {
                 <input className="form-control" {...input} style={{ margin: '5px' }} />
             </div>
             <div className="clearfix"></div>
-            <div className="red-text" style={{ marginBottom: '20px' }}>
+            <div className="red-text col-sm-9 col-sm-offset-3" >
                 {touched && error}
             </div>
         </div>

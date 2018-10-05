@@ -28,7 +28,7 @@ class CustomerDetails extends Component {
 
     return (
       // <div key={customer._id} class="card blue-grey darken-1">
-      <div className="container ">
+      <div className="col-sm-12" >
         <form className="form-horizontal">
           <div className="form-group">
             <label className="control-label col-sm-2" htmlFor="email">Jewel Soft ID:</label>
@@ -114,23 +114,40 @@ class CustomerDetails extends Component {
   }
   render() {
     return (
-      <div>
-        <table><tbody><tr><td>
-          {this.renderCustomer()}
-        </td><td>
-            <table><tbody><tr><td><strong> Emails </strong>
-              <Email customerId={this.props.match.params.customerId} />
-            </td></tr>
-              <tr><td> <strong>Phone</strong>
-                <PhoneCall customerId={this.props.match.params.customerId} />
-              </td></tr><tr><td><strong> Query</strong>
-                <CustomerQuery customerId={this.props.match.params.customerId} />
-              </td></tr></tbody></table>
-          </td></tr></tbody></table>
-
-
-
-      </div>
+      <div className="container-fluid well" >
+        <div className="row">
+       <div className="col-sm-7">
+       <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading"><strong>Customer Info</strong></div>
+            <div class="panel-body">{this.renderCustomer()}</div>
+          </div>
+       </div>
+       </div>
+       <div className="col-sm-5">
+         <div className="row">
+         <div class="panel-group">
+            <div class="panel panel-default">
+              <div class="panel-heading"><strong> Emails </strong></div>
+              <div class="panel-body"><Email customerId={this.props.match.params.customerId} /></div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading"><strong>Phone</strong></div>
+              <div class="panel-body"><PhoneCall customerId={this.props.match.params.customerId} /></div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading"><strong> Query</strong></div>
+              <div class="panel-body"><CustomerQuery customerId={this.props.match.params.customerId} /></div>
+            </div>
+         </div>
+         
+           {/* <div className="col-sm-12"><strong> Emails </strong><Email customerId={this.props.match.params.customerId} /></div>
+           <div className="col-sm-12"><strong>Phone</strong><PhoneCall customerId={this.props.match.params.customerId} /></div>
+           <div className="col-sm-12"><strong> Query</strong><CustomerQuery customerId={this.props.match.params.customerId} /></div> */}
+         </div>
+       </div>
+     </div>
+     </div>
     )
   }
 }

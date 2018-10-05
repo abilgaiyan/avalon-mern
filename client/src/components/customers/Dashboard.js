@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchCustomers } from '../../actions';
 import CustomerDetails from './CustomerDetails';
 import { Link } from 'react-router-dom';
+import './Dashboard.css';
 
 class Dashboard extends Component {
 
@@ -19,11 +20,11 @@ class Dashboard extends Component {
 
         return this.props.customers.map(customer => {
             return (
-                <div key={customer._id} className="row table table-striped">
+                <div key={customer._id} className="row list-group-item">
 
 
 
-                    <div className="col-sm-12"> <div className="col-sm-8"><p className="card-title">{customer.jewelsoftId}</p> {customer.customerName}</div><div className="col-sm-4"><Link className="alink" to={'customers/' + customer._id}>Got To Details</Link></div></div>
+                    <div className="col-sm-12"> <div className="col-sm-8"><p className="card-title">{customer.jewelsoftId}</p> {customer.customerName}</div><div className="col-sm-4 card-link"><Link className="alink" to={'customers/' + customer._id}>Got To Details</Link></div></div>
 
                     {/* }} */}
 
@@ -35,7 +36,7 @@ class Dashboard extends Component {
     render() {
         return (
 
-            <div className="container marginTop30">
+            <div className="container marginTop30 list-group">
                 <h3 className="text-center">Avalon Customer's</h3>
                 {this.renderDashboard()}
             </div>

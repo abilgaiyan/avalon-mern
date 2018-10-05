@@ -7,6 +7,13 @@ label {
 
 .form-email{
     background: #f7f7f7;
-
-padding: 50px 15px;
+    padding: 20px 15px 50px;
 }
+
+.form-email label{
+    line-height: 3.3;
+}
+.form-email .red-text{
+    color:#da0e0e
+}
+.modal-content{background-color: #f7f7f7;}

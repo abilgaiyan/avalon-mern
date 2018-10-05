@@ -24,7 +24,7 @@ class CustomerQuery extends Component {
 
         return (
             // <div key={customer._id} class="card blue-grey darken-1">
-            <div className="container card-content white-text">
+            <div className="col-sm-12 card-content white-text">
 
                 <div className="form-horizontal">
                     {/* <div className="form-group">

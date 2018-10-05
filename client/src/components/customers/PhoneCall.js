@@ -32,7 +32,7 @@ class PhoneCall extends Component {
             //   <button type="submit" >Add </button>
             // </div>
             //   </div>
-            <div className="container ">
+            <div className="col-sm-12 ">
                 <div className="form-horizontal">
                     <div className="form-group">
                         <label className="control-label col-sm-2" htmlFor="pwd">Call Message:</label>

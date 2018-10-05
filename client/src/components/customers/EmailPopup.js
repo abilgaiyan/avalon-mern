@@ -56,7 +56,7 @@ class EmailPopup extends Component {
                 <h4 className="modal-title">Email Details</h4>
               </div>
               <div className="modal-body ">
-                <form id="my-email-form" className="form-horizontal">
+                <form id="my-email-form" className="form-horizontal form-email">
                   {/* <form onSubmit={this.handleSubmit("name")}> */}
                   <div className="form-group">
                     <label className="control-label col-sm-3" htmlFor="subject">Enter Subject:</label>
@@ -74,11 +74,11 @@ class EmailPopup extends Component {
                   </div>
 
 
-                  <div className="modal-footer text-center paddingTop20 paddingBottom10">
-
+                  <div className="btn-group pull-right ">
+                  <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
                     <button
                       type="button"
-                      className="btn btn-success"
+                      className="btn btn-primary"
                       onClick={e => {
                         this.handleSubmit();
                       }}
