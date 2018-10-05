@@ -29,7 +29,7 @@ class EmailForm extends Component {
 
     render() {
         return (
-            <div className="col-xs-12 col-sm-6 col-sm-offset-3" id="myModal" role="dialog">
+            <div className="col-xs-12 col-sm-6 col-sm-offset-3 modal fade" id="myModal" role="dialog">
                 <form className="form-email marginTop40" onSubmit={() => this.props.handleSubmit(this.props.submitEmail(this.props.formValues, this.props.customerId, this.props.history))}>
                     {this.renderFields()}
                     <div className="btn-group">
