@@ -14,12 +14,12 @@ import './email.css'
 class EmailForm extends Component {
 
     renderFields() {
-        return _.map(fields, ({ label, name }) => {
+        return _.map(fields, ({ label, name, type }) => {
             return (
                 <Field
                     key={name}
                     component={EmailField}
-                    type="text"
+                    type={type}
                     label={label}
                     name={name}
                 />
@@ -31,23 +31,23 @@ class EmailForm extends Component {
         return (
             <div className="col-xs-12 col-sm-6 col-sm-offset-3 modal fade" id="myModal" role="dialog">
                 <div className="modal-dialog">
-                <div className="modal-content">
-                <div className="modal-header">
-                <button type="button" className="close" data-dismiss="modal">
-                  &times;
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <button type="button" className="close" data-dismiss="modal">
+                                &times;
                 </button>
-                <h4 className="modal-title">Email Details</h4>
-              </div>
-                <div className="modal-body">
-                <form className="form-email marginTop40" onSubmit={() => this.props.handleSubmit(this.props.submitEmail(this.props.formValues, this.props.customerId, this.props.history))}>
-                    {this.renderFields()}
-                    <div className="btn-group pull-right">
-                        <Link to="/Email" className="btn btn-default" data-dismiss="modal">Cancel</Link>
-                        <button type="submit" className="btn btn-primary" >Save</button>
+                            <h4 className="modal-title">Email Details</h4>
+                        </div>
+                        <div className="modal-body">
+                            <form className="form-email marginTop40" onSubmit={() => this.props.handleSubmit(this.props.submitEmail(this.props.formValues, this.props.customerId, this.props.history))}>
+                                {this.renderFields()}
+                                <div className="btn-group pull-right">
+                                    <Link to="/Email" className="btn btn-default" data-dismiss="modal">Cancel</Link>
+                                    <button type="submit" className="btn btn-primary" >Save</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </form>
-                </div>
-                </div>
                 </div>
             </div>
         );
