@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Payments from './Payments';
 import { Link } from 'react-router-dom';
-import  './Header.css';
+import './Header.css';
 
 class Header extends Component {
 
@@ -84,7 +84,7 @@ class Header extends Component {
 
                                         {this.props.auth ? <li key={10}><Link to="/story/new">Story</Link></li> : ""}
                                         {this.props.auth ? <li key={11}><Link to="/api/logout">Log Out</Link></li> : <li key={12}><a href="/auth/google">Login</a></li>}
-                                        <li key={12}><Link to="/emailForm">Email Form</Link></li>
+                                        <li key={13}><Link to="/emailForm">Email Form</Link></li>
 
                                     </ul>
 
