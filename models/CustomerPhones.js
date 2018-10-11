@@ -5,8 +5,8 @@ const CustomerSchema = require('./Customer');
 //define schema for our customer Telephonic conversation
 
 const customerphonesSchema = new Schema({
-    message: String,
-    _customer: {type: Schema.Types.ObjectId, ref: 'customer'},
+    phone: String,
+    _customer: { type: Schema.Types.ObjectId, ref: 'customer' },
     displayorder: Number,
     // phonedate: String,
     status: String,

@@ -87,15 +87,15 @@ export const fetchEmail = (customerId) => async dispatch => {
 
 // Set email communication data by Customer id 
 export const submitEmail = (values, customerId, history) => async dispatch => {
-  
+
   values.customerId = customerId;
   const res = await axios.post('/api/customeremail', values);
 
   //history.push('/customers/' + values.customerId);
-  
+
   dispatch({ type: FETCH_EMAILS, payload: values });
-  
-  
+
+
 };
 
 
@@ -113,11 +113,14 @@ export const fetchPhonecall = (customerId) => async dispatch => {
 
 
 // Set phone call communication data by Customer id 
-export const submitPhonecall = (values, history) => async dispatch => {
+export const submitPhonecall = (values, customerId, history) => async dispatch => {
+
+  values.customerId = customerId;
   const res = await axios.post('/api/customerphones', values);
+  console.log(history);
 
   //const res = storylist;
-  dispatch({ type: FETCH_PHONECALL, payload: res.data[0] });
+  dispatch({ type: FETCH_PHONECALL, payload: values });
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
 };
 
@@ -137,6 +140,7 @@ export const fetchQuery = (customerId) => async dispatch => {
 // Set phone call communication data by Customer id 
 export const submitQuery = (values, history) => async dispatch => {
   const res = await axios.post('/api/customerqueries', values);
+
   //const res = storylist;
   dispatch({ type: FETCH_QUERY, payload: res.data[0] });
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });

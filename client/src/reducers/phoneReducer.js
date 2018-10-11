@@ -1,11 +1,12 @@
-import { FETCH_PHONECALL} from '../actions/types';
+import { FETCH_PHONECALL } from '../actions/types';
 
-export default function(state=[], action){
+export default function (state = [], action) {
 
-    switch(action.type){
+    switch (action.type) {
         case FETCH_PHONECALL:
-          return action.payload;
+            // console.log("FETCH_PHONECALL", action.payload)
+            return action.payload;
         default:
-        return state;
+            return state;
     }
 }
