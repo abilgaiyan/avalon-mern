@@ -25,7 +25,6 @@ require('./models/DomainInfo');
 require('./models/SSLInfo');
 require('./models/BusinessEmailInfo');
 require('./models/EmailMarketingAccountInfo');
-require('./models/QuerySupportTrend');
 require('./models/TargetAreas');
 require('./models/CallLog');
 
@@ -73,7 +72,6 @@ require('./routes/domainInfoRoutes')(app);
 require('./routes/sslInfoRoutes')(app);
 require('./routes/businessEmailInfo')(app);
 require('./routes/emailMarketingInfoRoutes')(app);
-require('./routes/querySupportTrendRoutes')(app);
 require('./routes/targetAreasRoutes')(app);
 require('./routes/callLogRoutes')(app);
 

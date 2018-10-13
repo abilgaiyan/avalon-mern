@@ -55,9 +55,8 @@ const customerinfoSchema = new Schema({
   _sslInfo: { type: Schema.Types.ObjectId, ref: "sslinfo" },
   _businessEmailInfo: { type: Schema.Types.ObjectId, ref: "businessemailinfo" },
   _emailmarketingAccountInfo: { type: Schema.Types.ObjectId, ref: "emailmarketingaccountinfo" },
-  _querysupportInfo: { type: Schema.Types.ObjectId, ref: "querysupporttrendinfo" },
   _targetAreaInfo: { type: Schema.Types.ObjectId, ref: "targetareainfo" },
-  _callLogInfo: { type: Schema.Types.ObjectId, ref: "callloginfo" },
+  _callLogInfo: [{ type: Schema.Types.ObjectId, ref: "callloginfo" }],
   displayorder: {type: Number, default: 0},
   createDate: Date,
   updateDate: Date
