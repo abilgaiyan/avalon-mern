@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 
-//define schema for our customer
-
+//define schema for Avalon Customer Support Query Trend
 const querySupportTrendInfoSchema = new Schema({
     avgMonthlyQuery: String,
     avgYearlyQuery: String,

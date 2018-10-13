@@ -41,7 +41,7 @@ const customerinfoSchema = new Schema({
   websiteUrl: String,
   websiteProvider: String,
   customersince: String,
-  customerType: string,
+  customerType: String,
   _buyinggroups: [{ type: Schema.Types.ObjectId, ref: 'buyinggroup' }],
    comment: String,
   // _product: { type: Schema.Types.ObjectId, ref: "product" },

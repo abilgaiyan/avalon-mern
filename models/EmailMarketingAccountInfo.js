@@ -1,13 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-//const CustomerSchema = require('./Customer');
-// const AddressSchema = require('./Address');
-// const ProductSchema = require('./Product');
-// const ProductPlanSchema = require('./ProductPlan');
 
-
-//define schema for our customer
-
+//define schema for Customer Email Marketing Account Information
 const emailmarketingaccountInfoSchema = new Schema({
     emailMarketingAccountStatus: String,
     emailMarketingPlan: String,

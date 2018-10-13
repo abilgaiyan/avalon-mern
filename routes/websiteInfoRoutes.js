@@ -6,16 +6,16 @@ const WebsiteInfo = mongoose.model('websiteinfo');
 
 module.exports = app =>{
     //Get Website info data 
-    app.get('/api/websiteinformation/:websiteinfoid', async(req, res) =>{
+    app.get('/api/websiteinfo/:websiteinfoid', async(req, res) =>{
         const webInfoId= req.params.websiteinfoid;
-        const WebsiteInfo = await WebsiteInfo.find({_id: webInfoId})
+        const websiteinfo = await WebsiteInfo.find({_id: webInfoId})
                                                   .populate('_productplan');
-        //console.log(websiteinformation);
-        res.send(websiteinformation);
+        //console.log(websiteinfo);
+        res.send(websiteinfo);
         
     });
 
-    app.post('/api/websiteinformation',  async (req,res) =>{
+    app.post('/api/websiteinfo',  async (req,res) =>{
         // console.log(req.body);
        const websiteinfo = new WebsiteInfo({
         liveDate: req.body.liveDate,

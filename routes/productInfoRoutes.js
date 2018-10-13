@@ -5,19 +5,18 @@ const mongoose = require('mongoose');
 const ProductInfo = mongoose.model('productinfo');
 
 module.exports = app =>{
-    //Get Product info data 
-    app.get('/api/productinformation/:productinfoid', async(req, res) =>{
+    //Get Avalon Product info data 
+    app.get('/api/productinfo/:productinfoid', async(req, res) =>{
         const prodInfoId= req.params.productinfoid;
-        const ProductInfo = await ProductInfo.find({_id: prodInfoId});
-        //console.log(productinformation);
-        res.send(productinformation);
+        const productinfo = await ProductInfo.find({_id: prodInfoId});
+        //console.log(productinfo);
+        res.send(productinfo);
         
     });
 
-    app.post('/api/productinformation',  async (req,res) =>{
+    app.post('/api/productinfo',  async (req,res) =>{
         // console.log(req.body);
        const productinfo = new ProductInfo({
-        liveDate: req.body.liveDate,
         ashiProductStatus: req.body.ashiProductStatus,
         restrictionFrom: req.body.restrictionFrom,
         jewelExchangeSignupStatus: req.body.jewelExchangeSignupStatus,

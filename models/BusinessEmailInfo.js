@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-//define schema for our customer
-
+//define schema for Customers Business Email Information
 const businessEmailInfoSchema = new Schema({
     emailRequirement: String,
     emailProvider: String,

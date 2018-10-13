@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-
-
-//define schema for our customer
-
+//define schema for Avalon Customers Call Logs by Support Team
 const callLogInfoSchema = new Schema({
     previousCallDate: Date,
     previousCallType: String,

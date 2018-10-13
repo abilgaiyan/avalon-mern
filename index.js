@@ -14,6 +14,22 @@ require('./models/CustomerAllData');
 require('./models/CustomerEmail');
 require('./models/CustomerPhones');
 require('./models/CustomerQueries');
+//New Models
+require('./models/CustomerInfo');
+require('./models/AvalonInfo');
+require('./models/BillingInfo');
+require('./models/WebsiteInfo');
+require('./models/ProductInfo');
+require('./models/AshiMicroWebsiteInfo');
+require('./models/DomainInfo');
+require('./models/SSLInfo');
+require('./models/BusinessEmailInfo');
+require('./models/EmailMarketingAccountInfo');
+require('./models/QuerySupportTrend');
+require('./models/TargetAreas');
+require('./models/CallLog');
+
+
 //console.log(keys.mongodbURL)
 
 mongoose.connect(keys.mongodbURL);
@@ -44,6 +60,21 @@ require('./routes/customerAllDataRoutes')(app);
 require('./routes/customerPhonesRoutes')(app);
 require('./routes/customerQueriesRoutes')(app);
 require('./routes/customerEmailRoutes')(app);
+//New Routes
+require('./routes/customerInfoRoutes')(app);
+require('./routes/avalonInfoRoutes')(app);
+require('./routes/billingInfoRoutes')(app);
+require('./routes/websiteInfoRoutes')(app);
+require('./routes/productInfoRoutes')(app);
+require('./routes/ashiMicrowebsiteInfoRoutes')(app);
+require('./routes/domainInfoRoutes')(app);
+require('./routes/sslInfoRoutes')(app);
+require('./routes/businessEmailInfo')(app);
+require('./routes/emailMarketingInfoRoutes')(app);
+require('./routes/querySupportTrendRoutes')(app);
+require('./routes/targetAreasRoutes')(app);
+require('./routes/callLogRoutes')(app);
+
 
 
 // For Production environment

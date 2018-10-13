@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 
-//define schema for our customer
-
+//define schema for Avalon Customer Domain Information
 const domainInfoSchema = new Schema({
     domainPurchaser: String,
     domainProvider: String,

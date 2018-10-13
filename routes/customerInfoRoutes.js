@@ -6,9 +6,10 @@ const CustomerInfo = mongoose.model('customerinfo');
 
 module.exports = app =>{
     //Get Customer info data 
-    app.get('/api/customerinformation/:customerid', async(req, res) =>{
-        const customerId= req.params.customerid;
-        const CustomerInfo = await CustomerInfo.find({_id: customerId})
+    app.get('/api/customerinfo/:customerid', async(req, res) =>{
+        const customerId= req.params.customerid.toString();
+        console.log(customerId);
+        const customerinfo = await CustomerInfo.find({_id: customerId})
                                                .populate('_salesPerson')
                                                .populate('_buyinggroups')
                                                .populate('_avalonInfo')
@@ -23,12 +24,17 @@ module.exports = app =>{
                                                .populate('_querysupportInfo')
                                                .populate('_targetAreaInfo')
                                                .populate('_callLogInfo');
-        //console.log(customerinformation);
-        res.send(customerinformation);
+        //console.log(customerinfo);
+        if (customerinfo){
+        res.send(customerinfo);
+        }
+        else{
+            res.send('no data');
+        }
         
     });
 
-    app.post('/api/customerinformation',  async (req,res) =>{
+    app.post('/api/customerinfo',  async (req,res) =>{
         // console.log(req.body);
        //const {name, email, mobile, message} = req.body;
        const customerinfo = new CustomerInfo({

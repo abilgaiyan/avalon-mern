@@ -1,14 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-//const CustomerSchema = require('./Customer');
-// const AddressSchema = require('./Address');
-// const ProductSchema = require('./Product');
-// const ProductPlanSchema = require('./ProductPlan');
 
-
-//define schema for our customer
-
-const querySupportTrendInfoSchema = new Schema({
+//define schema for Avalon Customers Target Areas
+const targetAreaInfoSchema = new Schema({
     targetArea: String,
     createDate: Date,
     updateDate: Date

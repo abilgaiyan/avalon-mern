@@ -6,16 +6,16 @@ const AvalonInfo = mongoose.model('avaloninfo');
 
 module.exports = app =>{
     //Get Avalon website info data 
-    app.get('/api/avaloninformation/:avaloninfoid', async(req, res) =>{
+    app.get('/api/avaloninfo/:avaloninfoid', async(req, res) =>{
         const avalonInfoId= req.params.avaloninfoid;
-        const AvalonInfo = await AvalonInfo.find({_id: avalonInfoId})
+        const avaloninfo = await AvalonInfo.find({_id: avalonInfoId})
                                                .populate('_websitestatus');
-        //console.log(avaloninformation);
-        res.send(avaloninformation);
+        //console.log(avaloninfo);
+        res.send(avaloninfo);
         
     });
 
-    app.post('/api/avaloninformation',  async (req,res) =>{
+    app.post('/api/avaloninfo',  async (req,res) =>{
         // console.log(req.body);
        const avaloninfo = new AvalonInfo({
         signupDate: req.body.signupDate,
