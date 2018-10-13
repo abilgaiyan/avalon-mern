@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+
+import Welcome from "./Welcome"
 import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './customers/Dashboard';
@@ -34,11 +36,11 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <BrowserRouter>
-          <div>
-            <Header />
-            <Route exact={true} path="/" component={Dashboard} />
+      <BrowserRouter>
+        <div id="wrapper" className="dashboard_wraper container-fluid">
+          <div class="row">
+            {/* <Header /> */}
+            <Route exact={true} path="/" component={Welcome} />
             <Route exact={true} path="/customers" component={Dashboard} />
             <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
             <Route exact={true} path="/emailForm" component={Email} />
@@ -56,8 +58,8 @@ class App extends Component {
            <Route path="/story/new" component={StoryNew} /> */}
             <Footer />
           </div>
-        </BrowserRouter>
-      </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }

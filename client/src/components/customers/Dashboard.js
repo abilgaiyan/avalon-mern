@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { fetchCustomers } from '../../actions';
 import CustomerDetails from './CustomerDetails';
 import { Link } from 'react-router-dom';
+import Header from '../Header'
+
 import './Dashboard.css';
 
 class Dashboard extends Component {
@@ -12,6 +14,18 @@ class Dashboard extends Component {
         // console.log(this.props.fetchCustomers());
 
     }
+
+    // renderHeader() {
+    //     return (
+    //         <nav className="navbar navbar-expand-sm bg-light">
+    //             <ul className="navbar-nav">
+    //                 <li key="1" className="nav-item">
+    //                     <a className="nav-link" href="/api/logout">Logout</a>
+    //                 </li>
+    //             </ul>
+    //         </nav>
+    //     )
+    // }
 
     renderDashboard() {
         if (!this.props.customers)
@@ -24,7 +38,14 @@ class Dashboard extends Component {
 
 
 
-                    <div className="col-sm-12"> <div className="col-sm-8"><p className="card-title">{customer.jewelsoftId}</p> {customer.customerName}</div><div className="col-sm-4 card-link"><Link className="alink" to={'customers/' + customer._id}>Got To Details</Link></div></div>
+                    <div className="col-sm-12"> <div className="col-sm-8">
+                        <p className="card-title">{customer.jewelsoftId}</p>
+                        {customer.customerName}
+                    </div>
+                        <div className="col-sm-4 card-link">
+                            <Link className="alink" to={'customers/' + customer._id}>Got To Details</Link>
+                        </div>
+                    </div>
 
                     {/* }} */}
 
@@ -37,6 +58,8 @@ class Dashboard extends Component {
         return (
 
             <div className="container marginTop30 list-group">
+                {/* {this.renderHeader()} */}
+                <Header />
                 <h3 className="text-center">Avalon Customer's</h3>
                 {this.renderDashboard()}
             </div>

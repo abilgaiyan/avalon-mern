@@ -117,7 +117,8 @@ export const submitPhonecall = (values, customerId, history) => async dispatch =
 
   values.customerId = customerId;
   const res = await axios.post('/api/customerphones', values);
-  console.log(history);
+  // console.log(history);
+  // history.push("/customers");
 
   //const res = storylist;
   dispatch({ type: FETCH_PHONECALL, payload: values });

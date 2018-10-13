@@ -4,7 +4,7 @@ import { fetchCustomer } from '../../actions';
 import Email from './Email';
 import PhoneCall from './PhoneCall';
 import CustomerQuery from './CustomerQuery';
-
+import Header from '../Header'
 
 class CustomerDetails extends Component {
 
@@ -114,7 +114,9 @@ class CustomerDetails extends Component {
   }
   render() {
     return (
+
       <div className="container-fluid well" >
+        <Header />
         <div className="row">
           <div className="col-sm-7">
             <div className="panel-group">
