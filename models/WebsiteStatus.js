@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+//const ProductPlanSchema = require('./ProductPlan');
 
 //define schema for our Customer Plan
-const productPlanSchema = new Schema({
-    planName: String,
-    planDate: Date,
+const websiteStatusSchema = new Schema({
+    name: String,
+    description: String,
     active: Boolean,
     displayorder: Number,
     createDate: Date,
@@ -13,4 +14,4 @@ const productPlanSchema = new Schema({
 });
 
 // create modal based on schema
-mongoose.model('ProductPlan', productPlanSchema);
+mongoose.model('websitestatus', websiteStatusSchema);
