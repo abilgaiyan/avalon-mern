@@ -1,14 +1,14 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const keys = require('./config/keys');
-const passport = require('passport');
 const cookieSession = require('cookie-session');
+const passport = require('passport');
+const bodyParser = require('body-parser');
+const keys = require('./config/keys');
 require('./models/User');
+require('./services/passport');
 require('./models/Survey');
 require('./models/Contactus');
 require('./models/CustomerStory');
-require('./services/passport');
 require('./models/Customer');
 require('./models/CustomerAllData');
 require('./models/CustomerEmail');
@@ -32,9 +32,9 @@ require('./models/CallLog');
 
 //console.log(keys.mongodbURL)
 
+mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongodbURL);
 //mongoose.connect('mongodb://Avalon:Avalon@ds145178.mlab.com:45178/Avalon-dev');
-
 
 const app = express();
 
@@ -42,12 +42,14 @@ app.use(bodyParser.json());
 app.use(
     cookieSession({
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        keys : [keys.cookieKey]
+        keys: [keys.cookieKey]
     })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
@@ -78,35 +80,35 @@ require('./routes/callLogRoutes')(app);
 
 
 // For Production environment
-if (process.env.NODE_ENV ==='production'){
-  // Express will serve up production assets
-  // like our main.js or main.css file!
-  app.use(express.static('/client/build'));
-//   app.use(express.static('/client/build/css'));
-//   app.use(express.static('/client/build/fonts'));
-//   app.use(express.static('/client/build/img'));
-//   app.use(express.static('/client/build/static'));
-//   app.use(express.static('/client/build/static/css'));
-//   app.use(express.static('/client/build/static/js'));
-//   app.use(express.static('/client/build/static/js/vendor'));
+if (process.env.NODE_ENV === 'production') {
+    // Express will serve up production assets
+    // like our main.js or main.css file!
+    app.use(express.static('/client/build'));
+    //   app.use(express.static('/client/build/css'));
+    //   app.use(express.static('/client/build/fonts'));
+    //   app.use(express.static('/client/build/img'));
+    //   app.use(express.static('/client/build/static'));
+    //   app.use(express.static('/client/build/static/css'));
+    //   app.use(express.static('/client/build/static/js'));
+    //   app.use(express.static('/client/build/static/js/vendor'));
 
 
- // app.use(express.static('/client/public'));
+    // app.use(express.static('/client/public'));
 
-  
-  // Express will server index.html file
-  // if it does'not reconizes the route
-  // code will execute for client side router defined 
 
-  const path = require('path');
-  app.get('*', (req, res) =>{
-     res.sendFile(path.resolve(__dirname, 'client','build','index.html'));
-  });
+    // Express will server index.html file
+    // if it does'not reconizes the route
+    // code will execute for client side router defined 
+
+    const path = require('path');
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
 }
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     console.log('listening on port', PORT);
 })
 

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { fetchCustomers } from '../../actions';
 import CustomerDetails from './CustomerDetails';
 import { Link } from 'react-router-dom';
+import Header from '../Header'
+
 import './Dashboard.css';
 
 class Dashboard extends Component {
@@ -10,8 +12,9 @@ class Dashboard extends Component {
     componentDidMount() {
         this.props.fetchCustomers();
         // console.log(this.props.fetchCustomers());
-
     }
+
+
 
     renderDashboard() {
         if (!this.props.customers)
@@ -24,7 +27,14 @@ class Dashboard extends Component {
 
 
 
-                    <div className="col-sm-12"> <div className="col-sm-8"><p className="card-title">{customer.jewelsoftId}</p> {customer.customerName}</div><div className="col-sm-4 card-link"><Link className="alink" to={'customers/' + customer._id}>Got To Details</Link></div></div>
+                    <div className="col-sm-12"> <div className="col-sm-8">
+                        <p className="card-title">{customer.jewelsoftId}</p>
+                        {customer.customerName}
+                    </div>
+                        <div className="col-sm-4 card-link">
+                            <Link className="alink" to={'customers/' + customer._id}>Got To Details</Link>
+                        </div>
+                    </div>
 
                     {/* }} */}
 
@@ -37,6 +47,7 @@ class Dashboard extends Component {
         return (
 
             <div className="container marginTop30 list-group">
+                <Header />
                 <h3 className="text-center">Avalon Customer's</h3>
                 {this.renderDashboard()}
             </div>
