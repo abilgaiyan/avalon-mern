@@ -12,20 +12,9 @@ class Dashboard extends Component {
     componentDidMount() {
         this.props.fetchCustomers();
         // console.log(this.props.fetchCustomers());
-
     }
 
-    // renderHeader() {
-    //     return (
-    //         <nav className="navbar navbar-expand-sm bg-light">
-    //             <ul className="navbar-nav">
-    //                 <li key="1" className="nav-item">
-    //                     <a className="nav-link" href="/api/logout">Logout</a>
-    //                 </li>
-    //             </ul>
-    //         </nav>
-    //     )
-    // }
+
 
     renderDashboard() {
         if (!this.props.customers)
@@ -58,7 +47,6 @@ class Dashboard extends Component {
         return (
 
             <div className="container marginTop30 list-group">
-                {/* {this.renderHeader()} */}
                 <Header />
                 <h3 className="text-center">Avalon Customer's</h3>
                 {this.renderDashboard()}
