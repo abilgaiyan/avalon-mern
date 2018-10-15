@@ -12,7 +12,6 @@ const domainInfoSchema = require("./DomainInfo");
 const sslInfoSchema = require("./SSLInfo");
 const businessEmailInfoSchema = require("./BusinessEmailInfo");
 const emailmarketingaccountInfoSchema = require("./EmailMarketingAccountInfo");
-const querySupportTrendInfoSchema = require("./QuerySupportTrend");
 const targetAreaInfoSchema = require("./TargetAreas");
 const callLogInfoSchema = require("./CallLog");
 const buyingGroupInfoSchema = require("./BuyingGroups");
@@ -62,4 +61,4 @@ const customerinfoSchema = new Schema({
   updateDate: Date
 });
 // create modal based on schema
-mongoose.model("customerinfo", customerinfoSchema);
+mongoose.model('customerinfo', customerinfoSchema,'customerinfo');

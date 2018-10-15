@@ -9,7 +9,7 @@ module.exports = app =>{
     app.get('/api/customerinfo/:customerid', async(req, res) =>{
         const customerId= req.params.customerid.toString();
         console.log(customerId);
-        const customerinfo = await CustomerInfo.find({_id: customerId})
+        const customerinfo = await CustomerInfo.find({_id:  mongoose.Types.ObjectId(customerId)})
                                                .populate('_salesPerson')
                                                .populate('_buyinggroups')
                                                .populate('_avalonInfo')
@@ -24,7 +24,7 @@ module.exports = app =>{
                                                .populate('_querysupportInfo')
                                                .populate('_targetAreaInfo')
                                                .populate('_callLogInfo');
-        //console.log(customerinfo);
+        console.log(customerinfo);
         if (customerinfo){
         res.send(customerinfo);
         }
@@ -33,6 +33,14 @@ module.exports = app =>{
         }
         
     });
+
+    app.get('/api/customerallinfo',  async (req, res) => {
+        const customeralldata = await await CustomerInfo.find({});
+        //console.log(customeralldata);
+        res.send(customeralldata);
+
+    });
+
 
     app.post('/api/customerinfo',  async (req,res) =>{
         // console.log(req.body);
