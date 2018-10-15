@@ -1,77 +1,86 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchPhonecall } from '../../actions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchPhonecall } from "../../actions";
 // import PhonePopup from "./PhonePopup"
-import PhoneForm from "./forms/phone/PhoneForm"
+import PhoneForm from "./forms/phone/PhoneForm";
 
 class PhoneCall extends Component {
+  componentWillMount() {
+    const customerId = this.props.customerId;
+    this.props.fetchPhonecall(customerId);
+  }
 
-    componentWillMount() {
+  renderPhonecall() {
+    if (!this.props.phonecall) return;
 
-        const customerId = this.props.customerId;
-        this.props.fetchPhonecall(customerId);
+    //   console.log('this.props.customer')
+    //   console.log(this.props.customer)
+    //   console.log('this.props.customer')
+    //console.log(this.props.fetchCustomers())
+    const { phonecall } = this.props;
 
-    }
+    return (
+      // <div key={customer._id} class="card blue-grey darken-1">
+      // <div className="container card-content white-text">
 
-    renderPhonecall() {
-        if (!this.props.phonecall)
-            return;
+      //   <p>Call Message :{phonecall.message}</p>
+      //   <p>Call DateTime :{phonecall.createDate}</p>
 
-        //   console.log('this.props.customer')
-        //   console.log(this.props.customer)
-        //   console.log('this.props.customer')
-        //console.log(this.props.fetchCustomers())
-        const { phonecall } = this.props
-
-        return (
-            // <div key={customer._id} class="card blue-grey darken-1">
-            // <div className="container card-content white-text">
-
-            //   <p>Call Message :{phonecall.message}</p>
-            //   <p>Call DateTime :{phonecall.createDate}</p>
-
-            //   <button type="submit" >Add </button>
-            // </div>
-            //   </div>
-            <div className="col-sm-12 ">
-                <div className="form-horizontal">
-                    <div className="form-group">
-                        <label className="control-label col-sm-2" htmlFor="pwd">Call Message:</label>
-                        <div className="col-sm-10">
-                            <label className="control-label" htmlFor="email">{phonecall.phone}</label>
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label className="control-label col-sm-2" htmlFor="pwd">Call DateTime:</label>
-                        <div className="col-sm-10">
-                            <label className="control-label" htmlFor="phone">{phonecall.createDate}</label>
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <div className="col-sm-offset-2 col-sm-10">
-                            {/* <button type="submit" class="btn btn-default">Submit</button> */}
-                            <button type="submit" data-toggle="modal" className="btn btn-success" data-target="#phonepopup">Add </button>
-                            <PhoneForm customerId={this.props.customerId} />
-                        </div>
-                    </div>
-
-                </div>
+      //   <button type="submit" >Add </button>
+      // </div>
+      //   </div>
+      <div className="col-sm-12 ">
+        <div className="form-horizontal">
+          <div className="form-group">
+            <label className="control-label col-sm-2" htmlFor="pwd">
+              Call Message:
+            </label>
+            <div className="col-sm-10">
+              <label className="control-label" htmlFor="email">
+                {phonecall.phone}
+              </label>
             </div>
-        )
-    }
-    render() {
-        return (
-            <div>
-                {this.renderPhonecall()}
+          </div>
+          <div className="form-group">
+            <label className="control-label col-sm-2" htmlFor="pwd">
+              Call DateTime:
+            </label>
+            <div className="col-sm-10">
+              <label className="control-label" htmlFor="phone">
+                {phonecall.createDate}
+              </label>
             </div>
-        )
-    }
+          </div>
+          <div className="form-group">
+            <div className="col-sm-offset-2 col-sm-10">
+              {/* <button type="submit" class="btn btn-default">Submit</button> */}
+              <button
+                type="submit"
+                data-toggle="modal"
+                className="btn btn-success"
+                data-target="#phonepopup"
+              >
+                Add{" "}
+              </button>
+              <PhoneForm customerId={this.props.customerId} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  render() {
+    return <div>{this.renderPhonecall()}</div>;
+  }
 }
 
 function mapStateToProps({ phonecall }) {
-    // console.clear();
-    // console.log({customer});
-    return { phonecall }
+  // console.clear();
+  // console.log({customer});
+  return { phonecall };
 }
 
-export default connect(mapStateToProps, { fetchPhonecall })(PhoneCall);
+export default connect(
+  mapStateToProps,
+  { fetchPhonecall }
+)(PhoneCall);
