@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchCustomers } from '../../actions';
 import CustomerDetails from './CustomerDetails';
 import { Link } from 'react-router-dom';
-import Header from '../Header'
+
 
 import './Dashboard.css';
 
@@ -32,7 +32,7 @@ class Dashboard extends Component {
                         {customer.customerName}
                     </div>
                         <div className="col-sm-4 card-link">
-                            <Link className="alink" to={'customers/' + customer._id}>Got To Details</Link>
+                            <Link className="alink" to={'customers/' + customer._id}>Go To Details</Link>
                         </div>
                     </div>
 
@@ -45,11 +45,13 @@ class Dashboard extends Component {
     }
     render() {
         return (
+            <div class="row">
+                <div className="container marginTop30 list-group">
 
-            <div className="container marginTop30 list-group">
-                <Header />
-                <h3 className="text-center">Avalon Customer's</h3>
-                {this.renderDashboard()}
+                    <h3 className="text-center">Avalon Customer's</h3>
+                    {this.renderDashboard()}
+                </div>
+
             </div>
         )
     }

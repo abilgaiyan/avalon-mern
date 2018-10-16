@@ -35,16 +35,20 @@ class App extends Component {
   }
 
   render() {
+    // const header = () => {
+    //   if (window.location.pathname === '/') return null;
+    //   return <Header />;
+    // }
     return (
       <BrowserRouter>
         <div id="wrapper" className="dashboard_wraper container-fluid">
-          <div class="row">
-            {/* <Header /> */}
-            <Route exact={true} path="/" component={Welcome} />
-            <Route exact={true} path="/customers" component={Dashboard} />
-            <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
-            <Route exact={true} path="/emailForm" component={Email} />
-            {/* <Route exact={true} path="/surveys" component={Dashboard} />
+
+          {window.location.pathname === '/' ? null : <Header />}
+          <Route exact={true} path="/" component={Welcome} />
+          <Route exact={true} path="/customers" component={Dashboard} />
+          <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
+          <Route exact={true} path="/emailForm" component={Email} />
+          {/* <Route exact={true} path="/surveys" component={Dashboard} />
            <Route path="/surveys/new" component={SurveyNew} />
            <Route path="/aboutus" component={Aboutus} />
            <Route path="/contactus" component={Contactus} />
@@ -56,8 +60,8 @@ class App extends Component {
            <Route path="/workforus" component={Workforus} />
            <Route path="/customervideo" component={CustomerVideo} />
            <Route path="/story/new" component={StoryNew} /> */}
-            <Footer />
-          </div>
+          <Footer />
+
         </div>
       </BrowserRouter>
     );
