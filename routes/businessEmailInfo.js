@@ -8,33 +8,43 @@ module.exports = app =>{
     //Get Customer Website Email info By ID
     app.get('/api/businessemailinfo/:bemailinfoid', async(req, res) =>{
         const emailInfoId= req.params.bemailinfoid;
-        const bemailinfo = await BusinessEmailInfo.find({_id: emailInfoId});
+        const bemailinfo = await BusinessEmailInfo.find({
+        _id: mongoose.Types.ObjectId(emailInfoId)
+        },{createDate: 0, updateDate: 0 });
         //console.log(bemailinfo);
-        res.send(bemailinfo);
+        //res.send(bemailinfo);
+        if (bemailinfo) {
+            res.send(bemailinfo);
+          } else {
+            res.send("no data");
+          }
         
     });
 
-    app.post('/api/businessemailinfo',  async (req,res) =>{
-        // console.log(req.body);
-       const bemailinfo = new BemailInfo({
-        emailRequirement: req.body.emailRequirement,
-        emailProvider: req.body.emailProvider,
-        adminEmailId: req.body.v,
-        createDate: Date.now(),
-        updateDate: Date.now()
- 
-       });
-
-     //await bemailinfo.save();
-     bemailinfo.findOneAndUpdate({
-        _id: req.body.customerId
-     }, bEmailinfo, { upsert: true }, (err, res) => {
-        // Deal with the response data/error
-     });
-
-     res.end();
-     
-     });
-
+//New
+app.post("/api/businessemailinfo", async (req, res) => {
     
+    const bemailinfo ={...req.body};
+    bemailinfo.updateDate = Date.now();
+    if (req.body.emailInfoId = 0){
+        bemailinfo.createDate = Date.now();
+    }
+
+    //console.log(bemailinfo);
+    BusinessEmailInfo.findOneAndUpdate(
+      {
+        _id: req.body.emailInfoId
+      },
+      bemailinfo,
+      { upsert: true },
+      (err, res) => {
+        // Deal with the response data/error
+        console.log(err);
+       // console.log(res);
+      }
+    );
+
+    res.end();
+});
+
 }

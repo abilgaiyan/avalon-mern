@@ -8,37 +8,43 @@ module.exports = app =>{
     //Get Customer Domain Information Data by ID
     app.get('/api/customerdomaininfo/:domaininfoid', async(req, res) =>{
         const custDomianInfoId= req.params.domaininfoid;
-        const domaininfo = await CustDomainInfo.find({_id: custDomianInfoId});
+        const domaininfo = await CustDomainInfo.find({
+        _id: mongoose.Types.ObjectId(custDomianInfoId)
+        },{createDate: 0, updateDate: 0 });
         //console.log(domaininfo);
-        res.send(domaininfo);
+        //res.send(domaininfo);
+        if (domaininfo) {
+            res.send(domaininfo);
+          } else {
+            res.send("no data");
+          }
         
     });
 
-    app.post('/api/customerdomaininfo',  async (req,res) =>{
-        // console.log(req.body);
-       const domaininfo = new DomainInfo({
-        domainPurchaser: req.body.domainPurchaser,
-        domainProvider: req.body.domainProvider,
-        domainAccountId: req.body.domainAccountId,
-        domainLoginUserName: req.body.domainLoginUserName,
-        domainLoginUserPassword: req.body.domainLoginUserPassword,
-        buyDate: req.body.buyDate,
-        expiryDate: req.body.expiryDate,
-        createDate: Date.now(),
-        updateDate: Date.now()
- 
-       });
-
-     //await domaininfo.save();
-     domaininfo.findOneAndUpdate({
-        _id: req.body.customerId
-     }, custdomaininfo, { upsert: true }, (err, res) => {
-        // Deal with the response data/error
-     });
-
-     res.end();
-     
-     });
-
+    //New
+    app.post("/api/customerdomaininfo", async (req, res) => {
+    
+        const domaininfo ={...req.body};
+        domaininfo.updateDate = Date.now();
+        if (req.body.custDomianInfoId = 0){
+            domaininfo.createDate = Date.now();
+        }
+    
+        //console.log(domaininfo);
+        CustDomainInfo.findOneAndUpdate(
+          {
+            _id: req.body.custDomianInfoId
+          },
+          domaininfo,
+          { upsert: true },
+          (err, res) => {
+            // Deal with the response data/error
+            console.log(err);
+           // console.log(res);
+          }
+        );
+    
+        res.end();
+      });
     
 }

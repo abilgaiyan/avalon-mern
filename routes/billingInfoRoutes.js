@@ -8,39 +8,43 @@ module.exports = app =>{
     //Get Avalon website Billing Info data 
     app.get('/api/avalonbillinginfo/:avalonbillinginfoid', async(req, res) =>{
         const avalonbillinfoId= req.params.avalonbillinginfoid;
-        const billinginfo = await AvalonBillingInfo.find({_id: avalonbillinfoId})
-                                                   .populate('_productPlan');
+        const billinginfo = await AvalonBillingInfo.find({
+        _id: mongoose.Types.ObjectId(avalonbillinfoId)
+        },{createDate: 0, updateDate: 0 }).populate('_productPlan');
         //console.log(billinginfo);
-        res.send(billinginfo);
+        //res.send(billinginfo);
+        if (billinginfo) {
+          res.send(billinginfo);
+        } else {
+          res.send("no data");
+        }
         
     });
 
-    app.post('/api/avalonbillinginfo',  async (req,res) =>{
-        // console.log(req.body);
-       const billinginfo = new BillingInfo({
-        websiteSetupAmount:  req.body.websiteSetupAmount,
-        buyingGroupDiscount:  req.body.buyingGroupDiscount,
-        setupAmountReceived:  req.body.setupAmountReceived,
-        setupAmountPending:  req.body.setupAmountPending,
-        hostingPaymentType:  req.body.hostingPaymentType,
-        hostingAmount:  req.body.hostingAmount,
-        _productPlan: req.body._productPlan,
-        comments:  req.body.comments,
-        createDate: Date.now(),
-        updateDate: Date.now()
- 
-       });
-  
-     //await billinginfo.save();
-     billinginfo.findOneAndUpdate({
-        _id: req.body.customerId
-     }, avalonbillinginfo, { upsert: true }, (err, res) => {
-        // Deal with the response data/error
-     });
-
-     res.end();
-     
-     });
-
+     //New
+     app.post("/api/avalonbillinginfo", async (req, res) => {
+    
+        const billinginfo ={...req.body};
+        billinginfo.updateDate = Date.now();
+        if (req.body.avalonbillinfoId = 0){
+            billinginfo.createDate = Date.now();
+        }
+    
+        //console.log(billinginfo);
+        AvalonBillingInfo.findOneAndUpdate(
+          {
+            _id: req.body.avalonbillinfoId
+          },
+          billinginfo,
+          { upsert: true },
+          (err, res) => {
+            // Deal with the response data/error
+            console.log(err);
+           // console.log(res);
+          }
+        );
+    
+        res.end();
+      });
     
 }
