@@ -41,7 +41,7 @@ class App extends Component {
         <div id="wrapper" className="dashboard_wraper container-fluid">
           {window.location.pathname === '/' ? null : <Header />}
           <Route exact={true} path="/" component={Welcome} />
-          <Route exact={true} path="/customersList" component={Dashboard} />
+          <Route exact={true} path="/customers" component={Dashboard} />
           <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
           {/* <Route exact={true} path="/customers/:customerId" component={MainContent} /> */}
           <Route exact={true} path="/emailForm" component={Email} />

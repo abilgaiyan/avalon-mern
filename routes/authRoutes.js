@@ -11,7 +11,7 @@ module.exports = app => {
         passport.authenticate('google'),
         (req, res) => {
             //res.redirect('/customerstories/new');
-            res.redirect('/customersList');
+            res.redirect('/customers');
         }
     );
 
