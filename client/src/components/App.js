@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
+import React, { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
-import Welcome from "./Welcome"
-import Header from './Header';
-import Landing from './Landing';
-import Dashboard from './customers/Dashboard';
+import Welcome from "./Welcome";
+import Header from "./Header";
+import Landing from "./Landing";
+import Dashboard from "./customers/Dashboard";
 // import SurveyNew from './surveys/SurveyNew';
 // import Aboutus from './Aboutus';
 // import Contactus from './Contactus';
@@ -15,19 +15,15 @@ import Dashboard from './customers/Dashboard';
 // import CustomerStories1 from './CustomerStories1';
 // import Agencies from './Agencies';
 // import You from './You';
-import Footer from './Footer';
-import CustomerDetails from './customers/CustomerDetails';
+import Footer from "./Footer";
+import CustomerDetails from "./customers/CustomerDetails";
 // import Workforus from './Workforus';
 // import CustomerVideo from './CustomerVideo';
 // import StoryNew from './stories/StoryNew';
 
-import Email from "./customers/forms/email/EmailHeader"
+import Email from "./customers/forms/email/EmailHeader";
 
-
-
-
-
-
+import CustomerInfo from "./customers/forms/customerinfo/CustomerNew";
 
 class App extends Component {
   componentDidMount() {
@@ -68,4 +64,7 @@ class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);
+export default connect(
+  null,
+  actions
+)(App);

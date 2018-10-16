@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "web apps with NodeJS, React, Redux, Express, and MongoDB.",
   "main": "index.js",
   "engines": {
     "node": "8.1.1",
@@ -36,5 +36,13 @@
   },
   "devDependencies": {
     "forever": "^0.15.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abilgaiyan/avalon-mern.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abilgaiyan/avalon-mern/issues"
+  },
+  "homepage": "https://github.com/abilgaiyan/avalon-mern#readme"
 }

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import { fetchEmail } from '../../actions';
-
+import { connect } from "react-redux";
+import { fetchEmail } from "../../actions";
 
 class EmailPopup extends Component {
   constructor() {
@@ -11,8 +10,7 @@ class EmailPopup extends Component {
 
   resetFields = () => {
     document.getElementById("my-email-form").reset();
-  }
-
+  };
 
   handleSubmit() {
     let subject = document.getElementById("subject").value;
@@ -20,27 +18,29 @@ class EmailPopup extends Component {
     let customerId = this.props.customerId;
 
     let data = {
-      'subject': subject,
-      'message': comment,
-      'customerId': customerId
+      subject: subject,
+      message: comment,
+      customerId: customerId
     };
     // console.log(data);
     // const data = new FormData(event.target);
     // console.log(data);
     // submitEmail(data);
-    fetch('/api/customeremail', {
+    fetch("/api/customeremail", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, cors, *same-origin
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
       credentials: "same-origin", // include, same-origin, *omit
       headers: {
-        "Content-Type": "application/json; charset=utf-8",
+        "Content-Type": "application/json; charset=utf-8"
         // "Content-Type": "application/x-www-form-urlencoded",
       },
       redirect: "follow", // manual, *follow, error
       referrer: "no-referrer", // no-referrer, *client
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
-    }).then(this.props.fetchEmail(customerId)).then(this.resetFields)
+      body: JSON.stringify(data) // body data type must match "Content-Type" header
+    })
+      .then(this.props.fetchEmail(customerId))
+      .then(this.resetFields);
   }
 
   render() {
@@ -59,23 +59,44 @@ class EmailPopup extends Component {
                 <form id="my-email-form" className="form-horizontal form-email">
                   {/* <form onSubmit={this.handleSubmit("name")}> */}
                   <div className="form-group">
-                    <label className="control-label col-sm-3" htmlFor="subject">Enter Subject:</label>
+                    <label className="control-label col-sm-3" htmlFor="subject">
+                      Enter Subject:
+                    </label>
 
                     <div className="col-sm-9">
-                      <input type="text" name="subject" className="form-control" id="subject" placeholder="Enter Subject" />
+                      <input
+                        type="text"
+                        name="subject"
+                        className="form-control"
+                        id="subject"
+                        placeholder="Enter Subject"
+                      />
                     </div>
                   </div>
                   <div className="form-group">
-                    <label className="control-label col-sm-3" htmlFor="subject">Enter Comments:</label>
+                    <label className="control-label col-sm-3" htmlFor="subject">
+                      Enter Comments:
+                    </label>
 
                     <div className="col-sm-9">
-                      <input type="text" name="comments" className="form-control" id="comments" placeholder="Enter Comments" />
+                      <input
+                        type="text"
+                        name="comments"
+                        className="form-control"
+                        id="comments"
+                        placeholder="Enter Comments"
+                      />
                     </div>
                   </div>
 
-
                   <div className="btn-group pull-right ">
-                  <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button
+                      type="button"
+                      className="btn btn-default"
+                      data-dismiss="modal"
+                    >
+                      Cancel
+                    </button>
                     <button
                       type="button"
                       className="btn btn-primary"
@@ -97,4 +118,7 @@ class EmailPopup extends Component {
   }
 }
 
-export default connect(null, { fetchEmail })(EmailPopup);
+export default connect(
+  null,
+  { fetchEmail }
+)(EmailPopup);

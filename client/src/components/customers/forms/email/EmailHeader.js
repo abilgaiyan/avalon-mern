@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
 import Email from "./Email";
 
 const EmailHeader = () => {
-    return (
-        <div className="container text-center" >
-            <h2>EmailHeader</h2>
-            <Email />
-        </div>
-    )
-}
+  return (
+    <div className="container text-center">
+      <h2>EmailHeader</h2>
+      <Email />
+    </div>
+  );
+};
 
-export default EmailHeader
+export default EmailHeader;

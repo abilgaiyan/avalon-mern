@@ -1,14 +1,10 @@
-import React from 'react';
+import React from "react";
 
-
-
-
-const Footer = () =>{
-
-    return (
-      <div className="tt-footer">
+const Footer = () => {
+  return (
+    <div className="tt-footer">
       <div className="container-fluid">
-          {/* <div className="tt-footer-inner">
+        {/* <div className="tt-footer-inner">
               <div className="row">
                   <div className="col-md-8 col-md-offset-2">
                       <h4 className="tt-footer-title wow fadeInUp">Take your Website to<br />A Whole New Level. </h4> 
@@ -17,10 +13,12 @@ const Footer = () =>{
                   </div>
               </div>
           </div> */}
-          <div className="tt-footer-line wow fadeInUp">© All rights reserved.</div>
+        <div className="tt-footer-line wow fadeInUp">
+          © All rights reserved.
+        </div>
       </div>
-  </div>
-    );
-}
+    </div>
+  );
+};
 
 export default Footer;
