@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="tt-footer">
-      <div className="container-fluid">
+    
+      <div className="container-fluid text-center">
         {/* <div className="tt-footer-inner">
               <div className="row">
                   <div className="col-md-8 col-md-offset-2">
@@ -17,7 +17,7 @@ const Footer = () => {
           © All rights reserved.
         </div>
       </div>
-    </div>
+   
   );
 };
 

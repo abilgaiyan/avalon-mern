@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './Header.css';
+import './css/common.css';
 
 class Header extends Component {
 
@@ -22,7 +22,7 @@ class Header extends Component {
     }
     render() {
         return (
-            <div className={window.location.pathname === '/customersList' ? "content-heading clearfix " : "content-heading clearfix innerDash"}>
+            <div className="content-heading clearfix ">
                 <nav className="navbar navbar-default navbar-fixed-top ">
                     <div className="container-fluid">
                         <div className="navbar-header col-sm-4">

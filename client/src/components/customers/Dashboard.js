@@ -5,7 +5,7 @@ import CustomerDetails from './CustomerDetails';
 import { Link } from 'react-router-dom';
 
 
-import "./Dashboard.css";
+import "../css/common.css";
 
 class Dashboard extends Component {
 
@@ -24,9 +24,6 @@ class Dashboard extends Component {
         return this.props.customers.map(customer => {
             return (
                 <div key={customer._id} className="row list-group-item">
-
-
-
                     <div className="col-sm-12"> <div className="col-sm-8">
                         <p className="card-title">{customer.jewelsoftId}</p>
                         {customer.customerName}
@@ -35,12 +32,9 @@ class Dashboard extends Component {
                             <Link className="alink" to={'customers/' + customer._id}>Go To Details</Link>
                         </div>
                     </div>
-
                     {/* }} */}
-
                 </div>
             )
-
         })
     }
     render() {

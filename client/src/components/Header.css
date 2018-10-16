@@ -41,7 +41,7 @@
     padding: 10px 0px;
 }
 /*MainContent Navbar*/
-.dashboard_wraper .innerDash .navbar-fixed-top {
+.dashboard_wraper  .navbar-fixed-top {
     width: -moz-calc(100% - 240px);
     width: -webkit-calc(100% - 240px);
     width: -o-calc(100% - 240px);

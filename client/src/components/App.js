@@ -24,6 +24,7 @@ import CustomerDetails from "./customers/CustomerDetails";
 import Email from "./customers/forms/email/EmailHeader";
 import CustomerInfo from "./customers/forms/customerinfo/CustomerNew";
 import MainContent from "./MainContent";
+import LeftSideBar from './LeftSideBar'
 
 class App extends Component {
   componentDidMount() {
@@ -39,30 +40,44 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div id="wrapper" className="dashboard_wraper container-fluid">
-          {window.location.pathname === '/' ? null : <Header />}
           <Route exact={true} path="/" component={Welcome} />
-          <Route exact={true} path="/customers" component={Dashboard} />
-          <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
-          {/* <Route exact={true} path="/customers/:customerId" component={MainContent} /> */}
-          <Route exact={true} path="/emailForm" component={Email} />
-          {/* <Route exact={true} path="/surveys" component={Dashboard} />
-           <Route path="/surveys/new" component={SurveyNew} />
-           <Route path="/aboutus" component={Aboutus} />
-           <Route path="/contactus" component={Contactus} />
-           <Route path="/contactus/new" component={ContactusNew} />
-           <Route path="/customerstories" component={CustomerStories} />
-           <Route path="/customerstories1" component={CustomerStories1} />
-           <Route path="/agencies" component={Agencies} />
-           <Route path="/you" component={You} />
-           <Route path="/workforus" component={Workforus} />
-           <Route path="/customervideo" component={CustomerVideo} />
-           <Route path="/story/new" component={StoryNew} /> */}
+          {/* Main Wraper Start Here */}
+          <div className="row">
+            <LeftSideBar />
+            <div className="main_containt col-sm-10">
+              <div className="container-fluid">
+                {window.location.pathname === '/' ? null : <Header />}
+                <Route exact={true} path="/customers" component={Dashboard} />
+                <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
+                {/* <Route exact={true} path="/customers/:customerId" component={MainContent} /> */}
+                <Route exact={true} path="/emailForm" component={Email} />
+                {/* <Route exact={true} path="/surveys" component={Dashboard} />
+                <Route path="/surveys/new" component={SurveyNew} />
+                <Route path="/aboutus" component={Aboutus} />
+                <Route path="/contactus" component={Contactus} />
+                <Route path="/contactus/new" component={ContactusNew} />
+                <Route path="/customerstories" component={CustomerStories} />
+                <Route path="/customerstories1" component={CustomerStories1} />
+                <Route path="/agencies" component={Agencies} />
+                <Route path="/you" component={You} />
+                <Route path="/workforus" component={Workforus} />
+                <Route path="/customervideo" component={CustomerVideo} />
+                <Route path="/story/new" component={StoryNew} /> */}
+              </div>
+            </div>
+           
+          </div>
+          <div className="row footer-well">
           <Footer />
-
+          </div>
+          {/* Main Wraper End Here */}
         </div>
       </BrowserRouter>
     );
   }
 }
 
-export default connect(null, actions)(App);
+export default connect(
+  null,
+  actions
+)(App);

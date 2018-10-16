@@ -15,6 +15,15 @@ module.exports = app => {
 
     });
 
+    //Get Customer data by Name
+    app.get('/api/customerbyname', requireLogin, async (req, res) => {
+        console.log(req.body);
+
+        const name = { customerName: "ACKERMAN JEWELERS" }
+        const customerdatabyname = await CustomerAllData.find(name);
+        res.send(customerdatabyname);
+
+    });
 
     app.get('/api/customeralldatabyid/:customerid', requireLogin, async (req, res) => {
         console.log(req.params.customerid);
