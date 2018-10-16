@@ -57,7 +57,6 @@ class Dashboard extends Component {
     render() {
         return (
             <div className="container marginTop30 list-group">
-                <Header />
                 <h3 className="text-center">Avalon Customer's</h3>
                 {this.renderDashboard()}
             </div>
