@@ -12,11 +12,11 @@ class Header extends Component {
                 return;
             case false:
                 // console.log("Auth Value: ", this.props.auth)
-                return <li><a href="/auth/google"><i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+                return <li><a href="/auth/google"><i className="fa fa-sign-in fa-2x" aria-hidden="true"></i>
                     Log In</a></li>;
             default:
                 // console.log("Auth Value: ", this.props.auth)
-                return <li key="1"><a href="/api/logout"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+                return <li key="1"><a href="/api/logout"><i className="fa fa-sign-out fa-2x" aria-hidden="true"></i>
                     Log Out</a></li>
         }
     }
@@ -47,7 +47,7 @@ class Header extends Component {
                                     <a className="user_item dropdown-toggle" data-toggle="dropdown">
                                         <span className="glyphicon glyphicon-user"></span>
                                     </a>
-                                    <ul class="dropdown-menu text-center">
+                                    <ul className="dropdown-menu text-center">
                                         {this.renderHeader()}
                                     </ul>
                                 </li>
