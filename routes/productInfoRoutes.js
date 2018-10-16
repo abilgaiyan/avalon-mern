@@ -8,36 +8,43 @@ module.exports = app =>{
     //Get Avalon Product info data 
     app.get('/api/productinfo/:productinfoid', async(req, res) =>{
         const prodInfoId= req.params.productinfoid;
-        const productinfo = await ProductInfo.find({_id: prodInfoId});
+        const productinfo = await ProductInfo.find({
+        _id: mongoose.Types.ObjectId(prodInfoId)
+      },{createDate: 0, updateDate: 0 });
         //console.log(productinfo);
-        res.send(productinfo);
+        //res.send(productinfo);
+        if (productinfo) {
+            res.send(productinfo);
+          } else {
+            res.send("no data");
+          }
         
     });
 
-    app.post('/api/productinfo',  async (req,res) =>{
-        // console.log(req.body);
-       const productinfo = new ProductInfo({
-        ashiProductStatus: req.body.ashiProductStatus,
-        restrictionFrom: req.body.restrictionFrom,
-        jewelExchangeSignupStatus: req.body.jewelExchangeSignupStatus,
-        jewelExchangeSignupDate: req.body.jewelExchangeSignupDate,
-        jewelExchangePlan: req.body.jewelExchangePlan,
-        suppliersActivated: req.body.suppliersActivated,
-        createDate: Date.now(),
-        updateDate: Date.now()
- 
-       });
-
-     //await productinfo.save();
-     productinfo.findOneAndUpdate({
-        _id: req.body.customerId
-     }, prodinfo, { upsert: true }, (err, res) => {
-        // Deal with the response data/error
-     });
-
-     res.end();
-     
-     });
-
+//New
+app.post("/api/productinfo", async (req, res) => {
     
+            const productinfo ={...req.body};
+            productinfo.updateDate = Date.now();
+            if (req.body.prodInfoId = 0){
+                productinfo.createDate = Date.now();
+            }
+        
+            //console.log(productinfo);
+            ProductInfo.findOneAndUpdate(
+              {
+                _id: req.body.prodInfoId
+              },
+              productinfo,
+              { upsert: true },
+              (err, res) => {
+                // Deal with the response data/error
+                console.log(err);
+               // console.log(res);
+              }
+            );
+        
+            res.end();
+    });
+
 }

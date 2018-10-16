@@ -8,39 +8,43 @@ module.exports = app =>{
     //Get Website info data 
     app.get('/api/websiteinfo/:websiteinfoid', async(req, res) =>{
         const webInfoId= req.params.websiteinfoid;
-        const websiteinfo = await WebsiteInfo.find({_id: webInfoId})
-                                                  .populate('_productplan');
+        const websiteinfo = await WebsiteInfo.find({
+        _id: mongoose.Types.ObjectId(webInfoId)
+        },{createDate: 0, updateDate: 0 }).populate('_productplan');
         //console.log(websiteinfo);
-        res.send(websiteinfo);
+        //res.send(websiteinfo);
+        if (websiteinfo) {
+            res.send(websiteinfo);
+          } else {
+            res.send("no data");
+          }
         
     });
 
-    app.post('/api/websiteinfo',  async (req,res) =>{
-        // console.log(req.body);
-       const websiteinfo = new WebsiteInfo({
-        liveDate: req.body.liveDate,
-        holdDate: req.body.holdDate,
-        reasontoLeave: req.body.reasontoLeave,
-        designeType: req.body.designeType,
-        responsiveWebsiteReleasedDate: req.body.responsiveWebsiteReleasedDate,
-        shoppingcartStatus: req.body.shoppingcartStatus,
-        comments: req.body.comments,
-        _productplan: req.body._productplan,
-        createDate: Date.now(),
-        updateDate: Date.now()
- 
-       });
-
-     //await websiteinfo.save();
-     websiteinfo.findOneAndUpdate({
-        _id: req.body.customerId
-     }, webinfo, { upsert: true }, (err, res) => {
-        // Deal with the response data/error
-     });
-
-     res.end();
-     
-     });
-
+    //New
+    app.post("/api/websiteinfo", async (req, res) => {
     
+            const websiteinfo ={...req.body};
+            websiteinfo.updateDate = Date.now();
+            if (req.body.webInfoId = 0){
+                websiteinfo.createDate = Date.now();
+            }
+        
+            //console.log(websiteinfo);
+            WebsiteInfo.findOneAndUpdate(
+              {
+                _id: req.body.webInfoId
+              },
+              websiteinfo,
+              { upsert: true },
+              (err, res) => {
+                // Deal with the response data/error
+                console.log(err);
+               // console.log(res);
+              }
+            );
+        
+            res.end();
+            });
+
 }

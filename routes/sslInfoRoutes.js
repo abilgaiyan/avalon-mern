@@ -8,39 +8,44 @@ module.exports = app =>{
     //Get Customer Website SSL Information data by ID
     app.get('/api/sslinfo/:sslinfoid', async(req, res) =>{
         const sslInfoId= req.params.sslinfoid;
-        const sslinfo = await SSLInfo.find({_id: sslInfoId});
+        const sslinfo = await SSLInfo.find({
+        _id: mongoose.Types.ObjectId(sslInfoId)
+        },{createDate: 0, updateDate: 0 });
         //console.log(sslinfo);
-        res.send(sslinfo);
+        //res.send(sslinfo);
+        if (sslinfo) {
+            res.send(sslinfo);
+          } else {
+            res.send("no data");
+          }
         
     });
 
-    app.post('/api/sslinfo',  async (req,res) =>{
-        // console.log(req.body);
-       const sslinfo = new SslInfo({
-        sslPurchaser: req.body.sslPurchaser,
-        sslProvider: req.body.sslProvider,
-        sslType: req.body.sslType,
-        httpsStatus: req.body.httpsStatus,
-        sslAccountId: req.body.sslAccountId,
-        sslLoginUserName: req.body.sslLoginUserName,
-        sslLoginUserPassword: req.body.sslLoginUserPassword,
-        buyDate: req.body.buyDate,
-        expiryDate: req.body.expiryDate,
-        createDate: Date.now(),
-        updateDate: Date.now()
- 
-       });
 
-     //await websiteinfo.save();
-     sslinfo.findOneAndUpdate({
-        _id: req.body.customerId
-     }, sslwebinfo, { upsert: true }, (err, res) => {
-        // Deal with the response data/error
-     });
-
-     res.end();
-     
-     });
-
+//New
+ app.post("/api/sslinfo", async (req, res) => {
     
+            const sslinfo ={...req.body};
+            sslinfo.updateDate = Date.now();
+            if (req.body.sslInfoId = 0){
+                sslinfo.createDate = Date.now();
+            }
+        
+            //console.log(sslinfo);
+            SSLInfo.findOneAndUpdate(
+              {
+                _id: req.body.sslInfoId
+              },
+              sslinfo,
+              { upsert: true },
+              (err, res) => {
+                // Deal with the response data/error
+                console.log(err);
+               // console.log(res);
+              }
+            );
+        
+            res.end();
+   });
+
 }

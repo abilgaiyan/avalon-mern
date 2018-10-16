@@ -8,39 +8,43 @@ module.exports = app =>{
     //Get Website info data 
     app.get('/api/customercallloginfo/:callloginfoid', async(req, res) =>{
         const custCallLogInfoId= req.params.callloginfoid;
-        const callloginfo = await CustomerCalllogInfo.find({_id: custCallLogInfoId});
+        const callloginfo = await CustomerCalllogInfo.find({
+        _id: mongoose.Types.ObjectId(custCallLogInfoId)
+        },{createDate: 0, updateDate: 0 });
         //console.log(callloginfo);
-        res.send(callloginfo);
+        //res.send(callloginfo);
+        if (callloginfo) {
+            res.send(callloginfo);
+          } else {
+            res.send("no data");
+          }
         
     });
 
-    app.post('/api/customercallloginfo',  async (req,res) =>{
-        // console.log(req.body);
-       const callloginfo = new CallLogInfo({
-        previousCallDate: req.body.previousCallDate,
-        previousCallType: req.body.previousCallType,
-        callPerson: req.body.callPerson,
-        avalonExcutive: req.body.avalonExcutive,
-        topic: req.body.topic,
-        summary: req.body.summary,
-        comments: req.body.comments,
-        followupcalldate: req.body.followupcalldate,
-        followupcallTime: req.body.followupcallTime,
-        createDate: Date.now(),
-        updateDate: Date.now()
- 
-       });
+//New
+app.post("/api/customercallloginfo", async (req, res) => {
+    
+    const callloginfo ={...req.body};
+    callloginfo.updateDate = Date.now();
+    if (req.body.custCallLogInfoId = 0){
+        callloginfo.createDate = Date.now();
+    }
 
-     //await callloginfo.save();
-     callloginfo.findOneAndUpdate({
-        _id: req.body.customerId
-     }, callloginfo, { upsert: true }, (err, res) => {
+    //console.log(callloginfo);
+    CustomerCalllogInfo.findOneAndUpdate(
+      {
+        _id: req.body.custCallLogInfoId
+      },
+      callloginfo,
+      { upsert: true },
+      (err, res) => {
         // Deal with the response data/error
-     });
+        console.log(err);
+       // console.log(res);
+      }
+    );
 
-     res.end();
-     
-     });
-
+    res.end();
+});
     
 }
