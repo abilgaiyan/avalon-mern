@@ -1,5 +1,52 @@
-.tt-header{
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 20px;
-    padding-top: 20px;
+.navbar-brand {
+    height: auto;
 }
+
+.navbar-default {
+    margin-bottom: 0px;
+}
+
+    .navbar-default .container {
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+
+.btn-success {
+    color: #fff;
+    background-color: #66bb6a;
+    border-color: #66bb6a;
+}
+
+.user_wraper {
+    margin-left: 15px;
+}
+
+.user_item {
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background: #ccc;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 0px !important;
+    text-align: center;
+    line-height: 35px !important;
+    font-size: 18px;
+}
+
+.navbar-default {
+    background-color: #ffffff;
+    border-color: #e7e7e7;
+    padding: 10px 0px;
+}
+/*MainContent Navbar*/
+.dashboard_wraper .innerDash .navbar-fixed-top {
+    width: -moz-calc(100% - 240px);
+    width: -webkit-calc(100% - 240px);
+    width: -o-calc(100% - 240px);
+    width: calc(100% - 240px);
+    left: auto;
+    right: 0px;
+}
+

@@ -26,12 +26,12 @@
     padding-bottom: 30px;
 }
 
-.sidebar .list-group-item:first-child {
+.sidebar .list-group-item {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
 }
 
-.sidebar .list-group-item:last-child {
+.sidebar .list-group-item {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }

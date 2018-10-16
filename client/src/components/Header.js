@@ -22,7 +22,7 @@ class Header extends Component {
     }
     render() {
         return (
-            <div className="content-heading clearfix ">
+            <div className={window.location.pathname === '/customersList' ? "content-heading clearfix " : "content-heading clearfix innerDash"}>
                 <nav className="navbar navbar-default navbar-fixed-top ">
                     <div className="container-fluid">
                         <div className="navbar-header col-sm-4">

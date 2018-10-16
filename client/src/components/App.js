@@ -22,8 +22,8 @@ import CustomerDetails from "./customers/CustomerDetails";
 // import StoryNew from './stories/StoryNew';
 
 import Email from "./customers/forms/email/EmailHeader";
-
 import CustomerInfo from "./customers/forms/customerinfo/CustomerNew";
+import MainContent from "./MainContent";
 
 class App extends Component {
   componentDidMount() {
@@ -35,14 +35,15 @@ class App extends Component {
     //   if (window.location.pathname === '/') return null;
     //   return <Header />;
     // }
+    console.log(window.location.pathname)
     return (
       <BrowserRouter>
         <div id="wrapper" className="dashboard_wraper container-fluid">
-
           {window.location.pathname === '/' ? null : <Header />}
           <Route exact={true} path="/" component={Welcome} />
-          <Route exact={true} path="/customers" component={Dashboard} />
+          <Route exact={true} path="/customersList" component={Dashboard} />
           <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
+          {/* <Route exact={true} path="/customers/:customerId" component={MainContent} /> */}
           <Route exact={true} path="/emailForm" component={Email} />
           {/* <Route exact={true} path="/surveys" component={Dashboard} />
            <Route path="/surveys/new" component={SurveyNew} />
@@ -64,7 +65,4 @@ class App extends Component {
   }
 }
 
-export default connect(
-  null,
-  actions
-)(App);
+export default connect(null, actions)(App);

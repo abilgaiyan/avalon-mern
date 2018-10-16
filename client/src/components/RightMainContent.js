@@ -14,3 +14,4 @@ const RightMainContent = () => {
 }
 
 export default RightMainContent;
+

@@ -7,7 +7,7 @@ const LeftSideBar = () => {
             <nav>
                 <div class="site_logo well">
                     <a href="#">
-                        <img src="images/logo.png" class="img-responsive" />
+                        <img src={require('../images/logo.png')} class="img-responsive" />
                     </a>
                 </div>
                 <div class="list-group" id="sidebar-nav-menu">
