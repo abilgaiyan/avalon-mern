@@ -11,7 +11,7 @@ module.exports = app => {
         passport.authenticate('google'),
         (req, res) => {
             //res.redirect('/customerstories/new');
-            res.redirect('/customers');
+            res.redirect('/customersList');
         }
     );
 
@@ -20,7 +20,7 @@ module.exports = app => {
         res.redirect('/');
     })
     app.get('/api/current_user', (req, res) => {
-       // console.log(req.user);
+        // console.log(req.user);
         res.send(req.user);
     })
 }
