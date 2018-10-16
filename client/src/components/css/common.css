@@ -55,6 +55,18 @@ ul {
     border-radius: 0px;
     border: 1px solid #ccc;
 }
+.fa-2x {
+    font-size: 2em;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {width:100%;}
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #cccccc8f;
+    border-left: 0px;
+}
 /* common css end */
 
 .navbar-brand {
@@ -78,6 +90,7 @@ ul {
 
 .user_wraper {
     margin-left: 15px;
+    margin-right: 0;
 }
 
 .user_item {
@@ -202,7 +215,8 @@ ul {
     background-color: #66bb6a;
 }
 .panel-default > .panel-heading.active.orange {
-    background-color: #66bb6a;
+    background-color: #d8ce81;
+    color:#000;
 }
 .panel-title > a {
     display: inline-block;
@@ -310,6 +324,12 @@ ul {
         background-color: #f2f2f2;
         padding-top: 120px;
         min-height: 100vh;
+    }
+    .navbar-form .input-group {
+        width: 100%;
+    }
+    .navbar-form .input-group .form-control{
+        background: #fff;
     }
 }
 
