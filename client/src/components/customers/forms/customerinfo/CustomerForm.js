@@ -56,7 +56,7 @@ class CustomerForm extends Component {
               type={type}
               label={label}
               name={name}
-              // validate={[required, maxLength15]}
+            // validate={[required, maxLength15]}
             />
           );
         }
@@ -179,8 +179,7 @@ CustomerForm = connect(
 
 export default reduxForm({
   //validate,
-  form: "customerInfoForm",
-  destroyOnUnmount: false
+  form: "customerInfoForm"
 })(withRouter(CustomerForm));
 
 //export default connect(mapStateToProps, actions)(withRouter(ContactusForm));
