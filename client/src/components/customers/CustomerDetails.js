@@ -6,6 +6,10 @@ import CustomerQuery from "./CustomerQuery";
 import { fetchCustomerInfo } from "../../actions/index";
 import CustomerForm from "../customers/forms/customerinfo/CustomerForm";
 import CustomerSummary from "../customers/forms/summary/CustomerSummary";
+import TargetAreasForm from "../customers/forms/targetareas/TargetAreasForm";
+import SupportQueryForm from "../customers/forms/supportquery/SupportQuery";
+import CallLog from "../customers/forms/calllog/CallLogList";
+
 import "../css/common.css";
 
 class AccordianPanel extends Component {
@@ -50,6 +54,11 @@ class CustomerDetails extends Component {
     this.props.fetchCustomerInfo(customerId);
   }
 
+  renderTargetAreas() {
+    if (!this.props.customerForm && this.props.customerForm.length <= 0) return;
+    return <TargetAreasForm targetAreasData={this.props.customerForm} />;
+  }
+
   renderSummry() {
     if (!this.props.customerForm && this.props.customerForm.length <= 0) return;
     return <CustomerSummary customerSummary={this.props.customerForm} />;
@@ -64,6 +73,17 @@ class CustomerDetails extends Component {
   renderPhone() {
     return <PhoneCall customerId={this.props.match.params.customerId} />;
   }
+
+  renderSupportQuery() {
+    return (
+      <SupportQueryForm supportQueryData={this.props.match.params.customerId} />
+    );
+  }
+
+  renderCallLog() {
+    return <CallLog callLogData={this.props.match.params.customerId} />;
+  }
+
   renderQuery() {
     return <CustomerQuery customerId={this.props.match.params.customerId} />;
   }
@@ -101,6 +121,36 @@ class CustomerDetails extends Component {
         <div className="col-sm-6">
           {/* Start Accordian */}
           <div className="panel-group" id="accordion">
+            {/* TargetAreas Start Here */}
+            <AccordianPanel
+              title="TargetAreas"
+              func={this.renderTargetAreas()}
+              active="True"
+              AccId="TargetAreas"
+              parent="accordion"
+            />
+            {/* TargetAreas End Here */}
+
+            {/* SupportQuery Start Here */}
+            <AccordianPanel
+              title="SupportQuery"
+              func={this.renderSupportQuery()}
+              active="True"
+              AccId="SupportQuery"
+              parent="accordion"
+            />
+            {/* SupportQuery End Here */}
+
+            {/* Call Log Start Here */}
+            <AccordianPanel
+              title="callLog"
+              func={this.renderCallLog()}
+              active="True"
+              AccId="callLog"
+              parent="accordion"
+            />
+            {/* Call Log End Here */}
+
             {/* Emails Info Start Here */}
             <AccordianPanel
               title="Emails"
