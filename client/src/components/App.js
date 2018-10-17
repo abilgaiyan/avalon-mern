@@ -9,10 +9,10 @@ import Dashboard from "./customers/Dashboard";
 import Footer from "./Footer";
 import CustomerDetails from "./customers/CustomerDetails";
 
-import Email from "./customers/forms/email/EmailHeader";
+import Email from "./customers/forms/emaillog/EmailHeader";
 import CustomerInfo from "./customers/forms/customerinfo/CustomerNew";
 import MainContent from "./MainContent";
-import LeftSideBar from './LeftSideBar'
+import LeftSideBar from "./LeftSideBar";
 
 class App extends Component {
   componentDidMount() {
@@ -20,33 +20,40 @@ class App extends Component {
   }
 
   render() {
-    console.log(window.location.pathname)
+    console.log(window.location.pathname);
     return (
       <BrowserRouter>
         <div id="wrapper" className="dashboard_wraper container-fluid">
           <Route exact={true} path="/" component={Welcome} />
           {/* Main Wraper Start Here */}
-          {window.location.pathname === '/' ? null : 
-          <div>
-          <div className="row">
-            <LeftSideBar />
-            <div className="main_containt col-sm-10">
-              <div className="container-fluid">
-                {window.location.pathname === '/' ? null : <Header />}
-                <Route exact={true} path="/customers" component={Dashboard} />
-                <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
-                {/* <Route exact={true} path="/customers/:customerId" component={MainContent} /> */}
-                <Route exact={true} path="/emailForm" component={Email} />
+          {window.location.pathname === "/" ? null : (
+            <div>
+              <div className="row">
+                <LeftSideBar />
+                <div className="main_containt col-sm-10">
+                  <div className="container-fluid">
+                    {window.location.pathname === "/" ? null : <Header />}
+                    <Route
+                      exact={true}
+                      path="/customers"
+                      component={Dashboard}
+                    />
+                    <Route
+                      exact={true}
+                      path="/customers/:customerId"
+                      component={CustomerDetails}
+                    />
+                    {/* <Route exact={true} path="/customers/:customerId" component={MainContent} /> */}
+                    <Route exact={true} path="/emailForm" component={Email} />
+                  </div>
+                </div>
+              </div>
+              <div className="row footer-well">
+                <Footer />
               </div>
             </div>
-           
-          </div>
-          <div className="row footer-well">
-           <Footer />
-          </div>
-          </div>
-          }
-         
+          )}
+
           {/* Main Wraper End Here */}
         </div>
       </BrowserRouter>

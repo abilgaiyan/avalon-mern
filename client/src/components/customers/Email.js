@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchEmail } from "../../actions";
 // import EmailPopup from "./EmailPopup";
-import EmailForm from "./forms/email/EmailForm";
+import EmailForm from "./forms/emaillog/EmailForm";
 
 class Email extends Component {
   componentWillMount() {

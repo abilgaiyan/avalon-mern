@@ -14,6 +14,7 @@ import queryReducer from "./queryReducer";
 import customerinfoReducers from "./customerinfoReducers";
 import targetAreasReducers from "./targetAreasReducers";
 import websiteInfoReducer from "./websiteInfoReducer";
+import customerSummary from "./customerSummary";
 
 export default combineReducers({
   auth: authReducer,
@@ -31,5 +32,6 @@ export default combineReducers({
   query: queryReducer,
   customerForm: customerinfoReducers,
   targetAreas: targetAreasReducers,
-  websiteInfo: websiteInfoReducer
+  websiteInfo: websiteInfoReducer,
+  customersummary: customerSummary
 });

@@ -1,19 +1,12 @@
 export default function() {
   return [
     {
-      name: "onion",
-      price: ".99",
-      id: 1
-    },
-    {
-      name: "pepper",
-      price: "1.25",
-      id: 2
-    },
-    {
-      name: "broccoli",
-      price: "3.00",
-      id: 3
+      responsivestatus: "YES",
+      websitedesignupdatedate: "08/20/2018",
+      jewelexchange: "Joined on Aug’ 2018",
+      jewelexchangeplan: "Supplier 123",
+      sslhttps: "Implemented",
+      addonmoduledeployed: "Module Name1, Module Name2, Module Name3"
     }
   ];
 }
