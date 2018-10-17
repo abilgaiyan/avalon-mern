@@ -10,10 +10,10 @@ import '../css/common.css'
 class AccordianPanel extends Component {
   render() {
     return (
-      <div className="panel panel-default">
+      <div className="panel panel-default new">
         <div className={this.props.active === 'True' ? "panel-heading active" : "panel-heading "}>
           <h4 className="panel-title">
-            <a data-toggle="collapse" data-parent={'#' + this.props.parent} href={'#' + this.props.AccId}>{this.props.title}</a>
+            <a className={this.props.active === 'True'?'':"collapsed"} data-toggle="collapse" data-parent={'#' + this.props.parent} href={'#' + this.props.AccId}>{this.props.title}</a>
           </h4>
         </div>
         <div id={this.props.AccId} className={this.props.active === 'True' ? "panel-collapse collapse in" : "panel-collapse collapse"}>
@@ -42,7 +42,7 @@ class CustomerDetails extends Component {
     return (
       <div>
 
-        <img src="images/akerman_logo.png" className="img-responsive pull-right" />
+        <img src={require('../../images/akerman_logo.png')} className="img-responsive pull-right" />
         <p>{customer.customerName} <br />{customer.city}, {customer.state} <br />{customer.contactPersonName}</p>
         <div className="info-section">
           <table className="table table-info no-margin">
@@ -85,7 +85,10 @@ class CustomerDetails extends Component {
 
     return (
       // <div key={customer._id} className="card blue-grey darken-1">
+      
       <div className="col-sm-12" >
+        <a href="#" className="pull-right icon_well"><i className="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+        <div className="clearfix"></div>
         <form className="form-horizontal label-left">
           <div className="form-group">
             <label htmlFor="Jewel_Soft_ID" className="col-sm-3 control-label">Jewel Soft ID:</label>
@@ -215,21 +218,19 @@ class CustomerDetails extends Component {
 
           {/* Start Accordian */}
           <div class="panel-group" id="accordion">
-
             {/* Emails Info Start Here */}
-            <AccordianPanel title="Emails" func={this.renderEmail()} active="True" AccId="Emails" paraent="accordion" />
+            <AccordianPanel title="Emails" func={this.renderEmail()} active="True" AccId="Emails" parent="accordion" />
             {/* Emails Info End Here */}
 
             {/* Phone Info Start Here */}
-            <AccordianPanel title="Phone" func={this.renderPhone()} active="True" AccId="Phone" paraent="accordion" />
+            <AccordianPanel title="Phone" func={this.renderPhone()} active="True" AccId="Phone" parent="accordion" />
             {/* Phone Info End Here */}
 
             {/* Query Info Start Here */}
-            <AccordianPanel title="Query" func={this.renderQuery()} active="False" AccId="Call_Log" paraent="accordion" />
+            <AccordianPanel title="Query" func={this.renderQuery()} active="False" AccId="Call_Log" parent="accordion" />
             {/* Query Info End Here */}
-
-
           </div>
+         
           {/* end Accordian */}
 
         </div>
