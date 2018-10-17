@@ -39,6 +39,18 @@ module.exports = app => {
     res.send(customeralldata);
   });
 
+  app.post("/api/searchcustomer", async (req, res) =>{
+    const search = req.body.search;
+    console.log(search);
+    const customeralldata = await await CustomerInfo.find( 
+     { $text : { $search : search } }, 
+    { score : { $meta: "textScore" } }
+    );
+
+    res.send(customeralldata);
+  });
+
+
   app.post("/api/customerinfo", async (req, res) => {
 
     const customerinfo ={...req.body};
