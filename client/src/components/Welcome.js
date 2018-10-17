@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import './WelcomPage.css'
 
 class Welcome extends Component {
 
@@ -12,22 +12,51 @@ class Welcome extends Component {
                 return;
             case false:
                 // console.log("Auth Value: ", this.props.auth)
-                return <li><a href="/auth/google" style={{ display: 'inline-block' }}><img src={require('../images/google_button.png')} className="img-responsive" style={{ margin: 'auto 20px 30px' }} /></a></li>;
+                return <a href="/auth/google" className="gmail_wraper"><span className="gmail_item" >Login with Google</span></a>;
             default:
                 // console.log("Auth Value: ", this.props.auth)
-                return <li key="1"><a href="/api/logout">Logout</a></li>
+                return <a key="1" href="/api/logout"><span className="" >Logout</span></a>
         }
     }
 
     render() {
         return (
-            <div className="row">
-                <div className="col-sm-6 col-sm-offset-3 well">
-                    <ul className="right list-unstyled text-center">
-                        {this.renderContent()}
-                        <li><a href="/auth/google" style={{ display: 'inline-block' }}><img src={require('../images/avalonjpg.jpg')} className="img-responsive" /></a></li>
-                    </ul>
-                </div>
+            <div className="row LoginForm">
+                <div className="container">
+                   
+                    <div className="login-form">
+                        <div className="main-div">
+                            <div className="panel">
+                                <h2>Admin Login</h2>
+                                <p>Please enter your email and password</p>
+                            </div>
+                            <form id="Login">
+
+                                <div className="form-group">
+
+
+                                    <input type="email" className="form-control" id="inputEmail" placeholder="Email Address" />
+
+                                </div>
+
+                                <div className="form-group">
+
+                                    <input type="password" className="form-control" id="inputPassword" placeholder="Password" />
+
+                                </div>
+                                <div className="forgot">
+                                    <a href="reset.html">Forgot password?</a>
+                                </div>
+                                <button type="submit" className="btn btn-primary">Login</button>
+                                
+                                
+                                    {this.renderContent()}
+                               
+                            </form>
+                        </div>
+
+                    </div></div>
+               
             </div>
         )
     }

@@ -42,6 +42,8 @@ class App extends Component {
         <div id="wrapper" className="dashboard_wraper container-fluid">
           <Route exact={true} path="/" component={Welcome} />
           {/* Main Wraper Start Here */}
+          {window.location.pathname === '/' ? null : 
+          <div>
           <div className="row">
             <LeftSideBar />
             <div className="main_containt col-sm-10">
@@ -68,8 +70,11 @@ class App extends Component {
            
           </div>
           <div className="row footer-well">
-          <Footer />
+           <Footer />
           </div>
+          </div>
+          }
+         
           {/* Main Wraper End Here */}
         </div>
       </BrowserRouter>
