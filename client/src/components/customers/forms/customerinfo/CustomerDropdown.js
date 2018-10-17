@@ -15,10 +15,12 @@ const CustomerDropdown = ({
   ));
 
   return (
-    <div class="form-group">
+    <div className="form-group">
       <label className="control-label col-sm-2">{label}</label>
       <div className="col-sm-10">
-        <select className="form-control">{optionItems}</select>
+        <select {...input} className="form-control">
+          {optionItems}
+        </select>
         <div className="red-text" style={{ marginBottom: "20px" }}>
           {touched && error}
         </div>

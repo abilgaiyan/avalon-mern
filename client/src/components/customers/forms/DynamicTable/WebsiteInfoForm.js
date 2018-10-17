@@ -11,13 +11,13 @@ import formFields from "./taformFields";
 import { withRouter } from "react-router-dom";
 import * as actions from "../../../../actions";
 
-import Table from "./Table";
+import Table from "../DynamicTable/Table";
 
-class WebsiteInfoForm extends Component {
-  render() {
-    return <Table TargetAreaData={this.props.websiteInfoData} />;
-  }
-}
+// class WebsiteInfoForm extends Component {
+//   render() {
+//     return <Table TargetAreaData={this.props.websiteInfoData} />;
+//   }
+// }
 
 // function validate(values) {
 //   const errors = {};
@@ -33,10 +33,10 @@ class WebsiteInfoForm extends Component {
 //   return errors;
 // }
 
-function mapStateToProps(state) {
-  //console.log("state :", state);
-  return { websiteInfoData: state.websiteInfo };
-}
+// function mapStateToProps(state) {
+//   //console.log("state :", state);
+//   return { websiteInfoData: state.websiteInfo };
+// }
 
 // SummaryForm = connect(
 //   mapStateToProps,
@@ -49,4 +49,4 @@ function mapStateToProps(state) {
 //   destroyOnUnmount: false
 // })(withRouter(SummaryForm));
 
-export default connect(mapStateToProps)(WebsiteInfoForm);
+// export default connect(mapStateToProps)(WebsiteInfoForm);

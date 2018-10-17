@@ -1,5 +1,5 @@
 import React from "react";
-import TableRow from "./TableRow";
+import TableRow from "../DynamicTable/TableRow";
 
 class Table extends React.Component {
   constructor(props) {

@@ -13,7 +13,6 @@ export default [
     name: "avalonId",
     type: "text",
     isvalidationApplied: true,
-    validationmessage: "",
     validationmessage: "Please enter valida jewelsoft Id",
     value: ""
   },
@@ -23,7 +22,6 @@ export default [
     name: "customerName",
     type: "text",
     isvalidationApplied: true,
-    validationmessage: "",
     validationmessage: "Please enter valida jewelsoft Id",
     value: ""
   },
@@ -33,7 +31,6 @@ export default [
     name: "customerDBA",
     type: "text",
     isvalidationApplied: true,
-    validationmessage: "",
     validationmessage: "Please enter valida jewelsoft Id",
     value: ""
   },
@@ -43,7 +40,6 @@ export default [
     name: "companyLogoUrl",
     type: "text",
     isvalidationApplied: true,
-    validationmessage: "",
     validationmessage: "Please enter valida jewelsoft Id",
     value: ""
   },
@@ -53,7 +49,6 @@ export default [
     name: "mainContact",
     type: "text",
     isvalidationApplied: true,
-    validationmessage: "",
     validationmessage: "Please enter valida jewelsoft Id",
     value: ""
   },
@@ -63,7 +58,6 @@ export default [
     name: "contactPersonName",
     type: "text",
     isvalidationApplied: true,
-    validationmessage: "",
     validationmessage: "Please enter valida jewelsoft Id",
     value: ""
   },
@@ -73,7 +67,6 @@ export default [
     name: "position",
     type: "text",
     isvalidationApplied: true,
-    validationmessage: "",
     validationmessage: "Please enter valida jewelsoft Id",
     value: ""
   },
@@ -83,7 +76,6 @@ export default [
     name: "address1",
     type: "text",
     isvalidationApplied: true,
-    validationmessage: "",
     validationmessage: "Please enter valida jewelsoft Id",
     value: ""
   },
