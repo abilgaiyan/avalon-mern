@@ -239,8 +239,6 @@ class CustomerDetails extends Component {
 }
 
 function mapStateToProps({ customer }) {
-  console.clear();
-  console.log({ customer });
   return { customer }
 }
 

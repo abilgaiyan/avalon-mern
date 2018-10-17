@@ -17,6 +17,7 @@
     "lodash": "^4.17.10",
     "materialize-css": "^0.100.2",
     "react": "^16.0.0",
+    "react-autosuggest": "^9.4.2",
     "react-dom": "^16.0.0",
     "react-html5video": "^2.5.1",
     "react-player": "^1.4.0",
