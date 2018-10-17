@@ -10,7 +10,7 @@ import HeaderSearch from "./HeaderSearch";
 import CustomerSummary from "../summary/CustomerSummary";
 import TargetAreasForm from "./TargetAreasForm";
 
-import "../customerinfo/css/common.css";
+import "../../../../components/css/common.css";
 
 class CustomerLanding extends Component {
   state = { showFormReview: true };
