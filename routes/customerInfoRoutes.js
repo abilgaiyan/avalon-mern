@@ -11,20 +11,20 @@ module.exports = app => {
     //console.log(customerId);
     const customerinfo = await CustomerInfo.find({
       _id: mongoose.Types.ObjectId(customerId)
-    },{createDate: 0, updateDate: 0 }).populate('_salesPerson')
-       .populate('_buyinggroups')
-       .populate('_avalonInfo')
-       .populate('_billingInfo')
-       .populate('_websiteInfo')
-       .populate('_productInfo')
-       .populate('_ashimicrowebsiteInfo')
-       .populate('_domainInfo')
-       .populate('_sslInfo')
-       .populate('_businessEmailInfo')
-       .populate('_emailmarketingAccountInfo')
-       .populate('_querysupportInfo')
-       .populate('_targetAreaInfo')
-       .populate('_callLogInfo');
+    }, { createDate: 0, updateDate: 0 }).populate('_salesPerson')
+      .populate('_buyinggroups')
+      .populate('_avalonInfo')
+      .populate('_billingInfo')
+      .populate('_websiteInfo')
+      .populate('_productInfo')
+      .populate('_ashimicrowebsiteInfo')
+      .populate('_domainInfo')
+      .populate('_sslInfo')
+      .populate('_businessEmailInfo')
+      .populate('_emailmarketingAccountInfo')
+      .populate('_querysupportInfo')
+      .populate('_targetAreaInfo')
+      .populate('_callLogInfo');
     //console.log(customerinfo);
     if (customerinfo) {
       res.send(customerinfo);
@@ -34,17 +34,17 @@ module.exports = app => {
   });
 
   app.get("/api/customerallinfo", async (req, res) => {
-    const customeralldata = await await CustomerInfo.find({});
+    const customeralldata = await CustomerInfo.find({});
     //console.log(customeralldata);
     res.send(customeralldata);
   });
 
-  app.post("/api/searchcustomer", async (req, res) =>{
+  app.post("/api/searchcustomer", async (req, res) => {
     const search = req.body.search;
     console.log(search);
-    const customeralldata = await await CustomerInfo.find( 
-     { $text : { $search : search } }, 
-    { score : { $meta: "textScore" } }
+    const customeralldata = await CustomerInfo.find(
+      { $text: { $search: search } },
+      { score: { $meta: "textScore" } }
     );
 
     res.send(customeralldata);
@@ -53,9 +53,9 @@ module.exports = app => {
 
   app.post("/api/customerinfo", async (req, res) => {
 
-    const customerinfo ={...req.body};
+    const customerinfo = { ...req.body };
     customerinfo.updateDate = Date.now();
-    if (req.body.customerId = 0){
+    if (req.body.customerId = 0) {
       customerinfo.createDate = Date.now();
     }
 
@@ -69,7 +69,7 @@ module.exports = app => {
       (err, res) => {
         // Deal with the response data/error
         console.log(err);
-       // console.log(res);
+        // console.log(res);
       }
     );
 
