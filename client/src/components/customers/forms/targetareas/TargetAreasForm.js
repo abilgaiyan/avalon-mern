@@ -1,18 +1,6 @@
-// SurveyForm shows a form for a user to add input
-import _ from "lodash";
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-
-import * as actions from "../../../../actions";
 
 class TargetAreasForm extends Component {
-  // componentWillMount() {
-  //   const customerId = this.props.match.params.customerId;
-  //   console.log(customerId);
-  //   this.props.fetchCustomer(customerId);
-  // }
-
   render() {
     return (
       <div id="Target_Areas" className="panel-collapse collapse in">
@@ -23,37 +11,35 @@ class TargetAreasForm extends Component {
                 <tr>
                   <td>Responsive Status:</td>
                   <td align="right">
-                    {this.props.targetAreasdata[0].responsivestatus}
+                    {this.props.targetAreasData.responsivestatus}
                   </td>
                 </tr>
                 <tr>
                   <td>Website Design Update Date:</td>
                   <td align="right">
-                    {this.props.targetAreasdata[0].websitedesignupdatedate}
+                    {this.props.targetAreasData.websitedesignupdatedate}
                   </td>
                 </tr>
                 <tr>
                   <td>JewelExchange:</td>
                   <td align="right">
-                    {this.props.targetAreasdata[0].jewelexchange}
+                    {this.props.targetAreasData.jewelexchange}
                   </td>
                 </tr>
                 <tr>
                   <td>JewelExchange Plan:</td>
                   <td align="right">
-                    {this.props.targetAreasdata[0].jewelexchangeplan}
+                    {this.props.targetAreasData.jewelexchangeplan}
                   </td>
                 </tr>
                 <tr>
                   <td>SSL/HTTPS:</td>
-                  <td align="right">
-                    {this.props.targetAreasdata[0].sslhttps}
-                  </td>
+                  <td align="right">{this.props.targetAreasData.sslhttps}</td>
                 </tr>
                 <tr>
                   <td>Add on Module Deployed:</td>
                   <td align="right">
-                    {this.props.targetAreasdata[0].addonmoduledeployed}
+                    {this.props.targetAreasData.addonmoduledeployed}
                   </td>
                 </tr>
               </tbody>
@@ -65,10 +51,4 @@ class TargetAreasForm extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  // console.clear();
-  // console.log("summary state :", state);
-  return { targetAreasdata: state.targetAreas };
-}
-
-export default connect(mapStateToProps)(TargetAreasForm);
+export default TargetAreasForm;

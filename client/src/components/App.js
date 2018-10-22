@@ -10,7 +10,6 @@ import Footer from "./Footer";
 import CustomerDetails from "./customers/CustomerDetails";
 
 import Email from "./customers/forms/emaillog/EmailHeader";
-import CustomerInfo from "./customers/forms/customerinfo/CustomerNew";
 import MainContent from "./MainContent";
 import LeftSideBar from "./LeftSideBar";
 import './css/common.css';
