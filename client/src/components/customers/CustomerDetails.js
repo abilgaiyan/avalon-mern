@@ -6,7 +6,7 @@ import CustomerQuery from "./CustomerQuery";
 import { fetchCustomerInfo } from "../../actions/index";
 import CustomerForm from "../customers/forms/customerinfo/CustomerForm";
 import CustomerSummary from "../customers/forms/summary/CustomerSummary";
-import "../css/common.css";
+
 
 class AccordianPanel extends Component {
   render() {
@@ -14,9 +14,9 @@ class AccordianPanel extends Component {
       <div className="panel panel-default new">
         <div
           className={
-            this.props.active === "True"
-              ? "panel-heading active"
-              : "panel-heading "
+           this.props.active === "True"
+              ? "panel-heading active " + this.props.custmClass
+              : "panel-heading " + this.props.custmClass 
           }
         >
           <h4 className="panel-title">
@@ -80,6 +80,7 @@ class CustomerDetails extends Component {
               active="True"
               AccId="Summary"
               paraent="accordion1"
+              custmClass = "orange"
             />
             {/* Summry End Here */}
 
@@ -90,6 +91,7 @@ class CustomerDetails extends Component {
               active="False"
               AccId="Customer_Info"
               paraent="accordion1"
+              custmClass =""
             />
             {/* Customer Info End Here */}
           </div>
@@ -108,6 +110,7 @@ class CustomerDetails extends Component {
               active="True"
               AccId="Emails"
               parent="accordion"
+              custmClass =""
             />
             {/* Emails Info End Here */}
 
@@ -118,6 +121,7 @@ class CustomerDetails extends Component {
               active="True"
               AccId="Phone"
               parent="accordion"
+              custmClass =""
             />
             {/* Phone Info End Here */}
 
@@ -128,6 +132,7 @@ class CustomerDetails extends Component {
               active="False"
               AccId="Call_Log"
               parent="accordion"
+              custmClass =""
             />
             {/* Query Info End Here */}
           </div>

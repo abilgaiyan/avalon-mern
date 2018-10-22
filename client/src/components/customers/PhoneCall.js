@@ -57,9 +57,9 @@ class PhoneCall extends Component {
               <button
                 type="submit"
                 data-toggle="modal"
-                className="btn btn-success"
+                className="btn btn-primary"
                 data-target="#phonepopup"
-              >
+              ><i class="fa fa-plus-square"></i>
                 Add{" "}
               </button>
               <PhoneForm customerId={this.props.customerId} />

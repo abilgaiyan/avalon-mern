@@ -4,9 +4,6 @@ import { fetchCustomers } from '../../actions';
 import CustomerDetails from './CustomerDetails';
 import { Link } from 'react-router-dom';
 
-
-import "../css/common.css";
-
 class Dashboard extends Component {
 
     componentDidMount() {

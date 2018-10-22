@@ -13,6 +13,7 @@ import Email from "./customers/forms/emaillog/EmailHeader";
 import CustomerInfo from "./customers/forms/customerinfo/CustomerNew";
 import MainContent from "./MainContent";
 import LeftSideBar from "./LeftSideBar";
+import './css/common.css';
 
 class App extends Component {
   componentDidMount() {
@@ -20,11 +21,11 @@ class App extends Component {
   }
 
   render() {
-    console.log(window.location.pathname);
     return (
       <BrowserRouter>
         <div id="wrapper" className="dashboard_wraper container-fluid">
           <Route exact={true} path="/" component={Welcome} />
+          
           {/* Main Wraper Start Here */}
           {window.location.pathname === "/" ? null : (
             <div>
@@ -43,7 +44,7 @@ class App extends Component {
                       path="/customers/:customerId"
                       component={CustomerDetails}
                     />
-                    {/* <Route exact={true} path="/customers/:customerId" component={MainContent} /> */}
+                   
                     <Route exact={true} path="/emailForm" component={Email} />
                   </div>
                 </div>
@@ -53,8 +54,8 @@ class App extends Component {
               </div>
             </div>
           )}
-
           {/* Main Wraper End Here */}
+
         </div>
       </BrowserRouter>
     );

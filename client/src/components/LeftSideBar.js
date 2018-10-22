@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import './css/common.css'
 const LeftSideBar = () => {
     return (
         <div className="sidebar col-sm-2" id="sidebar-nav">

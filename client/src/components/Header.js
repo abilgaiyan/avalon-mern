@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './css/common.css';
 import Search from "./Search";
 
 
@@ -29,16 +28,16 @@ class Header extends Component {
                         <div className="navbar-header col-sm-4">
                             <a className="navbar-brand" href="#">Welcome Ajay Jha</a>
                         </div>
-                        <div className="col-sm-4">
+                        <div className="col-sm-4 search_wraper">
                             <form className="navbar-form navbar-left">
                                 <div className="input-group">
                                     <Search />
                                     {/* <input type="text" className="form-control" placeholder="Search" name="search" /> */}
-                                    <div className="input-group-btn">
+                                    {/* <div className="input-group-btn">
                                         <button className="btn btn-default" type="submit">
                                             <i className="glyphicon glyphicon-search"></i>
                                         </button>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </form>
                         </div>

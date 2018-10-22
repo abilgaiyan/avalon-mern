@@ -12,17 +12,16 @@ const CustomerField = props => {
   if (type === "checkbox") {
     return (
       <div className="form-group">
-        <label className="control-label col-sm-2">{label}</label>
-        <div className="checkbox col-sm-10">
+        <label className="control-label col-sm-3">{label}</label>
+        <div className="checkbox col-sm-9">
           <label>
             <input
               {...input}
               className=""
-              style={{ margin: "20px" }}
               type={type}
             />
           </label>
-          <div className="red-text" style={{ marginBottom: "20px" }}>
+          <div className="red-text" >
             {/* {touched && error} */}
           </div>
         </div>
@@ -31,15 +30,14 @@ const CustomerField = props => {
   } else {
     return (
       <div className="form-group">
-        <label className="control-label col-sm-2">{label}</label>
-        <div className="col-sm-10 ">
+        <label className="control-label col-sm-3">{label}</label>
+        <div className="col-sm-9 ">
           <input
             {...input}
             className="form-control"
-            style={{ margin: "20px" }}
             type={type}
           />
-          <div className="red-text" style={{ marginBottom: "20px" }}>
+          <div className="red-text" >
             {/* {touched && error} */}
           </div>
         </div>

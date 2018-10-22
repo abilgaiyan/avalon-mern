@@ -126,8 +126,10 @@ class CustomerForm extends Component {
   render() {
     return (
       <div>
+        <a href="#" class="pull-right icon_well"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+        <div class="clearfix"></div>
         <form
-          className="form-horizontal"
+          className="form-horizontal label-left"
           onSubmit={() =>
             this.props.handleSubmit(
               this.props.submitCustomerInfo(
@@ -138,15 +140,22 @@ class CustomerForm extends Component {
           }
         >
           {this.renderFields()}
-          <Link to="/customerinfo" className="red btn-flat white-text">
-            Cancel
-          </Link>
-          <button type="submit" className="teal btn-flat right white-text">
-            Save
-            <i className="material-icons right">done</i>
-          </button>
+          <div className="form-group">
+            <div className="col-xs-9 col-xs-offset-3 text-left">
+              <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                Save
+
+              </button>
+              <Link to="/customerinfo" className="btn btn-cancle">
+                <i class="fa fa-close" aria-hidden="true"></i>
+                Cancel
+              </Link>
+            </div>
+          </div>
         </form>
       </div>
+
     );
   }
 }

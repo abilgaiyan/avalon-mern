@@ -7,10 +7,10 @@
     height: 100vh;
 }
 
-.form-heading { color:#fff; font-size:23px;}
-.panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
-.panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
-.login-form .form-control {
+.LoginForm .form-heading { color:#fff; font-size:23px;}
+.LoginForm .panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
+.LoginForm .panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+.LoginForm .login-form .form-control {
   background: #f7f7f7 none repeat scroll 0 0;
   border: 1px solid #d4d4d4;
   border-radius: 0px;
@@ -18,7 +18,7 @@
   height: 40px;
   line-height: 50px;
 }
-.main-div {
+.LoginForm .main-div {
   background: #ffffff none repeat scroll 0 0;
   border-radius: 2px;
   margin: 10px auto 30px;
@@ -27,17 +27,17 @@
   box-shadow: 0 0 32px 0 rgba(0,0,0,.15);
 }
 
-.login-form .form-group {
+.LoginForm .login-form .form-group {
   margin-bottom:10px;
 }
-.login-form{ text-align:center;transform: translateY(33%);
+.LoginForm .login-form{ text-align:center;transform: translateY(33%);
     position: relative;}
-.forgot a {
+.LoginForm .forgot a {
   color: #777777;
   font-size: 14px;
   text-decoration: underline;
 }
-.login-form  .btn.btn-primary {
+.LoginForm .login-form  .btn.btn-primary {
   background: #e3714d none repeat scroll 0 0;
   border-color: #e3714d;
   color: #ffffff;
@@ -48,22 +48,22 @@
   padding: 0;
   border-radius: 0px;
 }
-.forgot {
+.LoginForm .forgot {
   text-align: left; margin-bottom:30px;
 }
-.botto-text {
+.LoginForm .botto-text {
   color: #ffffff;
   font-size: 14px;
   margin: auto;
 }
-.login-form .btn.btn-primary.reset {
+.LoginForm .login-form .btn.btn-primary.reset {
   background: #ff9900 none repeat scroll 0 0;
 }
-.back { text-align: left; margin-top:10px;}
-.back a {color: #444444; font-size: 13px;text-decoration: none;}
+.LoginForm .back { text-align: left; margin-top:10px;}
+.LoginForm .back a {color: #444444; font-size: 13px;text-decoration: none;}
 
 
-.gmail_wraper .gmail_item {
+.LoginForm .gmail_wraper .gmail_item {
     
     display: inline-block;
     border: 1px solid #e24545;
@@ -77,4 +77,4 @@
     margin-top: 20px;
     font-weight: bold;
 }
-.gmail_wraper{display:inline-block;width: 100%}
+.LoginForm .gmail_wraper{display:inline-block;width: 100%}

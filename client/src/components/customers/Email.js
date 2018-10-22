@@ -22,7 +22,7 @@ class Email extends Component {
 
     return (
       // <div key={customer._id} class="card blue-grey darken-1">
-      <div className="col-sm-12 card-content white-text">
+      <div className="">
         <div className="form-horizontal">
           <div className="form-group">
             <label className="control-label col-sm-2" htmlFor="pwd">
@@ -49,17 +49,62 @@ class Email extends Component {
               <button
                 type="submit"
                 data-toggle="modal"
-                className="btn btn-success"
+                className="btn btn-primary"
                 data-target="#myModal"
-              >
+              ><i class="fa fa-plus-square"></i>
                 Add{" "}
               </button>
               <EmailForm customerId={this.props.customerId} />
             </div>
           </div>
         </div>
+
+        {/* test disgn */}
+        <a href="#" class="pull-right icon_well">
+          <button type="submit" class="btn btn-primary center-block">
+            <i class="fa fa-plus-square"></i>
+            <span>Add</span>
+          </button>
+        </a>
+        <div class="clearfix"></div>
+        <table class="table table-bordered table_list">
+          <thead>
+            <tr className="active">
+              <th>Prev. Call Date</th>
+              <th>Prev. Call Type</th>
+              <th>Call Person</th>
+              <th>Avalon Exec.</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>08/25/2018</td>
+              <td><i class="fa fa-sign-in" aria-hidden="true"></i></td>
+              <td>Ron Ackerman</td>
+              <td>Ajay</td>
+              <td><i class="fa fa-search"></i></td>
+            </tr>
+            <tr>
+              <td>08/25/2018</td>
+              <td><i class="fa fa-sign-out" aria-hidden="true"></i></td>
+              <td>Ron Ackerman</td>
+              <td>Ajay</td>
+              <td><i class="fa fa-search"></i></td>
+            </tr>
+            <tr>
+              <td>08/25/2018</td>
+              <td><i class="fa fa-sign-in" aria-hidden="true"></i></td>
+              <td>Ron Ackerman</td>
+              <td>Ajay</td>
+              <td><i class="fa fa-search"></i></td>
+            </tr>
+          </tbody>
+        </table>
+        {/* test disgn */}
       </div>
-    );
+
+    )
   }
   render() {
     return <div>{this.renderEmail()}</div>;
