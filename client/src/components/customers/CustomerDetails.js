@@ -6,15 +6,11 @@ import CustomerQuery from "./CustomerQuery";
 import { fetchCustomerInfo } from "../../actions/index";
 import CustomerForm from "../customers/forms/customerinfo/CustomerForm";
 import CustomerSummary from "../customers/forms/summary/CustomerSummary";
-<<<<<<< HEAD
-
-=======
 import TargetAreasForm from "../customers/forms/targetareas/TargetAreasForm";
 import SupportQueryForm from "../customers/forms/supportquery/SupportQuery";
 import CallLog from "../customers/forms/calllog/CallLogList";
 
 import "../css/common.css";
->>>>>>> a7cf00d2712e41c30e5b2e967c2fae625ad83b4f
 
 class AccordianPanel extends Component {
   render() {
@@ -22,9 +18,9 @@ class AccordianPanel extends Component {
       <div className="panel panel-default new">
         <div
           className={
-           this.props.active === "True"
+            this.props.active === "True"
               ? "panel-heading active " + this.props.custmClass
-              : "panel-heading " + this.props.custmClass 
+              : "panel-heading " + this.props.custmClass
           }
         >
           <h4 className="panel-title">
@@ -104,7 +100,7 @@ class CustomerDetails extends Component {
               active="True"
               AccId="Summary"
               paraent="accordion1"
-              custmClass = "orange"
+              custmClass="orange"
             />
             {/* Summry End Here */}
 
@@ -115,7 +111,7 @@ class CustomerDetails extends Component {
               active="False"
               AccId="Customer_Info"
               paraent="accordion1"
-              custmClass =""
+              custmClass=""
             />
             {/* Customer Info End Here */}
           </div>
@@ -164,7 +160,7 @@ class CustomerDetails extends Component {
               active="True"
               AccId="Emails"
               parent="accordion"
-              custmClass =""
+              custmClass=""
             />
             {/* Emails Info End Here */}
 
@@ -175,7 +171,7 @@ class CustomerDetails extends Component {
               active="True"
               AccId="Phone"
               parent="accordion"
-              custmClass =""
+              custmClass=""
             />
             {/* Phone Info End Here */}
 
@@ -186,7 +182,7 @@ class CustomerDetails extends Component {
               active="False"
               AccId="Call_Log"
               parent="accordion"
-              custmClass =""
+              custmClass=""
             />
             {/* Query Info End Here */}
           </div>
