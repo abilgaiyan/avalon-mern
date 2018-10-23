@@ -36,7 +36,7 @@ class CustomerForm extends Component {
     super(props);
   }
 
-  componentWillReceiveProps() {
+  componentDidReceiveProps() {
     const initData = this.props.customerDetails;
     this.props.initialize(initData);
   }
@@ -56,7 +56,7 @@ class CustomerForm extends Component {
               type={type}
               label={label}
               name={name}
-            // validate={[required, maxLength15]}
+              // validate={[required, maxLength15]}
             />
           );
         }
@@ -126,8 +126,10 @@ class CustomerForm extends Component {
   render() {
     return (
       <div>
-        <a href="#" class="pull-right icon_well"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-        <div class="clearfix"></div>
+        <a href="#" class="pull-right icon_well">
+          <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" />
+        </a>
+        <div class="clearfix" />
         <form
           className="form-horizontal label-left"
           onSubmit={() =>
@@ -142,28 +144,28 @@ class CustomerForm extends Component {
           {this.renderFields()}
           <div className="form-group">
             <div className="col-xs-9 col-xs-offset-3 text-left">
-              <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
-                <i class="fa fa-check-square" aria-hidden="true"></i>
+              <button
+                type="submit"
+                className="btn btn-success"
+                style={{ marginRight: "10px" }}
+              >
+                <i class="fa fa-check-square" aria-hidden="true" />
                 Save
-
               </button>
               <Link to="/customerinfo" className="btn btn-cancle">
-                <i class="fa fa-close" aria-hidden="true"></i>
+                <i class="fa fa-close" aria-hidden="true" />
                 Cancel
               </Link>
             </div>
           </div>
         </form>
       </div>
-
     );
   }
 }
 
 function validate(values) {
   const errors = {};
-
-  console.log("validate", values);
   errors.email = validateEmails(values.email || "");
 
   _.each(formFields, ({ name, is }) => {
@@ -176,19 +178,20 @@ function validate(values) {
 }
 
 function mapStateToProps(state) {
-  console.log("vvvv", state.form);
-
   return { formValues: state.form.customerForm };
 }
 
 CustomerForm = connect(
-  mapStateToProps,
-  actions
+  mapStateToProps
+  // actions
 )(withRouter(CustomerForm));
 
 export default reduxForm({
   //validate,
-  form: "customerInfoForm"
+  form: "customerInfoForm",
+  // form: "emailForm",
+  //destroyOnUnmount: false,
+  enableReinitialize: true
 })(withRouter(CustomerForm));
 
 //export default connect(mapStateToProps, actions)(withRouter(ContactusForm));
