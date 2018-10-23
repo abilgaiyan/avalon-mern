@@ -66,12 +66,8 @@ class CustomerForm extends Component {
               type={type}
               label={label}
               name={name}
-<<<<<<< HEAD
               disabled={(this.state.disabled) ? "disabled" : ""}
             // validate={[required, maxLength15]}
-=======
-              // validate={[required, maxLength15]}
->>>>>>> e36e5eb9ba5bfe8b835f1a609951d2a368a7c941
             />
           );
         }
@@ -145,15 +141,8 @@ class CustomerForm extends Component {
   render() {
     return (
       <div>
-<<<<<<< HEAD
-        <button className="pull-right icon_well" onClick={this.handelEdit}><i className= {this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button>
+        <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button>
         <div className="clearfix"></div>
-=======
-        <a href="#" class="pull-right icon_well">
-          <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" />
-        </a>
-        <div class="clearfix" />
->>>>>>> e36e5eb9ba5bfe8b835f1a609951d2a368a7c941
         <form
           className="form-horizontal label-left"
           onSubmit={() =>
@@ -166,7 +155,6 @@ class CustomerForm extends Component {
           }
         >
           {this.renderFields()}
-<<<<<<< HEAD
           {
             this.state.disabled === true ? "" :
               <div className="form-group">
@@ -182,24 +170,6 @@ class CustomerForm extends Component {
               </a>
                 </div>
               </div>}
-=======
-          <div className="form-group">
-            <div className="col-xs-9 col-xs-offset-3 text-left">
-              <button
-                type="submit"
-                className="btn btn-success"
-                style={{ marginRight: "10px" }}
-              >
-                <i class="fa fa-check-square" aria-hidden="true" />
-                Save
-              </button>
-              <Link to="/customerinfo" className="btn btn-cancle">
-                <i class="fa fa-close" aria-hidden="true" />
-                Cancel
-              </Link>
-            </div>
-          </div>
->>>>>>> e36e5eb9ba5bfe8b835f1a609951d2a368a7c941
         </form>
       </div>
     );
