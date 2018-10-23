@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 // import Autosuggest from "react-autosuggest";
 import ReactAutocomplete from "react-autocomplete";
+import { Redirect } from 'react-router-dom';
 
 class Search extends Component {
 
@@ -20,7 +21,7 @@ class Search extends Component {
                 getItemValue={item => item.customerName}
                 renderItem={(item, highlighted) =>
                     <div
-                        key={item.id}
+                        key={item._id}
                         style={{ backgroundColor: highlighted ? '#eee' : 'transparent' }}
                     >
                         {item.customerName}
@@ -28,7 +29,8 @@ class Search extends Component {
                 }
                 value={this.state.value}
                 onChange={e => this.setState({ value: e.target.value })}
-                onSelect={value => this.setState({ value })}
+                //onSelect={value => this.setState({ value })}
+                onSelect={(item, value) => window.location.assign("/customers/" + value._id)}
             />
         )
     }
