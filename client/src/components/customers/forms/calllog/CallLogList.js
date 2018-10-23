@@ -30,11 +30,11 @@ class CallLogList extends Component {
   render() {
     return (
       <div id="Call_Log" className="panel-collapse collapse ">
-        <div class="panel-body">
-          <div class="overlay-refresh">
-            <div class="vertical-align-wrap">
-              <div class="vertical-align-middle">
-                <i class="fa fa-refresh fa-spin" />
+        <div className="panel-body">
+          <div className="overlay-refresh">
+            <div className="vertical-align-wrap">
+              <div className="vertical-align-middle">
+                <i className="fa fa-refresh fa-spin" />
                 <span>Refreshing...</span>
               </div>
             </div>
@@ -49,7 +49,7 @@ class CallLogList extends Component {
             </button>
           </a>
           <div className="clearfix" />
-          {/* <div class="alert alert-info"><i class="fa fa-info-circle"></i> Click Refresh button above to simulate panel refresh event</div> */}
+          {/* <div className="alert alert-info"><i className="fa fa-info-circle"></i> Click Refresh button above to simulate panel refresh event</div> */}
           <table className="table">
             <thead>
               <tr>
@@ -67,7 +67,7 @@ class CallLogList extends Component {
                 <td>Ron Ackerman</td>
                 <td>Ajay</td>
                 <td>
-                  <i class="fa fa-search" />
+                  <i className="fa fa-search" />
                 </td>
               </tr>
               <tr>
@@ -76,7 +76,7 @@ class CallLogList extends Component {
                 <td>Ron Ackerman</td>
                 <td>Ajay</td>
                 <td>
-                  <i class="fa fa-search" />
+                  <i className="fa fa-search" />
                 </td>
               </tr>
               <tr>
@@ -85,7 +85,7 @@ class CallLogList extends Component {
                 <td>Ron Ackerman</td>
                 <td>Ajay</td>
                 <td>
-                  <i class="fa fa-search" />
+                  <i className="fa fa-search" />
                 </td>
               </tr>
             </tbody>

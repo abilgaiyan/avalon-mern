@@ -34,6 +34,16 @@ import * as actions from "../../../../actions";
 class CustomerForm extends Component {
   constructor(props) {
     super(props);
+    this.state = { disabled: true }
+    this.handelEdit = this.handelEdit.bind(this)
+    this.handelCancelEdit = this.handelCancelEdit.bind(this)
+  }
+
+  handelEdit() {
+    this.setState({ disabled: !this.state.disabled })
+  }
+  handelCancelEdit() {
+    this.setState({ disabled: true })
   }
 
   componentWillReceiveProps() {
@@ -56,6 +66,7 @@ class CustomerForm extends Component {
               type={type}
               label={label}
               name={name}
+              disabled={(this.state.disabled) ? "disabled" : ""}
             // validate={[required, maxLength15]}
             />
           );
@@ -69,6 +80,7 @@ class CustomerForm extends Component {
               type={type}
               label={label}
               name={name}
+              disabled={(this.state.disabled) ? "disabled" : ""}
             />
           );
         }
@@ -82,6 +94,7 @@ class CustomerForm extends Component {
                 type={type}
                 label={label}
                 name={name}
+                disabled={(this.state.disabled) ? "disabled" : ""}
               />
             </div>
           );
@@ -96,6 +109,7 @@ class CustomerForm extends Component {
             type={type}
             label={label}
             name={name}
+            disabled={(this.state.disabled) ? "disabled" : ""}
           />
         );
       }
@@ -117,6 +131,7 @@ class CustomerForm extends Component {
             label={label}
             name={name}
             optionData={optiondata}
+            disabled={(this.state.disabled) ? "disabled" : ""}
           />
         );
       }
@@ -126,8 +141,8 @@ class CustomerForm extends Component {
   render() {
     return (
       <div>
-        <a href="#" class="pull-right icon_well"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-        <div class="clearfix"></div>
+        <button className="pull-right icon_well" onClick={this.handelEdit}><i className= {this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button>
+        <div className="clearfix"></div>
         <form
           className="form-horizontal label-left"
           onSubmit={() =>
@@ -140,19 +155,21 @@ class CustomerForm extends Component {
           }
         >
           {this.renderFields()}
-          <div className="form-group">
-            <div className="col-xs-9 col-xs-offset-3 text-left">
-              <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
-                <i class="fa fa-check-square" aria-hidden="true"></i>
-                Save
+          {
+            this.state.disabled === true ? "" :
+              <div className="form-group">
+                <div className="col-xs-9 col-xs-offset-3 text-left">
+                  <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
+                    <i className="fa fa-check-square" aria-hidden="true"></i>
+                    Save
 
               </button>
-              <Link to="/customerinfo" className="btn btn-cancle">
-                <i class="fa fa-close" aria-hidden="true"></i>
-                Cancel
-              </Link>
-            </div>
-          </div>
+                  <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
+                    <i className="fa fa-close" aria-hidden="true"></i>
+                    Cancel
+              </a>
+                </div>
+              </div>}
         </form>
       </div>
 

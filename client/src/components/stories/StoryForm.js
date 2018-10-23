@@ -10,7 +10,7 @@ import formFields from './formFields';
 class StoryForm extends Component {
   renderFields() {
     return _.map(formFields, ({ label, name, type }) => {
-      console.log(type);
+      // console.log(type);
       return (
         <Field
           key={name}

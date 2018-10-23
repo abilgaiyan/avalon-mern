@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 class TableRow extends React.Component {
   render() {
     const TargetAreasData = this.props.targetareadata;
-    console.log("cccc", this.props);
+    // console.log("cccc", this.props);
     const row = TargetAreasData.map(data => (
       <tr>
         <td key={data.name}>{data.name}</td>

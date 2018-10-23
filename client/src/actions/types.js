@@ -17,3 +17,6 @@ export const FETCH_PHONECALL = "fetch_phonecall";
 export const FETCH_QUERY = "fetch_query";
 
 export const FETCH_CUSTOMERINFO = "fetch_customerinfo";
+
+export const FETCH_AVALONINFO = "fetch_avaloninfo";
+

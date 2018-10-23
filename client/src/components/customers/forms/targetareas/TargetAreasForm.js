@@ -3,10 +3,9 @@ import React, { Component } from "react";
 class TargetAreasForm extends Component {
   render() {
     return (
-      <div id="Target_Areas" className="panel-collapse collapse in">
-        <div className="panel-body">
+     
           <div className="info-section">
-            <table>
+            <table class="table table-info no-margin">
               <tbody>
                 <tr>
                   <td>Responsive Status:</td>
@@ -45,8 +44,7 @@ class TargetAreasForm extends Component {
               </tbody>
             </table>
           </div>
-        </div>
-      </div>
+        
     );
   }
 }

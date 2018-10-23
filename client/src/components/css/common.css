@@ -100,14 +100,15 @@ ul {
        opacity: 1;
        height: 40px;
        border-radius: 0px;
-       border: 1px solid #ccc;
+       background-color: #fff;
+       border: 1px solid #e1e3ea;
    }
-    .form-control[disabled],
+    /* .form-control[disabled],
     .form-control[readonly], 
     fieldset[disabled] .form-control {
-       background-color: #eee;
-       border: 1px solid #ccc;
-   }
+       background-color: #fcfcfc;
+       border: 1px solid #e1e3ea;
+   } */
 
    /* Icon common css */
    .fa-2x {
@@ -340,6 +341,7 @@ ul {
     padding: 0px;
     border: 0px;
     background: transparent;
+    outline: none;
 }
 
 .overlay-refresh {
@@ -367,7 +369,7 @@ ul {
     -moz-border-radius: 2px;
     border-radius: 2px;
     border-color: #e1e3ea;
-    background-color: #fcfcfc;
+    background-color: #fff;
     color: #5e6773;
 }
 

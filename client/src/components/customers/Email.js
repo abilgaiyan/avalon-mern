@@ -21,7 +21,7 @@ class Email extends Component {
     const { email } = this.props;
 
     return (
-      // <div key={customer._id} class="card blue-grey darken-1">
+      // <div key={customer._id} className="card blue-grey darken-1">
       <div className="">
         <div className="form-horizontal">
           <div className="form-group">
@@ -51,7 +51,7 @@ class Email extends Component {
                 data-toggle="modal"
                 className="btn btn-primary"
                 data-target="#myModal"
-              ><i class="fa fa-plus-square"></i>
+              ><i className="fa fa-plus-square"></i>
                 Add{" "}
               </button>
               <EmailForm customerId={this.props.customerId} />
@@ -60,14 +60,14 @@ class Email extends Component {
         </div>
 
         {/* test disgn */}
-        <a href="#" class="pull-right icon_well">
-          <button type="submit" class="btn btn-primary center-block">
-            <i class="fa fa-plus-square"></i>
+        <a href="#" className="pull-right icon_well">
+          <button type="submit" className="btn btn-primary center-block">
+            <i className="fa fa-plus-square"></i>
             <span>Add</span>
           </button>
         </a>
-        <div class="clearfix"></div>
-        <table class="table table-bordered table_list">
+        <div className="clearfix"></div>
+        <table className="table table-bordered table_list">
           <thead>
             <tr className="active">
               <th>Prev. Call Date</th>
@@ -80,24 +80,24 @@ class Email extends Component {
           <tbody>
             <tr>
               <td>08/25/2018</td>
-              <td><i class="fa fa-sign-in" aria-hidden="true"></i></td>
+              <td><i className="fa fa-sign-in" aria-hidden="true"></i></td>
               <td>Ron Ackerman</td>
               <td>Ajay</td>
-              <td><i class="fa fa-search"></i></td>
+              <td><i className="fa fa-search"></i></td>
             </tr>
             <tr>
               <td>08/25/2018</td>
-              <td><i class="fa fa-sign-out" aria-hidden="true"></i></td>
+              <td><i className="fa fa-sign-out" aria-hidden="true"></i></td>
               <td>Ron Ackerman</td>
               <td>Ajay</td>
-              <td><i class="fa fa-search"></i></td>
+              <td><i className="fa fa-search"></i></td>
             </tr>
             <tr>
               <td>08/25/2018</td>
-              <td><i class="fa fa-sign-in" aria-hidden="true"></i></td>
+              <td><i className="fa fa-sign-in" aria-hidden="true"></i></td>
               <td>Ron Ackerman</td>
               <td>Ajay</td>
-              <td><i class="fa fa-search"></i></td>
+              <td><i className="fa fa-search"></i></td>
             </tr>
           </tbody>
         </table>

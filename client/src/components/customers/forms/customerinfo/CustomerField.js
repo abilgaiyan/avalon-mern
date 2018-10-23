@@ -5,6 +5,7 @@ const CustomerField = props => {
     input,
     label,
     type,
+    disabled,
     meta: { touched, error }
   } = props;
 
@@ -19,6 +20,7 @@ const CustomerField = props => {
               {...input}
               className=""
               type={type}
+              disabled = {disabled ? "disabled" : ""}
             />
           </label>
           <div className="red-text" >
@@ -36,6 +38,7 @@ const CustomerField = props => {
             {...input}
             className="form-control"
             type={type}
+            disabled = {disabled ? "disabled" : ""}
           />
           <div className="red-text" >
             {/* {touched && error} */}

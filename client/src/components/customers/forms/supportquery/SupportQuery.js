@@ -3,10 +3,8 @@ import React, { Component } from "react";
 class SupportQuery extends Component {
   render() {
     return (
-      <div id="Target_Areas" className="panel-collapse collapse in">
-        <div className="panel-body">
           <div className="info-section">
-            <table>
+            <table class="table table-info no-margin">
               <tbody>
                 <tr>
                   <td>Avg Monthly Queries:</td>
@@ -23,8 +21,6 @@ class SupportQuery extends Component {
               </tbody>
             </table>
           </div>
-        </div>
-      </div>
     );
   }
 }

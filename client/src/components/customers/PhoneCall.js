@@ -20,7 +20,7 @@ class PhoneCall extends Component {
     const { phonecall } = this.props;
 
     return (
-      // <div key={customer._id} class="card blue-grey darken-1">
+      // <div key={customer._id} className="card blue-grey darken-1">
       // <div className="container card-content white-text">
 
       //   <p>Call Message :{phonecall.message}</p>
@@ -53,13 +53,13 @@ class PhoneCall extends Component {
           </div>
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
-              {/* <button type="submit" class="btn btn-default">Submit</button> */}
+              {/* <button type="submit" className="btn btn-default">Submit</button> */}
               <button
                 type="submit"
                 data-toggle="modal"
                 className="btn btn-primary"
                 data-target="#phonepopup"
-              ><i class="fa fa-plus-square"></i>
+              ><i className="fa fa-plus-square"></i>
                 Add{" "}
               </button>
               <PhoneForm customerId={this.props.customerId} />
