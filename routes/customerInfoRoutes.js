@@ -55,20 +55,31 @@ module.exports = app => {
 
     const customerinfo = { ...req.body };
     customerinfo.updateDate = Date.now();
+    const customerId = req.body.customerId;
     if (req.body.customerId = 0) {
       customerinfo.createDate = Date.now();
+      
     }
-
+    else{
+     // customerinfo._id = mongoose.Types.ObjectId(req.body.customerId);
+     delete customerinfo.customerId;
+    }
+     //console.log('zzzz', customerinfo); 
     //await customerinfo.save();
-    CustomerInfo.findOneAndUpdate(
+     await CustomerInfo.findOneAndUpdate(
       {
-        _id: req.body.customerId
+        _id: customerId
       },
       customerinfo,
       { upsert: true },
       (err, res) => {
         // Deal with the response data/error
-        console.log(err);
+        if (err){
+          console.log(err);
+        }
+         if (res){
+           console.log(res);
+         }
         // console.log(res);
       }
     );
