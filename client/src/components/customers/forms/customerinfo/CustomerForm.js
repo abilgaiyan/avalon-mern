@@ -189,8 +189,6 @@ CustomerForm = connect(
 export default reduxForm({
   //validate,
   form: "customerInfoForm",
-  // form: "emailForm",
-  //destroyOnUnmount: false,
   enableReinitialize: true
 })(withRouter(CustomerForm));
 

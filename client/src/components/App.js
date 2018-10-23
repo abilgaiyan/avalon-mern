@@ -25,7 +25,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div id="wrapper" className="dashboard_wraper container-fluid">
-          {this.props.auth !== false ? <Redirect push to="/customers" /> : <Redirect push to="/" />}
+          {/* {this.props.auth !== false ? <Redirect push to="/customers" /> : <Redirect push to="/" />} */}
           <Route exact={true} path="/" component={Welcome} />
 
 
@@ -38,9 +38,11 @@ class App extends Component {
                 <div className="main_containt col-sm-10">
                   <div className="container-fluid">
                     {window.location.pathname === "/" || this.props.auth === false ? null : <Header />}
+
                     <Route exact={true} path="/customers" component={Dashboard} />
                     <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
                     <Route exact={true} path="/emailForm" component={Email} />
+
                     {/* <Redirect push to="/customers" /> */}
 
 
