@@ -188,7 +188,8 @@ CustomerForm = connect(
 
 export default reduxForm({
   //validate,
-  form: "customerInfoForm"
+  form: "customerInfoForm",
+  enableReinitialize: true
 })(withRouter(CustomerForm));
 
 //export default connect(mapStateToProps, actions)(withRouter(ContactusForm));

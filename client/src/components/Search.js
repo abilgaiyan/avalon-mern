@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 // import Autosuggest from "react-autosuggest";
 import ReactAutocomplete from "react-autocomplete";
-import { Redirect } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
 class Search extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            value: '',
+            value: ''
         }
     }
 
@@ -30,11 +30,15 @@ class Search extends Component {
                 value={this.state.value}
                 onChange={e => this.setState({ value: e.target.value })}
                 //onSelect={value => this.setState({ value })}
-                onSelect={(item, value) => window.location.assign("/customers/" + value._id)}
+                //onSelect={(item, value) => window.location.assign("/customers/" + value._id)}
+                onSelect={(item, value) => this.props.history.push('/customers/' + value._id)}
             />
         )
     }
 }
+
+
+
 
 function mapStateToProps(state) {
     // console.clear();
@@ -44,4 +48,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Search)
+export default connect(mapStateToProps)(withRouter(Search))
