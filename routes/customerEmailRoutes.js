@@ -14,7 +14,7 @@ module.exports = app => {
     const customeremail = await CustomerEmail.find({
       _customer: customerid
     }).sort({ createDate: -1 });
-    console.log(customeremail);
+    // console.log(customeremail);
     res.send(customeremail);
   });
 
@@ -29,7 +29,7 @@ module.exports = app => {
 
   //Post Request to Customer Email Communication
   app.post("/api/customeremail", async (req, res) => {
-    console.log("/api/customeremail", req.body);
+    // console.log("/api/customeremail", req.body);
     const { subject, comments, customerId } = req.body;
     const CustomerEmaildata = new CustomerEmail({
       subject,

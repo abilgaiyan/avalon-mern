@@ -17,7 +17,7 @@ module.exports = app => {
 
     //Get Customer data by Name
     app.get('/api/customerbyname', requireLogin, async (req, res) => {
-        console.log(req.body);
+        // console.log(req.body);
 
         const name = { customerName: "ACKERMAN JEWELERS" }
         const customerdatabyname = await CustomerAllData.find(name);
@@ -26,7 +26,7 @@ module.exports = app => {
     });
 
     app.get('/api/customeralldatabyid/:customerid', requireLogin, async (req, res) => {
-        console.log(req.params.customerid);
+        // console.log(req.params.customerid);
 
         if (req.params.customerid) {
 

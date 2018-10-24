@@ -15,11 +15,15 @@ const AvaloninfoDropdown = ({
   ));
 
   return (
-    <div>
-      <label>{label}</label>
-      <select>{optionItems}</select>
-      <div className="red-text" style={{ marginBottom: "20px" }}>
-        {touched && error}
+    <div className="form-group">
+      <label className="control-label col-sm-3">{label}</label>
+      <div className="col-sm-9">
+        <select {...input} className="form-control">
+          {optionItems}
+        </select>
+        <div className="red-text" >
+          {touched && error}
+        </div>
       </div>
     </div>
   );

@@ -5,10 +5,11 @@ const CustomerField = props => {
     input,
     label,
     type,
+    disabled,
     meta: { touched, error }
   } = props;
 
-  console.log({ ...props });
+  // console.log({ ...props });
   if (type === "checkbox") {
     return (
       <div className="form-group">
@@ -19,11 +20,10 @@ const CustomerField = props => {
               {...input}
               className=""
               type={type}
+              disabled={disabled ? "disabled" : ""}
             />
           </label>
-          <div className="red-text" >
-            {/* {touched && error} */}
-          </div>
+          <div className="red-text">{/* {touched && error} */}</div>
         </div>
       </div>
     );
@@ -36,6 +36,7 @@ const CustomerField = props => {
             {...input}
             className="form-control"
             type={type}
+            disabled={disabled ? "disabled" : ""}
           />
           <div className="red-text" >
             {/* {touched && error} */}

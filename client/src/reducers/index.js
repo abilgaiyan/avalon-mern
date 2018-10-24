@@ -16,6 +16,8 @@ import targetAreasReducers from "./targetAreasReducers";
 import websiteInfoReducer from "./websiteInfoReducer";
 import customerSummary from "./customerSummary";
 
+import avalonInfo from "./avaloninfoReducer";
+
 export default combineReducers({
   auth: authReducer,
   form: reduxForm,
@@ -33,5 +35,6 @@ export default combineReducers({
   customerForm: customerinfoReducers,
   targetAreas: targetAreasReducers,
   websiteInfo: websiteInfoReducer,
-  customersummary: customerSummary
+  customersummary: customerSummary,
+  avalonInfo: avalonInfo
 });

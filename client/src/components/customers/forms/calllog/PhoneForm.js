@@ -75,7 +75,4 @@ function validate(values) {
 //     return { formValues: state.form.phoneForm.values };
 // }
 
-export default connect(
-  null,
-  actions
-)(reduxForm({ validate, form: "phoneForm" })(withRouter(PhoneForm)));
+export default connect(null, actions)(reduxForm({ validate, form: "phoneForm" })(withRouter(PhoneForm)));

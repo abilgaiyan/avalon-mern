@@ -22,7 +22,7 @@ class CustomerForm extends Component {
  componentWillReceiveProps(nextProps){
 
   if (nextProps.customerForm && !this.state.isInitializeState){
-   console.log('componentWillReceiveProps', nextProps.customerForm);
+  // console.log('componentWillReceiveProps', nextProps.customerForm);
   
     const initData = nextProps.customerForm;
     nextProps.initialize(initData);
@@ -43,6 +43,7 @@ class CustomerForm extends Component {
               type={type}
               label={label}
               name={name}
+              disabled={(this.state.disabled) ? "disabled" : ""}
             // validate={[required, maxLength15]}
             />
           );
@@ -56,6 +57,7 @@ class CustomerForm extends Component {
               type={type}
               label={label}
               name={name}
+              disabled={(this.state.disabled) ? "disabled" : ""}
             />
           );
         }
@@ -69,6 +71,7 @@ class CustomerForm extends Component {
                 type={type}
                 label={label}
                 name={name}
+                disabled={(this.state.disabled) ? "disabled" : ""}
               />
             </div>
           );
@@ -83,6 +86,7 @@ class CustomerForm extends Component {
             type={type}
             label={label}
             name={name}
+            disabled={(this.state.disabled) ? "disabled" : ""}
           />
         );
       }
@@ -104,6 +108,7 @@ class CustomerForm extends Component {
             label={label}
             name={name}
             optionData={optiondata}
+            disabled={(this.state.disabled) ? "disabled" : ""}
           />
         );
       }
@@ -127,30 +132,29 @@ class CustomerForm extends Component {
           }
         >
           {this.renderFields()}
-          <div className="form-group">
-            <div className="col-xs-9 col-xs-offset-3 text-left">
-              <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
-                <i className="fa fa-check-square" aria-hidden="true"></i>
-                Save
+          {
+            this.state.disabled === true ? "" :
+              <div className="form-group">
+                <div className="col-xs-9 col-xs-offset-3 text-left">
+                  <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
+                    <i className="fa fa-check-square" aria-hidden="true"></i>
+                    Save
 
               </button>
-              <Link to="/customerinfo" className="btn btn-cancle">
-                <i className="fa fa-close" aria-hidden="true"></i>
-                Cancel
-              </Link>
-            </div>
-          </div>
+                  <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
+                    <i className="fa fa-close" aria-hidden="true"></i>
+                    Cancel
+              </a>
+                </div>
+              </div>}
         </form>
       </div>
-
     );
   }
 }
 
 function validate(values) {
   const errors = {};
-
-  console.log("validate", values);
   errors.email = validateEmails(values.email || "");
 
   _.each(formFields, ({ name, is }) => {
@@ -173,8 +177,8 @@ function mapStateToProps(state) {
 }
 
 CustomerForm = connect(
-  mapStateToProps,
-  actions
+  mapStateToProps
+  // actions
 )(withRouter(CustomerForm));
 
 export default reduxForm({

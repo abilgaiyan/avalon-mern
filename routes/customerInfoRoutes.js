@@ -41,7 +41,7 @@ module.exports = app => {
 
   app.post("/api/searchcustomer", async (req, res) => {
     const search = req.body.search;
-    console.log(search);
+    //console.log(search);
     const customeralldata = await CustomerInfo.find(
       { $text: { $search: search } },
       { score: { $meta: "textScore" } }
@@ -60,13 +60,13 @@ module.exports = app => {
       customerinfo.createDate = Date.now();
       delete customerinfo.customerId;  
     }
-    else{
-     // customerinfo._id = mongoose.Types.ObjectId(req.body.customerId);
-     delete customerinfo.customerId;
+    else {
+      // customerinfo._id = mongoose.Types.ObjectId(req.body.customerId);
+      delete customerinfo.customerId;
     }
-     //console.log('zzzz', customerinfo); 
+    //console.log('zzzz', customerinfo); 
     //await customerinfo.save();
-     await CustomerInfo.findOneAndUpdate(
+    await CustomerInfo.findOneAndUpdate(
       {
         _id: customerId
       },
@@ -74,12 +74,12 @@ module.exports = app => {
       { upsert: true },
       (err, res) => {
         // Deal with the response data/error
-        if (err){
+        if (err) {
           console.log(err);
         }
-         if (res){
-           console.log(res);
-         }
+        if (res) {
+          console.log(res);
+        }
         // console.log(res);
       }
     );

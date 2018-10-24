@@ -9,6 +9,7 @@ import CustomerSummary from "../customers/forms/summary/CustomerSummary";
 import TargetAreasForm from "../customers/forms/targetareas/TargetAreasForm";
 import SupportQueryForm from "../customers/forms/supportquery/SupportQuery";
 import CallLog from "../customers/forms/calllog/CallLogList";
+import AvaloninfoForm from "../customers/forms/avaloninfo/AvaloninfoForm"
 
 import "../css/common.css";
 
@@ -90,6 +91,9 @@ class CustomerDetails extends Component {
   renderQuery() {
     return <CustomerQuery customerId={this.props.match.params.customerId} />;
   }
+  renderAvalonInfo(){
+    return <AvaloninfoForm/>
+  }
   render() {
     return (
       <div className="container-fluid">
@@ -111,12 +115,22 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="Customer Info"
               func={this.renderCustomer()}
-              active="False"
+              active="True"
               AccId="Customer_Info"
               paraent="accordion1"
               custmClass=""
             />
             {/* Customer Info End Here */}
+
+            {/* Avalon info form */}
+            <AccordianPanel
+              title="Avalon Info"
+              func={this.renderAvalonInfo()}
+              active="True"
+              AccId="Avalon_Info"
+              paraent="accordion1"
+              custmClass =""
+            />
           </div>
           {/* end Accordian */}
         </div>
@@ -138,7 +152,7 @@ class CustomerDetails extends Component {
 
             {/* SupportQuery Start Here */}
             <AccordianPanel
-              title="SupportQuery"
+              title="Query / Support Trend"
               func={this.renderSupportQuery()}
               active="True"
               AccId="SupportQuery"
@@ -148,7 +162,7 @@ class CustomerDetails extends Component {
 
             {/* Call Log Start Here */}
             <AccordianPanel
-              title="callLog"
+              title="Call Log"
               func={this.renderCallLog()}
               active="True"
               AccId="callLog"
@@ -183,7 +197,7 @@ class CustomerDetails extends Component {
               title="Query"
               func={this.renderQuery()}
               active="False"
-              AccId="Call_Log"
+              AccId="Query"
               parent="accordion"
               custmClass=""
             />

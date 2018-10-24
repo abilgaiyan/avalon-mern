@@ -9,7 +9,8 @@ import {
   FETCH_EMAILS,
   FETCH_PHONECALL,
   FETCH_QUERY,
-  FETCH_CUSTOMERINFO
+  FETCH_CUSTOMERINFO,
+  FETCH_AVALONINFO
 } from "./types";
 
 export const fetchUser = () => async dispatch => {
@@ -114,11 +115,7 @@ export const fetchPhonecall = customerId => async dispatch => {
 };
 
 // Set phone call communication data by Customer id
-export const submitPhonecall = (
-  values,
-  customerId,
-  history
-) => async dispatch => {
+export const submitPhonecall = (values, customerId, history) => async dispatch => {
   values.customerId = customerId;
   const res = await axios.post("/api/customerphones", values);
   // console.log(history);
@@ -155,5 +152,32 @@ export const fetchCustomerInfo = customerId => async dispatch => {
 
   //const res = storylist;
   dispatch({ type: FETCH_CUSTOMERINFO, payload: res.data[0] || {} });
+  // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
+};
+
+// Set Customer Info data wrt. Customer id
+export const submitCustomerInfo = (values, customerId, history) => async dispatch => {
+  console.clear();
+  console.log(values)
+  values.customerId = customerId;
+  const res = await axios.post("/api/customerinfo", values);
+  // console.log(history);
+  // history.push("/customers");
+
+  //const res = storylist;
+  dispatch({ type: FETCH_CUSTOMERINFO, payload: values });
+  // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
+};
+
+
+// Set Avalon Info data wrt. Customer id
+export const submitAvalonInfo = (values, customerId, history) => async dispatch => {
+  values.customerId = customerId;
+  const res = await axios.post("/api/avaloninfo", values);
+  // console.log(history);
+  // history.push("/customers");
+
+  //const res = storylist;
+  dispatch({ type: FETCH_AVALONINFO, payload: values });
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
 };
