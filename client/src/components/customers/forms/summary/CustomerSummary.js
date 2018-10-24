@@ -3,8 +3,8 @@ import React, { Component } from "react";
 class CustomerSummary extends Component {
   render() {
     return (
-      <div id="Summary" className="panel-collapse collapse in">
-        <div className="panel-body">
+      
+        <div >
           <img
             src={this.props.customerSummary.logourl}
             className="img-responsive pull-right"
@@ -50,7 +50,7 @@ class CustomerSummary extends Component {
             </table>
           </div>
         </div>
-      </div>
+     
     );
   }
 }

@@ -15,23 +15,32 @@ import * as actions from "../../../../actions";
 class CustomerForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {isInitializeState : false}
+    this.state = { disabled: true, isInitializeState: false }
+    this.handelEdit = this.handelEdit.bind(this);
+    this.handelCancelEdit = this.handelCancelEdit.bind(this);
+  }
+
+  handelEdit() {
+    this.setState({ disabled: !this.state.disabled })
+  }
+  handelCancelEdit() {
+    this.setState({ disabled: true })
   }
 
 
- componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
 
-  if (nextProps.customerForm && !this.state.isInitializeState){
-  // console.log('componentWillReceiveProps', nextProps.customerForm);
-  
-    const initData = nextProps.customerForm;
-    nextProps.initialize(initData);
-    this.setState({isInitializeState : true});
+    if (nextProps.customerForm && !this.state.isInitializeState) {
+      // console.log('componentWillReceiveProps', nextProps.customerForm);
+
+      const initData = nextProps.customerForm;
+      nextProps.initialize(initData);
+      this.setState({ isInitializeState: true });
+    }
   }
- }
+
 
   renderFields() {
-
     return _.map(formFields, ({ label, name, type }) => {
       // console.log(this.props.customerDetails[name]);
       if (type === "text") {
@@ -118,19 +127,11 @@ class CustomerForm extends Component {
   render() {
     return (
       <div>
-        <a href="#" className="pull-right icon_well"><i className="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+        <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button>
         <div className="clearfix"></div>
         <form
           className="form-horizontal label-left"
-          onSubmit={() =>
-            this.props.handleSubmit(
-              this.props.submitCustomerInfo(
-                this.props.formValues,
-                this.props.history
-              )
-            )
-          }
-        >
+          onSubmit={this.props.handleSubmit((history) => { this.props.submitCustomerInfo(this.props.formValues.values, this.props.match.params.customerId, history) })}>
           {this.renderFields()}
           {
             this.state.disabled === true ? "" :
@@ -165,27 +166,23 @@ function validate(values) {
 
   return errors;
 }
-
-
-
-
 function mapStateToProps(state) {
- 
- // console.log(state.customerForm);
-  return { formValues: state.form.customerInfoForm,
-    customerForm: state.customerForm };
+  // console.clear();
+  // console.log(state.customerForm);
+  return {
+    formValues: state.form.customerInfoForm,
+    customerForm: state.customerForm
+  };
 }
 
 CustomerForm = connect(
-  mapStateToProps
-  // actions
+  mapStateToProps,
+  actions
 )(withRouter(CustomerForm));
 
 export default reduxForm({
   //validate,
-  
   form: "customerInfoForm",
-  //initialValues: intializeForm,
   enableReinitialize: true
 })(withRouter(CustomerForm));
 

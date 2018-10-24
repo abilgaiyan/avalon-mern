@@ -21,7 +21,7 @@ class Welcome extends Component {
 
     render() {
         return (
-            <div className="row LoginForm">
+            <div className="container-fluid LoginForm">
                 <div className="container">
                    
                     <div className="login-form">

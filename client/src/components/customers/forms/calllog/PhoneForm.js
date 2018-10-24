@@ -39,14 +39,7 @@ class PhoneForm extends Component {
             </div>
             <div className="modal-body">
               <form
-                onSubmit={this.props.handleSubmit((values, history) =>
-                  this.props.submitPhonecall(
-                    values,
-                    this.props.customerId,
-                    history
-                  )
-                )}
-              >
+                onSubmit={this.props.handleSubmit((values, history) => this.props.submitPhonecall(values, this.props.match.params.customerId, history))}>
                 {this.renderFields()}
                 <button type="submit">Submit</button>
               </form>

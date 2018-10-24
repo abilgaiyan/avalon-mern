@@ -158,7 +158,7 @@ export const fetchCustomerInfo = customerId => async dispatch => {
 // Set Customer Info data wrt. Customer id
 export const submitCustomerInfo = (values, customerId, history) => async dispatch => {
   console.clear();
-  console.log(values)
+  console.log(values);
   values.customerId = customerId;
   const res = await axios.post("/api/customerinfo", values);
   // console.log(history);

@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     
-      <div className="container-fluid text-center">
+      <div className="footer-well text-center col-sm-12 col-md-12">
         {/* <div className="tt-footer-inner">
               <div className="row">
                   <div className="col-md-8 col-md-offset-2">
@@ -13,7 +13,7 @@ const Footer = () => {
                   </div>
               </div>
           </div> */}
-        <div className="tt-footer-line wow fadeInUp">
+        <div>
           © All rights reserved.
         </div>
       </div>

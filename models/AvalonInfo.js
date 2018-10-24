@@ -7,12 +7,14 @@ const websiteStatusSchema = require('./WebsiteStatus');
 
 const avalonInfoSchema = new Schema({
     signupDate: Date,
-    numberOfDaysFromSignup: Number,
+    numberOfDaysFromSignup: { type: Number, default: 0 },
     layoutSentDate: Date,
     layoutAprrovedDate: Date,
     betaOnReviewDate: Date,
     comments: String,
-    _websitestatus: { type: Schema.Types.ObjectId, ref: "websitestatus" },
+    // _websitestatus: { type: Schema.Types.ObjectId, ref: "websitestatus" },
+    websitestatus: String,
+    _user: { type: Schema.Types.ObjectId, ref: 'User' },
     createDate: Date,
     updateDate: Date
 

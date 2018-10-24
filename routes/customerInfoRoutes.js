@@ -54,11 +54,12 @@ module.exports = app => {
   app.post("/api/customerinfo", async (req, res) => {
 
     const customerinfo = { ...req.body };
+    console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------", customerinfo)
     customerinfo.updateDate = Date.now();
     const customerId = req.body.customerId;
     if (req.body.customerId = 0) {
       customerinfo.createDate = Date.now();
-      delete customerinfo.customerId;  
+      delete customerinfo.customerId;
     }
     else {
       // customerinfo._id = mongoose.Types.ObjectId(req.body.customerId);

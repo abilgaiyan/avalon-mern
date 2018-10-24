@@ -50,26 +50,25 @@ class AccordianPanel extends Component {
   }
 }
 class CustomerDetails extends Component {
-
-
   componentWillMount() {
     const customerId = this.props.match.params.customerId;
     this.props.fetchCustomerInfo(customerId);
-    
+
   }
 
   renderTargetAreas() {
-    if (!this.props.customerForm ) return;
+    if (!this.props.customerForm) return;
     return <TargetAreasForm targetAreasData={this.props.customerForm} />;
   }
 
   renderSummry() {
-    if (!this.props.customerForm ) return;
+    if (!this.props.customerForm) return;
     return <CustomerSummary customerSummary={this.props.customerForm} />;
   }
   renderCustomer() {
     //if (!this.props.customerForm ) return;
-    return <CustomerForm ref="customer"  />;
+    return <CustomerForm ref="customer" />;
+    //return <CustomerForm customerFormPassed={this.props.customerForm} />;
   }
   renderEmail() {
     return <Email customerId={this.props.match.params.customerId} />;
@@ -91,13 +90,13 @@ class CustomerDetails extends Component {
   renderQuery() {
     return <CustomerQuery customerId={this.props.match.params.customerId} />;
   }
-  renderAvalonInfo(){
-    return <AvaloninfoForm/>
+  renderAvalonInfo() {
+    return <AvaloninfoForm />
   }
   render() {
     return (
-      <div className="container-fluid">
-        <div className="col-sm-6">
+      <div className="row">
+        <div className="col-sm-12 col-md-6">
           {/* accordian */}
           <div className="panel-group" id="accordion1">
             {/* Summry Start Here */}
@@ -129,7 +128,7 @@ class CustomerDetails extends Component {
               active="True"
               AccId="Avalon_Info"
               paraent="accordion1"
-              custmClass =""
+              custmClass=""
             />
           </div>
           {/* end Accordian */}
@@ -137,7 +136,7 @@ class CustomerDetails extends Component {
 
         {/* divided block */}
 
-        <div className="col-sm-6">
+        <div className="col-sm-12 col-md-6">
           {/* Start Accordian */}
           <div className="panel-group" id="accordion">
             {/* TargetAreas Start Here */}
