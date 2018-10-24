@@ -43,7 +43,7 @@ class AvaloninfoForm extends Component {
             type={type}
             label={label}
             name={name}
-            // validate={[required, maxLength15]}
+          // validate={[required, maxLength15]}
           />
         );
       }
@@ -56,7 +56,7 @@ class AvaloninfoForm extends Component {
             type={type}
             label={label}
             name={name}
-            // validate={[required, maxLength15]}
+          // validate={[required, maxLength15]}
           />
         );
       }
@@ -69,7 +69,7 @@ class AvaloninfoForm extends Component {
             type={type}
             label={label}
             name={name}
-            // validate={[required, maxLength15]}
+          // validate={[required, maxLength15]}
           />
         );
       }
@@ -98,16 +98,8 @@ class AvaloninfoForm extends Component {
     return (
       <div>
         <form
-        className="form-horizontal label-left"
-          onSubmit={() =>
-            this.props.handleSubmit(
-              this.props.submitCustomerInfo(
-                this.props.formValues,
-                this.props.history
-              )
-            )
-          }
-        >
+          className="form-horizontal label-left"
+          onSubmit={this.props.handleSubmit((values, history) => this.props.submitAvalonInfo(values, history))}>
           {this.renderFields()}
           <div className="form-group">
             <div className="col-xs-9 col-xs-offset-3 text-left">

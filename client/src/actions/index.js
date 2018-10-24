@@ -173,7 +173,7 @@ export const submitCustomerInfo = (values, customerId, history) => async dispatc
 // Set Avalon Info data wrt. Customer id
 export const submitAvalonInfo = (values, customerId, history) => async dispatch => {
   values.customerId = customerId;
-  const res = await axios.post("/api/avaloninfo", values);
+  const res = await axios.post("/api/avaloninfo_Post", values);
   // console.log(history);
   // history.push("/customers");
 
