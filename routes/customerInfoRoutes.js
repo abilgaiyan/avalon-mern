@@ -58,7 +58,7 @@ module.exports = app => {
     const customerId = req.body.customerId;
     if (req.body.customerId = 0) {
       customerinfo.createDate = Date.now();
-      
+      delete customerinfo.customerId;  
     }
     else{
      // customerinfo._id = mongoose.Types.ObjectId(req.body.customerId);

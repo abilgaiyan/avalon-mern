@@ -11,39 +11,26 @@ import formFields from "./formFields";
 import { withRouter } from "react-router-dom";
 import * as actions from "../../../../actions";
 
-// const required = value => (value ? undefined : "Required");
-// const maxLength = max => value =>
-//   value && value.length > max ? `Must be ${max} characters or less` : undefined;
-// const maxLength15 = maxLength(15);
-// const number = value =>
-//   value && isNaN(Number(value)) ? "Must be a number" : undefined;
-// const minValue = min => value =>
-//   value && value < min ? `Must be at least ${min}` : undefined;
-// const minValue18 = minValue(18);
-// const email = value =>
-//   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-//     ? "Invalid email address"
-//     : undefined;
-// const tooOld = value =>
-//   value && value > 65 ? "You might be too old for this" : undefined;
-// const aol = value =>
-//   value && /.+@aol\.com/.test(value)
-//     ? "Really? You still use AOL for your email?"
-//     : undefined;
 
 class CustomerForm extends Component {
   constructor(props) {
     super(props);
+    this.state = {isInitializeState : false}
   }
 
-  componentWillReceiveProps() {
-    const initData = this.props.customerDetails;
-    this.props.initialize(initData);
+
+ componentWillReceiveProps(nextProps){
+
+  if (nextProps.customerForm && !this.state.isInitializeState){
+   console.log('componentWillReceiveProps', nextProps.customerForm);
+  
+    const initData = nextProps.customerForm;
+    nextProps.initialize(initData);
+    this.setState({isInitializeState : true});
   }
+ }
 
   renderFields() {
-    // console.clear();
-    // console.log("216515468", this.props.customerDetails);
 
     return _.map(formFields, ({ label, name, type }) => {
       // console.log(this.props.customerDetails[name]);
@@ -126,8 +113,8 @@ class CustomerForm extends Component {
   render() {
     return (
       <div>
-        <a href="#" class="pull-right icon_well"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-        <div class="clearfix"></div>
+        <a href="#" className="pull-right icon_well"><i className="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+        <div className="clearfix"></div>
         <form
           className="form-horizontal label-left"
           onSubmit={() =>
@@ -143,12 +130,12 @@ class CustomerForm extends Component {
           <div className="form-group">
             <div className="col-xs-9 col-xs-offset-3 text-left">
               <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
-                <i class="fa fa-check-square" aria-hidden="true"></i>
+                <i className="fa fa-check-square" aria-hidden="true"></i>
                 Save
 
               </button>
               <Link to="/customerinfo" className="btn btn-cancle">
-                <i class="fa fa-close" aria-hidden="true"></i>
+                <i className="fa fa-close" aria-hidden="true"></i>
                 Cancel
               </Link>
             </div>
@@ -175,10 +162,14 @@ function validate(values) {
   return errors;
 }
 
-function mapStateToProps(state) {
-  console.log("vvvv", state.form);
 
-  return { formValues: state.form.customerForm };
+
+
+function mapStateToProps(state) {
+ 
+ // console.log(state.customerForm);
+  return { formValues: state.form.customerInfoForm,
+    customerForm: state.customerForm };
 }
 
 CustomerForm = connect(
@@ -188,7 +179,9 @@ CustomerForm = connect(
 
 export default reduxForm({
   //validate,
+  
   form: "customerInfoForm",
+  //initialValues: intializeForm,
   enableReinitialize: true
 })(withRouter(CustomerForm));
 

@@ -49,23 +49,26 @@ class AccordianPanel extends Component {
   }
 }
 class CustomerDetails extends Component {
-  componentDidMount() {
+
+
+  componentWillMount() {
     const customerId = this.props.match.params.customerId;
     this.props.fetchCustomerInfo(customerId);
+    
   }
 
   renderTargetAreas() {
-    if (!this.props.customerForm && this.props.customerForm.length <= 0) return;
+    if (!this.props.customerForm ) return;
     return <TargetAreasForm targetAreasData={this.props.customerForm} />;
   }
 
   renderSummry() {
-    if (!this.props.customerForm && this.props.customerForm.length <= 0) return;
+    if (!this.props.customerForm ) return;
     return <CustomerSummary customerSummary={this.props.customerForm} />;
   }
   renderCustomer() {
-    if (!this.props.customerForm && this.props.customerForm.length <= 0) return;
-    return <CustomerForm customerDetails={this.props.customerForm} />;
+    //if (!this.props.customerForm ) return;
+    return <CustomerForm ref="customer"  />;
   }
   renderEmail() {
     return <Email customerId={this.props.match.params.customerId} />;
