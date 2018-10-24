@@ -5,7 +5,7 @@ class TargetAreasForm extends Component {
     return (
      
           <div className="info-section">
-            <table class="table table-info no-margin">
+            <table className="table table-info no-margin">
               <tbody>
                 <tr>
                   <td>Responsive Status:</td>
