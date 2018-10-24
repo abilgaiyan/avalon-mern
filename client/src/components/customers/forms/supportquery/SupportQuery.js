@@ -4,7 +4,7 @@ class SupportQuery extends Component {
   render() {
     return (
           <div className="info-section">
-            <table class="table table-info no-margin">
+            <table className="table table-info no-margin">
               <tbody>
                 <tr>
                   <td>Avg Monthly Queries:</td>
