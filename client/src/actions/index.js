@@ -147,7 +147,7 @@ export const submitQuery = (values, history) => async dispatch => {
 
 // Fetch last phone call communication data by Customer id
 export const fetchCustomerInfo = customerId => async dispatch => {
-  //console.log(customerId)
+  //console.log("Hit from search", customerId)
   const res = await axios.get("/api/customerinfo/" + customerId);
 
   //const res = storylist;
@@ -157,8 +157,8 @@ export const fetchCustomerInfo = customerId => async dispatch => {
 
 // Set Customer Info data wrt. Customer id
 export const submitCustomerInfo = (values, customerId, history) => async dispatch => {
-  console.clear();
-  console.log(values);
+  // console.clear();
+  // console.log(values);
   values.customerId = customerId;
   const res = await axios.post("/api/customerinfo", values);
   // console.log(history);

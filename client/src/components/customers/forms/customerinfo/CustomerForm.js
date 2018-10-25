@@ -12,9 +12,11 @@ import { withRouter } from "react-router-dom";
 import * as actions from "../../../../actions";
 
 
+
 class CustomerForm extends Component {
   constructor(props) {
     super(props);
+
     this.state = { disabled: true, isInitializeState: false }
     this.handelEdit = this.handelEdit.bind(this);
     this.handelCancelEdit = this.handelCancelEdit.bind(this);
@@ -28,8 +30,8 @@ class CustomerForm extends Component {
   }
 
 
-  componentWillReceiveProps(nextProps) {
 
+  componentWillReceiveProps(nextProps) {
     if (nextProps.customerForm && !this.state.isInitializeState) {
       // console.log('componentWillReceiveProps', nextProps.customerForm);
 
@@ -131,7 +133,7 @@ class CustomerForm extends Component {
         <div className="clearfix"></div>
         <form
           className="form-horizontal label-left"
-          onSubmit={this.props.handleSubmit((history) => { this.props.submitCustomerInfo(this.props.formValues.values, this.props.match.params.customerId, history) })}>
+          onSubmit={this.props.handleSubmit((history) => { this.props.submitCustomerInfo(this.props.formValues.values, this.props.match.params.customerId, history).then(this.setState({ disabled: true })) })}>
           {this.renderFields()}
           {
             this.state.disabled === true ? "" :

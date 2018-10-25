@@ -135,7 +135,8 @@ class AvaloninfoForm extends Component {
 // }
 
 function mapStateToProps(state) {
-  //console.log(state.form.contactusForm.values);
+  // console.clear();
+  // console.log(state.form.avaloninfoForm);
   return { formValues: state.form.AvaloninfoForm };
 }
 

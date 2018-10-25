@@ -56,6 +56,11 @@ class CustomerDetails extends Component {
 
   }
 
+  componentWillReceiveProps(nextProps) {
+    const customerId = this.props.match.params.customerId;
+    this.props.fetchCustomerInfo(customerId);
+  }
+
   renderTargetAreas() {
     if (!this.props.customerForm) return;
     return <TargetAreasForm targetAreasData={this.props.customerForm} />;
@@ -67,7 +72,7 @@ class CustomerDetails extends Component {
   }
   renderCustomer() {
     //if (!this.props.customerForm ) return;
-    return <CustomerForm ref="customer" />;
+    return <CustomerForm />;
     //return <CustomerForm customerFormPassed={this.props.customerForm} />;
   }
   renderEmail() {
