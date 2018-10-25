@@ -3,8 +3,15 @@ import { connect } from 'react-redux';
 // import Autosuggest from "react-autosuggest";
 import ReactAutocomplete from "react-autocomplete";
 import { withRouter } from "react-router-dom";
+import * as actions from "../actions";
 
 class Search extends Component {
+
+    componentWillMount() {
+        const customerId = this.props.match.params.customerId;
+        this.props.fetchCustomers();
+        this.props.fetchCustomerInfo(customerId);
+    }
 
     constructor(props) {
         super(props)
@@ -30,8 +37,8 @@ class Search extends Component {
                 value={this.state.value}
                 onChange={e => this.setState({ value: e.target.value })}
                 //onSelect={value => this.setState({ value })}
-                //onSelect={(item, value) => window.location.assign("/customers/" + value._id)}
-                onSelect={(item, value) => this.props.history.push('/customers/' + value._id)}
+                onSelect={(item, value) => window.location.assign("/customers/" + value._id)}
+            //onSelect={(item, value) => this.props.history.push('/customers/' + value._id)}
             />
         )
     }
@@ -41,11 +48,12 @@ class Search extends Component {
 
 
 function mapStateToProps(state) {
-    // console.clear();
-    // console.log(state.customers);
+    console.clear();
+    console.log(state);
     return {
-        allCustomers: state.customers
+        allCustomers: state.customers,
+        customerForm: state.customerForm
     };
 }
 
-export default connect(mapStateToProps)(withRouter(Search))
+export default connect(mapStateToProps, actions)(withRouter(Search))

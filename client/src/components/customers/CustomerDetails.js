@@ -1,64 +1,44 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import * as actions from "../../actions";
+import AccordianPanel from "./AccordianPanel"
 import Email from "./Email";
 import PhoneCall from "./PhoneCall";
 import CustomerQuery from "./CustomerQuery";
-import { fetchCustomerInfo } from "../../actions/index";
+import CallLog from "../customers/forms/calllog/CallLogList";
 import CustomerForm from "../customers/forms/customerinfo/CustomerForm";
+import AvaloninfoForm from "../customers/forms/avaloninfo/AvaloninfoForm"
 import CustomerSummary from "../customers/forms/summary/CustomerSummary";
 import TargetAreasForm from "../customers/forms/targetareas/TargetAreasForm";
 import SupportQueryForm from "../customers/forms/supportquery/SupportQuery";
-import CallLog from "../customers/forms/calllog/CallLogList";
-import AvaloninfoForm from "../customers/forms/avaloninfo/AvaloninfoForm"
-
 import "../css/common.css";
 
-class AccordianPanel extends Component {
-  render() {
-    return (
-      <div className="panel panel-default new">
-        <div
-          className={
-            this.props.active === "True"
-              ? "panel-heading active " + this.props.custmClass
-              : "panel-heading " + this.props.custmClass
-          }
-        >
-          <h4 className="panel-title">
-            <a
-              className={this.props.active === "True" ? "" : "collapsed"}
-              data-toggle="collapse"
-              data-parent={"#" + this.props.parent}
-              href={"#" + this.props.AccId}
-            >
-              {this.props.title}
-            </a>
-          </h4>
-        </div>
-        <div
-          id={this.props.AccId}
-          className={
-            this.props.active === "True"
-              ? "panel-collapse collapse in"
-              : "panel-collapse collapse"
-          }
-        >
-          <div className="panel-body">{this.props.func}</div>
-        </div>
-      </div>
-    );
-  }
-}
+
 class CustomerDetails extends Component {
+
   componentWillMount() {
     const customerId = this.props.match.params.customerId;
     this.props.fetchCustomerInfo(customerId);
-
   }
 
-  componentWillReceiveProps(nextProps) {
-    const customerId = this.props.match.params.customerId;
-    this.props.fetchCustomerInfo(customerId);
+  // componentWillReceiveProps(nextProps) {
+  //   const customerId = this.props.match.params.customerId;
+  //   this.props.fetchCustomerInfo(customerId);
+  // }
+
+  renderSummry() {
+    if (!this.props.customerForm) return;
+    return <CustomerSummary customerSummary={this.props.customerForm} />;
+  }
+
+  renderCustomerInfo() {
+    //if (!this.props.customerForm ) return;
+    return <CustomerForm />;
+    //return <CustomerForm customerFormPassed={this.props.customerForm} />;
+  }
+
+  renderAvalonInfo() {
+    return <AvaloninfoForm />
   }
 
   renderTargetAreas() {
@@ -66,18 +46,10 @@ class CustomerDetails extends Component {
     return <TargetAreasForm targetAreasData={this.props.customerForm} />;
   }
 
-  renderSummry() {
-    if (!this.props.customerForm) return;
-    return <CustomerSummary customerSummary={this.props.customerForm} />;
-  }
-  renderCustomer() {
-    //if (!this.props.customerForm ) return;
-    return <CustomerForm />;
-    //return <CustomerForm customerFormPassed={this.props.customerForm} />;
-  }
   renderEmail() {
     return <Email customerId={this.props.match.params.customerId} />;
   }
+
   renderPhone() {
     return <PhoneCall customerId={this.props.match.params.customerId} />;
   }
@@ -95,9 +67,7 @@ class CustomerDetails extends Component {
   renderQuery() {
     return <CustomerQuery customerId={this.props.match.params.customerId} />;
   }
-  renderAvalonInfo() {
-    return <AvaloninfoForm />
-  }
+
   render() {
     return (
       <div className="row">
@@ -118,7 +88,7 @@ class CustomerDetails extends Component {
             {/* Customer Info Start Here */}
             <AccordianPanel
               title="Customer Info"
-              func={this.renderCustomer()}
+              func={this.renderCustomerInfo()}
               active="True"
               AccId="Customer_Info"
               paraent="accordion1"
@@ -220,6 +190,5 @@ function mapStateToProps({ customerForm }) {
 }
 
 export default connect(
-  mapStateToProps,
-  { fetchCustomerInfo }
+  mapStateToProps, actions
 )(CustomerDetails);

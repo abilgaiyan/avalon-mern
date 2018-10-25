@@ -5,7 +5,7 @@ import surveyReducer from "./surveyReducers";
 import contactusReducer from "./contactusReducers";
 import storiesReducer from "./storyReducer";
 import customersReducers from "./customersReducers";
-import customerReducers from "./customerReducers";
+//import customerReducers from "./customerReducers";
 
 import emailReducers from "./emailReducer";
 import phoneReducer from "./phoneReducer";
@@ -27,7 +27,7 @@ export default combineReducers({
   contactusForm: reduxForm,
   contactus: contactusReducer,
   customers: customersReducers,
-  customer: customerReducers,
+  //customer: customerReducers,
   email: emailReducers,
   emailForm: emailReducers,
   phonecall: phoneReducer,
