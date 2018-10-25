@@ -8,9 +8,9 @@ import * as actions from "../actions";
 class Search extends Component {
 
     componentWillMount() {
-        const customerId = this.props.match.params.customerId;
+        //const customerId = this.props.match.params.customerId;
         this.props.fetchCustomers();
-        this.props.fetchCustomerInfo(customerId);
+
     }
 
     constructor(props) {
@@ -37,8 +37,11 @@ class Search extends Component {
                 value={this.state.value}
                 onChange={e => this.setState({ value: e.target.value })}
                 //onSelect={value => this.setState({ value })}
-                onSelect={(item, value) => window.location.assign("/customers/" + value._id)}
-            //onSelect={(item, value) => this.props.history.push('/customers/' + value._id)}
+                //onSelect={(item, value) => window.location.assign("/customers/" + value._id)}
+                onSelect={(item, value) => {
+                    //this.props.history.push('/customers/' + value._id)
+                    return this.props.fetchAutocomplete_ID(value._id, this.props.history);
+                }}
             />
         )
     }
@@ -48,11 +51,12 @@ class Search extends Component {
 
 
 function mapStateToProps(state) {
-    console.clear();
-    console.log(state);
+    // console.clear();
+    // console.log(state);
     return {
         allCustomers: state.customers,
-        customerForm: state.customerForm
+        customerForm: state.customerForm,
+        autocompleteId: state.autoCompleteId
     };
 }
 

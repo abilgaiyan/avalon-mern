@@ -17,6 +17,7 @@ import websiteInfoReducer from "./websiteInfoReducer";
 import customerSummary from "./customerSummary";
 
 import avalonInfo from "./avaloninfoReducer";
+import autoCompleteId from "./autocompleteReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -36,5 +37,6 @@ export default combineReducers({
   targetAreas: targetAreasReducers,
   websiteInfo: websiteInfoReducer,
   customersummary: customerSummary,
-  avalonInfo: avalonInfo
+  avalonInfo: avalonInfo,
+  autoCompleteId: autoCompleteId
 });

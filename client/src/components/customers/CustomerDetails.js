@@ -17,8 +17,21 @@ import "../css/common.css";
 class CustomerDetails extends Component {
 
   componentWillMount() {
-    const customerId = this.props.match.params.customerId;
+    const customerId = this.props.autoCompleteId || this.props.match.params.customerId;
     this.props.fetchCustomerInfo(customerId);
+  }
+
+
+
+  componentWillReceiveProps(nextProps) {
+    const customerId = nextProps.autoCompleteId;
+    // console.log("customerId", this.props.autoCompleteId, nextProps)
+
+    if (customerId !== this.props.autoCompleteId) {
+
+      this.props.fetchCustomerInfo(customerId);
+    }
+
   }
 
   // componentWillReceiveProps(nextProps) {
@@ -29,6 +42,7 @@ class CustomerDetails extends Component {
   renderSummry() {
     if (!this.props.customerForm) return;
     return <CustomerSummary customerSummary={this.props.customerForm} />;
+    //return <CustomerSummary />;
   }
 
   renderCustomerInfo() {
@@ -185,8 +199,8 @@ class CustomerDetails extends Component {
   }
 }
 
-function mapStateToProps({ customerForm }) {
-  return { customerForm };
+function mapStateToProps({ customerForm, autoCompleteId }) {
+  return { customerForm, autoCompleteId };
 }
 
 export default connect(

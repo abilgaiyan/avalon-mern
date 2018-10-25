@@ -10,8 +10,17 @@ import {
   FETCH_PHONECALL,
   FETCH_QUERY,
   FETCH_CUSTOMERINFO,
-  FETCH_AVALONINFO
+  FETCH_AVALONINFO,
+  FETCH_AUTOCOMPLETE_ID
 } from "./types";
+
+//Store Autocomplete_ID
+export const fetchAutocomplete_ID = (autocompleteId, history) => {
+  // "/customers/" + value._id)
+  history.push("/customers/" + autocompleteId);
+  // history.push(`/customers/${autocompleteId}`);
+  return { type: FETCH_AUTOCOMPLETE_ID, payload: autocompleteId };
+};
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get("/api/current_user");

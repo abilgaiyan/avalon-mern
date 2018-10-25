@@ -20,3 +20,6 @@ export const FETCH_CUSTOMERINFO = "fetch_customerinfo";
 
 export const FETCH_AVALONINFO = "fetch_avaloninfo";
 
+export const FETCH_AUTOCOMPLETE_ID = "fetch_autocomplete_id";
+
+export const FETCH_CUSTOMERSUMMARY = "fetch_Cstomer_Summary";
