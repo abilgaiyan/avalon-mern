@@ -32,7 +32,7 @@ class ContactusForm extends Component {
           onSubmit={() =>
             this.props.handleSubmit(
               this.props.submitContactus(
-                this.props.formValues,
+                this.props.cformValues,
                 this.props.history
               )
             )
@@ -67,7 +67,7 @@ function validate(values) {
 }
 function mapStateToProps(state) {
   //console.log(state.form.contactusForm.values);
-  return { formValues: state.form.contactusForm.values };
+  return { cformValues: state.form.contactusForm.values };
 }
 
 ContactusForm = connect(
