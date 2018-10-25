@@ -38,7 +38,7 @@ class Header extends Component {
           <div className="container-fluid">
             <div className="navbar-header col-sm-4">
               <a className="navbar-brand" href="#">
-                Welcome Ajay Jha
+                Welcome {this.props.auth && this.props.auth.name ? this.props.auth.name :'' }
               </a>
             </div>
             <div className="col-sm-4 search_wraper">
