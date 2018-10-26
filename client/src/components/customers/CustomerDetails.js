@@ -6,11 +6,13 @@ import Email from "./Email";
 import PhoneCall from "./PhoneCall";
 import CustomerQuery from "./CustomerQuery";
 import CallLog from "../customers/forms/calllog/CallLogList";
-import CustomerForm from "../customers/forms/customerinfo/CustomerForm";
-import AvaloninfoForm from "../customers/forms/avaloninfo/AvaloninfoForm"
 import CustomerSummary from "../customers/forms/summary/CustomerSummary";
+import CustomerForm from "../customers/forms/customerinfo/CustomerForm";
+import AvaloninfoForm from "../customers/forms/avaloninfo/AvaloninfoForm";
+import BillingForm from "../customers/forms/billinginfo/BillingForm";
 import TargetAreasForm from "../customers/forms/targetareas/TargetAreasForm";
 import SupportQueryForm from "../customers/forms/supportquery/SupportQuery";
+
 import "../css/common.css";
 
 
@@ -19,6 +21,7 @@ class CustomerDetails extends Component {
   componentWillMount() {
     const customerId = this.props.autoCompleteId || this.props.match.params.customerId;
     this.props.fetchCustomerInfo(customerId);
+    this.props.fetchBillingInfo(customerId); //Arg. avalonbillinginfoId
   }
 
 
@@ -53,6 +56,10 @@ class CustomerDetails extends Component {
 
   renderAvalonInfo() {
     return <AvaloninfoForm />
+  }
+
+  renderBillingForm() {
+    return <BillingForm />
   }
 
   renderTargetAreas() {
@@ -116,6 +123,16 @@ class CustomerDetails extends Component {
               func={this.renderAvalonInfo()}
               active="True"
               AccId="Avalon_Info"
+              paraent="accordion1"
+              custmClass=""
+            />
+
+            {/* Billing form */}
+            <AccordianPanel
+              title="Billing Form"
+              func={this.renderBillingForm()}
+              active="True"
+              AccId="Billing_Form"
               paraent="accordion1"
               custmClass=""
             />

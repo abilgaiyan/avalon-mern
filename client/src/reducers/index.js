@@ -9,14 +9,15 @@ import customersReducers from "./customersReducers";
 
 import emailReducers from "./emailReducer";
 import phoneReducer from "./phoneReducer";
-
 import queryReducer from "./queryReducer";
+
+import customerSummary from "./customerSummary";
 import customerinfoReducers from "./customerinfoReducers";
+import avalonInfo from "./avaloninfoReducer";
+import billingInfoReducer from "./billinginfoReducer";
 import targetAreasReducers from "./targetAreasReducers";
 import websiteInfoReducer from "./websiteInfoReducer";
-import customerSummary from "./customerSummary";
 
-import avalonInfo from "./avaloninfoReducer";
 import autoCompleteId from "./autocompleteReducer";
 
 export default combineReducers({
@@ -33,10 +34,11 @@ export default combineReducers({
   emailForm: emailReducers,
   phonecall: phoneReducer,
   query: queryReducer,
-  customerForm: customerinfoReducers,
   targetAreas: targetAreasReducers,
   websiteInfo: websiteInfoReducer,
   customersummary: customerSummary,
+  customerForm: customerinfoReducers,
   avalonInfo: avalonInfo,
+  billingInfo: billingInfoReducer,
   autoCompleteId: autoCompleteId
 });

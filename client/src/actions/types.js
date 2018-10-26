@@ -16,10 +16,12 @@ export const FETCH_PHONECALL = "fetch_phonecall";
 
 export const FETCH_QUERY = "fetch_query";
 
+export const FETCH_CUSTOMERSUMMARY = "fetch_Cstomer_Summary";
+
 export const FETCH_CUSTOMERINFO = "fetch_customerinfo";
 
 export const FETCH_AVALONINFO = "fetch_avaloninfo";
 
-export const FETCH_AUTOCOMPLETE_ID = "fetch_autocomplete_id";
+export const FETCH_BILLINGINFO = "fetch_billing_info";
 
-export const FETCH_CUSTOMERSUMMARY = "fetch_Cstomer_Summary";
+export const FETCH_AUTOCOMPLETE_ID = "fetch_autocomplete_id";

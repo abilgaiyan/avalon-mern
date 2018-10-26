@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  FETCH_AUTOCOMPLETE_ID,
   FETCH_USER,
   FETCH_SURVEYS,
   FETCH_CONTACTUS,
@@ -11,7 +12,7 @@ import {
   FETCH_QUERY,
   FETCH_CUSTOMERINFO,
   FETCH_AVALONINFO,
-  FETCH_AUTOCOMPLETE_ID
+  FETCH_BILLINGINFO
 } from "./types";
 
 //Store Autocomplete_ID
@@ -189,4 +190,28 @@ export const submitAvalonInfo = (values, customerId, history) => async dispatch 
   //const res = storylist;
   dispatch({ type: FETCH_AVALONINFO, payload: values });
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
+};
+
+
+// Fetch Billing Info Details by AvalonBillingId
+export const fetchBillingInfo = avalonbillinginfoid => async dispatch => {
+  //console.log("Hit from search", customerId)
+  const res = await axios.get("/api/avalonbillinginfo/" + avalonbillinginfoid);
+
+  dispatch({ type: FETCH_BILLINGINFO, payload: res.data[0] || {} });
+  // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
+};
+
+// Set Billing Info data wrt. Customer id
+export const submitBillingInfo = (values, customerId, history) => async dispatch => {
+  //alert("147");
+  // console.clear();
+  // console.log(values);
+  values.customerId = customerId;
+  const res = await axios.post("/api/avalonbillinginfo", values);
+  // console.log(history);
+  // history.push("/customers");
+
+  //const res = storylist;
+  dispatch({ type: FETCH_BILLINGINFO, payload: values });
 };
