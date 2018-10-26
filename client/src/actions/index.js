@@ -24,7 +24,9 @@ export const fetchAutocomplete_ID = (autocompleteId, history) => {
 };
 
 export const fetchUser = () => async dispatch => {
-  const res = await axios.get("/api/current_user");
+  //const res = await axios.get("/api/current_user");
+  const res ={}; 
+  res.data = {"_id":"5bd1ab9f6915e233b8ac8ecb","googleId":"107143103854375293515","name":"Ajay Bilgaiyan","__v":0,"credits":0};
 
   dispatch({ type: FETCH_USER, payload: res.data });
 };
