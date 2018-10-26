@@ -8,7 +8,7 @@ const CustomerAllData = mongoose.model('customerdata');
 
 module.exports = app => {
     //Get Customer all data List
-    app.get('/api/customeralldata', requireLogin, async (req, res) => {
+    app.get('/api/customeralldata',  async (req, res) => {
         const customeralldata = await CustomerAllData.find({});
         //console.log(customeralldata);
         res.send(customeralldata);
@@ -16,7 +16,7 @@ module.exports = app => {
     });
 
     //Get Customer data by Name
-    app.get('/api/customerbyname', requireLogin, async (req, res) => {
+    app.get('/api/customerbyname',  async (req, res) => {
         // console.log(req.body);
 
         const name = { customerName: "ACKERMAN JEWELERS" }
@@ -25,7 +25,7 @@ module.exports = app => {
 
     });
 
-    app.get('/api/customeralldatabyid/:customerid', requireLogin, async (req, res) => {
+    app.get('/api/customeralldatabyid/:customerid',  async (req, res) => {
         // console.log(req.params.customerid);
 
         if (req.params.customerid) {
