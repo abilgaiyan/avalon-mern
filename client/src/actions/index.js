@@ -75,9 +75,10 @@ export const fetchStories = () => async dispatch => {
   dispatch({ type: FETCH_STORIES, payload: res.data });
 };
 
-// Fetch All Customers all data
+// Fetch Customer All Data from CustomerInfo
 export const fetchCustomers = () => async dispatch => {
-  const res = await axios.get("/api/customeralldata");
+  const res = await axios.get("/api/customerallinfo");
+  // const res = await axios.get("/api/customeralldata");
 
   //const res = storylist;
   dispatch({ type: FETCH_CUSTOMERS, payload: res.data });

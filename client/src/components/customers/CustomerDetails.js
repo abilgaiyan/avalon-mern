@@ -216,8 +216,13 @@ class CustomerDetails extends Component {
   }
 }
 
-function mapStateToProps({ customerForm, autoCompleteId }) {
-  return { customerForm, autoCompleteId };
+function mapStateToProps(state) {
+  // console.clear();
+  // console.log(state);
+  return {
+    customerForm: state.customerForm,
+    autoCompleteId: state.autoCompleteId
+  };
 }
 
 export default connect(

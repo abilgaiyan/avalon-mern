@@ -33,9 +33,10 @@ module.exports = app => {
     }
   });
 
+
   app.get("/api/customerallinfo", async (req, res) => {
     const customeralldata = await CustomerInfo.find({});
-    //console.log(customeralldata);
+    console.log(customeralldata);
     res.send(customeralldata);
   });
 
