@@ -14,7 +14,14 @@ module.exports = app => {
     }, { createDate: 0, updateDate: 0 }).populate('_salesPerson')
       .populate('_buyinggroups')
       .populate('_avalonInfo')
-      .populate('_billingInfo')
+     // .populate('_billingInfo')
+      .populate({ 
+        path: '_billingInfo',
+        populate: {
+          path: '_productPlan',
+          model: 'productplan'
+        } 
+     })
       .populate('_websiteInfo')
       .populate('_productInfo')
       .populate('_ashimicrowebsiteInfo')
@@ -26,6 +33,8 @@ module.exports = app => {
       .populate('_targetAreaInfo')
       .populate('_callLogInfo');
     //console.log(customerinfo);
+
+    
     if (customerinfo) {
       res.send(customerinfo);
     } else {

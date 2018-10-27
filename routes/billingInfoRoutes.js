@@ -4,16 +4,23 @@ const { URL } = require('url');
 const mongoose = require('mongoose');
 const AvalonBillingInfo = mongoose.model('billinginfo');
 const CustomerInfo = mongoose.model("customerinfo");
+const productplanInfo = mongoose.model("productplan");
 
 module.exports = app => {
   //Get Avalon website Billing Info data 
-  app.get('/api/avalonbillinginfo/:customerid', async (req, res) => {
-    //const avalonbillinfoId = req.params.avalonbillinginfoid;
-    const customerId = req.params.customerid.toString();
+  app.get('/api/avalonbillinginfo/:avalonbillinginfoid', async (req, res) => {
+    const avalonbillinfoId = req.params.avalonbillinginfoid;
+    //const customerId = req.params.customerid.toString();
     //console.log(customerId);
-    const billinginfo = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _billingInfo: 1, _id: 0 }).populate('_billingInfo');
+    //const billinginfo = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _billingInfo: 1, _id: 0 }).populate('_billingInfo');
     //console.log(billinginfo);
     //res.send(billinginfo);
+
+    const billinginfo = await AvalonBillingInfo.find({
+      _id: mongoose.Types.ObjectId(avalonbillinfoId)
+      },{createDate: 0, updateDate: 0 }).populate({ path: '_productplan', model:'productplan'});
+
+
     if (billinginfo) {
       res.send(billinginfo);
     } else {

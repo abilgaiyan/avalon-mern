@@ -13,4 +13,4 @@ const productPlanSchema = new Schema({
 });
 
 // create modal based on schema
-mongoose.model('ProductPlan', productPlanSchema);
+mongoose.model('productplan', productPlanSchema, 'productplan');

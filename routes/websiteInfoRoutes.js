@@ -11,7 +11,7 @@ module.exports = app =>{
         const webInfoId= req.params.websiteinfoid;
         const websiteinfo = await WebsiteInfo.find({
         _id: mongoose.Types.ObjectId(webInfoId)
-        },{createDate: 0, updateDate: 0 }).populate('_productplan');
+        },{createDate: 0, updateDate: 0 }).populate({ path: '_productplan', model:'productplan'});
         //console.log(websiteinfo);
         //res.send(websiteinfo);
         if (websiteinfo) {
@@ -53,7 +53,7 @@ module.exports = app =>{
                   console.log(resp);
                 })
               }
-              
+
             }
               
             );
