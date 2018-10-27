@@ -3,6 +3,7 @@ const Path = require('path-parser');
 const { URL } = require('url');
 const mongoose = require('mongoose');
 const EmailMarketingAccountInfo = mongoose.model('emailmarketingaccountinfo');
+const CustomerInfo = mongoose.model("customerinfo");
 
 module.exports = app =>{
     //Get Customer Email Marketing Account info data by ID
@@ -30,6 +31,8 @@ app.post("/api/emailmarketingaccountinfo", async (req, res) => {
         eMktAccountInfo.createDate = Date.now();
     }
 
+    const customerId = req.body.customerId;
+
     //console.log(eMktAccountInfo);
     EmailMarketingAccountInfo.findOneAndUpdate(
       {
@@ -41,6 +44,14 @@ app.post("/api/emailmarketingaccountinfo", async (req, res) => {
         // Deal with the response data/error
         console.log(err);
        // console.log(res);
+       if (res) {
+
+        CustomerInfo.update({ _id: customerId }, {
+          _emailmarketingAccountInfo: res._id
+        }, function (err, affected, resp) {
+          console.log(resp);
+        })
+      }
       }
     );
 

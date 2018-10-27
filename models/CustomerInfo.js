@@ -22,7 +22,7 @@ const buyingGroupInfoSchema = require("./BuyingGroups");
 const customerinfoSchema = new Schema({
   jewelsoftId: String,
   avalonId: String,
-  customerName: String,
+  Name: String,
   customerDBA: String,
   mainContact: String,
   contactPersonName: String,

@@ -3,6 +3,7 @@ const Path = require('path-parser');
 const { URL } = require('url');
 const mongoose = require('mongoose');
 const BusinessEmailInfo = mongoose.model('businessemailinfo');
+const CustomerInfo = mongoose.model("customerinfo");
 
 module.exports = app =>{
     //Get Customer Website Email info By ID
@@ -29,6 +30,7 @@ app.post("/api/businessemailinfo", async (req, res) => {
     if (req.body.emailInfoId = 0){
         bemailinfo.createDate = Date.now();
     }
+    const customerId = req.body.customerId;
 
     //console.log(bemailinfo);
     BusinessEmailInfo.findOneAndUpdate(
@@ -41,6 +43,14 @@ app.post("/api/businessemailinfo", async (req, res) => {
         // Deal with the response data/error
         console.log(err);
        // console.log(res);
+       if (res) {
+
+        CustomerInfo.update({ _id: customerId }, {
+          _businessEmailInfo: res._id
+        }, function (err, affected, resp) {
+          console.log(resp);
+        })
+      }
       }
     );
 

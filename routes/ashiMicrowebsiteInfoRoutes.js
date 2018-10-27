@@ -3,6 +3,7 @@ const Path = require('path-parser');
 const { URL } = require('url');
 const mongoose = require('mongoose');
 const AshiMicrowebsiteInfo = mongoose.model('ashimicrowebsiteinfo');
+const CustomerInfo = mongoose.model("customerinfo");
 
 module.exports = app =>{
     //Get Website info data 
@@ -29,6 +30,7 @@ module.exports = app =>{
         if (req.body.microWebInfoId = 0){
             microWebsiteinfo.createDate = Date.now();
         }
+        const customerId = req.body.customerId;
     
         //console.log(microWebsiteinfo);
         AshiMicrowebsiteInfo.findOneAndUpdate(
@@ -41,6 +43,14 @@ module.exports = app =>{
             // Deal with the response data/error
             console.log(err);
            // console.log(res);
+           if (res) {
+
+            CustomerInfo.update({ _id: customerId }, {
+              _ashimicrowebsiteInfo: res._id
+            }, function (err, affected, resp) {
+              console.log(resp);
+            })
+          }
           }
         );
     

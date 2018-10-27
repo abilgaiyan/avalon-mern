@@ -3,6 +3,7 @@ const Path = require('path-parser');
 const { URL } = require('url');
 const mongoose = require('mongoose');
 const ProductInfo = mongoose.model('productinfo');
+const CustomerInfo = mongoose.model("customerinfo");
 
 module.exports = app =>{
     //Get Avalon Product info data 
@@ -29,6 +30,7 @@ app.post("/api/productinfo", async (req, res) => {
             if (req.body.prodInfoId = 0){
                 productinfo.createDate = Date.now();
             }
+            const customerId = req.body.customerId;
         
             //console.log(productinfo);
             ProductInfo.findOneAndUpdate(
@@ -41,6 +43,16 @@ app.post("/api/productinfo", async (req, res) => {
                 // Deal with the response data/error
                 console.log(err);
                // console.log(res);
+
+               if (res) {
+
+                CustomerInfo.update({ _id: customerId }, {
+                  _productInfo: res._id
+                }, function (err, affected, resp) {
+                  console.log(resp);
+                })
+              }
+
               }
             );
         

@@ -3,6 +3,7 @@ const Path = require('path-parser');
 const { URL } = require('url');
 const mongoose = require('mongoose');
 const CustomerTargetAreaInfo = mongoose.model('targetareainfo');
+const CustomerInfo = mongoose.model("customerinfo");
 
 module.exports = app =>{
     //Get Website Target Area Information data by ID
@@ -29,6 +30,7 @@ app.post("/api/targetareainfo", async (req, res) => {
     if (req.body.tarareaInfoId = 0){
         targetAreaInfoId.createDate = Date.now();
     }
+    const customerId = req.body.customerId;
 
     //console.log(targetAreaInfoId);
     CustomerTargetAreaInfo.findOneAndUpdate(
@@ -41,6 +43,14 @@ app.post("/api/targetareainfo", async (req, res) => {
         // Deal with the response data/error
         console.log(err);
        // console.log(res);
+       if (res) {
+
+        CustomerInfo.update({ _id: customerId }, {
+          _targetAreaInfo: res._id
+        }, function (err, affected, resp) {
+          console.log(resp);
+        })
+      }
       }
     );
 

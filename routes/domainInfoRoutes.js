@@ -3,6 +3,7 @@ const Path = require('path-parser');
 const { URL } = require('url');
 const mongoose = require('mongoose');
 const CustDomainInfo = mongoose.model('domaininfo');
+const CustomerInfo = mongoose.model("customerinfo");
 
 module.exports = app =>{
     //Get Customer Domain Information Data by ID
@@ -29,6 +30,7 @@ module.exports = app =>{
         if (req.body.custDomianInfoId = 0){
             domaininfo.createDate = Date.now();
         }
+        const customerId = req.body.customerId;
     
         //console.log(domaininfo);
         CustDomainInfo.findOneAndUpdate(
@@ -41,6 +43,14 @@ module.exports = app =>{
             // Deal with the response data/error
             console.log(err);
            // console.log(res);
+           if (res) {
+
+            CustomerInfo.update({ _id: customerId }, {
+              _domainInfo: res._id
+            }, function (err, affected, resp) {
+              console.log(resp);
+            })
+          }
           }
         );
     
