@@ -3,6 +3,7 @@ const Path = require('path-parser');
 const { URL } = require('url');
 const mongoose = require('mongoose');
 const WebsiteInfo = mongoose.model('websiteinfo');
+const CustomerInfo = mongoose.model("customerinfo");
 
 module.exports = app =>{
     //Get Website info data 
@@ -29,6 +30,8 @@ module.exports = app =>{
             if (req.body.webInfoId = 0){
                 websiteinfo.createDate = Date.now();
             }
+
+            const customerId = req.body.customerId;
         
             //console.log(websiteinfo);
             WebsiteInfo.findOneAndUpdate(
@@ -41,7 +44,18 @@ module.exports = app =>{
                 // Deal with the response data/error
                 console.log(err);
                // console.log(res);
+
+               if (res) {
+
+                CustomerInfo.update({ _id: customerId }, {
+                  _websiteInfo: res._id
+                }, function (err, affected, resp) {
+                  console.log(resp);
+                })
               }
+              
+            }
+              
             );
         
             res.end();
