@@ -33,13 +33,13 @@ class App extends Component {
               <div className="row">
                 <LeftSideBar />
                 <div className="main_containt col-sm-12 col-md-10">
-                 
-                    {window.location.pathname === "/" || this.props.auth === false ? null : <Header />}
-                    <Route exact={true} path="/customers" component={Dashboard} />
-                    <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
-                    <Route exact={true} path="/emailForm" component={Email} />
-                    {/* <Redirect push to="/customers" /> */}
-                  
+
+                  {window.location.pathname === "/" || this.props.auth === false ? null : <Header />}
+                  <Route exact={true} path="/customers" component={Dashboard} />
+                  <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
+                  <Route exact={true} path="/emailForm" component={Email} />
+                  {/* <Redirect push to="/customers" /> */}
+
                 </div>
                 <Footer />
               </div>

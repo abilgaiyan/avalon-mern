@@ -26,7 +26,7 @@ class Dashboard extends Component {
                         {customer.customerName}
                     </div>
                         <div className="col-sm-4 card-link">
-                            <Link className="alink" to={'customers/' + customer._id}>Go To Details</Link>
+                            <Link className="alink" to={'/customers/' + customer._id}>Go To Details</Link>
                         </div>
                     </div>
                     {/* }} */}
