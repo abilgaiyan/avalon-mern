@@ -18,7 +18,7 @@ module.exports = app => {
 
     const billinginfo = await AvalonBillingInfo.find({
       _id: mongoose.Types.ObjectId(avalonbillinfoId)
-      },{createDate: 0, updateDate: 0 }).populate({ path: '_productplan', model:'productplan'});
+      },{createDate: 0, updateDate: 0 }).populate({ path: '_productPlan', model:'productplan'});
 
 
     if (billinginfo) {
