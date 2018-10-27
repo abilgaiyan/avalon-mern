@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import billingField from "./billingField";
-import websitePlanDropdown from "./websitePlanDropdown";
+import productPlanDropdown from "./productPlanDropdown";
 import validateEmails from "../../../../utils/validateEmails";
 import formFields from "./formFields";
 import { withRouter } from "react-router-dom";
@@ -30,6 +30,9 @@ class BillingForm extends Component {
         this.setState({ disabled: true })
     }
 
+    // componentWillMount() {
+    //     this.props.fetchBillingInfoProductPlanDropdown();
+    // }
 
 
     componentWillReceiveProps(nextProps) {
@@ -74,7 +77,7 @@ class BillingForm extends Component {
                     );
                 }
 
-                if (name === "websitePlan") {
+                if (name === "productPlan") {
                     return (
                         <div className="checkbox">
                             <Field
@@ -105,8 +108,8 @@ class BillingForm extends Component {
 
             if (type === "dropdown") {
                 let optiondata = [];
-                if (name === "websitePlan") {
-                    optiondata = ["Bronze", "Silver", "Gold", "Platinum", "Diamond"];
+                if (name === "productPlan") {
+                    optiondata = [this.props.productPlanDropdown.planName];
                 }
                 if (name === "hostingAmount") {
                     optiondata = ["$ 69", "$ 99", "$ 129", "$ 159", "$ 249"];
@@ -115,7 +118,7 @@ class BillingForm extends Component {
                 return (
                     <Field
                         key={name}
-                        component={websitePlanDropdown}
+                        component={productPlanDropdown}
                         type={type}
                         label={label}
                         name={name}
@@ -128,32 +131,38 @@ class BillingForm extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button>
-                <div className="clearfix"></div>
-                <form
-                    className="form-horizontal label-left"
-                    onSubmit={this.props.handleSubmit((history) => { this.props.submitBillingInfo(this.props.formValues.values, this.props.match.params.customerId, history).then(this.setState({ disabled: true })) })}>
-                    {this.renderFields()}
-                    {
-                        this.state.disabled === true ? "" :
-                            <div className="form-group">
-                                <div className="col-xs-9 col-xs-offset-3 text-left">
-                                    <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
-                                        <i className="fa fa-check-square" aria-hidden="true"></i>
-                                        Save
+        if (!this.props.productPlanDropdown[0]["planName"]) {
+            console.clear();
+            console.log(this.props.productPlanDropdown[0].planName);
+            return (<div>hi</div>)
+        }
+        else
+            return (
+                <div>
+                    <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button>
+                    <div className="clearfix"></div>
+                    <form
+                        className="form-horizontal label-left"
+                        onSubmit={this.props.handleSubmit((history) => { this.props.submitBillingInfo(this.props.formValues.values, this.props.match.params.customerId, history).then(this.setState({ disabled: true })) })}>
+                        {this.renderFields()}
+                        {
+                            this.state.disabled === true ? "" :
+                                <div className="form-group">
+                                    <div className="col-xs-9 col-xs-offset-3 text-left">
+                                        <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
+                                            <i className="fa fa-check-square" aria-hidden="true"></i>
+                                            Save
 
               </button>
-                                    <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
-                                        <i className="fa fa-close" aria-hidden="true"></i>
-                                        Cancel
+                                        <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
+                                            <i className="fa fa-close" aria-hidden="true"></i>
+                                            Cancel
               </a>
-                                </div>
-                            </div>}
-                </form>
-            </div>
-        );
+                                    </div>
+                                </div>}
+                    </form>
+                </div>
+            );
     }
 }
 
@@ -170,11 +179,13 @@ function validate(values) {
     return errors;
 }
 function mapStateToProps(state) {
-    console.clear();
-    console.log(state);
+    // console.clear();
+    //setTimeout(() => { console.log(state.billingInfoProductPlanDropdownReducer[0]["planName"]) }, 4000)
+    //console.log(state.billingInfoProductPlanDropdownReducer[0]["planName"]);
     return {
         formValues: state.form.billingReduxForm,
-        billingForm: state.billingInfo._billingInfo
+        billingForm: state.billingInfo._billingInfo,
+        productPlanDropdown: state.billingInfoProductPlanDropdownReducer
     };
 }
 

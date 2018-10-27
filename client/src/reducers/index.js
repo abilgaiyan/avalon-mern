@@ -14,6 +14,7 @@ import queryReducer from "./queryReducer";
 import customerSummary from "./customerSummary";
 import customerinfoReducers from "./customerinfoReducers";
 import avalonInfo from "./avaloninfoReducer";
+import billingInfoProductPlanDropdownReducer from "./BillingInfoProductPlanDropdownReducer";
 import billingInfoReducer from "./billinginfoReducer";
 import targetAreasReducers from "./targetAreasReducers";
 import websiteInfoReducer from "./websiteInfoReducer";
@@ -39,6 +40,8 @@ export default combineReducers({
   customersummary: customerSummary,
   customerForm: customerinfoReducers,
   avalonInfo: avalonInfo,
+
+  billingInfoProductPlanDropdownReducer: billingInfoProductPlanDropdownReducer,
   billingInfo: billingInfoReducer,
   autoCompleteId: autoCompleteId
 });

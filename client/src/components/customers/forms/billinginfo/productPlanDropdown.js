@@ -1,11 +1,11 @@
 import React from "react";
 
-const websitePlanDropdown = ({ input, label, optionData, disabled, meta: { touched, error } }) => {
+const productPlanDropdown = ({ input, label, optionData, disabled, meta: { touched, error } }) => {
     // console.log(optionData);
 
-    let WebsitePlanData = optionData;
-    // console.log("data |-" + WebsitePlanData);
-    let optionItems = WebsitePlanData.map((data, index) => (
+    let productPlanData = optionData;
+    // console.log("data |-" + productPlanData);
+    let optionItems = productPlanData.map((data, index) => (
         <option key={index}>{data}</option>
     ));
 
@@ -22,4 +22,4 @@ const websitePlanDropdown = ({ input, label, optionData, disabled, meta: { touch
     );
 };
 
-export default websitePlanDropdown;
+export default productPlanDropdown;

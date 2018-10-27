@@ -25,3 +25,5 @@ export const FETCH_AVALONINFO = "fetch_avaloninfo";
 export const FETCH_BILLINGINFO = "fetch_billing_info";
 
 export const FETCH_AUTOCOMPLETE_ID = "fetch_autocomplete_id";
+
+export const FETCH_BILLINGFORM_PRODUCTPLAN = "fetch_billingform_productplan";
