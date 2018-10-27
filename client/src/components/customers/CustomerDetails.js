@@ -22,6 +22,7 @@ class CustomerDetails extends Component {
     const customerId = this.props.autoCompleteId || this.props.match.params.customerId;
     this.props.fetchCustomerInfo(customerId);
     this.props.fetchBillingInfo(customerId); //Arg. avalonbillinginfoId
+    this.props.fetchBillingInfoProductPlanDropdown();
   }
 
 

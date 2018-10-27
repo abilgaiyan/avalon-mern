@@ -12,7 +12,8 @@ import {
   FETCH_QUERY,
   FETCH_CUSTOMERINFO,
   FETCH_AVALONINFO,
-  FETCH_BILLINGINFO
+  FETCH_BILLINGINFO,
+  FETCH_BILLINGFORM_PRODUCTPLAN
 } from "./types";
 
 //Store Autocomplete_ID
@@ -194,6 +195,12 @@ export const submitAvalonInfo = (values, customerId, history) => async dispatch 
   //const res = storylist;
   dispatch({ type: FETCH_AVALONINFO, payload: values });
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
+};
+
+// Fetch Billing Info Drop-down for productPlan AvalonBillingId
+export const fetchBillingInfoProductPlanDropdown = () => async dispatch => {
+  const res = await axios.get("/api/ProductPlanAllData");
+  dispatch({ type: FETCH_BILLINGFORM_PRODUCTPLAN, payload: res.data });
 };
 
 
