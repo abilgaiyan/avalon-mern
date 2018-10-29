@@ -11,17 +11,20 @@ module.exports = app => {
   app.get('/api/avalonbillinginfo/:avalonbillinginfoid', async (req, res) => {
     const avalonbillinfoId = req.params.avalonbillinginfoid;
     //const customerId = req.params.customerid.toString();
-    //console.log(customerId);
+    // console.log("-------------->>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<------------------------")
+    // console.log(avalonbillinfoId);
     //const billinginfo = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _billingInfo: 1, _id: 0 }).populate('_billingInfo');
     //console.log(billinginfo);
     //res.send(billinginfo);
 
     const billinginfo = await AvalonBillingInfo.find({
-      _id: mongoose.Types.ObjectId(avalonbillinfoId)
-      },{createDate: 0, updateDate: 0 }).populate({ path: '_productPlan', model:'productplan'});
+      _id: mongoose.Types.ObjectId("5bd2de6c09b48c8eee5845a7")
+    }, { createDate: 0, updateDate: 0 }).populate({ path: '_productPlan', model: 'productplan' });
 
 
     if (billinginfo) {
+      console.log("-------------->>>>>>>>><<<<<<<<<<<<<<<-------------");
+      console.log(billinginfo);
       res.send(billinginfo);
     } else {
       res.send("no data");

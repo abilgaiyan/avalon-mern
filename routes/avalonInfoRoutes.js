@@ -29,7 +29,7 @@ module.exports = app => {
 
     const avaloninfo = { ...req.body };
     avaloninfo.updateDate = Date.now();
-    const customerId = req.body.customerId;
+    //const customerId = req.body.customerId;
     if (req.body.customerId = 0) {
       avaloninfo.createDate = Date.now();
     }
@@ -48,7 +48,7 @@ module.exports = app => {
         console.log(err);
         // console.log(res);
 
-        
+
         if (res) {
 
           CustomerInfo.update({ _id: customerId }, {

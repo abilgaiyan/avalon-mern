@@ -4,9 +4,9 @@ const productPlanDropdown = ({ input, label, optionData, disabled, meta: { touch
     // console.log(optionData);
 
     let productPlanData = optionData;
-    // console.log("data |-" + productPlanData);
+    console.log("data |-" + productPlanData);
     let optionItems = productPlanData.map((data, index) => (
-        <option key={index}>{data}</option>
+        <option key={data._id}>{data.planName}</option>
     ));
 
     return (

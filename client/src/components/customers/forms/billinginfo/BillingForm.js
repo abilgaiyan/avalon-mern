@@ -109,7 +109,7 @@ class BillingForm extends Component {
             if (type === "dropdown") {
                 let optiondata = [];
                 if (name === "productPlan") {
-                    optiondata = [this.props.productPlanDropdown.planName];
+                    optiondata = this.props.productPlanDropdown;
                 }
                 if (name === "hostingAmount") {
                     optiondata = ["$ 69", "$ 99", "$ 129", "$ 159", "$ 249"];
@@ -131,12 +131,14 @@ class BillingForm extends Component {
     }
 
     render() {
-        if (!this.props.productPlanDropdown[0]["planName"]) {
-            console.clear();
-            console.log(this.props.productPlanDropdown[0].planName);
-            return (<div>hi</div>)
+        if (!this.props.productPlanDropdown) {
+            // console.clear();
+            // console.log(this.props.productPlanDropdown[0].planName);
+            return (<div>Loading...</div>)
         }
-        else
+        else {
+            // console.clear();
+            // console.log(this.props.productPlanDropdown);
             return (
                 <div>
                     <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button>
@@ -153,16 +155,18 @@ class BillingForm extends Component {
                                             <i className="fa fa-check-square" aria-hidden="true"></i>
                                             Save
 
-              </button>
+                  </button>
                                         <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
                                             <i className="fa fa-close" aria-hidden="true"></i>
                                             Cancel
-              </a>
+                  </a>
                                     </div>
                                 </div>}
                     </form>
                 </div>
             );
+        }
+
     }
 }
 
@@ -179,9 +183,8 @@ function validate(values) {
     return errors;
 }
 function mapStateToProps(state) {
-    // console.clear();
-    //setTimeout(() => { console.log(state.billingInfoProductPlanDropdownReducer[0]["planName"]) }, 4000)
-    //console.log(state.billingInfoProductPlanDropdownReducer[0]["planName"]);
+    console.clear();
+    console.log(state);
     return {
         formValues: state.form.billingReduxForm,
         billingForm: state.billingInfo._billingInfo,

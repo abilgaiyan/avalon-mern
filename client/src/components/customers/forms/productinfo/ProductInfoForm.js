@@ -169,8 +169,8 @@ function validate(values) {
     return errors;
 }
 function mapStateToProps(state) {
-    console.clear();
-    console.log(state);
+    // console.clear();
+    // console.log(state);
     return {
         formValues: state.form.productInfoReduxForm,
         productInfoForm: state.productInfo

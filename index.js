@@ -71,7 +71,7 @@ require('./routes/productInfoRoutes')(app);
 require('./routes/ashiMicrowebsiteInfoRoutes')(app);
 require('./routes/domainInfoRoutes')(app);
 require('./routes/sslInfoRoutes')(app);
-require('./routes/businessEmailInfo')(app);
+require('./routes/businessEmailInfoRoutes')(app);
 require('./routes/emailMarketingInfoRoutes')(app);
 require('./routes/targetAreasRoutes')(app);
 require('./routes/callLogRoutes')(app);
