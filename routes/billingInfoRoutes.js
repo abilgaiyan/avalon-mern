@@ -8,29 +8,56 @@ const productplanInfo = mongoose.model("productplan");
 
 module.exports = app => {
   //Get Avalon website Billing Info data 
-  app.get('/api/avalonbillinginfo/:avalonbillinginfoid', async (req, res) => {
-    const avalonbillinfoId = req.params.avalonbillinginfoid;
+  app.get('/api/avalonbillinginfo/:customerId', async (req, res) => {
+    const customerId = req.params.customerId;
+    const billinginfoId_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _billingInfo: 1, _id: 0 });
+    const billinginfoId = billinginfoId_temp[0]._billingInfo;
     //const customerId = req.params.customerid.toString();
-    // console.log("-------------->>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<------------------------")
-    // console.log(avalonbillinfoId);
-    //const billinginfo = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _billingInfo: 1, _id: 0 }).populate('_billingInfo');
     //console.log(billinginfo);
     //res.send(billinginfo);
 
     const billinginfo = await AvalonBillingInfo.find({
-      _id: mongoose.Types.ObjectId("5bd2de6c09b48c8eee5845a7")
+      _id: mongoose.Types.ObjectId(billinginfoId)
     }, { createDate: 0, updateDate: 0 }).populate({ path: '_productPlan', model: 'productplan' });
 
+    // console.log("-------------->>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<------------------------")
+    // console.log(billinginfo);
 
     if (billinginfo) {
-      console.log("-------------->>>>>>>>><<<<<<<<<<<<<<<-------------");
-      console.log(billinginfo);
+      // console.log("-------------->>>>>>>>><<<<<<<<<<<<<<<-------------");
+      // console.log(billinginfo);
       res.send(billinginfo);
     } else {
       res.send("no data");
     }
 
   });
+
+  // module.exports = app => {
+  //   //Get Avalon website Billing Info data 
+  //   app.get('/api/avalonbillinginfo/:avalonbillinginfoid', async (req, res) => {
+  //     const avalonbillinfoId = req.params.avalonbillinginfoid;
+  //     //const customerId = req.params.customerid.toString();
+  //     // console.log("-------------->>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<------------------------")
+  //     // console.log(avalonbillinfoId);
+  //     //const billinginfo = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _billingInfo: 1, _id: 0 }).populate('_billingInfo');
+  //     //console.log(billinginfo);
+  //     //res.send(billinginfo);
+
+  //     const billinginfo = await AvalonBillingInfo.find({
+  //       _id: mongoose.Types.ObjectId("5bd2de6c09b48c8eee5845a7")
+  //     }, { createDate: 0, updateDate: 0 }).populate({ path: '_productPlan', model: 'productplan' });
+
+
+  //     if (billinginfo) {
+  //       console.log("-------------->>>>>>>>><<<<<<<<<<<<<<<-------------");
+  //       console.log(billinginfo);
+  //       res.send(billinginfo);
+  //     } else {
+  //       res.send("no data");
+  //     }
+
+  //   });
 
   //New And Edit
   app.post("/api/avalonbillinginfo", async (req, res) => {

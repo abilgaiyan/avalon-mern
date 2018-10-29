@@ -36,9 +36,10 @@ class BillingForm extends Component {
 
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.billingForm && !this.state.isInitializeState) {
-            // console.log('componentWillReceiveProps', nextProps.billingForm);
 
+        // console.clear();
+        // console.log('componentWillReceiveProps', nextProps.billingForm);
+        if (nextProps.billingForm && !this.state.isInitializeState) {
             const initData = nextProps.billingForm;
             nextProps.initialize(initData);
             this.setState({ isInitializeState: true });
@@ -187,7 +188,8 @@ function mapStateToProps(state) {
     console.log(state);
     return {
         formValues: state.form.billingReduxForm,
-        billingForm: state.billingInfo._billingInfo,
+        billingForm: state.billingInfo,
+        // billingForm: state.billingInfo,
         productPlanDropdown: state.billingInfoProductPlanDropdownReducer
     };
 }

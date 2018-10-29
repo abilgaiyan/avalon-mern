@@ -205,9 +205,9 @@ export const fetchBillingInfoProductPlanDropdown = () => async dispatch => {
 
 
 // Fetch Billing Info Details by AvalonBillingId
-export const fetchBillingInfo = avalonbillinginfoid => async dispatch => {
+export const fetchBillingInfo = customerId => async dispatch => {
   //console.log("Hit from search", customerId)
-  const res = await axios.get("/api/avalonbillinginfo/" + avalonbillinginfoid);
+  const res = await axios.get("/api/avalonbillinginfo/" + customerId);
 
   dispatch({ type: FETCH_BILLINGINFO, payload: res.data[0] || {} });
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
