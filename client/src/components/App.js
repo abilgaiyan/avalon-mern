@@ -28,7 +28,7 @@ class App extends Component {
           <Route exact={true} path="/" component={Welcome} />
 
           {/* Main Wraper Start Here */}
-          {window.location.pathname === "/" ? null : (
+        
             <div id="wrapper" className="dashboard_wraper container-fluid">
               <div className="row">
                 <LeftSideBar />
@@ -44,7 +44,7 @@ class App extends Component {
                 <Footer />
               </div>
             </div>
-          )}
+        
           {/* Main Wraper End Here */}
 
         </div>
