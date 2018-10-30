@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import AvaloninfoFields from "./AvaloninfoFields";
 import AvaloninfoDropdown from "./AvaloninfoDropdown";
 import AvaloninfoTextarea from "./AvaloninfoTextarea";
+import AvaloninfoDatetime from "./AvaloninfoDatetime"
 //import validateEmails from "../../../../utils/validateEmails";
 import formFields from "./aiformFields";
 import { withRouter } from "react-router-dom";
@@ -16,7 +17,7 @@ import * as actions from "../../../../actions";
 class AvaloninfoForm extends Component {
   renderFields() {
     return _.map(formFields, ({ label, name, type }) => {
-      if (type === "text" || type === "datetime") {
+      if (type === "text" ) {
         return (
           <Field
             key={name}
@@ -46,7 +47,7 @@ class AvaloninfoForm extends Component {
         return (
           <Field
             key={name}
-            component={AvaloninfoFields}
+            component={AvaloninfoDatetime}
             type={type}
             label={label}
             name={name}

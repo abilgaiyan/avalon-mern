@@ -493,3 +493,18 @@ ul {
 
 .full.main_containt .navbar-fixed-top{width: 100%;}
 #wrapper .main_containt.full{width: 100%}
+
+.react-date-picker.react-date-picker--closed.react-date-picker--enabled,
+.react-date-picker.react-date-picker--open.react-date-picker--enabled{width: 100%;}
+.react-date-picker .react-date-picker__wrapper {
+    width: 100%;
+    border-color: #e1e3ea;
+    color: #5e6773;
+    opacity: 1;
+    height: 40px;
+    background-color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    border: 1px solid #e1e3ea;
+}

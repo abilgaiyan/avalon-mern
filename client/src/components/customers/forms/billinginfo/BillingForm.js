@@ -38,9 +38,10 @@ class BillingForm extends Component {
 
     componentWillReceiveProps(nextProps) {
 
-        // console.clear();
-        // console.log("Billing form: ", nextProps.billingForm);
+        console.clear();
+        console.log("Billing form: ", nextProps.billingForm);
         if (nextProps.billingForm && !this.state.isInitializeState) {
+
             const initData = nextProps.billingForm;
             nextProps.initialize(initData);
             this.setState({ isInitializeState: true });
@@ -110,27 +111,38 @@ class BillingForm extends Component {
 
             if (type === "dropdown") {
                 let optiondata = [];
-                let hostingdata = [];
-                if (name === "_productPlan") {
+                if (name === "_productPlan" && this.props.productPlanDropdown) {
                     // console.clear();
                     // console.log("Array of objs", this.props.productPlanDropdown);
                     optiondata = this.props.productPlanDropdown;
+                    return (
+                        <Field
+                            key={name}
+                            component={productPlanDropdown}
+                            type={type}
+                            label={label}
+                            name={name}
+                            optionData={optiondata}
+                            disabled={(this.state.disabled) ? "disabled" : ""}
+                        />
+                    );
                 }
-                if (name === "hostingAmount") {
-                    hostingdata = this.props.hostingAmountDropdown;
+                if (name === "hostingAmount" && this.props.hostingAmountDropdown) {
+                    optiondata = this.props.hostingAmountDropdown;
+                    return (
+                        <Field
+                            key={name}
+                            component={productPlanDropdown}
+                            type={type}
+                            label={label}
+                            name={name}
+                            optionData={optiondata}
+                            disabled={(this.state.disabled) ? "disabled" : ""}
+                        />
+                    );
                 }
 
-                return (
-                    <Field
-                        key={name}
-                        component={productPlanDropdown}
-                        type={type}
-                        label={label}
-                        name={name}
-                        optionData={optiondata}
-                        disabled={(this.state.disabled) ? "disabled" : ""}
-                    />
-                );
+
             }
         });
     }
@@ -189,7 +201,7 @@ function validate(values) {
 }
 function mapStateToProps(state) {
     // console.clear();
-    // console.log(state);
+    // console.log(state.billingInfoHostingAmountDropdownReducer);
     return {
         formValues: state.form.billingReduxForm,
         billingForm: state.billingInfo,

@@ -1,41 +1,36 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./Header";
-import Dashboard from "./customers/Dashboard";
 import Footer from "./Footer";
-import CustomerDetails from "./customers/CustomerDetails";
 import LeftSideBar from "./LeftSideBar";
+import Dashboard from "./customers/Dashboard";
+import CustomerDetails from "./customers/CustomerDetails";
+
+function MainWraper(props){
+    return(
+      <div id="wrapper" className="dashboard_wraper container-fluid">
+        <div className="row">
+        {!props.leftChoice ? null : <LeftSideBar />}
+            <div className= {!props.leftChoice ? "main_containt col-sm-12 col-md-12 full" : "main_containt col-sm-12 col-md-10"}>
+                <Header />
+                <Route exact={true} path={props.path} component={props.content} />
+            </div>
+            <Footer />
+        </div>
+      </div>
+      )
+  }
+  
+  export function CustomerList(){
+    return(
+      <MainWraper content={Dashboard} path="/customers/"  leftChoice = {false}/>
+      )
+  }
+  export function CustomerDetailsWraper(){
+    return(
+      <MainWraper content={CustomerDetails} path="/customers/:customerId" leftChoice = {true}/>
+      )
+  }
 
 
-class WithHeader extends Component {
-    render() {
-        //console.log(this.props.auth !== false);
-        return (
-            <BrowserRouter>
-                <div>
-                    {/* Main Wraper Start Here */}
-                    <div id="wrapper" className="dashboard_wraper container-fluid">
-                        <div className="row">
-                            <LeftSideBar />
-                            <div className="main_containt col-sm-12 col-md-10">
-
-                                <Header />
-                                <Route exact={true} path="/customers" component={Dashboard} />
-                                <Route exact={true} path="/customers/:customerId" component={CustomerDetails} />
-
-                                {/* <Redirect push to="/customers" /> */}
-
-                            </div>
-                            <Footer />
-                        </div>
-                    </div>
-                    {/* Main Wraper End Here */}
-
-                </div>
-            </BrowserRouter>
-        );
-    }
-}
-
-
-export default WithHeader;
+export default MainWraper;

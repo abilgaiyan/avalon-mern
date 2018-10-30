@@ -18,7 +18,7 @@ module.exports = app => {
 
     const billinginfo = await AvalonBillingInfo.find({
       _id: mongoose.Types.ObjectId(billinginfoId)
-    }, { createDate: 0, updateDate: 0 }).populate({ path: '_productPlan', model: 'productplan' });
+    }, { createDate: 0, updateDate: 0 });
 
     // console.log("-------------->>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<------------------------")
     // console.log(billinginfo);
@@ -61,22 +61,27 @@ module.exports = app => {
 
   //New And Edit
   app.post("/api/avalonbillinginfo", async (req, res) => {
+
     const billinginfo = { ...req.body };
-    // console.log("----------------->>>>>>>>>>> BillingInfo <<<<<<<<<<<<<<<<--------------------------")
-    // console.log(billinginfo);
-
     billinginfo.updateDate = Date.now();
-    if (req.body.avalonbillinfoId = 0) {
-      billinginfo.createDate = Date.now();
-    }
-
-    const customerId = req.body.customerId;
-
-
-    //console.log(billinginfo);
+    const customerId = billinginfo.customerId;
+    const billinginfoId_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _billingInfo: 1, _id: 0 });
+    const billinginfoId = billinginfoId_temp[0]._billingInfo;
+    console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------");
+    console.log(billinginfoId);
+    // if (req.body.customerId = 0) {
+    //   billinginfo.createDate = Date.now();
+    //   delete billinginfo.customerId;
+    // }
+    // else {
+    //   // billinginfo._id = mongoose.Types.ObjectId(req.body.customerId);
+    //   delete billinginfo.customerId;
+    // }
+    // //console.log('zzzz', billinginfo); 
+    // //await billinginfo.save();
     await AvalonBillingInfo.findOneAndUpdate(
       {
-        _id: req.body.avalonbillinfoId
+        _id: billinginfoId
       },
       billinginfo,
       { upsert: true },
@@ -85,25 +90,61 @@ module.exports = app => {
         if (err) {
           console.log(err);
         }
-
         if (res) {
-
-          CustomerInfo.update({ _id: customerId }, {
-            _billingInfo: res._id
-          }, function (err, affected, resp) {
-            console.log(resp);
-          })
-
-
+          console.log(res);
         }
         // console.log(res);
       }
-    )
-
-
-
-
+    );
 
     res.end();
   });
+
+
+  // app.post("/api/avalonbillinginfo", async (req, res) => {
+  //   const billinginfo = { ...req.body };
+  //   // console.log("----------------->>>>>>>>>>> BillingInfo <<<<<<<<<<<<<<<<--------------------------")
+  //   // console.log(billinginfo);
+
+  //   billinginfo.updateDate = Date.now();
+  //   if (req.body.avalonbillinfoId = 0) {
+  //     billinginfo.createDate = Date.now();
+  //   }
+
+  //   const customerId = req.body.customerId;
+
+
+  //   //console.log(billinginfo);
+  //   await AvalonBillingInfo.findOneAndUpdate(
+  //     {
+  //       _id: req.body.avalonbillinfoId
+  //     },
+  //     billinginfo,
+  //     { upsert: true },
+  //     (err, res) => {
+  //       // Deal with the response data/error
+  //       if (err) {
+  //         console.log(err);
+  //       }
+
+  //       if (res) {
+
+  //         CustomerInfo.update({ _id: customerId }, {
+  //           _billingInfo: res._id
+  //         }, function (err, affected, resp) {
+  //           console.log(resp);
+  //         })
+
+
+  //       }
+  //       // console.log(res);
+  //     }
+  //   )
+
+
+
+
+
+  //   res.end();
+  // });
 }

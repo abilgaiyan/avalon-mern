@@ -11,7 +11,7 @@ class CustomerSummary extends Component {
           className="img-responsive pull-right"
         />
         <p>
-          {this.props.customerSummary.customerName} <br />
+          {this.props.customerSummary.Name} <br />
           {this.props.customerSummary.city},{this.props.customerSummary.state}{" "}
           <br />
           {this.props.customerSummary.contactPersonName}

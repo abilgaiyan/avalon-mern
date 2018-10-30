@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 //define schema for our Customer Plan
 const productPlanSchema = new Schema({
-    planName: String,
+    _productPlan: String,
     planDate: Date,
     active: Boolean,
     displayorder: Number,

@@ -1,14 +1,20 @@
 import React from "react";
 
-const productPlanDropdown = ({ input, label, optionData, hostingdata, disabled, meta: { touched, error } }) => {
+const productPlanDropdown = ({ input, label, optionData, disabled, meta: { touched, error } }) => {
     // console.clear();
     // console.log(optionData);
 
-    let productPlanData = optionData;
-    //console.log("data |-", productPlanData);
-    let optionItems = productPlanData.map((data, index) => (
-        <option key={data._id} value={data._id}>{data.planName}</option>
+    let product_hostingPlanData = optionData;
+    // let hostingAmountData = hostingdata;
+    console.log(product_hostingPlanData);
+
+    let optionItems = product_hostingPlanData.map((data, index) => (
+        data._productPlan ? (<option key={data._id} value={data._id}>{data._productPlan}</option>) : (<option key={data._id} value={data._id}>{data.hostingAmount}</option>)
     ));
+    //console.log("data |-", hostingdata);
+    // let hostingAmountItems = hostingAmountData.map((data, index) => (
+    //     <option key={data._id} value={data._id}>{data.hostingAmount}</option>
+    // ));
     // console.log(optionItems);
 
     return (
@@ -17,6 +23,7 @@ const productPlanDropdown = ({ input, label, optionData, hostingdata, disabled, 
             <div className="col-sm-9">
                 <select {...input} className="form-control" disabled={disabled ? "disabled" : ""}>
                     {optionItems}
+                    {/* {hostingAmountItems} */}
                 </select>
                 <div className="red-text">{touched && error}</div>
             </div>

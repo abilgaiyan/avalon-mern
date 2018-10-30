@@ -19,7 +19,7 @@ export default [
 
   {
     label: "Customer Name :",
-    name: "customerName",
+    name: "Name",
     type: "text",
     isvalidationApplied: true,
     validationmessage: "Please enter valida jewelsoft Id",
