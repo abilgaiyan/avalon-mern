@@ -35,10 +35,11 @@ class BillingForm extends Component {
     // }
 
 
+
     componentWillReceiveProps(nextProps) {
 
         // console.clear();
-        // console.log('componentWillReceiveProps', nextProps.billingForm);
+        // console.log("Billing form: ", nextProps.billingForm);
         if (nextProps.billingForm && !this.state.isInitializeState) {
             const initData = nextProps.billingForm;
             nextProps.initialize(initData);
@@ -111,6 +112,8 @@ class BillingForm extends Component {
                 let optiondata = [];
                 let hostingdata = [];
                 if (name === "_productPlan") {
+                    // console.clear();
+                    // console.log("Array of objs", this.props.productPlanDropdown);
                     optiondata = this.props.productPlanDropdown;
                 }
                 if (name === "hostingAmount") {
@@ -185,8 +188,8 @@ function validate(values) {
     return errors;
 }
 function mapStateToProps(state) {
-    console.clear();
-    console.log(state);
+    // console.clear();
+    // console.log(state);
     return {
         formValues: state.form.billingReduxForm,
         billingForm: state.billingInfo,

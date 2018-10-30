@@ -490,3 +490,6 @@ ul {
     body{font-size: 15px;}
 }
 
+
+.full.main_containt .navbar-fixed-top{width: 100%;}
+#wrapper .main_containt.full{width: 100%}

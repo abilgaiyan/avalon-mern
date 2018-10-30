@@ -32,9 +32,10 @@ class CustomerForm extends Component {
 
 
   componentWillReceiveProps(nextProps) {
+    // console.clear();
+    // console.log('componentWillReceiveProps', nextProps.customerForm);
+    // console.log("customer form: ", nextProps);
     if (nextProps.customerForm && !this.state.isInitializeState) {
-      // console.log('componentWillReceiveProps', nextProps.customerForm);
-
       const initData = nextProps.customerForm;
       nextProps.initialize(initData);
       this.setState({ isInitializeState: true });

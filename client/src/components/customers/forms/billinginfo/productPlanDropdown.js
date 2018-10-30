@@ -5,11 +5,11 @@ const productPlanDropdown = ({ input, label, optionData, hostingdata, disabled, 
     // console.log(optionData);
 
     let productPlanData = optionData;
-    console.log("data |-", productPlanData);
+    //console.log("data |-", productPlanData);
     let optionItems = productPlanData.map((data, index) => (
         <option key={data._id} value={data._id}>{data.planName}</option>
     ));
-    console.log(optionItems);
+    // console.log(optionItems);
 
     return (
         <div className="form-group">
