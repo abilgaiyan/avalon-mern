@@ -7,8 +7,9 @@ const productPlanDropdown = ({ input, label, optionData, hostingdata, disabled, 
     let productPlanData = optionData;
     console.log("data |-", productPlanData);
     let optionItems = productPlanData.map((data, index) => (
-        <option key={data._id}>{data.planName}</option>
+        <option key={data._id} value={data._id}>{data.planName}</option>
     ));
+    console.log(optionItems);
 
     return (
         <div className="form-group">
