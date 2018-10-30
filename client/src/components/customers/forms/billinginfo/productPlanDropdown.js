@@ -1,10 +1,11 @@
 import React from "react";
 
-const productPlanDropdown = ({ input, label, optionData, disabled, meta: { touched, error } }) => {
+const productPlanDropdown = ({ input, label, optionData, hostingdata, disabled, meta: { touched, error } }) => {
+    // console.clear();
     // console.log(optionData);
 
     let productPlanData = optionData;
-    console.log("data |-" + productPlanData);
+    console.log("data |-", productPlanData);
     let optionItems = productPlanData.map((data, index) => (
         <option key={data._id}>{data.planName}</option>
     ));

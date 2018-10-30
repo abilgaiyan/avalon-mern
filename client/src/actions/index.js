@@ -13,7 +13,8 @@ import {
   FETCH_CUSTOMERINFO,
   FETCH_AVALONINFO,
   FETCH_BILLINGINFO,
-  FETCH_BILLINGFORM_PRODUCTPLAN
+  FETCH_BILLINGFORM_PRODUCTPLAN,
+  FETCH_BILLINGFORM_HOSTINGAMOUNT
 } from "./types";
 
 //Store Autocomplete_ID
@@ -197,12 +198,17 @@ export const submitAvalonInfo = (values, customerId, history) => async dispatch 
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
 };
 
-// Fetch Billing Info Drop-down for productPlan AvalonBillingId
+// Fetch Billing Info Drop-down for productPlan
 export const fetchBillingInfoProductPlanDropdown = () => async dispatch => {
   const res = await axios.get("/api/ProductPlanAllData");
   dispatch({ type: FETCH_BILLINGFORM_PRODUCTPLAN, payload: res.data });
 };
 
+// Fetch Billing Info Drop-down for HostingAmount
+export const fetchBillingInfoHostingAmountDropdown = () => async dispatch => {
+  const res = await axios.get("/api/HostingAmountAllData");
+  dispatch({ type: FETCH_BILLINGFORM_HOSTINGAMOUNT, payload: res.data });
+};
 
 // Fetch Billing Info Details by AvalonBillingId
 export const fetchBillingInfo = customerId => async dispatch => {

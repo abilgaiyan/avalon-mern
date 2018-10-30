@@ -1,7 +1,7 @@
 export default [
     {
         label: "Product Plan :",
-        name: "productPlan",
+        name: "_productPlan",
         type: "dropdown",
         isvalidationApplied: true,
         validationmessage: "Please enter valid Website Plan",

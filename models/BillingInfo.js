@@ -6,7 +6,7 @@ const { Schema } = mongoose;
 //define schema for our customer
 
 const billingInfoSchema = new Schema({
-  
+
     //websitePlan: { type: Schema.Types.ObjectId, ref: "ProductPlan" },
     //websitePlan: String,
     //websitePlan: { type: String, default: "Bronze" },
@@ -15,7 +15,7 @@ const billingInfoSchema = new Schema({
     setupAmountReceived: Number,
     setupAmountPending: Number,
     //hostingPaymentType: String,
-    hostingAmount: { type: String, default: "$ 69" },
+    _hostingAmount: { type: Schema.Types.ObjectId, ref: "hostingamount" },
     _productPlan: { type: Schema.Types.ObjectId, ref: "productplan" },
     comments: String,
     createDate: Date,

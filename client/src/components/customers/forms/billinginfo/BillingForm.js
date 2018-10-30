@@ -109,11 +109,12 @@ class BillingForm extends Component {
 
             if (type === "dropdown") {
                 let optiondata = [];
-                if (name === "productPlan") {
+                let hostingdata = [];
+                if (name === "_productPlan") {
                     optiondata = this.props.productPlanDropdown;
                 }
                 if (name === "hostingAmount") {
-                    optiondata = ["$ 69", "$ 99", "$ 129", "$ 159", "$ 249"];
+                    hostingdata = this.props.hostingAmountDropdown;
                 }
 
                 return (
@@ -190,7 +191,8 @@ function mapStateToProps(state) {
         formValues: state.form.billingReduxForm,
         billingForm: state.billingInfo,
         // billingForm: state.billingInfo,
-        productPlanDropdown: state.billingInfoProductPlanDropdownReducer
+        productPlanDropdown: state.billingInfoProductPlanDropdownReducer,
+        hostingAmountDropdown: state.billingInfoHostingAmountDropdownReducer
     };
 }
 

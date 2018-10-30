@@ -28,6 +28,7 @@ require('./models/EmailMarketingAccountInfo');
 require('./models/TargetAreas');
 require('./models/CallLog');
 require('./models/ProductPlan');
+require('./models/HostingAmount');
 
 
 //console.log(keys.mongodbURL)
@@ -76,6 +77,7 @@ require('./routes/emailMarketingInfoRoutes')(app);
 require('./routes/targetAreasRoutes')(app);
 require('./routes/callLogRoutes')(app);
 require('./routes/productplanRoutes')(app);
+require('./routes/hostingAmountRoutes')(app);
 
 
 

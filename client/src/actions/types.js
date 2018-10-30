@@ -27,3 +27,5 @@ export const FETCH_BILLINGINFO = "fetch_billing_info";
 export const FETCH_AUTOCOMPLETE_ID = "fetch_autocomplete_id";
 
 export const FETCH_BILLINGFORM_PRODUCTPLAN = "fetch_billingform_productplan";
+
+export const FETCH_BILLINGFORM_HOSTINGAMOUNT = "fetch_billingform_hostingamount";

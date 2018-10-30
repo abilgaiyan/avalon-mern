@@ -23,6 +23,7 @@ class CustomerDetails extends Component {
     this.props.fetchCustomerInfo(customerId);
     this.props.fetchBillingInfo(customerId); //Arg. avalonbillinginfoId
     this.props.fetchBillingInfoProductPlanDropdown();
+    this.props.fetchBillingInfoHostingAmountDropdown();
   }
 
 
