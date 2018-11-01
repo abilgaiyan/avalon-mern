@@ -15,7 +15,8 @@ import {
   FETCH_BILLINGINFO,
   FETCH_BILLINGFORM_PRODUCTPLAN,
   FETCH_BILLINGFORM_HOSTINGAMOUNT,
-  FETCH_ASHIMICROWEBSITEINFO
+  FETCH_ASHIMICROWEBSITEINFO,
+  FETCH_DOMAININFO
 } from "./types";
 
 //Store Autocomplete_ID
@@ -245,4 +246,18 @@ export const submitashiMicroWebsiteInfo = (values, customerId, history) => async
   values.customerId = customerId;
   const res = await axios.post("/api/ashimicrowebsiteinfo", values);
   dispatch({ type: FETCH_ASHIMICROWEBSITEINFO, payload: values });
+};
+
+
+// Fetch Domain Info
+export const fetchdomainInfo = customerId => async dispatch => {
+  const res = await axios.get("/api/customerdomaininfo/" + customerId);
+  dispatch({ type: FETCH_DOMAININFO, payload: res.data[0] || {} });
+};
+
+// Set Domain Info
+export const submitdomainInfoForm = (values, customerId, history) => async dispatch => {
+  values.customerId = customerId;
+  const res = await axios.post("/api/customerdomaininfo", values);
+  dispatch({ type: FETCH_DOMAININFO, payload: values });
 };

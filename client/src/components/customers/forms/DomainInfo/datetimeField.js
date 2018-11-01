@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-date-picker';
 
-const AvaloninfoDatetime = ({ input, label, type, meta: { touched, error } }) => {
+const datetimeField = ({ input, label, type, meta: { touched, error } }) => {
 
   return (
     <div className="form-group">
@@ -40,4 +40,4 @@ class DatePickermain extends Component {
 
 
 
-export default AvaloninfoDatetime;
+export default datetimeField;

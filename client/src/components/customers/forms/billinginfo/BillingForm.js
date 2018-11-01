@@ -38,8 +38,8 @@ class BillingForm extends Component {
 
     componentWillReceiveProps(nextProps) {
 
-        console.clear();
-        console.log("Billing form: ", nextProps.billingForm);
+        // console.clear();
+        // console.log("Billing form: ", nextProps.billingForm);
         if (nextProps.billingForm && !this.state.isInitializeState) {
 
             const initData = nextProps.billingForm;

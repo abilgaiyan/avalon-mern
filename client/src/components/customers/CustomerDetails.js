@@ -11,6 +11,7 @@ import CustomerForm from "../customers/forms/customerinfo/CustomerForm";
 import AvaloninfoForm from "../customers/forms/avaloninfo/AvaloninfoForm";
 import BillingForm from "../customers/forms/billinginfo/BillingForm";
 import AshiMicroWebsiteForm from "../customers/forms/AshiMicroWebsiteInfo/AshiMicroWebsiteForm";
+import DomainInfoForm from "../customers/forms/DomainInfo/DomainInfoForm";
 import TargetAreasForm from "../customers/forms/targetareas/TargetAreasForm";
 import SupportQueryForm from "../customers/forms/supportquery/SupportQuery";
 
@@ -24,6 +25,7 @@ class CustomerDetails extends Component {
     this.props.fetchCustomerInfo(customerId);
     this.props.fetchBillingInfo(customerId); //Arg. avalonbillinginfoId
     this.props.fetchAshiMicroWebsiteInfo(customerId);
+    this.props.fetchdomainInfo(customerId);
     this.props.fetchBillingInfoProductPlanDropdown();
     this.props.fetchBillingInfoHostingAmountDropdown();
   }
@@ -68,6 +70,10 @@ class CustomerDetails extends Component {
 
   renderAshiMicroWebsiteForm() {
     return <AshiMicroWebsiteForm />
+  }
+
+  renderDomainInfoForm() {
+    return <DomainInfoForm />
   }
 
   renderTargetAreas() {
@@ -154,6 +160,17 @@ class CustomerDetails extends Component {
               paraent="accordion1"
               custmClass=""
             />
+
+            {/* Domain Info Form */}
+            <AccordianPanel
+              title="Domain Info Form"
+              func={this.renderDomainInfoForm()}
+              active="True"
+              AccId="DomainInfoForm"
+              paraent="accordion1"
+              custmClass=""
+            />
+
 
           </div>
           {/* end Accordian */}

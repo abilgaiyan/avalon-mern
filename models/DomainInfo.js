@@ -16,4 +16,4 @@ const domainInfoSchema = new Schema({
 
 });
 // create modal based on schema
-mongoose.model('domaininfo', domainInfoSchema);
+mongoose.model('domaininfo', domainInfoSchema, 'domaininfo');

@@ -3,17 +3,17 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { reduxForm, Field, initialize } from "redux-form";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-import ashiMicroWebsiteField from "./ashiMicroWebsiteField";
+import inputField from "./inputField";
+import datetimeField from "./datetimeField";
 import validateEmails from "../../../../utils/validateEmails";
 import formFields from "./formFields";
-import { withRouter } from "react-router-dom";
 import * as actions from "../../../../actions";
 
 
 
-class AshiMicroWebsiteForm extends Component {
+class DomainInfoForm extends Component {
     constructor(props) {
         super(props);
 
@@ -35,10 +35,10 @@ class AshiMicroWebsiteForm extends Component {
 
     componentWillReceiveProps(nextProps) {
         // console.clear();
-        // console.log("AshiMicroWebsiteForm: ", nextProps.ashimicrowebsiteForm);
-        if (nextProps.ashimicrowebsiteForm && !this.state.isInitializeState) {
+        // console.log("DomainInfoForm: ", nextProps.domainInfoForm);
+        if (nextProps.domainInfoForm && !this.state.isInitializeState) {
 
-            const initData = nextProps.ashimicrowebsiteForm;
+            const initData = nextProps.domainInfoForm;
             nextProps.initialize(initData);
             this.setState({ isInitializeState: true });
         }
@@ -49,68 +49,35 @@ class AshiMicroWebsiteForm extends Component {
         return _.map(formFields, ({ label, name, type }) => {
             // console.log(this.props.customerDetails[name]);
             if (type === "text") {
-                if (name !== "comments") {
-                    return (
-                        <Field
-                            key={name}
-                            component={ashiMicroWebsiteField}
-                            type={type}
-                            label={label}
-                            name={name}
-                            disabled={(this.state.disabled) ? "disabled" : ""}
-                        // validate={[required, maxLength15]}
-                        />
-                    );
-                }
-
-                if (name === "comments") {
-                    return (
-                        <Field
-                            key={name}
-                            component={ashiMicroWebsiteField}
-                            type={type}
-                            label={label}
-                            name={name}
-                            disabled={(this.state.disabled) ? "disabled" : ""}
-                        />
-                    );
-                }
-
-                if (name === "productPlan") {
-                    return (
-                        <div className="checkbox">
-                            <Field
-                                key={name}
-                                component={ashiMicroWebsiteField}
-                                type={type}
-                                label={label}
-                                name={name}
-                                disabled={(this.state.disabled) ? "disabled" : ""}
-                            />
-                        </div>
-                    );
-                }
-            }
-
-            if (type === "checkbox") {
                 return (
                     <Field
                         key={name}
-                        component={ashiMicroWebsiteField}
+                        component={inputField}
                         type={type}
                         label={label}
                         name={name}
                         disabled={(this.state.disabled) ? "disabled" : ""}
+                    // validate={[required, maxLength15]}
                     />
                 );
             }
-
-
+            if (type === "datetime") {
+                return (
+                    <Field
+                        key={name}
+                        component={datetimeField}
+                        type={type}
+                        label={label}
+                        name={name}
+                    // validate={[required, maxLength15]}
+                    />
+                );
+            }
         });
     }
 
     render() {
-        if (!this.props.ashimicrowebsiteForm) {
+        if (!this.props.domainInfoForm) {
             // console.clear();
             // console.log(this.props.productPlanDropdown[0].planName);
             return (<div>Loading...</div>)
@@ -124,7 +91,7 @@ class AshiMicroWebsiteForm extends Component {
                     <div className="clearfix"></div>
                     <form
                         className="form-horizontal label-left"
-                        onSubmit={this.props.handleSubmit((history) => { this.props.submitashiMicroWebsiteInfo(this.props.formValues.values, this.props.match.params.customerId, history).then(this.setState({ disabled: true })) })}>
+                        onSubmit={this.props.handleSubmit((history) => { this.props.submitdomainInfoForm(this.props.formValues.values, this.props.match.params.customerId, history).then(this.setState({ disabled: true })) })}>
                         {this.renderFields()}
                         {
                             this.state.disabled === true ? "" :
@@ -165,19 +132,17 @@ function mapStateToProps(state) {
     // console.clear();
     // console.log(state);
     return {
-        formValues: state.form.AshiMicroWebsiteReduxForm,
-        ashimicrowebsiteForm: state.ashiMicroWebsiteInfo
+        formValues: state.form.DomainInfoReduxForm,
+        domainInfoForm: state.domainInfo
     };
 }
 
-AshiMicroWebsiteForm = connect(
+DomainInfoForm = connect(
     mapStateToProps,
     actions
-)(withRouter(AshiMicroWebsiteForm));
+)(withRouter(DomainInfoForm));
 
 export default reduxForm({
     //validate,
-    form: "AshiMicroWebsiteReduxForm"
-})(withRouter(AshiMicroWebsiteForm));
-
-//export default connect(mapStateToProps, actions)(withRouter(ContactusForm));
+    form: "DomainInfoReduxForm"
+})(withRouter(DomainInfoForm));
