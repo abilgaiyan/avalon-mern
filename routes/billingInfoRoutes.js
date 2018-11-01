@@ -43,8 +43,8 @@ module.exports = app => {
     const customerId = billinginfo.customerId;
     const billinginfoId_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _billingInfo: 1, _id: 0 });
     const billinginfoId = billinginfoId_temp[0]._billingInfo;
-    console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------");
-    console.log(billinginfoId);
+    // console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------");
+    // console.log(billinginfoId);
     // if (req.body.customerId = 0) {
     //   billinginfo.createDate = Date.now();
     //   delete billinginfo.customerId;

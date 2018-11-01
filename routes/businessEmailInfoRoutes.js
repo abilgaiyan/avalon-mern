@@ -7,14 +7,24 @@ const CustomerInfo = mongoose.model("customerinfo");
 
 module.exports = app => {
   //Get Customer Website Email info By ID
-  app.get('/api/businessemailinfo/:bemailinfoid', async (req, res) => {
-    const emailInfoId = req.params.bemailinfoid;
+  app.get('/api/businessemailinfo/:customerId', async (req, res) => {
+    const customerId = req.params.customerId;
+    const businessEmailInfo_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _businessEmailInfo: 1, _id: 0 });
+    const businessEmailInfoId = businessEmailInfo_temp[0]._businessEmailInfo;
+    //const customerId = req.params.customerid.toString();
+    //console.log(billinginfo);
+    //res.send(billinginfo);
+
     const bemailinfo = await BusinessEmailInfo.find({
-      _id: mongoose.Types.ObjectId(emailInfoId)
+      _id: mongoose.Types.ObjectId(businessEmailInfoId)
     }, { createDate: 0, updateDate: 0 });
-    //console.log(bemailinfo);
-    //res.send(bemailinfo);
+
+    // console.log("-------------->>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<------------------------")
+    // console.log(billinginfo);
+
     if (bemailinfo) {
+      // console.log("-------------->>>>>>>>><<<<<<<<<<<<<<<-------------");
+      // console.log(billinginfo);
       res.send(bemailinfo);
     } else {
       res.send("no data");
@@ -22,39 +32,37 @@ module.exports = app => {
 
   });
 
-  //New
+
+
+  //Edit
   app.post("/api/businessemailinfo", async (req, res) => {
 
     const bemailinfo = { ...req.body };
     bemailinfo.updateDate = Date.now();
-    if (req.body.emailInfoId = 0) {
-      bemailinfo.createDate = Date.now();
-    }
-    const customerId = req.body.customerId;
+    const customerId = bemailinfo.customerId;
+    const businessEmailInfo_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _businessEmailInfo: 1, _id: 0 });
+    const businessEmailInfoId = businessEmailInfo_temp[0]._businessEmailInfo;
 
-    //console.log(bemailinfo);
-    BusinessEmailInfo.findOneAndUpdate(
+    await BusinessEmailInfo.findOneAndUpdate(
       {
-        _id: req.body.emailInfoId
+        _id: businessEmailInfoId
       },
       bemailinfo,
       { upsert: true },
       (err, res) => {
         // Deal with the response data/error
-        console.log(err);
-        // console.log(res);
-        if (res) {
-
-          CustomerInfo.update({ _id: customerId }, {
-            _businessEmailInfo: res._id
-          }, function (err, affected, resp) {
-            console.log(resp);
-          })
+        if (err) {
+          console.log(err);
         }
+        if (res) {
+          console.log(res);
+        }
+        // console.log(res);
       }
     );
 
     res.end();
   });
+
 
 }

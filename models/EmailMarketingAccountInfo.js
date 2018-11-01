@@ -12,4 +12,4 @@ const emailmarketingaccountInfoSchema = new Schema({
 
 });
 // create modal based on schema
-mongoose.model('emailmarketingaccountinfo', emailmarketingaccountInfoSchema);
+mongoose.model('emailmarketingaccountinfo', emailmarketingaccountInfoSchema, 'emailmarketingaccountinfo');

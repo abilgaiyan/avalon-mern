@@ -17,7 +17,8 @@ import {
   FETCH_BILLINGFORM_HOSTINGAMOUNT,
   FETCH_ASHIMICROWEBSITEINFO,
   FETCH_DOMAININFO,
-  FETCH_SSLINFO
+  FETCH_SSLINFO,
+  FETCH_BUSINESSEMAILINFO
 } from "./types";
 
 //Store Autocomplete_ID
@@ -274,4 +275,17 @@ export const submitsslInfoForm = (values, customerId, history) => async dispatch
   values.customerId = customerId;
   const res = await axios.post("/api/sslinfo", values);
   dispatch({ type: FETCH_SSLINFO, payload: values });
+};
+
+// Fetch SSL Info
+export const fetchbusinessEmailInfo = customerId => async dispatch => {
+  const res = await axios.get("/api/businessemailinfo/" + customerId);
+  dispatch({ type: FETCH_BUSINESSEMAILINFO, payload: res.data[0] || {} });
+};
+
+// Set SSL Info
+export const submitbusinessEmailInfoForm = (values, customerId, history) => async dispatch => {
+  values.customerId = customerId;
+  const res = await axios.post("/api/businessemailinfo", values);
+  dispatch({ type: FETCH_BUSINESSEMAILINFO, payload: values });
 };

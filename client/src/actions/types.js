@@ -35,3 +35,5 @@ export const FETCH_ASHIMICROWEBSITEINFO = "fetch_ashimicrowebsiteinfo";
 export const FETCH_DOMAININFO = "fetch_domaininfo";
 
 export const FETCH_SSLINFO = "fetch_sslinfo";
+
+export const FETCH_BUSINESSEMAILINFO = "fetch_businessemailinfo";

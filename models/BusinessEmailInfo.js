@@ -6,9 +6,10 @@ const businessEmailInfoSchema = new Schema({
     emailRequirement: String,
     emailProvider: String,
     adminEmailId: String,
+    adminPassword: String,
     createDate: Date,
     updateDate: Date
 
 });
 // create modal based on schema
-mongoose.model('businessemailinfo', businessEmailInfoSchema);
+mongoose.model('businessemailinfo', businessEmailInfoSchema, 'businessemailinfo');
