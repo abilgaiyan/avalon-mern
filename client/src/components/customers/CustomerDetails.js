@@ -10,6 +10,7 @@ import CustomerSummary from "../customers/forms/summary/CustomerSummary";
 import CustomerForm from "../customers/forms/customerinfo/CustomerForm";
 import AvaloninfoForm from "../customers/forms/avaloninfo/AvaloninfoForm";
 import BillingForm from "../customers/forms/billinginfo/BillingForm";
+import AshiMicroWebsiteForm from "../customers/forms/AshiMicroWebsiteInfo/AshiMicroWebsiteForm";
 import TargetAreasForm from "../customers/forms/targetareas/TargetAreasForm";
 import SupportQueryForm from "../customers/forms/supportquery/SupportQuery";
 
@@ -22,6 +23,7 @@ class CustomerDetails extends Component {
     const customerId = this.props.autoCompleteId || this.props.match.params.customerId;
     this.props.fetchCustomerInfo(customerId);
     this.props.fetchBillingInfo(customerId); //Arg. avalonbillinginfoId
+    this.props.fetchAshiMicroWebsiteInfo(customerId);
     this.props.fetchBillingInfoProductPlanDropdown();
     this.props.fetchBillingInfoHostingAmountDropdown();
   }
@@ -62,6 +64,10 @@ class CustomerDetails extends Component {
 
   renderBillingForm() {
     return <BillingForm />
+  }
+
+  renderAshiMicroWebsiteForm() {
+    return <AshiMicroWebsiteForm />
   }
 
   renderTargetAreas() {
@@ -138,6 +144,17 @@ class CustomerDetails extends Component {
               paraent="accordion1"
               custmClass=""
             />
+
+            {/* AshiMicroWebsite Form */}
+            <AccordianPanel
+              title="Ashi Micro Website Form"
+              func={this.renderAshiMicroWebsiteForm()}
+              active="True"
+              AccId="AshiMicroWebsiteForm"
+              paraent="accordion1"
+              custmClass=""
+            />
+
           </div>
           {/* end Accordian */}
         </div>

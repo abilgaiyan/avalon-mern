@@ -12,4 +12,4 @@ const ashiMicroWebInfoSchema = new Schema({
 
 });
 // create modal based on schema
-mongoose.model('ashimicrowebsiteinfo', ashiMicroWebInfoSchema);
+mongoose.model('ashimicrowebsiteinfo', ashiMicroWebInfoSchema, 'ashimicrowebsiteinfo');

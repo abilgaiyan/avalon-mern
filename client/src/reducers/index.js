@@ -19,8 +19,9 @@ import billingInfoHostingAmountDropdownReducer from "./BillingFormHostingAmountD
 import billingInfoReducer from "./billinginfoReducer";
 import targetAreasReducers from "./targetAreasReducers";
 import websiteInfoReducer from "./websiteInfoReducer";
-
 import autoCompleteId from "./autocompleteReducer";
+
+import ashimicrowebsiteinfoReducer from "./ashimicrowebsiteinfoReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -45,5 +46,7 @@ export default combineReducers({
   billingInfoProductPlanDropdownReducer: billingInfoProductPlanDropdownReducer,
   billingInfoHostingAmountDropdownReducer: billingInfoHostingAmountDropdownReducer,
   billingInfo: billingInfoReducer,
-  autoCompleteId: autoCompleteId
+  autoCompleteId: autoCompleteId,
+
+  ashiMicroWebsiteInfo: ashimicrowebsiteinfoReducer
 });

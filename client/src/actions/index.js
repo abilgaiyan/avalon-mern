@@ -14,7 +14,8 @@ import {
   FETCH_AVALONINFO,
   FETCH_BILLINGINFO,
   FETCH_BILLINGFORM_PRODUCTPLAN,
-  FETCH_BILLINGFORM_HOSTINGAMOUNT
+  FETCH_BILLINGFORM_HOSTINGAMOUNT,
+  FETCH_ASHIMICROWEBSITEINFO
 } from "./types";
 
 //Store Autocomplete_ID
@@ -231,4 +232,17 @@ export const submitBillingInfo = (values, customerId, history) => async dispatch
 
   //const res = storylist;
   dispatch({ type: FETCH_BILLINGINFO, payload: values });
+};
+
+// Fetch Ashi MicroWebsite Info
+export const fetchAshiMicroWebsiteInfo = customerId => async dispatch => {
+  const res = await axios.get("/api/ashimicrowebsiteinfo/" + customerId);
+  dispatch({ type: FETCH_ASHIMICROWEBSITEINFO, payload: res.data[0] || {} });
+};
+
+// Set Ashi MicroWebsite Info
+export const submitashiMicroWebsiteInfo = (values, customerId, history) => async dispatch => {
+  values.customerId = customerId;
+  const res = await axios.post("/api/ashimicrowebsiteinfo", values);
+  dispatch({ type: FETCH_ASHIMICROWEBSITEINFO, payload: values });
 };
