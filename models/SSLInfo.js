@@ -17,4 +17,4 @@ const sslInfoSchema = new Schema({
 
 });
 // create modal based on schema
-mongoose.model('sslinfo', sslInfoSchema);
+mongoose.model('sslinfo', sslInfoSchema, 'sslinfo');

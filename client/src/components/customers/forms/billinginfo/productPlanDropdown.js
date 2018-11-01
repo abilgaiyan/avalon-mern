@@ -6,7 +6,7 @@ const productPlanDropdown = ({ input, label, optionData, disabled, meta: { touch
 
     let product_hostingPlanData = optionData;
     // let hostingAmountData = hostingdata;
-    console.log(product_hostingPlanData);
+    //console.log(product_hostingPlanData);
 
     let optionItems = product_hostingPlanData.map((data, index) => (
         data._productPlan ? (<option key={data._id} value={data._id}>{data._productPlan}</option>) : (<option key={data._id} value={data._id}>{data.hostingAmount}</option>)

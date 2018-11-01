@@ -33,3 +33,5 @@ export const FETCH_BILLINGFORM_HOSTINGAMOUNT = "fetch_billingform_hostingamount"
 export const FETCH_ASHIMICROWEBSITEINFO = "fetch_ashimicrowebsiteinfo";
 
 export const FETCH_DOMAININFO = "fetch_domaininfo";
+
+export const FETCH_SSLINFO = "fetch_sslinfo";

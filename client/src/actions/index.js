@@ -16,7 +16,8 @@ import {
   FETCH_BILLINGFORM_PRODUCTPLAN,
   FETCH_BILLINGFORM_HOSTINGAMOUNT,
   FETCH_ASHIMICROWEBSITEINFO,
-  FETCH_DOMAININFO
+  FETCH_DOMAININFO,
+  FETCH_SSLINFO
 } from "./types";
 
 //Store Autocomplete_ID
@@ -260,4 +261,17 @@ export const submitdomainInfoForm = (values, customerId, history) => async dispa
   values.customerId = customerId;
   const res = await axios.post("/api/customerdomaininfo", values);
   dispatch({ type: FETCH_DOMAININFO, payload: values });
+};
+
+// Fetch SSL Info
+export const fetchSSLInfo = customerId => async dispatch => {
+  const res = await axios.get("/api/sslinfo/" + customerId);
+  dispatch({ type: FETCH_SSLINFO, payload: res.data[0] || {} });
+};
+
+// Set SSL Info
+export const submitsslInfoForm = (values, customerId, history) => async dispatch => {
+  values.customerId = customerId;
+  const res = await axios.post("/api/sslinfo", values);
+  dispatch({ type: FETCH_SSLINFO, payload: values });
 };

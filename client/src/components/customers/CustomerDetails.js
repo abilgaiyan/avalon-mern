@@ -12,6 +12,7 @@ import AvaloninfoForm from "../customers/forms/avaloninfo/AvaloninfoForm";
 import BillingForm from "../customers/forms/billinginfo/BillingForm";
 import AshiMicroWebsiteForm from "../customers/forms/AshiMicroWebsiteInfo/AshiMicroWebsiteForm";
 import DomainInfoForm from "../customers/forms/DomainInfo/DomainInfoForm";
+import SSLInfoForm from "../customers/forms/sslInfo/SSLInfoForm";
 import TargetAreasForm from "../customers/forms/targetareas/TargetAreasForm";
 import SupportQueryForm from "../customers/forms/supportquery/SupportQuery";
 
@@ -23,11 +24,12 @@ class CustomerDetails extends Component {
   componentWillMount() {
     const customerId = this.props.autoCompleteId || this.props.match.params.customerId;
     this.props.fetchCustomerInfo(customerId);
+    this.props.fetchBillingInfoProductPlanDropdown();
+    this.props.fetchBillingInfoHostingAmountDropdown();
     this.props.fetchBillingInfo(customerId); //Arg. avalonbillinginfoId
     this.props.fetchAshiMicroWebsiteInfo(customerId);
     this.props.fetchdomainInfo(customerId);
-    this.props.fetchBillingInfoProductPlanDropdown();
-    this.props.fetchBillingInfoHostingAmountDropdown();
+    this.props.fetchSSLInfo(customerId);
   }
 
 
@@ -74,6 +76,10 @@ class CustomerDetails extends Component {
 
   renderDomainInfoForm() {
     return <DomainInfoForm />
+  }
+
+  renderSSLInfoForm() {
+    return <SSLInfoForm />
   }
 
   renderTargetAreas() {
@@ -170,7 +176,15 @@ class CustomerDetails extends Component {
               paraent="accordion1"
               custmClass=""
             />
-
+            {/* SSL Info Form */}
+            <AccordianPanel
+              title="SSL Info Form"
+              func={this.renderSSLInfoForm()}
+              active="True"
+              AccId="SSLInfoForm"
+              paraent="accordion1"
+              custmClass=""
+            />
 
           </div>
           {/* end Accordian */}

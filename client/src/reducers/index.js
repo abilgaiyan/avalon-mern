@@ -23,6 +23,7 @@ import autoCompleteId from "./autocompleteReducer";
 
 import ashimicrowebsiteinfoReducer from "./ashimicrowebsiteinfoReducer";
 import domainInfoReducer from "./domainInfoReducer";
+import sslInfoReducer from "./sslInfoReducer";
 
 
 export default combineReducers({
@@ -51,5 +52,6 @@ export default combineReducers({
   autoCompleteId: autoCompleteId,
 
   ashiMicroWebsiteInfo: ashimicrowebsiteinfoReducer,
-  domainInfo: domainInfoReducer
+  domainInfo: domainInfoReducer,
+  sslInfo: sslInfoReducer
 });
