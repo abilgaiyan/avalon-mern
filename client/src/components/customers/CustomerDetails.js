@@ -14,6 +14,7 @@ import AshiMicroWebsiteForm from "../customers/forms/AshiMicroWebsiteInfo/AshiMi
 import DomainInfoForm from "../customers/forms/DomainInfo/DomainInfoForm";
 import SSLInfoForm from "../customers/forms/sslInfo/SSLInfoForm";
 import BusinessEmailInfoForm from "../customers/forms/businessEmailInfo/BusinessEmailInfoForm";
+import EmailMarketingAccountInfoForm from "../customers/forms/emailmarketingaccountinfo/EmailMarketingAccountInfoForm";
 import TargetAreasForm from "../customers/forms/targetareas/TargetAreasForm";
 import SupportQueryForm from "../customers/forms/supportquery/SupportQuery";
 
@@ -32,7 +33,7 @@ class CustomerDetails extends Component {
     this.props.fetchdomainInfo(customerId);
     this.props.fetchSSLInfo(customerId);
     this.props.fetchbusinessEmailInfo(customerId);
-
+    this.props.fetchemailmarketingaccountinfo(customerId);
   }
 
 
@@ -87,6 +88,10 @@ class CustomerDetails extends Component {
 
   renderBusinessEmailInfoForm() {
     return <BusinessEmailInfoForm />
+  }
+
+  renderEmailMarketingAccountInfoForm() {
+    return <EmailMarketingAccountInfoForm />
   }
 
   renderTargetAreas() {
@@ -193,7 +198,6 @@ class CustomerDetails extends Component {
               custmClass=""
             />
 
-
             {/* Business Email Info Form */}
             <AccordianPanel
               title="Business Email Info Form"
@@ -203,6 +207,18 @@ class CustomerDetails extends Component {
               paraent="accordion1"
               custmClass=""
             />
+
+            {/* Business Email Info Form */}
+            <AccordianPanel
+              title="Email Marketing Account Info Form"
+              func={this.renderEmailMarketingAccountInfoForm()}
+              active="True"
+              AccId="EmailMarketingAccountInfoForm"
+              paraent="accordion1"
+              custmClass=""
+            />
+
+
           </div>
           {/* end Accordian */}
         </div>

@@ -18,7 +18,8 @@ import {
   FETCH_ASHIMICROWEBSITEINFO,
   FETCH_DOMAININFO,
   FETCH_SSLINFO,
-  FETCH_BUSINESSEMAILINFO
+  FETCH_BUSINESSEMAILINFO,
+  FETCH_EMAILMARKETINGACCOUNTINFO
 } from "./types";
 
 //Store Autocomplete_ID
@@ -277,15 +278,28 @@ export const submitsslInfoForm = (values, customerId, history) => async dispatch
   dispatch({ type: FETCH_SSLINFO, payload: values });
 };
 
-// Fetch SSL Info
+// Fetch Business Email Info Form
 export const fetchbusinessEmailInfo = customerId => async dispatch => {
   const res = await axios.get("/api/businessemailinfo/" + customerId);
   dispatch({ type: FETCH_BUSINESSEMAILINFO, payload: res.data[0] || {} });
 };
 
-// Set SSL Info
+// Set Business Email Info Form
 export const submitbusinessEmailInfoForm = (values, customerId, history) => async dispatch => {
   values.customerId = customerId;
   const res = await axios.post("/api/businessemailinfo", values);
   dispatch({ type: FETCH_BUSINESSEMAILINFO, payload: values });
+};
+
+// Fetch Email Marketing Account Info Form
+export const fetchemailmarketingaccountinfo = customerId => async dispatch => {
+  const res = await axios.get("/api/emailmarketingaccountinfo/" + customerId);
+  dispatch({ type: FETCH_EMAILMARKETINGACCOUNTINFO, payload: res.data[0] || {} });
+};
+
+// Set Email Marketing Account Info Form
+export const submitemailmarketingaccountinfoForm = (values, customerId, history) => async dispatch => {
+  values.customerId = customerId;
+  const res = await axios.post("/api/emailmarketingaccountinfo", values);
+  dispatch({ type: FETCH_EMAILMARKETINGACCOUNTINFO, payload: values });
 };

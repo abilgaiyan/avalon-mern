@@ -25,6 +25,7 @@ import ashimicrowebsiteinfoReducer from "./ashimicrowebsiteinfoReducer";
 import domainInfoReducer from "./domainInfoReducer";
 import sslInfoReducer from "./sslInfoReducer";
 import businessEmailInfoReducer from "./businessEmailInfoReducer";
+import emailmarketingaccountinfoReducer from "./emailmarketingaccountinfoReducer";
 
 
 export default combineReducers({
@@ -55,5 +56,6 @@ export default combineReducers({
   ashiMicroWebsiteInfo: ashimicrowebsiteinfoReducer,
   domainInfo: domainInfoReducer,
   sslInfo: sslInfoReducer,
-  businessEmailInfo: businessEmailInfoReducer
+  businessEmailInfo: businessEmailInfoReducer,
+  emailmarketingaccountinfo: emailmarketingaccountinfoReducer
 });

@@ -37,3 +37,5 @@ export const FETCH_DOMAININFO = "fetch_domaininfo";
 export const FETCH_SSLINFO = "fetch_sslinfo";
 
 export const FETCH_BUSINESSEMAILINFO = "fetch_businessemailinfo";
+
+export const FETCH_EMAILMARKETINGACCOUNTINFO = "fetch_emailmarketingaccountinfo";
