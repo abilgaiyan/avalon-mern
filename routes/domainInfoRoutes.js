@@ -65,7 +65,7 @@ module.exports = app => {
           console.log(err);
         }
         if (res) {
-          console.log(res);
+          //console.log(res);
         }
         // console.log(res);
       }

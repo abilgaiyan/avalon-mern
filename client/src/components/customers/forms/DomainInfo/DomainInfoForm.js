@@ -4,6 +4,11 @@ import React, { Component } from "react";
 import { reduxForm, Field, initialize } from "redux-form";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import moment from 'moment'
+import momentLocaliser from "react-widgets-moment";
+//import momentLocaliser from 'react-widgets/lib/localizers/moment'
+
+import 'react-widgets/dist/css/react-widgets.css'
 
 import inputField from "./inputField";
 import datetimeField from "./datetimeField";
@@ -12,6 +17,7 @@ import formFields from "./formFields";
 import * as actions from "../../../../actions";
 
 
+momentLocaliser(moment)
 
 class DomainInfoForm extends Component {
     constructor(props) {
@@ -69,6 +75,7 @@ class DomainInfoForm extends Component {
                         type={type}
                         label={label}
                         name={name}
+                        showTime={false}
                     // validate={[required, maxLength15]}
                     />
                 );
