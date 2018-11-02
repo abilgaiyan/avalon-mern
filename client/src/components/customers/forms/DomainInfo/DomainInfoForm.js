@@ -17,7 +17,7 @@ import formFields from "./formFields";
 import * as actions from "../../../../actions";
 
 
-momentLocaliser(moment)
+momentLocaliser(moment);
 
 class DomainInfoForm extends Component {
     constructor(props) {
@@ -76,6 +76,7 @@ class DomainInfoForm extends Component {
                         label={label}
                         name={name}
                         showTime={false}
+                        disabled={(this.state.disabled) ? "disabled" : ""}
                     // validate={[required, maxLength15]}
                     />
                 );

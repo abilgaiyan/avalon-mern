@@ -20,6 +20,8 @@ export const FETCH_CUSTOMERSUMMARY = "fetch_Cstomer_Summary";
 
 export const FETCH_CUSTOMERINFO = "fetch_customerinfo";
 
+export const FETCH_WEBSITESTATUS = "fetch_websiteStatus";
+
 export const FETCH_AVALONINFO = "fetch_avaloninfo";
 
 export const FETCH_BILLINGINFO = "fetch_billing_info";

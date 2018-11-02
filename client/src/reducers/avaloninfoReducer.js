@@ -1,10 +1,10 @@
-import { FETCH_AVALONINFO } from '../actions/types';
+import { FETCH_AVALONINFO } from "../actions/types";
 
-export default function (state = [], action) {
-
+export default function (state = null, action) {
     switch (action.type) {
         case FETCH_AVALONINFO:
-            // console.log("FETCH_AVALONINFO", action.payload)
+            // console.clear();
+            // console.log("FETCH_AVALONINFO Reducer", action.payload)
             return action.payload;
         default:
             return state;

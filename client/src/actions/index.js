@@ -11,6 +11,7 @@ import {
   FETCH_PHONECALL,
   FETCH_QUERY,
   FETCH_CUSTOMERINFO,
+  FETCH_WEBSITESTATUS,
   FETCH_AVALONINFO,
   FETCH_BILLINGINFO,
   FETCH_BILLINGFORM_PRODUCTPLAN,
@@ -190,17 +191,25 @@ export const submitCustomerInfo = (values, customerId, history) => async dispatc
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
 };
 
+// Fetch Avalon Info Drop-down for website Status
+export const fetchWebsiteStatusDropdown = () => async dispatch => {
+  const res = await axios.get("/api/WebsiteStatus");
+  dispatch({ type: FETCH_WEBSITESTATUS, payload: res.data });
+};
+
+// Fetch Avalon Info Details wrt. Customer id
+export const fetchAvalonInfo = customerId => async dispatch => {
+  const res = await axios.get("/api/avaloninfo/" + customerId);
+  dispatch({ type: FETCH_AVALONINFO, payload: res.data[0] || {} });
+};
 
 // Set Avalon Info data wrt. Customer id
 export const submitAvalonInfo = (values, customerId, history) => async dispatch => {
   values.customerId = customerId;
-  const res = await axios.post("/api/avaloninfo_Post", values);
+  const res = await axios.post("/api/avaloninfo", values);
   // console.log(history);
   // history.push("/customers");
-
-  //const res = storylist;
   dispatch({ type: FETCH_AVALONINFO, payload: values });
-  // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
 };
 
 // Fetch Billing Info Drop-down for productPlan

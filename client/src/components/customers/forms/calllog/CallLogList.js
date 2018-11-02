@@ -29,68 +29,50 @@ class CallLogList extends Component {
   // }
   render() {
     return (
-      <div id="Call_Log" className="panel-collapse collapse ">
-        <div className="panel-body">
-          <div className="overlay-refresh">
-            <div className="vertical-align-wrap">
-              <div className="vertical-align-middle">
-                <i className="fa fa-refresh fa-spin" />
-                <span>Refreshing...</span>
-              </div>
-            </div>
-          </div>
-          <a href="#" className="pull-right icon_well">
-            <button
-              type="submit"
-              className="btn btn-primary btn-lg btn-fullrounded center-block"
-            >
-              <i className="fa fa-plus-square" />
-              <span>Add</span>
-            </button>
-          </a>
-          <div className="clearfix" />
-          {/* <div className="alert alert-info"><i className="fa fa-info-circle"></i> Click Refresh button above to simulate panel refresh event</div> */}
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Prev. Call Date</th>
-                <th>Prev. Call Type</th>
-                <th>Call Person</th>
-                <th>Avalon Exec.</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>08/25/2018</td>
-                <td>Steve</td>
-                <td>Ron Ackerman</td>
-                <td>Ajay</td>
-                <td>
-                  <i className="fa fa-search" />
-                </td>
-              </tr>
-              <tr>
-                <td>08/25/2018</td>
-                <td>Simon</td>
-                <td>Ron Ackerman</td>
-                <td>Ajay</td>
-                <td>
-                  <i className="fa fa-search" />
-                </td>
-              </tr>
-              <tr>
-                <td>08/25/2018</td>
-                <td>Jane</td>
-                <td>Ron Ackerman</td>
-                <td>Ajay</td>
-                <td>
-                  <i className="fa fa-search" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div >
+        {/* test disgn */}
+        <a href="#" className="pull-right icon_well">
+          <button type="submit" className="btn btn-primary center-block">
+            <i className="fa fa-plus-square"></i>
+            <span>Add</span>
+          </button>
+        </a>
+        <div className="clearfix"></div>
+        <table className="table table-bordered table_list">
+          <thead>
+            <tr className="active">
+              <th>Prev. Call Date</th>
+              <th>Prev. Call Type</th>
+              <th>Call Person</th>
+              <th>Avalon Exec.</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>08/25/2018</td>
+              <td><i className="fa fa-sign-in" aria-hidden="true"></i></td>
+              <td>Ron Ackerman</td>
+              <td>Ajay</td>
+              <td><i className="fa fa-search"></i></td>
+            </tr>
+            <tr>
+              <td>08/25/2018</td>
+              <td><i className="fa fa-sign-out" aria-hidden="true"></i></td>
+              <td>Ron Ackerman</td>
+              <td>Ajay</td>
+              <td><i className="fa fa-search"></i></td>
+            </tr>
+            <tr>
+              <td>08/25/2018</td>
+              <td><i className="fa fa-sign-in" aria-hidden="true"></i></td>
+              <td>Ron Ackerman</td>
+              <td>Ajay</td>
+              <td><i className="fa fa-search"></i></td>
+            </tr>
+          </tbody>
+        </table>
+        {/* test disgn */}
       </div>
       //   </div>
     );

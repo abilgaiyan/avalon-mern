@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 //define schema for our Customer Plan
 const websiteStatusSchema = new Schema({
-    name: String,
+    _websitestatus: String,
     active: Boolean,
     displayorder: Number,
     createDate: Date,

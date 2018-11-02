@@ -1,7 +1,7 @@
 export default [
   {
     label: "Website Status:",
-    name: "websitestatus",
+    name: "_websitestatus",
     type: "dropdown",
     isvalidationApplied: true,
     validationmessage: "Please enter website status."
@@ -9,7 +9,7 @@ export default [
 
   {
     label: "Signup Date:",
-    name: "signupdate",
+    name: "signupDate",
     type: "datetime",
     isvalidationApplied: true,
     validationmessage: "Please enter signup date"
@@ -17,7 +17,7 @@ export default [
 
   {
     label: "# Of Days from Signup:",
-    name: "signupdays",
+    name: "numberOfDaysFromSignup",
     type: "text",
     isvalidationApplied: true,
     validationmessage: "Please enter signup days"
@@ -25,7 +25,7 @@ export default [
 
   {
     label: "Layout Sent Date:",
-    name: "layoutsentdate",
+    name: "layoutSentDate",
     type: "datetime",
     isvalidationApplied: true,
     validationmessage: "Please enter valid Layout Sent Date."
@@ -33,7 +33,7 @@ export default [
 
   {
     label: "Layout Approved Date:",
-    name: "layoutapproveddate",
+    name: "layoutAprrovedDate",
     type: "datetime",
     isvalidationApplied: true,
     validationmessage: "Please enter valid Layout Approval Date."
@@ -41,7 +41,7 @@ export default [
 
   {
     label: "Beta on Review Date:",
-    name: "betareviewdate",
+    name: "betaOnReviewDate",
     type: "datetime",
     isvalidationApplied: true,
     validationmessage: "Please enter valid review date."
@@ -50,7 +50,7 @@ export default [
   {
     label: "Comments:",
     name: "comments",
-    type: "textarea",
+    type: "text",
     isvalidationApplied: true,
     validationmessage: "Please enter valid jewelsoft Id"
   }

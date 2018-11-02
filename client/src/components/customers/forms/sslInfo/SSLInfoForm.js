@@ -4,6 +4,8 @@ import React, { Component } from "react";
 import { reduxForm, Field, initialize } from "redux-form";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import moment from 'moment'
+import momentLocaliser from "react-widgets-moment";
 
 import inputField from "./inputField";
 import datetimeField from "./datetimeField";
@@ -12,6 +14,7 @@ import formFields from "./formFields";
 import * as actions from "../../../../actions";
 
 
+momentLocaliser(moment);
 
 class SSLInfoForm extends Component {
     constructor(props) {
@@ -69,6 +72,8 @@ class SSLInfoForm extends Component {
                         type={type}
                         label={label}
                         name={name}
+                        showTime={false}
+                        disabled={(this.state.disabled) ? "disabled" : ""}
                     // validate={[required, maxLength15]}
                     />
                 );
@@ -129,8 +134,8 @@ function validate(values) {
     return errors;
 }
 function mapStateToProps(state) {
-    console.clear();
-    console.log(state);
+    // console.clear();
+    // console.log(state);
     return {
         formValues: state.form.SSLInfoReduxForm,
         sslInfoForm: state.sslInfo

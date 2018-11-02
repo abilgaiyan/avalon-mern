@@ -5,7 +5,7 @@ import AccordianPanel from "./AccordianPanel"
 import Email from "./Email";
 import PhoneCall from "./PhoneCall";
 import CustomerQuery from "./CustomerQuery";
-import CallLog from "../customers/forms/calllog/CallLogList";
+import CallLogList from "../customers/forms/calllog/CallLogList";
 import CustomerSummary from "../customers/forms/summary/CustomerSummary";
 import CustomerForm from "../customers/forms/customerinfo/CustomerForm";
 import AvaloninfoForm from "../customers/forms/avaloninfo/AvaloninfoForm";
@@ -26,6 +26,8 @@ class CustomerDetails extends Component {
   componentWillMount() {
     const customerId = this.props.autoCompleteId || this.props.match.params.customerId;
     this.props.fetchCustomerInfo(customerId);
+    this.props.fetchWebsiteStatusDropdown();
+    this.props.fetchAvalonInfo(customerId);
     this.props.fetchBillingInfoProductPlanDropdown();
     this.props.fetchBillingInfoHostingAmountDropdown();
     this.props.fetchBillingInfo(customerId); //Arg. avalonbillinginfoId
@@ -114,7 +116,7 @@ class CustomerDetails extends Component {
   }
 
   renderCallLog() {
-    return <CallLog callLogData={this.props.match.params.customerId} />;
+    return <CallLogList />;
   }
 
   renderQuery() {

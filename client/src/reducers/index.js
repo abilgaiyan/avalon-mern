@@ -13,7 +13,8 @@ import queryReducer from "./queryReducer";
 
 import customerSummary from "./customerSummary";
 import customerinfoReducers from "./customerinfoReducers";
-import avalonInfo from "./avaloninfoReducer";
+import websiteStatusReducer from "./websiteStatusReducer";
+import avaloninfoReducer from "./avaloninfoReducer";
 import billingInfoProductPlanDropdownReducer from "./BillingInfoProductPlanDropdownReducer";
 import billingInfoHostingAmountDropdownReducer from "./BillingFormHostingAmountDropdownReducer";
 import billingInfoReducer from "./billinginfoReducer";
@@ -46,7 +47,8 @@ export default combineReducers({
   websiteInfo: websiteInfoReducer,
   customersummary: customerSummary,
   customerForm: customerinfoReducers,
-  avalonInfo: avalonInfo,
+  websiteStatusDropdown: websiteStatusReducer,
+  avaloninfo: avaloninfoReducer,
 
   billingInfoProductPlanDropdownReducer: billingInfoProductPlanDropdownReducer,
   billingInfoHostingAmountDropdownReducer: billingInfoHostingAmountDropdownReducer,

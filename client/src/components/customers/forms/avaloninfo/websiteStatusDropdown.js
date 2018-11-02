@@ -1,0 +1,29 @@
+import React from "react";
+
+const websiteStatusDropdown = ({ input, label, optionData, disabled, meta: { touched, error } }) => {
+  // console.clear();
+  // console.log(optionData);
+
+  let websiteStatusData = optionData;
+
+  //console.log(websiteStatusData);
+
+  let optionItems = websiteStatusData.map((data, index) => (
+    <option key={data._id} value={data._id}>{data._websitestatus}</option>
+  ));
+
+  return (
+    <div className="form-group">
+      <label className="control-label col-sm-3">{label}</label>
+      <div className="col-sm-9">
+        <select {...input} className="form-control" disabled={disabled ? "disabled" : ""}>
+          {optionItems}
+          {/* {hostingAmountItems} */}
+        </select>
+        <div className="red-text">{touched && error}</div>
+      </div>
+    </div>
+  );
+};
+
+export default websiteStatusDropdown;

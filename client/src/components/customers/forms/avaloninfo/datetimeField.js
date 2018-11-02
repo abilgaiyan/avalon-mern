@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import DatePicker from 'react-date-picker';
 import DateTimePicker from 'react-widgets/lib/DateTimePicker'
 
 const datetimeField = ({ input, label, type, disabled, meta: { touched, error }, showTime }) => {
@@ -28,27 +27,5 @@ const datetimeField = ({ input, label, type, disabled, meta: { touched, error },
     </div>
   );
 };
-
-
-// class DatePickermain extends Component {
-//   state = {
-//     date: new Date(),
-//   }
-
-//   onChange = date => this.setState({ date })
-
-//   render() {
-//     return (
-//       <div>
-//         <DatePicker
-//           onChange={this.onChange}
-//           value={this.state.date}
-//         />
-//       </div>
-//     );
-//   }
-// }
-
-
 
 export default datetimeField;
