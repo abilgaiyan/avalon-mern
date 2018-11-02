@@ -16,6 +16,7 @@ require('./models/CustomerPhones');
 require('./models/CustomerQueries');
 //New Models
 require('./models/CustomerInfo');
+require('./models/WebsiteStatus');
 require('./models/AvalonInfo');
 require('./models/BillingInfo');
 require('./models/WebsiteInfo');

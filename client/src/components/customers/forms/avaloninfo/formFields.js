@@ -1,6 +1,6 @@
 export default [
   {
-    label: "Website Statue:",
+    label: "Website Status:",
     name: "websitestatus",
     type: "dropdown",
     isvalidationApplied: true,

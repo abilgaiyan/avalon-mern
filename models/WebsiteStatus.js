@@ -5,7 +5,6 @@ const { Schema } = mongoose;
 //define schema for our Customer Plan
 const websiteStatusSchema = new Schema({
     name: String,
-    description: String,
     active: Boolean,
     displayorder: Number,
     createDate: Date,
@@ -14,4 +13,4 @@ const websiteStatusSchema = new Schema({
 });
 
 // create modal based on schema
-mongoose.model('websitestatus', websiteStatusSchema);
+mongoose.model('websitestatus', websiteStatusSchema, 'websitestatus');
