@@ -19,7 +19,6 @@ import billingInfoProductPlanDropdownReducer from "./BillingInfoProductPlanDropd
 import billingInfoHostingAmountDropdownReducer from "./BillingFormHostingAmountDropdownReducer";
 import billingInfoReducer from "./billinginfoReducer";
 import targetAreasReducers from "./targetAreasReducers";
-import websiteInfoReducer from "./websiteInfoReducer";
 import autoCompleteId from "./autocompleteReducer";
 
 import ashimicrowebsiteinfoReducer from "./ashimicrowebsiteinfoReducer";
@@ -27,6 +26,8 @@ import domainInfoReducer from "./domainInfoReducer";
 import sslInfoReducer from "./sslInfoReducer";
 import businessEmailInfoReducer from "./businessEmailInfoReducer";
 import emailmarketingaccountinfoReducer from "./emailmarketingaccountinfoReducer";
+import designtypeReducer from "./designtypeReducer";
+import websiteInfoReducer from "./websiteInfoReducer";
 
 
 export default combineReducers({
@@ -44,7 +45,6 @@ export default combineReducers({
   phonecall: phoneReducer,
   query: queryReducer,
   targetAreas: targetAreasReducers,
-  websiteInfo: websiteInfoReducer,
   customersummary: customerSummary,
   customerForm: customerinfoReducers,
   websiteStatusDropdown: websiteStatusReducer,
@@ -59,5 +59,8 @@ export default combineReducers({
   domainInfo: domainInfoReducer,
   sslInfo: sslInfoReducer,
   businessEmailInfo: businessEmailInfoReducer,
-  emailmarketingaccountinfo: emailmarketingaccountinfoReducer
+  emailmarketingaccountinfo: emailmarketingaccountinfoReducer,
+  designTypeDropdown: designtypeReducer,
+  websiteinfo: websiteInfoReducer
+
 });

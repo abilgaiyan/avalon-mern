@@ -15,6 +15,9 @@ import DomainInfoForm from "../customers/forms/DomainInfo/DomainInfoForm";
 import SSLInfoForm from "../customers/forms/sslInfo/SSLInfoForm";
 import BusinessEmailInfoForm from "../customers/forms/businessEmailInfo/BusinessEmailInfoForm";
 import EmailMarketingAccountInfoForm from "../customers/forms/emailmarketingaccountinfo/EmailMarketingAccountInfoForm";
+import WebsiteInfoForm from "../customers/forms/websiteinfo/WebsiteInfoForm";
+
+
 import TargetAreasForm from "../customers/forms/targetareas/TargetAreasForm";
 import SupportQueryForm from "../customers/forms/supportquery/SupportQuery";
 
@@ -36,6 +39,8 @@ class CustomerDetails extends Component {
     this.props.fetchSSLInfo(customerId);
     this.props.fetchbusinessEmailInfo(customerId);
     this.props.fetchemailmarketingaccountinfo(customerId);
+    this.props.fetchDesignTypeDropdown();
+    this.props.fetchwebsiteinfo(customerId);
   }
 
 
@@ -94,6 +99,10 @@ class CustomerDetails extends Component {
 
   renderEmailMarketingAccountInfoForm() {
     return <EmailMarketingAccountInfoForm />
+  }
+
+  renderwebsiteinfoForm() {
+    return <WebsiteInfoForm />
   }
 
   renderTargetAreas() {
@@ -210,7 +219,7 @@ class CustomerDetails extends Component {
               custmClass=""
             />
 
-            {/* Business Email Info Form */}
+            {/* Email Marketing Account Info Form */}
             <AccordianPanel
               title="Email Marketing Account Info Form"
               func={this.renderEmailMarketingAccountInfoForm()}
@@ -220,6 +229,15 @@ class CustomerDetails extends Component {
               custmClass=""
             />
 
+            {/* Email Marketing Account Info Form */}
+            <AccordianPanel
+              title="Website Info Form"
+              func={this.renderwebsiteinfoForm()}
+              active="True"
+              AccId="WebsiteInfoForm"
+              paraent="accordion1"
+              custmClass=""
+            />
 
           </div>
           {/* end Accordian */}

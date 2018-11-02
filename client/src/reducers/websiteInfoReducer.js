@@ -1,19 +1,13 @@
-export default function() {
-  return [
-    {
-      name: "avalonsolution.com",
-      price: "$399",
-      id: 1
-    },
-    {
-      name: "ashidiamonds.com",
-      price: "$599",
-      id: 2
-    },
-    {
-      name: "jewelexchange.com",
-      price: "$999",
-      id: 3
-    }
-  ];
+import { FETCH_BILLINGINFO } from "../actions/types";
+
+export default function (state = null, action) {
+  switch (action.type) {
+    case FETCH_BILLINGINFO:
+
+      // console.clear();
+      // console.log("FETCH_BILLINGINFO Reducer", action.payload)
+      return action.payload;
+    default:
+      return state;
+  }
 }

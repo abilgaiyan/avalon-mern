@@ -20,7 +20,9 @@ import {
   FETCH_DOMAININFO,
   FETCH_SSLINFO,
   FETCH_BUSINESSEMAILINFO,
-  FETCH_EMAILMARKETINGACCOUNTINFO
+  FETCH_EMAILMARKETINGACCOUNTINFO,
+  FETCH_WEBSITEINFO_DESIGNTYPE,
+  FETCH_WEBSITEINFO
 } from "./types";
 
 //Store Autocomplete_ID
@@ -311,4 +313,23 @@ export const submitemailmarketingaccountinfoForm = (values, customerId, history)
   values.customerId = customerId;
   const res = await axios.post("/api/emailmarketingaccountinfo", values);
   dispatch({ type: FETCH_EMAILMARKETINGACCOUNTINFO, payload: values });
+};
+
+// Fetch Website Info Drop-down for Design Type
+export const fetchDesignTypeDropdown = () => async dispatch => {
+  const res = await axios.get("/api/designtype");
+  dispatch({ type: FETCH_WEBSITEINFO_DESIGNTYPE, payload: res.data });
+};
+
+// Fetch Email Marketing Account Info Form
+export const fetchwebsiteinfo = customerId => async dispatch => {
+  const res = await axios.get("/api/websiteinfo/" + customerId);
+  dispatch({ type: FETCH_WEBSITEINFO, payload: res.data[0] || {} });
+};
+
+// Set Email Marketing Account Info Form
+export const submitwebsiteinfoForm = (values, customerId, history) => async dispatch => {
+  values.customerId = customerId;
+  const res = await axios.post("/api/websiteinfo", values);
+  dispatch({ type: FETCH_WEBSITEINFO, payload: values });
 };

@@ -67,16 +67,16 @@ module.exports = app => {
   app.post("/api/avaloninfo", async (req, res) => {
 
     const avaloninfo = { ...req.body };
-    console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------");
+    // console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------");
     // console.log(avaloninfo);
     avaloninfo.updateDate = Date.now();
     const customerId = avaloninfo.customerId;
-    const _avalonInfo_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _avalonInfo: 1, _id: 0 });
-    const _avalonInfoId = _avalonInfo_temp[0]._avalonInfo;
+    const avalonInfo_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _avalonInfo: 1, _id: 0 });
+    const avalonInfoId = avalonInfo_temp[0]._avalonInfo;
 
     await AvalonInfo.findOneAndUpdate(
       {
-        _id: _avalonInfoId
+        _id: avalonInfoId
       },
       avaloninfo,
       { upsert: true },
@@ -87,7 +87,7 @@ module.exports = app => {
         }
         if (res) {
           //console.log(res);
-          res.send(avaloninfo);
+          //res.send(avaloninfo);
         }
         // console.log(res);
       }

@@ -30,6 +30,8 @@ require('./models/TargetAreas');
 require('./models/CallLog');
 require('./models/ProductPlan');
 require('./models/HostingAmount');
+require('./models/DesignType');
+
 
 
 //console.log(keys.mongodbURL)

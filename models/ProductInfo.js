@@ -6,7 +6,7 @@ const productInfoSchema = new Schema({
     ashiProductStatus: String,
     restrictionFrom: String,
     jewelExchangeSignupStatus: String,
-    jewelExchangeSignupDate: Date,
+    jewelExchangeSignupDate: String,
     jewelExchangePlan: String,
     suppliersActivated: String,
     createDate: Date,
@@ -14,4 +14,4 @@ const productInfoSchema = new Schema({
 
 });
 // create modal based on schema
-mongoose.model('productinfo', productInfoSchema);
+mongoose.model('productinfo', productInfoSchema, 'productinfo');
