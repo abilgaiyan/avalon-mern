@@ -45,8 +45,8 @@ class AvaloninfoForm extends Component {
         // console.clear();
         // console.log("AvalonInfo form: ", nextProps.avaloninfoForm);
         if (nextProps.avaloninfoForm && !this.state.isInitializeState) {
-            console.clear();
-            console.log("AvalonInfo form: ", nextProps.avaloninfoForm);
+            // console.clear();
+            // console.log("AvalonInfo form: ", nextProps.avaloninfoForm);
             const initData = nextProps.avaloninfoForm;
 
             nextProps.initialize(initData);

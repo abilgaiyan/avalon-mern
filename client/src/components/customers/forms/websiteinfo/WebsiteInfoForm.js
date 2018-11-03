@@ -62,8 +62,6 @@ class WebsiteInfoForm extends Component {
                 );
             }
 
-
-
             if (type === "dropdown") {
                 let optiondata = [];
                 if (name === "_productplan" && this.props.productPlanDropdown) {
@@ -82,10 +80,10 @@ class WebsiteInfoForm extends Component {
                         />
                     );
                 }
-                if (name === "_designeType" && this.props.designeTypeDropdown) {
+                if (name === "_designeType" && this.props.designTypeDropdown) {
                     // console.clear();
                     // console.log("Array of objs", this.props.productPlanDropdown);
-                    optiondata = this.props.designeTypeDropdown;
+                    optiondata = this.props.designTypeDropdown;
                     return (
                         <Field
                             key={name}
@@ -170,10 +168,8 @@ function validate(values) {
     return errors;
 }
 function mapStateToProps(state) {
-    // console.clear();
-    // console.log(state);
-    // if (state.form.websiteinfoReuxForm && state.form.websiteinfoReuxForm.values)
-    //     console.log('state.form.websiteinfoReuxForm.values ', state.form.websiteinfoReuxForm.values);
+    console.clear();
+    console.log(state);
     return {
         formValues: state.form.websiteinfoReuxForm,
         websiteinfoForm: state.websiteinfo,
@@ -191,5 +187,3 @@ export default reduxForm({
     //validate,
     form: "websiteinfoReuxForm"
 })(withRouter(WebsiteInfoForm));
-
-//export default connect(mapStateToProps, actions)(withRouter(ContactusForm));

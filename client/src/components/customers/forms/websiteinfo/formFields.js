@@ -47,7 +47,7 @@ export default [
     {
         label: "Responsive Website Released Date :",
         name: "responsiveWebsiteReleasedDate",
-        type: "dropdown",
+        type: "datetime",
         isvalidationApplied: true,
         validationmessage: "Please enter valid Responsive Website Released Date",
         value: ""
