@@ -31,6 +31,8 @@ import websiteInfoReducer from "./websiteInfoReducer";
 import productinfoReducer from "./productinfoReducer";
 import ashiproductstatusReducer from "./ashiproductstatusReducer";
 
+import callloginfoListReducer from "./callloginfoListReducer";
+
 
 export default combineReducers({
   auth: authReducer,
@@ -65,5 +67,7 @@ export default combineReducers({
   designTypeDropdown: designtypeReducer,
   websiteinfo: websiteInfoReducer,
   productinfo: productinfoReducer,
-  ashiproductstatusDropdown: ashiproductstatusReducer
+  ashiproductstatusDropdown: ashiproductstatusReducer,
+
+  callloginfoListReducer: callloginfoListReducer
 });

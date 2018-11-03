@@ -32,6 +32,7 @@ require('./models/ProductPlan');
 require('./models/HostingAmount');
 require('./models/DesignType');
 require('./models/AshiProductStatus');
+require('./models/PreviousCallType');
 
 
 

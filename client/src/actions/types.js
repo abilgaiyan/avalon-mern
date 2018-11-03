@@ -49,3 +49,5 @@ export const FETCH_WEBSITEINFO = "fetch_websiteinfo";
 export const FETCH_PRODUCTINFO_ASHIPRODUCTSTATUS = "fetch_productinfo_ashiproductstatus";
 
 export const FETCH_PRODUCTINFO = "fetch_productinfo";
+
+export const FETCH_CALLLOGINFO_LIST = "fetch_callloginfo_list";

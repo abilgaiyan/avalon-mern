@@ -1,4 +1,4 @@
-// Website Info Form shows a form for a user to add input
+// Call Log Info Formshows a form for a user to add input
 import _ from "lodash";
 import React, { Component } from "react";
 import { reduxForm, Field, initialize } from "redux-form";
@@ -16,7 +16,7 @@ import * as actions from "../../../../actions";
 
 momentLocaliser(moment);
 
-class WebsiteInfoForm extends Component {
+class CallLogInfoForm extends Component {
     constructor(props) {
         super(props);
 
@@ -32,19 +32,19 @@ class WebsiteInfoForm extends Component {
         this.setState({ disabled: true })
     }
 
-    componentWillReceiveProps(nextProps) {
+    // componentWillReceiveProps(nextProps) {
 
-        // console.clear();
-        // console.log("WebsiteInfo form: ", nextProps.websiteinfoForm);
-        if (nextProps.websiteinfoForm && !this.state.isInitializeState) {
-            // console.clear();
-            // console.log("WebsiteInfo form: ", nextProps.websiteinfoForm);
-            const initData = nextProps.websiteinfoForm;
+    //     // console.clear();
+    //     // console.log("Product Info form: ", nextProps.callloginfoForm);
+    //     if (nextProps.callloginfoForm && !this.state.isInitializeState) {
+    //         // console.clear();
+    //         // console.log("Product Info form: ", nextProps.callloginfoForm);
+    //         const initData = nextProps.callloginfoForm;
 
-            nextProps.initialize(initData);
-            this.setState({ isInitializeState: true });
-        }
-    }
+    //         nextProps.initialize(initData);
+    //         this.setState({ isInitializeState: true });
+    //     }
+    // }
 
     renderFields() {
         return _.map(formFields, ({ label, name, type }) => {
@@ -64,26 +64,10 @@ class WebsiteInfoForm extends Component {
 
             if (type === "dropdown") {
                 let optiondata = [];
-                if (name === "_productplan" && this.props.productPlanDropdown) {
+                if (name === "_previousCallType" && this.props.previousCallTypeDropdown) {
                     // console.clear();
-                    // console.log("Array of objs", this.props.productPlanDropdown);
-                    optiondata = this.props.productPlanDropdown;
-                    return (
-                        <Field
-                            key={name}
-                            component={dropdown}
-                            type={type}
-                            label={label}
-                            name={name}
-                            optionData={optiondata}
-                            disabled={(this.state.disabled) ? "disabled" : ""}
-                        />
-                    );
-                }
-                if (name === "_designeType" && this.props.designTypeDropdown) {
-                    // console.clear();
-                    // console.log("Array of objs", this.props.productPlanDropdown);
-                    optiondata = this.props.designTypeDropdown;
+                    // console.log("Array of objs", this.props.previousCallTypeDropdown);
+                    optiondata = this.props.previousCallTypeDropdown;
                     return (
                         <Field
                             key={name}
@@ -116,7 +100,7 @@ class WebsiteInfoForm extends Component {
 
 
     render() {
-        if (!this.props.productPlanDropdown) {
+        if (!this.props.previousCallTypeDropdown) {
             // console.clear();
             // console.log(this.props.productPlanDropdown[0].planName);
             return (<div>Loading...</div>)
@@ -130,7 +114,7 @@ class WebsiteInfoForm extends Component {
                     <div className="clearfix"></div>
                     <form
                         className="form-horizontal label-left"
-                        onSubmit={this.props.handleSubmit((history) => { this.props.submitwebsiteinfoForm(this.props.formValues.values, this.props.match.params.customerId, history).then(this.setState({ disabled: true })) })}>
+                        onSubmit={this.props.handleSubmit((history) => { this.props.submitCallLogInfoForm(this.props.formValues.values, this.props.match.params.customerId, history).then(this.setState({ disabled: true })) })}>
                         {this.renderFields()}
                         {
                             this.state.disabled === true ? "" :
@@ -171,19 +155,18 @@ function mapStateToProps(state) {
     // console.clear();
     // console.log(state);
     return {
-        formValues: state.form.websiteinfoReuxForm,
-        websiteinfoForm: state.websiteinfo,
-        productPlanDropdown: state.billingInfoProductPlanDropdownReducer,
-        designTypeDropdown: state.designTypeDropdown
+        formValues: state.form.CallLogInfoFormReduxForm,
+        callloginfoForm: state.callloginfo,
+        previousCallTypeDropdown: state.previousCallTypeDropdown
     };
 }
 
-WebsiteInfoForm = connect(
+CallLogInfoForm = connect(
     mapStateToProps,
     actions
-)(withRouter(WebsiteInfoForm));
+)(withRouter(CallLogInfoForm));
 
 export default reduxForm({
     //validate,
-    form: "websiteinfoReuxForm"
-})(withRouter(WebsiteInfoForm));
+    form: "CallLogInfoFormReduxForm"
+})(withRouter(CallLogInfoForm));

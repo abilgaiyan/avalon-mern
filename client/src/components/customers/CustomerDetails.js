@@ -5,7 +5,7 @@ import AccordianPanel from "./AccordianPanel"
 import Email from "./Email";
 import PhoneCall from "./PhoneCall";
 import CustomerQuery from "./CustomerQuery";
-import CallLogList from "../customers/forms/calllog/CallLogList";
+import CallLogList from "../customers/forms/CallLogInfo/CallLogList";
 import CustomerSummary from "../customers/forms/summary/CustomerSummary";
 import CustomerForm from "../customers/forms/customerinfo/CustomerForm";
 import AvaloninfoForm from "../customers/forms/avaloninfo/AvaloninfoForm";
@@ -44,6 +44,7 @@ class CustomerDetails extends Component {
     this.props.fetchwebsiteinfo(customerId);
     this.props.fetchashiproductstatusDropdown();
     this.props.fetchproductinfo(customerId);
+    this.props.fetchcallloginfoList(customerId);
   }
 
 
