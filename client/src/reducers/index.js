@@ -28,6 +28,8 @@ import businessEmailInfoReducer from "./businessEmailInfoReducer";
 import emailmarketingaccountinfoReducer from "./emailmarketingaccountinfoReducer";
 import designtypeReducer from "./designtypeReducer";
 import websiteInfoReducer from "./websiteInfoReducer";
+import productinfoReducer from "./productinfoReducer";
+import ashiproductstatusReducer from "./ashiproductstatusReducer";
 
 
 export default combineReducers({
@@ -61,6 +63,7 @@ export default combineReducers({
   businessEmailInfo: businessEmailInfoReducer,
   emailmarketingaccountinfo: emailmarketingaccountinfoReducer,
   designTypeDropdown: designtypeReducer,
-  websiteinfo: websiteInfoReducer
-
+  websiteinfo: websiteInfoReducer,
+  productinfo: productinfoReducer,
+  ashiproductstatusDropdown: ashiproductstatusReducer
 });

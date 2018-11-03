@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 //define schema for our customer
 const productInfoSchema = new Schema({
-    ashiProductStatus: String,
+    _ashiProductStatus: { type: Schema.Types.ObjectId, ref: "ashiproductstatus" },
     restrictionFrom: String,
     jewelExchangeSignupStatus: String,
     jewelExchangeSignupDate: String,

@@ -22,7 +22,9 @@ import {
   FETCH_BUSINESSEMAILINFO,
   FETCH_EMAILMARKETINGACCOUNTINFO,
   FETCH_WEBSITEINFO_DESIGNTYPE,
-  FETCH_WEBSITEINFO
+  FETCH_WEBSITEINFO,
+  FETCH_PRODUCTINFO_ASHIPRODUCTSTATUS,
+  FETCH_PRODUCTINFO
 } from "./types";
 
 //Store Autocomplete_ID
@@ -332,4 +334,23 @@ export const submitwebsiteinfoForm = (values, customerId, history) => async disp
   values.customerId = customerId;
   const res = await axios.post("/api/websiteinfo", values);
   dispatch({ type: FETCH_WEBSITEINFO, payload: values });
+};
+
+// Fetch Poduct Info Drop-down for Ashi Product Status
+export const fetchashiproductstatusDropdown = () => async dispatch => {
+  const res = await axios.get("/api/ashiproductstatus");
+  dispatch({ type: FETCH_PRODUCTINFO_ASHIPRODUCTSTATUS, payload: res.data });
+};
+
+// Fetch Product Info Form
+export const fetchproductinfo = customerId => async dispatch => {
+  const res = await axios.get("/api/productinfo/" + customerId);
+  dispatch({ type: FETCH_PRODUCTINFO, payload: res.data[0] || {} });
+};
+
+// Set Product Info Form
+export const submitproductinfoForm = (values, customerId, history) => async dispatch => {
+  values.customerId = customerId;
+  const res = await axios.post("/api/productinfo", values);
+  dispatch({ type: FETCH_PRODUCTINFO, payload: values });
 };

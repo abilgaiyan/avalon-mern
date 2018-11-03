@@ -45,3 +45,7 @@ export const FETCH_EMAILMARKETINGACCOUNTINFO = "fetch_emailmarketingaccountinfo"
 export const FETCH_WEBSITEINFO_DESIGNTYPE = "fetch_websiteinfo_designtype";
 
 export const FETCH_WEBSITEINFO = "fetch_websiteinfo";
+
+export const FETCH_PRODUCTINFO_ASHIPRODUCTSTATUS = "fetch_productinfo_ashiproductstatus";
+
+export const FETCH_PRODUCTINFO = "fetch_productinfo";

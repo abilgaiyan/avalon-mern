@@ -1,6 +1,6 @@
 import React from "react";
 
-const productField = props => {
+const inputField = props => {
     const { input, label, type, disabled, meta: { touched, error } } = props;
 
     // console.log({ ...props });
@@ -41,4 +41,4 @@ const productField = props => {
     }
 };
 
-export default productField;
+export default inputField;

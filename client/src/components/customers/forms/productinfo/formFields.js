@@ -1,7 +1,7 @@
 export default [
     {
         label: "Ashi Product Status :",
-        name: "ashiProductStatus",
+        name: "_ashiProductStatus",
         type: "dropdown",
         isvalidationApplied: true,
         validationmessage: "Please enter valid Ashi Product Status",
@@ -29,7 +29,7 @@ export default [
     {
         label: "Jewel Exchange Signup Date :",
         name: "jewelExchangeSignupDate",
-        type: "text",
+        type: "datetime",
         isvalidationApplied: true,
         validationmessage: "Please enter valid Jewel Exchange Signup Date",
         value: ""

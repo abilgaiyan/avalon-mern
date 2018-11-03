@@ -1,17 +1,20 @@
-// Billinf FOrm shows a form for a user to add input
+// Product Info Form shows a form for a user to add input
 import _ from "lodash";
 import React, { Component } from "react";
 import { reduxForm, Field, initialize } from "redux-form";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import moment from 'moment'
+import momentLocaliser from "react-widgets-moment";
 
-import productField from "./productField";
-import ashiProductStatusDropdown from "./ashiProductStatusDropdown";
-import validateEmails from "../../../../utils/validateEmails";
 import formFields from "./formFields";
+import inputField from "./inputField";
+import dropdown from "./dropdown";
+import datetimeField from "./datetimeField";
+import validateEmails from "../../../../utils/validateEmails";
 import * as actions from "../../../../actions";
 
-
+momentLocaliser(moment);
 
 class ProductInfoForm extends Component {
     constructor(props) {
@@ -29,71 +32,28 @@ class ProductInfoForm extends Component {
         this.setState({ disabled: true })
     }
 
-
-
     componentWillReceiveProps(nextProps) {
-        if (nextProps.productInfoForm && !this.state.isInitializeState) {
-            // console.log('componentWillReceiveProps', nextProps.productInfoForm);
 
-            const initData = nextProps.productInfoForm;
+        // console.clear();
+        // console.log("Product Info form: ", nextProps.productinfoForm);
+        if (nextProps.productinfoForm && !this.state.isInitializeState) {
+            // console.clear();
+            // console.log("Product Info form: ", nextProps.productinfoForm);
+            const initData = nextProps.productinfoForm;
+
             nextProps.initialize(initData);
             this.setState({ isInitializeState: true });
         }
     }
 
-
     renderFields() {
         return _.map(formFields, ({ label, name, type }) => {
             // console.log(this.props.customerDetails[name]);
             if (type === "text") {
-                if (name !== "comments") {
-                    return (
-                        <Field
-                            key={name}
-                            component={billingField}
-                            type={type}
-                            label={label}
-                            name={name}
-                            disabled={(this.state.disabled) ? "disabled" : ""}
-                        // validate={[required, maxLength15]}
-                        />
-                    );
-                }
-
-                if (name === "comments") {
-                    return (
-                        <Field
-                            key={name}
-                            component={billingField}
-                            type={type}
-                            label={label}
-                            name={name}
-                            disabled={(this.state.disabled) ? "disabled" : ""}
-                        />
-                    );
-                }
-
-                if (name === "websitePlan") {
-                    return (
-                        <div className="checkbox">
-                            <Field
-                                key={name}
-                                component={billingField}
-                                type={type}
-                                label={label}
-                                name={name}
-                                disabled={(this.state.disabled) ? "disabled" : ""}
-                            />
-                        </div>
-                    );
-                }
-            }
-
-            if (type === "checkbox") {
                 return (
                     <Field
                         key={name}
-                        component={billingField}
+                        component={inputField}
                         type={type}
                         label={label}
                         name={name}
@@ -104,55 +64,78 @@ class ProductInfoForm extends Component {
 
             if (type === "dropdown") {
                 let optiondata = [];
-                if (name === "websitePlan") {
-                    optiondata = ["Bronze", "Silver", "Gold", "Platinum", "Diamond"];
+                if (name === "_ashiProductStatus" && this.props.ashiproductstatusDropdown) {
+                    // console.clear();
+                    // console.log("Array of objs", this.props.ashiproductstatusDropdown);
+                    optiondata = this.props.ashiproductstatusDropdown;
+                    return (
+                        <Field
+                            key={name}
+                            component={dropdown}
+                            type={type}
+                            label={label}
+                            name={name}
+                            optionData={optiondata}
+                            disabled={(this.state.disabled) ? "disabled" : ""}
+                        />
+                    );
                 }
-                if (name === "hostingAmount") {
-                    optiondata = ["$ 69", "$ 99", "$ 129", "$ 159", "$ 249"];
-                }
+            }
 
+            if (type === "datetime") {
                 return (
                     <Field
                         key={name}
-                        component={websitePlanDropdown}
+                        component={datetimeField}
                         type={type}
                         label={label}
                         name={name}
-                        optionData={optiondata}
                         disabled={(this.state.disabled) ? "disabled" : ""}
+                        showTime={false}
                     />
                 );
             }
         });
     }
 
-    render() {
-        return (
-            <div>
-                <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button>
-                <div className="clearfix"></div>
-                <form
-                    className="form-horizontal label-left"
-                    onSubmit={this.props.handleSubmit((history) => { this.props.submitProductInfo(this.props.formValues.values, this.props.match.params.customerId, history).then(this.setState({ disabled: true })) })}>
-                    {this.renderFields()}
-                    {
-                        this.state.disabled === true ? "" :
-                            <div className="form-group">
-                                <div className="col-xs-9 col-xs-offset-3 text-left">
-                                    <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
-                                        <i className="fa fa-check-square" aria-hidden="true"></i>
-                                        Save
 
-              </button>
-                                    <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
-                                        <i className="fa fa-close" aria-hidden="true"></i>
-                                        Cancel
-              </a>
-                                </div>
-                            </div>}
-                </form>
-            </div>
-        );
+    render() {
+        if (!this.props.ashiproductstatusDropdown) {
+            // console.clear();
+            // console.log(this.props.productPlanDropdown[0].planName);
+            return (<div>Loading...</div>)
+        }
+        else {
+            // console.clear();
+            // console.log(this.props.productPlanDropdown);
+            return (
+                <div>
+                    <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button>
+                    <div className="clearfix"></div>
+                    <form
+                        className="form-horizontal label-left"
+                        onSubmit={this.props.handleSubmit((history) => { this.props.submitproductinfoForm(this.props.formValues.values, this.props.match.params.customerId, history).then(this.setState({ disabled: true })) })}>
+                        {this.renderFields()}
+                        {
+                            this.state.disabled === true ? "" :
+                                <div className="form-group">
+                                    <div className="col-xs-9 col-xs-offset-3 text-left">
+                                        <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
+                                            <i className="fa fa-check-square" aria-hidden="true"></i>
+                                            Save
+
+                  </button>
+                                        <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
+                                            <i className="fa fa-close" aria-hidden="true"></i>
+                                            Cancel
+                  </a>
+                                    </div>
+                                </div>}
+                    </form>
+                </div>
+            );
+        }
+
     }
 }
 
@@ -172,8 +155,9 @@ function mapStateToProps(state) {
     // console.clear();
     // console.log(state);
     return {
-        formValues: state.form.productInfoReduxForm,
-        productInfoForm: state.productInfo
+        formValues: state.form.productinfoReduxForm,
+        productinfoForm: state.productinfo,
+        ashiproductstatusDropdown: state.ashiproductstatusDropdown
     };
 }
 
@@ -184,7 +168,5 @@ ProductInfoForm = connect(
 
 export default reduxForm({
     //validate,
-    form: "productInfoReduxForm"
+    form: "productinfoReduxForm"
 })(withRouter(ProductInfoForm));
-
-//export default connect(mapStateToProps, actions)(withRouter(ContactusForm));
