@@ -72,7 +72,7 @@ export default [
     {
         label: "Follow Up Call Time :",
         name: "followupcallTime",
-        type: "datetime",
+        type: "time",
         isvalidationApplied: true,
         validationmessage: "Please enter valid Follow Up Call Time",
         value: ""

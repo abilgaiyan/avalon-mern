@@ -4,6 +4,7 @@ import * as actions from "../../../../actions";
 import { Link, withRouter } from "react-router-dom";
 // import { fetchCustomers } from "../../actions";
 // import { Link } from "react-router-dom";
+import CallLogInfoForm from "./CallLogInfoForm";
 
 class CallLogList extends Component {
   //   componentDidMount() {
@@ -54,12 +55,39 @@ class CallLogList extends Component {
       return (
         <div >
           {/* test disgn */}
-          <a href="#" className="pull-right icon_well">
+          {/* <a href="#" className="pull-right icon_well">
             <button type="submit" className="btn btn-primary center-block">
               <i className="fa fa-plus-square"></i>
               <span>Add</span>
             </button>
-          </a>
+          </a> */}
+          <div className=" icon_well">
+            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#callLogModal"><i className="fa fa-plus-square"></i>Add</button>
+            {/* <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> */}
+            <CallLogInfoForm />
+          </div>
+
+
+
+          {/* <div className="modal fade" id="callLogModal" role="dialog">
+            <div className="modal-dialog">
+
+              <div className="modal-content">
+                <div className="modal-header">
+                  <button type="button" className="close" data-dismiss="modal">&times;</button>
+                  <h4 className="modal-title">Modal Header</h4>
+                </div>
+                <div className="modal-body">
+                  <p>Some text in the modal.</p>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div> */}
+
           <div className="clearfix"></div>
           <table className="table table-bordered table_list">
             <thead>
@@ -85,8 +113,8 @@ class CallLogList extends Component {
 }
 
 function mapStateToProps(state) {
-  console.clear();
-  console.log(state.callloginfoListReducer);
+  // console.clear();
+  // console.log(state.callloginfoListReducer);
   return {
     callloginfoList: state.callloginfoListReducer,
   };

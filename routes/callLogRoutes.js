@@ -2,10 +2,24 @@ const _ = require('lodash');
 const Path = require('path-parser');
 const { URL } = require('url');
 const mongoose = require('mongoose');
+const PreviousCallType = mongoose.model('previouscalltype');
 const CustomerCalllogInfo = mongoose.model('callloginfo');
 const CustomerInfo = mongoose.model("customerinfo");
 
 module.exports = app => {
+
+  //Get Previous Call Type Data
+  app.get('/api/previouscalltype', async (req, res) => {
+    const PreviousCallTypedata = await PreviousCallType.find({});
+    //console.log(websitestatusdata);
+    //res.send(prodplanaaldata);
+    if (PreviousCallTypedata) {
+      res.send(PreviousCallTypedata);
+    } else {
+      res.send("no data");
+    }
+  });
+
   //Get Website info data 
   app.get('/api/customercallloginfo/:customerId', async (req, res) => {
     const customerId = req.params.customerId;

@@ -25,6 +25,8 @@ import {
   FETCH_WEBSITEINFO,
   FETCH_PRODUCTINFO_ASHIPRODUCTSTATUS,
   FETCH_PRODUCTINFO,
+  FETCH_PREVIOUSCALLTYPE,
+  FETCH_CALLLOGINFO,
   FETCH_CALLLOGINFO_LIST
 } from "./types";
 
@@ -360,4 +362,24 @@ export const submitproductinfoForm = (values, customerId, history) => async disp
 export const fetchcallloginfoList = customerId => async dispatch => {
   const res = await axios.get("/api/customercallloginfo/" + customerId);
   dispatch({ type: FETCH_CALLLOGINFO_LIST, payload: res.data });
+};
+
+// Fetch Call Log Info Drop-down for PREVIOUSCALLTYPE Status
+export const fetchpreviouscalltypeDropdown = () => async dispatch => {
+  const res = await axios.get("/api/previouscalltype");
+  dispatch({ type: FETCH_PREVIOUSCALLTYPE, payload: res.data });
+};
+
+// Fetch Call Log Info Form
+export const fetchcallloginfo = customerId => async dispatch => {
+  const res = await axios.get("/api/customercallloginfo/" + customerId);
+  dispatch({ type: FETCH_CALLLOGINFO, payload: res.data[0] || {} });
+};
+
+// Set Call Log Info Form
+export const submitCallLogInfoForm = (values, customerId, history) => async dispatch => {
+  values.customerId = customerId;
+  const res = await axios.post("/api/customercallloginfo/", values);
+  // history.push("/customers/");
+  dispatch({ type: FETCH_CALLLOGINFO, payload: values });
 };

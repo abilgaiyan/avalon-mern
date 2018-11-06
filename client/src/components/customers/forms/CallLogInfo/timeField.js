@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DateTimePicker from 'react-widgets/lib/DateTimePicker';
 
-const datetimeField = ({ input, label, type, meta: { touched, error }, showTime }) => {
+const timeField = ({ input, label, type, meta: { touched, error } }) => {
     // let formatter = Globalize.dateFormatter({ time: 'medium' })
 
     return (
@@ -13,8 +13,8 @@ const datetimeField = ({ input, label, type, meta: { touched, error }, showTime 
                     //inputProps={{ component: props => <input {...props} readOnly /> }}
                     //readOnly
                     onChange={input.onChange}
-                    format="DD MMM YYYY"
-                    time={showTime}
+                    timeFormat='hh:mm A'
+                    date={false}
                     value={!input.value ? null : new Date(input.value)}
                 //value={!input.value ? null : new Date(moment(input.value).format("DD MMM YYYY"))}
                 />
@@ -26,4 +26,4 @@ const datetimeField = ({ input, label, type, meta: { touched, error }, showTime 
     );
 };
 
-export default datetimeField;
+export default timeField;

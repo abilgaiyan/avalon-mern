@@ -32,6 +32,8 @@ import productinfoReducer from "./productinfoReducer";
 import ashiproductstatusReducer from "./ashiproductstatusReducer";
 
 import callloginfoListReducer from "./callloginfoListReducer";
+import previouscalltypeDropdownReducer from "./previouscalltypeDropdownReducer";
+import callloginfoFormReducer from "./callloginfoFormReducer";
 
 
 export default combineReducers({
@@ -69,5 +71,7 @@ export default combineReducers({
   productinfo: productinfoReducer,
   ashiproductstatusDropdown: ashiproductstatusReducer,
 
-  callloginfoListReducer: callloginfoListReducer
+  callloginfoListReducer: callloginfoListReducer,
+  previousCallTypeDropdown: previouscalltypeDropdownReducer,
+  callloginfo: callloginfoFormReducer
 });

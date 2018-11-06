@@ -45,6 +45,9 @@ class CustomerDetails extends Component {
     this.props.fetchashiproductstatusDropdown();
     this.props.fetchproductinfo(customerId);
     this.props.fetchcallloginfoList(customerId);
+    this.props.fetchpreviouscalltypeDropdown();
+    this.props.fetchcallloginfo(customerId);
+
   }
 
 

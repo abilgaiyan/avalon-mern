@@ -1,7 +1,7 @@
 import React from "react";
 
 const inputField = props => {
-    const { input, label, type, disabled, meta: { touched, error } } = props;
+    const { input, label, type, meta: { touched, error } } = props;
 
     // console.log({ ...props });
     if (type === "checkbox") {
@@ -14,7 +14,6 @@ const inputField = props => {
                             {...input}
                             className=""
                             type={type}
-                            disabled={disabled ? "disabled" : ""}
                         />
                     </label>
                     <div className="red-text">{/* {touched && error} */}</div>
@@ -30,7 +29,6 @@ const inputField = props => {
                         {...input}
                         className="form-control"
                         type={type}
-                        disabled={disabled ? "disabled" : ""}
                     />
                     <div className="red-text" >
                         {/* {touched && error} */}

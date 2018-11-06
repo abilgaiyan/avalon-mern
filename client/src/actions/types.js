@@ -50,4 +50,8 @@ export const FETCH_PRODUCTINFO_ASHIPRODUCTSTATUS = "fetch_productinfo_ashiproduc
 
 export const FETCH_PRODUCTINFO = "fetch_productinfo";
 
+export const FETCH_PREVIOUSCALLTYPE = "fetch_previouscalltype";
+
+export const FETCH_CALLLOGINFO = "fetch_callloginfo";
+
 export const FETCH_CALLLOGINFO_LIST = "fetch_callloginfo_list";
