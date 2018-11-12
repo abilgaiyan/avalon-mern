@@ -124,7 +124,7 @@ class AvaloninfoForm extends Component {
                     <div className="clearfix"></div>
                     <form
                         className="form-horizontal label-left"
-                        onSubmit={this.props.handleSubmit((history) => { this.props.submitAvalonInfo(this.props.formValues.values, this.props.match.params.customerId, history).then(this.setState({ disabled: true })) })}>
+                        onSubmit={this.props.handleSubmit((history) => { this.props.submitAvalonInfo(this.props.auth._id, this.props.formValues.values, this.props.match.params.customerId, history).then(this.setState({ disabled: true })) })}>
                         {this.renderFields()}
                         {
                             this.state.disabled === true ? "" :
@@ -167,6 +167,7 @@ function mapStateToProps(state) {
     // if (state.form.avaloninfoReuxForm && state.form.avaloninfoReuxForm.values)
     //     console.log('state.form.avaloninfoReuxForm.values ', state.form.avaloninfoReuxForm.values);
     return {
+        auth: state.auth,
         formValues: state.form.avaloninfoReuxForm,
         avaloninfoForm: state.avaloninfo,
         websiteStatusDropdown: state.websiteStatusDropdown

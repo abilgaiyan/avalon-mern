@@ -2,6 +2,7 @@ const _ = require('lodash');
 const Path = require('path-parser');
 const { URL } = require('url');
 const mongoose = require('mongoose');
+//const ObjectID = require('mongodb').ObjectID;
 const AvalonInfo = mongoose.model('avaloninfo');
 const WebsiteStatus = mongoose.model('websitestatus');
 const CustomerInfo = mongoose.model("customerinfo");
@@ -63,7 +64,7 @@ module.exports = app => {
 
   // });
 
-  //Edit
+  //New && Edit
   app.post("/api/avaloninfo", async (req, res) => {
 
     const avaloninfo = { ...req.body };
@@ -74,24 +75,49 @@ module.exports = app => {
     const avalonInfo_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _avalonInfo: 1, _id: 0 });
     const avalonInfoId = avalonInfo_temp[0]._avalonInfo;
 
-    await AvalonInfo.findOneAndUpdate(
-      {
-        _id: avalonInfoId
-      },
-      avaloninfo,
-      { upsert: true },
-      (err, res) => {
+    if (avalonInfoId === null) {
+      //avaloninfo._id = new ObjectID();
+      avaloninfo.createDate = Date.now();
+      // console.log("NULL>>>>>>>>>>>>>>", avaloninfo);
+      await AvalonInfo.create(avaloninfo, async (err, newid) => {
         // Deal with the response data/error
         if (err) {
           console.log(err);
         }
-        if (res) {
-          //console.log(res);
-          //res.send(avaloninfo);
+        if (newid) {
+          //console.log("Insert Avalon Info Id>>>>>>>>>>>>>>>:", newid);
+          //Push AvalonInfoId from AvalonInfo collection to CustomerInfo Table
+          await CustomerInfo.findOneAndUpdate(
+            { _id: customerId },
+            { _avalonInfo: newid._id }
+          )
         }
         // console.log(res);
-      }
-    );
+      });
+      res.send(avaloninfo);
+    }
+    else {
+      // console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------");
+      // console.log(avaloninfo);
+      await AvalonInfo.findOneAndUpdate(
+        {
+          _id: avalonInfoId
+        },
+        avaloninfo,
+        { upsert: false },
+        (err, res) => {
+          // Deal with the response data/error
+          if (err) {
+            console.log(err);
+          }
+          if (res) {
+            //console.log(res);
+          }
+          // console.log(res);
+        });
+      res.send(avaloninfo);
+    }
+
 
     res.end();
   });

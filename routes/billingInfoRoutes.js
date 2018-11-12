@@ -55,26 +55,88 @@ module.exports = app => {
     // }
     // //console.log('zzzz', billinginfo); 
     // //await billinginfo.save();
-    await AvalonBillingInfo.findOneAndUpdate(
-      {
-        _id: billinginfoId
-      },
-      billinginfo,
-      { upsert: true },
-      (err, res) => {
+    if (billinginfoId === null) {
+      //billinginfo._id = new ObjectID();
+      billinginfo.createDate = Date.now();
+      // console.log("NULL>>>>>>>>>>>>>>", billinginfo);
+      await AvalonBillingInfo.create(billinginfo, async (err, newid) => {
         // Deal with the response data/error
         if (err) {
           console.log(err);
         }
-        if (res) {
-          //console.log(res);
+        if (newid) {
+          //console.log("Insert Avalon Info Id>>>>>>>>>>>>>>>:", newid);
+          //Push billinginfoId from AvalonBillingInfo collection to CustomerInfo Table
+          await CustomerInfo.findOneAndUpdate(
+            { _id: customerId },
+            { _billingInfo: newid._id }
+          )
         }
         // console.log(res);
-      }
-    );
-
+      });
+      res.send(billinginfo);
+    }
+    else {
+      await AvalonBillingInfo.findOneAndUpdate(
+        {
+          _id: billinginfoId
+        },
+        billinginfo,
+        { upsert: false },
+        (err, res) => {
+          // Deal with the response data/error
+          if (err) {
+            console.log(err);
+          }
+          if (res) {
+            //console.log(res);
+          }
+          // console.log(res);
+        });
+      res.send(billinginfo);
+    }
     res.end();
   });
+
+  // app.post("/api/avalonbillinginfo", async (req, res) => {
+
+  //   const billinginfo = { ...req.body };
+  //   billinginfo.updateDate = Date.now();
+  //   const customerId = billinginfo.customerId;
+  //   const billinginfoId_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _billingInfo: 1, _id: 0 });
+  //   const billinginfoId = billinginfoId_temp[0]._billingInfo;
+  //   // console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------");
+  //   // console.log(billinginfoId);
+  //   // if (req.body.customerId = 0) {
+  //   //   billinginfo.createDate = Date.now();
+  //   //   delete billinginfo.customerId;
+  //   // }
+  //   // else {
+  //   //   // billinginfo._id = mongoose.Types.ObjectId(req.body.customerId);
+  //   //   delete billinginfo.customerId;
+  //   // }
+  //   // //console.log('zzzz', billinginfo); 
+  //   // //await billinginfo.save();
+  //   await AvalonBillingInfo.findOneAndUpdate(
+  //     {
+  //       _id: billinginfoId
+  //     },
+  //     billinginfo,
+  //     { upsert: true },
+  //     (err, res) => {
+  //       // Deal with the response data/error
+  //       if (err) {
+  //         console.log(err);
+  //       }
+  //       if (res) {
+  //         //console.log(res);
+  //       }
+  //       // console.log(res);
+  //     }
+  //   );
+
+  //   res.end();
+  // });
 
 
   // app.post("/api/avalonbillinginfo", async (req, res) => {

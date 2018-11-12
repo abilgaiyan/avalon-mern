@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import Welcome from "./Welcome";
 import './css/common.css';
-import {CustomerList, CustomerDetailsWraper} from "./WithHeader"
+import { CustomerList, CustomerDetailsWraper } from "./WithHeader"
 
 class App extends Component {
   componentDidMount() {
@@ -25,6 +25,8 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
+  // console.clear();
+  // console.log("------------->>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<-----------------------", state)
   return {
     auth: state.auth,
   };

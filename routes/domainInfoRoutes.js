@@ -42,7 +42,7 @@ module.exports = app => {
 
   // });
 
-  //Edit
+  //New && Edit
   app.post("/api/customerdomaininfo", async (req, res) => {
 
     const domaininfo = { ...req.body };
@@ -51,28 +51,81 @@ module.exports = app => {
     const domaininfo_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _domainInfo: 1, _id: 0 });
     const domaininfoId = domaininfo_temp[0]._domainInfo;
     // console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------");
-    // console.log(microWebsiteinfoId);
+    // console.log(domaininfoId);
 
-    await CustDomainInfo.findOneAndUpdate(
-      {
-        _id: domaininfoId
-      },
-      domaininfo,
-      { upsert: true },
-      (err, res) => {
+    if (domaininfoId === null) {
+      //domaininfo._id = new ObjectID();
+      domaininfo.createDate = Date.now();
+      // console.log("NULL>>>>>>>>>>>>>>", domaininfo);
+      await CustDomainInfo.create(domaininfo, async (err, newid) => {
         // Deal with the response data/error
         if (err) {
           console.log(err);
         }
-        if (res) {
-          //console.log(res);
+        if (newid) {
+          //console.log("Insert Avalon Info Id>>>>>>>>>>>>>>>:", newid);
+          //Push domaininfoId from CustDomainInfo collection to CustomerInfo Table
+          await CustomerInfo.findOneAndUpdate(
+            { _id: customerId },
+            { _domainInfo: newid._id }
+          )
         }
         // console.log(res);
-      }
-    );
-
+      });
+      res.send(domaininfo);
+    }
+    else {
+      await CustDomainInfo.findOneAndUpdate(
+        {
+          _id: domaininfoId
+        },
+        domaininfo,
+        { upsert: false },
+        (err, res) => {
+          // Deal with the response data/error
+          if (err) {
+            console.log(err);
+          }
+          if (res) {
+            //console.log(res);
+          }
+          // console.log(res);
+        });
+      res.send(domaininfo);
+    }
     res.end();
   });
+
+  // app.post("/api/customerdomaininfo", async (req, res) => {
+
+  //   const domaininfo = { ...req.body };
+  //   domaininfo.updateDate = Date.now();
+  //   const customerId = domaininfo.customerId;
+  //   const domaininfo_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _domainInfo: 1, _id: 0 });
+  //   const domaininfoId = domaininfo_temp[0]._domainInfo;
+  //   // console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------");
+  //   // console.log(domaininfoId);
+
+  //   await CustDomainInfo.findOneAndUpdate(
+  //     {
+  //       _id: domaininfoId
+  //     },
+  //     domaininfo,
+  //     { upsert: true },
+  //     (err, res) => {
+  //       // Deal with the response data/error
+  //       if (err) {
+  //         console.log(err);
+  //       }
+  //       if (res) {
+  //         //console.log(res);
+  //       }
+  //       // console.log(res);
+  //     }
+  //   );
+
+  //   res.end();
+  // });
 
   // app.post("/api/customerdomaininfo", async (req, res) => {
 
