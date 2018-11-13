@@ -63,7 +63,7 @@ module.exports = app => {
 
   // });
 
-  //Edit
+  //New && Edit
   app.post("/api/websiteinfo", async (req, res) => {
 
     const websiteinfo = { ...req.body };
@@ -72,26 +72,77 @@ module.exports = app => {
     const websiteinfo_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _websiteInfo: 1, _id: 0 });
     const websiteinfoId = websiteinfo_temp[0]._websiteInfo;
 
-    await WebsiteInfo.findOneAndUpdate(
-      {
-        _id: websiteinfoId
-      },
-      websiteinfo,
-      { upsert: true },
-      (err, res) => {
+    if (websiteinfoId === null) {
+      //websiteinfo._id = new ObjectID();
+      websiteinfo.createDate = Date.now();
+      // console.log("NULL>>>>>>>>>>>>>>", websiteinfo);
+      await WebsiteInfo.create(websiteinfo, async (err, newid) => {
         // Deal with the response data/error
         if (err) {
           console.log(err);
         }
-        if (res) {
-          //console.log(res);
+        if (newid) {
+          //console.log("Insert Avalon Info Id>>>>>>>>>>>>>>>:", newid);
+          //Push websiteinfoId from WebsiteInfo collection to CustomerInfo Table
+          await CustomerInfo.findOneAndUpdate(
+            { _id: customerId },
+            { _websiteInfo: newid._id }
+          )
         }
         // console.log(res);
-      }
-    );
-
+      });
+      res.send(websiteinfo);
+    }
+    else {
+      await WebsiteInfo.findOneAndUpdate(
+        {
+          _id: websiteinfoId
+        },
+        websiteinfo,
+        { upsert: false },
+        (err, res) => {
+          // Deal with the response data/error
+          if (err) {
+            console.log(err);
+          }
+          if (res) {
+            //console.log(res);
+          }
+          // console.log(res);
+        });
+      res.send(websiteinfo);
+    }
     res.end();
   });
+
+  // app.post("/api/websiteinfo", async (req, res) => {
+
+  //   const websiteinfo = { ...req.body };
+  //   websiteinfo.updateDate = Date.now();
+  //   const customerId = websiteinfo.customerId;
+  //   const websiteinfo_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _websiteInfo: 1, _id: 0 });
+  //   const websiteinfoId = websiteinfo_temp[0]._websiteInfo;
+
+  //   await WebsiteInfo.findOneAndUpdate(
+  //     {
+  //       _id: websiteinfoId
+  //     },
+  //     websiteinfo,
+  //     { upsert: true },
+  //     (err, res) => {
+  //       // Deal with the response data/error
+  //       if (err) {
+  //         console.log(err);
+  //       }
+  //       if (res) {
+  //         //console.log(res);
+  //       }
+  //       // console.log(res);
+  //     }
+  //   );
+
+  //   res.end();
+  // });
 
   // app.post("/api/websiteinfo", async (req, res) => {
 

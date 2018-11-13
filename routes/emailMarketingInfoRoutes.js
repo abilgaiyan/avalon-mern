@@ -47,7 +47,7 @@ module.exports = app => {
 
   // });
 
-  //Edit
+  //New && Edit
   app.post("/api/emailmarketingaccountinfo", async (req, res) => {
 
     const eMktAccountInfo = { ...req.body };
@@ -67,26 +67,88 @@ module.exports = app => {
     // }
     // //console.log('zzzz', billinginfo); 
     // //await billinginfo.save();
-    await EmailMarketingAccountInfo.findOneAndUpdate(
-      {
-        _id: eMktAccountInfoId
-      },
-      eMktAccountInfo,
-      { upsert: true },
-      (err, res) => {
+
+    if (eMktAccountInfoId === null) {
+      //eMktAccountInfo._id = new ObjectID();
+      eMktAccountInfo.createDate = Date.now();
+      // console.log("NULL>>>>>>>>>>>>>>", eMktAccountInfo);
+      await EmailMarketingAccountInfo.create(eMktAccountInfo, async (err, newid) => {
         // Deal with the response data/error
         if (err) {
           console.log(err);
         }
-        if (res) {
-          console.log(res);
+        if (newid) {
+          //console.log("Insert Avalon Info Id>>>>>>>>>>>>>>>:", newid);
+          //Push eMktAccountInfoId from EmailMarketingAccountInfo collection to CustomerInfo Table
+          await CustomerInfo.findOneAndUpdate(
+            { _id: customerId },
+            { _emailmarketingAccountInfo: newid._id }
+          )
         }
         // console.log(res);
-      }
-    );
-
+      });
+      res.send(eMktAccountInfo);
+    }
+    else {
+      await EmailMarketingAccountInfo.findOneAndUpdate(
+        {
+          _id: eMktAccountInfoId
+        },
+        eMktAccountInfo,
+        { upsert: false },
+        (err, res) => {
+          // Deal with the response data/error
+          if (err) {
+            console.log(err);
+          }
+          if (res) {
+            //console.log(res);
+          }
+          // console.log(res);
+        });
+      res.send(eMktAccountInfo);
+    }
     res.end();
   });
+  // app.post("/api/emailmarketingaccountinfo", async (req, res) => {
+
+  //   const eMktAccountInfo = { ...req.body };
+  //   eMktAccountInfo.updateDate = Date.now();
+  //   const customerId = eMktAccountInfo.customerId;
+  //   const eMktAccountInfo_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _emailmarketingAccountInfo: 1, _id: 0 });
+  //   const eMktAccountInfoId = eMktAccountInfo_temp[0]._emailmarketingAccountInfo;
+  //   // console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------");
+  //   // console.log(billinginfoId);
+  //   // if (req.body.customerId = 0) {
+  //   //   billinginfo.createDate = Date.now();
+  //   //   delete billinginfo.customerId;
+  //   // }
+  //   // else {
+  //   //   // billinginfo._id = mongoose.Types.ObjectId(req.body.customerId);
+  //   //   delete billinginfo.customerId;
+  //   // }
+  //   // //console.log('zzzz', billinginfo); 
+  //   // //await billinginfo.save();
+  //   await EmailMarketingAccountInfo.findOneAndUpdate(
+  //     {
+  //       _id: eMktAccountInfoId
+  //     },
+  //     eMktAccountInfo,
+  //     { upsert: true },
+  //     (err, res) => {
+  //       // Deal with the response data/error
+  //       if (err) {
+  //         console.log(err);
+  //       }
+  //       if (res) {
+  //         console.log(res);
+  //       }
+  //       // console.log(res);
+  //     }
+  //   );
+
+  //   res.end();
+  // });
   // app.post("/api/emailmarketingaccountinfo", async (req, res) => {
 
   //   const eMktAccountInfo = { ...req.body };

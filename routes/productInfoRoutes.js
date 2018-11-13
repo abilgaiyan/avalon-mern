@@ -48,7 +48,7 @@ module.exports = app => {
 
   });
 
-  //Edit
+  //New && Edit
   app.post("/api/productinfo", async (req, res) => {
 
     const productinfo = { ...req.body };
@@ -60,24 +60,77 @@ module.exports = app => {
     // console.log("-------------->>>>>>>>><<<<<<<<<<<<<<<-------------");
     // console.log(productinfo);
 
-    await ProductInfo.findOneAndUpdate(
-      {
-        _id: productinfoId
-      },
-      productinfo,
-      { upsert: true },
-      (err, res) => {
+    if (productinfoId === null) {
+      //productinfo._id = new ObjectID();
+      productinfo.createDate = Date.now();
+      // console.log("NULL>>>>>>>>>>>>>>", productinfo);
+      await ProductInfo.create(productinfo, async (err, newid) => {
         // Deal with the response data/error
         if (err) {
           console.log(err);
         }
-        if (res) {
-          //console.log(res);
+        if (newid) {
+          //console.log("Insert Avalon Info Id>>>>>>>>>>>>>>>:", newid);
+          //Push productinfoId from ProductInfo collection to CustomerInfo Table
+          await CustomerInfo.findOneAndUpdate(
+            { _id: customerId },
+            { _productInfo: newid._id }
+          )
         }
         // console.log(res);
-      }
-    );
-
+      });
+      res.send(productinfo);
+    }
+    else {
+      await ProductInfo.findOneAndUpdate(
+        {
+          _id: productinfoId
+        },
+        productinfo,
+        { upsert: false },
+        (err, res) => {
+          // Deal with the response data/error
+          if (err) {
+            console.log(err);
+          }
+          if (res) {
+            //console.log(res);
+          }
+          // console.log(res);
+        });
+      res.send(productinfo);
+    }
     res.end();
   });
+  // app.post("/api/productinfo", async (req, res) => {
+
+  //   const productinfo = { ...req.body };
+  //   productinfo.updateDate = Date.now();
+  //   const customerId = productinfo.customerId;
+  //   const productinfo_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _productInfo: 1, _id: 0 });
+  //   const productinfoId = productinfo_temp[0]._productInfo;
+
+  //   // console.log("-------------->>>>>>>>><<<<<<<<<<<<<<<-------------");
+  //   // console.log(productinfo);
+
+  //   await ProductInfo.findOneAndUpdate(
+  //     {
+  //       _id: productinfoId
+  //     },
+  //     productinfo,
+  //     { upsert: true },
+  //     (err, res) => {
+  //       // Deal with the response data/error
+  //       if (err) {
+  //         console.log(err);
+  //       }
+  //       if (res) {
+  //         //console.log(res);
+  //       }
+  //       // console.log(res);
+  //     }
+  //   );
+
+  //   res.end();
+  // });
 }
