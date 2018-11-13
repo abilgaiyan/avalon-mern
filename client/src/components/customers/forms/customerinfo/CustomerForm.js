@@ -106,7 +106,7 @@ class CustomerForm extends Component {
       if (type === "dropdown") {
         let optiondata = [];
         if (name === "city") {
-          optiondata = ["New Yory", "Jew Jercy", "Verginia", "TEXARKANA"];
+          optiondata = ["New York", "Jew Jercy", "Verginia", "TEXARKANA"];
         }
         if (name === "customerType") {
           optiondata = ["Customer", "Prospect", "Lead"];

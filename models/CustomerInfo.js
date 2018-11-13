@@ -42,7 +42,7 @@ const customerinfoSchema = new Schema({
   customersince: String,
   customerType: String,
   _buyinggroups: [{ type: Schema.Types.ObjectId, ref: 'buyinggroup' }],
-   comment: String,
+  comment: String,
   // _product: { type: Schema.Types.ObjectId, ref: "product" },
   // _plan: { type: Schema.Types.ObjectId, ref: "ProductPlan" },
   _avalonInfo: { type: Schema.Types.ObjectId, ref: "avaloninfo" },
@@ -53,12 +53,13 @@ const customerinfoSchema = new Schema({
   _domainInfo: { type: Schema.Types.ObjectId, ref: "domaininfo" },
   _sslInfo: { type: Schema.Types.ObjectId, ref: "sslinfo" },
   _businessEmailInfo: { type: Schema.Types.ObjectId, ref: "businessemailinfo" },
+  _querysupportInfo: { type: Schema.Types.ObjectId, ref: "querysupportinfo" },
   _emailmarketingAccountInfo: { type: Schema.Types.ObjectId, ref: "emailmarketingaccountinfo" },
   _targetAreaInfo: { type: Schema.Types.ObjectId, ref: "targetareainfo" },
   _callLogInfo: [{ type: Schema.Types.ObjectId, ref: "callloginfo" }],
-  displayorder: {type: Number, default: 0},
+  displayorder: { type: Number, default: 0 },
   createDate: Date,
   updateDate: Date
 });
 // create modal based on schema
-mongoose.model('customerinfo', customerinfoSchema,'customerinfo');
+mongoose.model('customerinfo', customerinfoSchema, 'customerinfo');

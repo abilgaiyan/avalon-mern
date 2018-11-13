@@ -198,6 +198,14 @@ export const submitCustomerInfo = (values, customerId, history) => async dispatc
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
 };
 
+// Set Add Customer Info Form
+export const submitAddCustomerInfoForm = (values, history) => async dispatch => {
+  //values.customerId = customerId;
+  const res = await axios.post("/api/addcustomerinfo/", values);
+  // history.push("/customers/");
+  dispatch({ type: FETCH_CUSTOMERINFO, payload: values });
+};
+
 // Fetch Avalon Info Drop-down for website Status
 export const fetchWebsiteStatusDropdown = () => async dispatch => {
   const res = await axios.get("/api/WebsiteStatus");

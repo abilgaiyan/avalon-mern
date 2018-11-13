@@ -21,6 +21,7 @@ import ProductInfoForm from "../customers/forms/productinfo/ProductInfoForm";
 
 import TargetAreasForm from "../customers/forms/targetareas/TargetAreasForm";
 import SupportQueryForm from "../customers/forms/supportquery/SupportQuery";
+import AddCustomerInfoForm from "../customers/forms/AddCustomerInfo/AddCustomerInfoForm"
 
 import "../css/common.css";
 
@@ -336,6 +337,7 @@ class CustomerDetails extends Component {
 
           {/* end Accordian */}
         </div>
+        <AddCustomerInfoForm />
       </div>
     );
   }

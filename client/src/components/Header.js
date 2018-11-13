@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Search from "./Search";
+// import AddCustomerInfoForm from "./customers/forms/AddCustomerInfo/AddCustomerInfoForm"
 
 class Header extends Component {
   renderHeader() {
@@ -38,7 +39,7 @@ class Header extends Component {
           <div className="container-fluid">
             <div className="navbar-header col-sm-4">
               <a className="navbar-brand" href="#">
-                Welcome {this.props.auth && this.props.auth.name ? this.props.auth.name :'' }
+                Welcome {this.props.auth && this.props.auth.name ? this.props.auth.name : ''}
               </a>
             </div>
             <div className="col-sm-4 search_wraper">
@@ -55,9 +56,11 @@ class Header extends Component {
               </form>
             </div>
             <div className="col-sm-4 text-right">
-              <button className="btn btn-success navbar-btn">
+              <button type="button" className="btn btn-success navbar-btn" data-toggle="modal" data-target="#addcustomerinfoModal">ADD NEW CUSTOMER</button>
+              {/* <AddCustomerInfoForm /> */}
+              {/* <button className="btn btn-success navbar-btn">
                 ADD NEW CUSTOMER
-              </button>
+              </button> */}
               <ul className="nav navbar-nav navbar-right user_wraper">
                 <li className="dropdown">
                   <a

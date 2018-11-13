@@ -55,7 +55,7 @@ export default [
 
     {
         label: "Comments :",
-        name: "comments",
+        name: "comment",
         type: "text",
         isvalidationApplied: true,
         validationmessage: "Please enter valid Comments",

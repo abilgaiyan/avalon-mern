@@ -157,6 +157,10 @@ class CallLogInfoForm extends Component {
 
 
                             </div>
+                            <div className="modal-footer">
+                                <button type="button" className="close" data-dismiss="modal">&times;</button>
+                                <h4 className="modal-title">Call Log</h4>
+                            </div>
 
                         </div>
 

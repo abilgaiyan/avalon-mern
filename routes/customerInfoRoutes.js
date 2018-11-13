@@ -60,21 +60,85 @@ module.exports = app => {
     res.send(customeralldata);
   });
 
+  //New
+  app.post('/api/addcustomerinfo', async (req, res) => {
+    const { jewelsoftId, Name, address1, city, state, telephone, websiteUrl, avalonId, customerDBA, mainContact, position, address2, postalCode, contactpersonEmail, telephone1, telephone2, websiteProvider, customersince, customerType, comment } = req.body;
+    const AddCustomerInfoData = new CustomerInfo({
+      jewelsoftId,
+      Name,
+      address1,
+      city,
+      state,
+      telephone,
+      websiteUrl,
+      avalonId,
+      customerDBA,
+      mainContact,
+      position,
+      address2,
+      postalCode,
+      contactpersonEmail,
+      telephone1,
+      telephone2,
+      websiteProvider,
+      customersince,
+      customerType,
+      comment,
+      _salesPerson: null,
+      _buyinggroups: null,
+      _avalonInfo: null,
+      _billingInfo: null,
+      _websiteInfo: null,
+      _productInfo: null,
+      _ashimicrowebsiteInfo: null,
+      _domainInfo: null,
+      _sslInfo: null,
+      _businessEmailInfo: null,
+      _emailmarketingAccountInfo: null,
+      _querysupportInfo: null,
+      _targetAreaInfo: null,
+      _callLogInfo: null,
+      createDate: Date.now(),
+      updateDate: Date.now()
+    });
 
+    //Save Data
+    if (AddCustomerInfoData) {
+      await AddCustomerInfoData.save((err, NewCustomer) => {
+        if (err) {
+          res.send('Error in saving', err);
+        }
+        if (NewCustomer) {
+          //New Customer Inserted
+          console.log(NewCustomer)
+        }
+
+      });
+
+      //console.log("--------------------------------->>>>>>>>>>>>>>>>>>>>callinfo ID->>>>>>>>>>>>>>>>>>>>>>>>", data);
+      res.send(AddCustomerInfoData);
+    }
+    else {
+      res.send("Error!!");
+    }
+    res.end();
+  });
+
+  //Edit
   app.post("/api/customerinfo", async (req, res) => {
 
     const customerinfo = { ...req.body };
-    console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------", customerinfo)
+    //console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------", customerinfo)
     customerinfo.updateDate = Date.now();
     const customerId = req.body.customerId;
-    if (req.body.customerId = 0) {
-      customerinfo.createDate = Date.now();
-      delete customerinfo.customerId;
-    }
-    else {
-      // customerinfo._id = mongoose.Types.ObjectId(req.body.customerId);
-      delete customerinfo.customerId;
-    }
+    // if (req.body.customerId = 0) {
+    //   customerinfo.createDate = Date.now();
+    //   delete customerinfo.customerId;
+    // }
+    // else {
+    //   // customerinfo._id = mongoose.Types.ObjectId(req.body.customerId);
+    //   delete customerinfo.customerId;
+    // }
     //console.log('zzzz', customerinfo); 
     //await customerinfo.save();
     await CustomerInfo.findOneAndUpdate(
@@ -82,19 +146,17 @@ module.exports = app => {
         _id: customerId
       },
       customerinfo,
-      { upsert: true },
+      { upsert: false },
       (err, res) => {
         // Deal with the response data/error
         if (err) {
           console.log(err);
         }
         if (res) {
-          console.log(res);
+          //console.log(res);
         }
-        // console.log(res);
-      }
-    );
-
+      });
+    res.send(customerinfo);
     res.end();
   });
 };
