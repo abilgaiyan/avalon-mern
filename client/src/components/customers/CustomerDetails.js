@@ -21,7 +21,7 @@ import ProductInfoForm from "../customers/forms/productinfo/ProductInfoForm";
 
 import TargetAreasForm from "../customers/forms/targetareas/TargetAreasForm";
 import SupportQueryForm from "../customers/forms/supportquery/SupportQuery";
-import AddCustomerInfoForm from "../customers/forms/AddCustomerInfo/AddCustomerInfoForm"
+//import AddCustomerInfoForm from "../customers/forms/AddCustomerInfo/AddCustomerInfoForm"
 
 import "../css/common.css";
 
@@ -71,8 +71,8 @@ class CustomerDetails extends Component {
 
   renderSummry() {
     if (!this.props.customerForm) return;
-    return <CustomerSummary customerSummary={this.props.customerForm} />;
-    //return <CustomerSummary />;
+    //return <CustomerSummary customerSummary={this.props.customerForm} />;
+    return <CustomerSummary />;
   }
 
   renderCustomerInfo() {
@@ -337,7 +337,7 @@ class CustomerDetails extends Component {
 
           {/* end Accordian */}
         </div>
-        <AddCustomerInfoForm />
+        {/* <AddCustomerInfoForm /> */}
       </div>
     );
   }

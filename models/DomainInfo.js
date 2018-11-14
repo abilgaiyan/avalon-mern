@@ -9,8 +9,8 @@ const domainInfoSchema = new Schema({
     domainAccountId: String,
     domainLoginUserName: String,
     domainLoginUserPassword: String,
-    buyDate: String,
-    expiryDate: String,
+    buyDate: Date,
+    expiryDate: Date,
     createDate: Date,
     updateDate: Date
 

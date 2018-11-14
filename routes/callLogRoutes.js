@@ -94,13 +94,6 @@ module.exports = app => {
 
       });
 
-
-
-
-
-
-
-
       //console.log("--------------------------------->>>>>>>>>>>>>>>>>>>>callinfo ID->>>>>>>>>>>>>>>>>>>>>>>>", data);
       res.send(CustomerCalllogInfoData);
     }

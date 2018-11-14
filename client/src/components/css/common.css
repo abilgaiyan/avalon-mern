@@ -508,3 +508,19 @@ ul {
     font-size: 14px;
     border: 1px solid #e1e3ea;
 }
+.modal-open .main_containt .navbar-fixed-top {
+    right: 17px;
+    width: -moz-calc(100% - 257px);
+    width: -webkit-calc(100% - 257px);
+    width: -o-calc(100% - 257px);
+    width: calc(100% - 257px);
+ }
+ 
+ .full.main_containt .navbar-fixed-top {
+    width: auto;
+    left: 0;
+ }
+ 
+ .modal-open .full.main_containt .navbar-fixed-top{
+    width: auto;
+ }

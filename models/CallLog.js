@@ -3,15 +3,15 @@ const { Schema } = mongoose;
 
 //define schema for Avalon Customers Call Logs by Support Team
 const callLogInfoSchema = new Schema({
-    previousCallDate: String,
+    previousCallDate: Date,
     _previousCallType: { type: Schema.Types.ObjectId, ref: "previouscalltype" },
     callPerson: String,
     avalonExcutive: String,
     topic: String,
     summary: String,
     comments: String,
-    followupcalldate: String,
-    followupcallTime: String,
+    followupcalldate: Date,
+    followupcallTime: Date,
     createDate: Date,
     updateDate: Date
 

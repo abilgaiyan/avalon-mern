@@ -7,11 +7,11 @@ const { Schema } = mongoose;
 
 const avalonInfoSchema = new Schema({
     _websitestatus: { type: Schema.Types.ObjectId, ref: "websitestatus" },
-    signupDate: String,
+    signupDate: Date,
     numberOfDaysFromSignup: { type: Number, default: 0 },
-    layoutSentDate: String,
-    layoutAprrovedDate: String,
-    betaOnReviewDate: String,
+    layoutSentDate: Date,
+    layoutAprrovedDate: Date,
+    betaOnReviewDate: Date,
     comments: String,
     //websitestatus: String,
     _user: { type: Schema.Types.ObjectId, ref: 'User' },

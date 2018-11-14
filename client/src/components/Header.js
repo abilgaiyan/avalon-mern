@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Search from "./Search";
-// import AddCustomerInfoForm from "./customers/forms/AddCustomerInfo/AddCustomerInfoForm"
+import AddCustomerInfoForm from "./customers/forms/AddCustomerInfo/AddCustomerInfoForm"
 
 class Header extends Component {
   renderHeader() {
@@ -57,7 +57,7 @@ class Header extends Component {
             </div>
             <div className="col-sm-4 text-right">
               <button type="button" className="btn btn-success navbar-btn" data-toggle="modal" data-target="#addcustomerinfoModal">ADD NEW CUSTOMER</button>
-              {/* <AddCustomerInfoForm /> */}
+              <AddCustomerInfoForm />
               {/* <button className="btn btn-success navbar-btn">
                 ADD NEW CUSTOMER
               </button> */}

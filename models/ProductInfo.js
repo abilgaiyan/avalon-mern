@@ -6,7 +6,7 @@ const productInfoSchema = new Schema({
     _ashiProductStatus: { type: Schema.Types.ObjectId, ref: "ashiproductstatus" },
     restrictionFrom: String,
     jewelExchangeSignupStatus: String,
-    jewelExchangeSignupDate: String,
+    jewelExchangeSignupDate: Date,
     jewelExchangePlan: String,
     suppliersActivated: String,
     createDate: Date,

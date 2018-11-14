@@ -112,12 +112,12 @@ class AddCustomerInfoForm extends Component {
         // console.clear();
         // console.log(this.props.previousCallTypeDropdown);
         return (
-            <div className="modal fade" id="addcustomerinfoModal" role="dialog" tabIndex="1">
+            <div className="modal fade" id="addcustomerinfoModal" role="dialog" tabIndex="1" data-backdrop="false" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
                 <div className="modal-dialog">
 
 
                     <div className="modal-content">
-                        <div className="modal-header">
+                        <div className="modal-header text-left">
                             <button type="button" className="close" data-dismiss="modal">&times;</button>
                             <h4 className="modal-title">Add Customer</h4>
                         </div>

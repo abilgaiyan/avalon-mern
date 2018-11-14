@@ -56,14 +56,14 @@ class CustomerSummary extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   // console.clear();
-//   // console.log("state :", state.customersummary);
-//   return { customerSummary: state.customersummary };
-// }
+function mapStateToProps(state) {
+  // console.clear();
+  // console.log("state :", state.customerForm);
+  return { customerSummary: state.customerForm };
+}
 
-export default CustomerSummary;
-// export default connect(mapStateToProps)(CustomerSummary);
+//export default CustomerSummary;
+export default connect(mapStateToProps)(CustomerSummary);
 // connect()(SideNav);
 //   mapStateToProps,
 //   { fetchCustomerInfo }

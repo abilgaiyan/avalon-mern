@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../../actions";
 import { Link, withRouter } from "react-router-dom";
+import moment from 'moment';
 // import { fetchCustomers } from "../../actions";
 // import { Link } from "react-router-dom";
 import CallLogInfoForm from "./CallLogInfoForm";
@@ -35,10 +36,11 @@ class CallLogList extends Component {
     return this.props.callloginfoList.map((list) => {
       return (
         <tr key={list._id}>
-          <td>{list.previousCallDate}</td>
+          <td>{moment(list.previousCallDate).format('DD MMM YYYY')}</td>
           <td>{list._previousCallType._previouscalltype === "Incoming" ? <i className="fa fa-sign-in" aria-hidden="true"></i> : <i className="fa fa-sign-out" aria-hidden="true"></i>}</td>
           <td>{list.callPerson}</td>
           <td>{list.avalonExcutive}</td>
+          <td>{moment(list.followupcallTime).format('hh:mm A')}</td>
           <td><i className="fa fa-search"></i></td>
         </tr>
       )
@@ -96,6 +98,7 @@ class CallLogList extends Component {
                 <th>Prev. Call Type</th>
                 <th>Call Person</th>
                 <th>Avalon Exec.</th>
+                <th>Followup Time</th>
                 <th></th>
               </tr>
             </thead>

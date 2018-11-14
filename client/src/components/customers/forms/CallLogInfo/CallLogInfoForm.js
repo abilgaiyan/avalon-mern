@@ -123,7 +123,7 @@ class CallLogInfoForm extends Component {
             // console.clear();
             // console.log(this.props.previousCallTypeDropdown);
             return (
-                <div className="modal fade" id="callLogModal" role="dialog">
+                <div className="modal fade" id="callLogModal" role="dialog" data-backdrop="false" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
                     <div className="modal-dialog">
 
 
@@ -144,7 +144,7 @@ class CallLogInfoForm extends Component {
                                         // this.state.disabled === true ? "" :
                                         <div className="form-group">
                                             <div className="col-xs-9 col-xs-offset-3 text-left">
-                                                <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
+                                                <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }} >
                                                     <i className="fa fa-check-square" aria-hidden="true"></i>
                                                     Save</button>
                                                 {/* <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
@@ -157,11 +157,6 @@ class CallLogInfoForm extends Component {
 
 
                             </div>
-                            <div className="modal-footer">
-                                <button type="button" className="close" data-dismiss="modal">&times;</button>
-                                <h4 className="modal-title">Call Log</h4>
-                            </div>
-
                         </div>
 
                     </div>

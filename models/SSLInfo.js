@@ -10,8 +10,8 @@ const sslInfoSchema = new Schema({
     sslAccountId: String,
     sslLoginUserName: String,
     sslLoginUserPassword: String,
-    buyDate: String,
-    expiryDate: String,
+    buyDate: Date,
+    expiryDate: Date,
     createDate: Date,
     updateDate: Date
 
