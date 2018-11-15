@@ -23,7 +23,7 @@ const datetimeField = ({ input: { onChange, value }, label, type, meta: { touche
                 //value={!input.value ? null : new Date(moment(input.value).format("DD MMM YYYY"))}
                 />
                 <div className="red-text" >
-                    {/* {touched && error} */}
+                    {touched && error}
                 </div>
             </div>
         </div>

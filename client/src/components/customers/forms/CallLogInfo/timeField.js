@@ -19,7 +19,7 @@ const timeField = ({ input: { onChange, value }, label, type, meta: { touched, e
                 //value={!input.value ? null : new Date(moment(input.value).format("DD MMM YYYY"))}
                 />
                 <div className="red-text" >
-                    {/* {touched && error} */}
+                    {touched && error}
                 </div>
             </div>
         </div>

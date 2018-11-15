@@ -97,7 +97,7 @@ module.exports = app => {
       _emailmarketingAccountInfo: null,
       _querysupportInfo: null,
       _targetAreaInfo: null,
-      _callLogInfo: null,
+      _callLogInfo: [],
       createDate: Date.now(),
       updateDate: Date.now()
     });

@@ -524,3 +524,9 @@ ul {
  .modal-open .full.main_containt .navbar-fixed-top{
     width: auto;
  }
+ .red-text {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: left;
+}

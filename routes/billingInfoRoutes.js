@@ -58,7 +58,7 @@ module.exports = app => {
     if (billinginfoId === null) {
       //billinginfo._id = new ObjectID();
       billinginfo.createDate = Date.now();
-      // console.log("NULL>>>>>>>>>>>>>>", billinginfo);
+      //console.log("NULL>>>>>>>>>>>>>>", billinginfo);
       await AvalonBillingInfo.create(billinginfo, async (err, newid) => {
         // Deal with the response data/error
         if (err) {

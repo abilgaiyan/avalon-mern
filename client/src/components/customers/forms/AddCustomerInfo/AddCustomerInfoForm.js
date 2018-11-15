@@ -19,6 +19,20 @@ momentLocaliser(moment);
 
 class AddCustomerInfoForm extends Component {
 
+    constructor(props) {
+        super(props);
+
+        //this.state = { modalOpen: false }
+        this._closeModal = this._closeModal.bind(this);
+        this._submitAndRedirect = this._submitAndRedirect.bind(this);
+        // this.handelCancelEdit = this.handelCancelEdit.bind(this);
+    }
+    _closeModal() {
+        document.getElementById("hidePopUpBtn").click();
+    }
+    _submitAndRedirect() {
+        this.props.history.push("/customers")
+    }
 
     renderFields() {
         return _.map(formFields, ({ label, name, type }) => {
@@ -127,7 +141,7 @@ class AddCustomerInfoForm extends Component {
                             {/* <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button> */}
                             <div className="clearfix"></div>
                             <form className="form-horizontal label-left"
-                                onSubmit={this.props.handleSubmit((history) => { this.props.submitAddCustomerInfoForm(this.props.formValues.values, history).then(this.props.history.push("/customers")) })}>
+                                onSubmit={this.props.handleSubmit((history) => { this.props.submitAddCustomerInfoForm(this.props.formValues.values, history).then(this._closeModal).then(this._submitAndRedirect) })}>
                                 {this.renderFields()}
                                 {
                                     // this.state.disabled === true ? "" :
@@ -136,6 +150,7 @@ class AddCustomerInfoForm extends Component {
                                             <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
                                                 <i className="fa fa-check-square" aria-hidden="true"></i>
                                                 Save</button>
+                                            <button id="hidePopUpBtn" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                             {/* <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
                                                     <i className="fa fa-close" aria-hidden="true"></i>
                                                     Cancel</a> */}

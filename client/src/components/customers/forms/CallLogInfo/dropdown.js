@@ -9,7 +9,8 @@ const dropdown = ({ input, label, optionData, meta: { touched, error } }) => {
 
 
     let optionItems = previousCallTypeData.map((data, index) => (
-        <option key={data._id} value={data._id}>{data._previouscalltype}</option>
+        index === 0 ? <option key={data._id} value='' disabled>{data._previouscalltype}</option> :
+            <option key={data._id} value={data._id}>{data._previouscalltype}</option>
     ));
 
 

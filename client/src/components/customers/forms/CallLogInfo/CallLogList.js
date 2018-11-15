@@ -40,7 +40,7 @@ class CallLogList extends Component {
           <td>{list._previousCallType._previouscalltype === "Incoming" ? <i className="fa fa-sign-in" aria-hidden="true"></i> : <i className="fa fa-sign-out" aria-hidden="true"></i>}</td>
           <td>{list.callPerson}</td>
           <td>{list.avalonExcutive}</td>
-          <td>{moment(list.followupcallTime).format('hh:mm A')}</td>
+          <td>{list.followupcallTime === undefined ? '' : moment(list.followupcallTime).format('hh:mm A')}</td>
           <td><i className="fa fa-search"></i></td>
         </tr>
       )
@@ -64,7 +64,8 @@ class CallLogList extends Component {
             </button>
           </a> */}
           <div className=" icon_well">
-            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#callLogModal"><i className="fa fa-plus-square"></i>Add</button>
+            <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#callLogModal"><i className="fa fa-plus-square"></i>Add</button>
+            <div className="clearfix"></div>
             {/* <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> */}
             <CallLogInfoForm />
           </div>

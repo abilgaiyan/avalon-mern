@@ -18,34 +18,23 @@ import * as actions from "../../../../actions";
 momentLocaliser(moment);
 
 class CallLogInfoForm extends Component {
-    // constructor(props) {
-    //     super(props);
+    constructor(props) {
+        super(props);
 
-    //     this.state = { disabled: true, isInitializeState: false }
-    //     //this.handelEdit = this.handelEdit.bind(this);
-    //     // this.handelCancelEdit = this.handelCancelEdit.bind(this);
-    // }
+        //this.state = { modalOpen: false }
+        this._closeModal = this._closeModal.bind(this);
+        this._submitAndRedirect = this._submitAndRedirect.bind(this);
+        // this.handelCancelEdit = this.handelCancelEdit.bind(this);
+    }
+    _closeModal() {
+        alert('first');
+        document.getElementById("hidePopUpBtn").click();
+    }
+    _submitAndRedirect() {
+        alert('second');
+        this.props.history.push("/customers")
+    }
 
-    // // handelEdit() {
-    // //     this.setState({ disabled: !this.state.disabled })
-    // // }
-    // // handelCancelEdit() {
-    // //     this.setState({ disabled: true })
-    // // }
-
-    // componentWillReceiveProps(nextProps) {
-
-    //     // console.clear();
-    //     // console.log("Call Log Info form: ", nextProps.callloginfoForm);
-    //     if (nextProps.callloginfoForm && !this.state.isInitializeState) {
-    //         // console.clear();
-    //         // console.log("Call Log Info form: ", nextProps.callloginfoForm);
-    //         const initData = nextProps.callloginfoForm;
-
-    //         nextProps.initialize(initData);
-    //         this.setState({ isInitializeState: true });
-    //     }
-    // }
 
     renderFields() {
         return _.map(formFields, ({ label, name, type }) => {
@@ -114,6 +103,8 @@ class CallLogInfoForm extends Component {
 
 
     render() {
+        const { pristine, reset, submitting } = this.props;
+        //console.log("state -->>", this.state.modalOpen)
         if (!this.props.previousCallTypeDropdown) {
             // console.clear();
             // console.log(this.props.productPlanDropdown[0].planName);
@@ -128,8 +119,8 @@ class CallLogInfoForm extends Component {
 
 
                         <div className="modal-content">
-                            <div className="modal-header">
-                                <button type="button" className="close" data-dismiss="modal">&times;</button>
+                            <div className="modal-header text-left">
+                                {/* <button type="button" className="close" data-dismiss="modal">&times;</button> */}
                                 <h4 className="modal-title">Call Log</h4>
                             </div>
                             <div className="modal-body">
@@ -138,15 +129,19 @@ class CallLogInfoForm extends Component {
                                 {/* <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button> */}
                                 <div className="clearfix"></div>
                                 <form className="form-horizontal label-left"
-                                    onSubmit={this.props.handleSubmit((history) => { this.props.submitCallLogInfoForm(this.props.formValues.values, this.props.match.params.customerId, history).then(this.props.history.push("/customers")) })}>
+                                    // onSubmit={this.props.handleSubmit((history) => { this.props.submitCallLogInfoForm(this.props.formValues.values, this.props.match.params.customerId, history).then(this._closeModal).then(this.props.history.push("/customers")) })}>
+                                    onSubmit={this.props.handleSubmit((history) => { this.props.submitCallLogInfoForm(this.props.formValues.values, this.props.match.params.customerId, history).then(this._closeModal) })}>
                                     {this.renderFields()}
                                     {
                                         // this.state.disabled === true ? "" :
                                         <div className="form-group">
                                             <div className="col-xs-9 col-xs-offset-3 text-left">
-                                                <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }} >
+                                                <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }} disabled={pristine || submitting}>
                                                     <i className="fa fa-check-square" aria-hidden="true"></i>
                                                     Save</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" onClick={reset}>Cancel</button>
+                                                <button id="hidePopUpBtn" type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
+
                                                 {/* <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
                                                     <i className="fa fa-close" aria-hidden="true"></i>
                                                     Cancel</a> */}
@@ -194,13 +189,18 @@ class CallLogInfoForm extends Component {
 
 function validate(values) {
     const errors = {};
-    errors.email = validateEmails(values.email || "");
+    //errors.email = validateEmails(values.email || "");
 
-    _.each(formFields, ({ name, is }) => {
-        if (!values[name]) {
-            errors[name] = "You must provide a value";
-        }
-    });
+    // _.each(formFields, ({ name }) => {
+    //     if (!values[name]) {
+    //         errors[name] = "You must provide a value";
+    //     }
+    // });
+
+    if (!values._previousCallType) {
+        errors._previousCallType = "You must provide a value"
+    }
+
 
     return errors;
 }
@@ -220,6 +220,6 @@ CallLogInfoForm = connect(
 )(withRouter(CallLogInfoForm));
 
 export default reduxForm({
-    //validate,
+    validate,
     form: "callloginfoReduxForm"
 })(withRouter(CallLogInfoForm));
