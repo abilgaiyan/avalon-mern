@@ -20,21 +20,18 @@ momentLocaliser(moment);
 class CallLogInfoForm extends Component {
     constructor(props) {
         super(props);
-
-        //this.state = { modalOpen: false }
         this._closeModal = this._closeModal.bind(this);
         this._submitAndRedirect = this._submitAndRedirect.bind(this);
-        // this.handelCancelEdit = this.handelCancelEdit.bind(this);
     }
     _closeModal() {
-        alert('first');
-        document.getElementById("hidePopUpBtn").click();
+        document.getElementById('AddCallInfoClose').click();
+        const customerId = this.props.match.params.customerId;
+        this.props.fetchcallloginfoList(customerId);
+
     }
     _submitAndRedirect() {
-        alert('second');
         this.props.history.push("/customers")
     }
-
 
     renderFields() {
         return _.map(formFields, ({ label, name, type }) => {
@@ -120,37 +117,30 @@ class CallLogInfoForm extends Component {
 
                         <div className="modal-content">
                             <div className="modal-header text-left">
-                                {/* <button type="button" className="close" data-dismiss="modal">&times;</button> */}
+                                <button type="button" className="close" data-dismiss="modal" onClick={reset}>&times;</button>
                                 <h4 className="modal-title">Call Log</h4>
                             </div>
                             <div className="modal-body">
-
-
-                                {/* <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button> */}
                                 <div className="clearfix"></div>
                                 <form className="form-horizontal label-left"
-                                    // onSubmit={this.props.handleSubmit((history) => { this.props.submitCallLogInfoForm(this.props.formValues.values, this.props.match.params.customerId, history).then(this._closeModal).then(this.props.history.push("/customers")) })}>
-                                    onSubmit={this.props.handleSubmit((history) => { this.props.submitCallLogInfoForm(this.props.formValues.values, this.props.match.params.customerId, history).then(this._closeModal) })}>
+                                    onSubmit={this.props.handleSubmit((history) => {
+                                        this.props.submitCallLogInfoForm(this.props.formValues.values, this.props.match.params.customerId, history)
+                                            .then(this._closeModal)
+                                        // .then(this._submitAndRedirect)
+                                    })}>
                                     {this.renderFields()}
                                     {
-                                        // this.state.disabled === true ? "" :
                                         <div className="form-group">
                                             <div className="col-xs-9 col-xs-offset-3 text-left">
                                                 <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }} disabled={pristine || submitting}>
                                                     <i className="fa fa-check-square" aria-hidden="true"></i>
                                                     Save</button>
-                                                <button type="button" class="btn btn-default" data-dismiss="modal" onClick={reset}>Cancel</button>
-                                                <button id="hidePopUpBtn" type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
+                                                <button type="button" id="AddCallInfoClose" class="btn btn-default" data-dismiss="modal" onClick={reset}>Cancel</button>
 
-                                                {/* <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
-                                                    <i className="fa fa-close" aria-hidden="true"></i>
-                                                    Cancel</a> */}
                                             </div>
                                         </div>
                                     }
                                 </form>
-
-
                             </div>
                         </div>
 
@@ -158,29 +148,6 @@ class CallLogInfoForm extends Component {
                 </div>
 
 
-                // <div>
-                //     <button className="pull-right icon_well" ><i className="fa fa-times-circle fa-2x" aria-hidden="true"></i></button>
-                //     <div className="clearfix"></div>
-                //     <form
-                //         className="form-horizontal label-left"
-                //         onSubmit={this.props.handleSubmit((history) => { this.props.submitCallLogInfoForm(this.props.formValues.values, this.props.match.params.customerId, history) })}>
-                //         {this.renderFields()}
-                //         {
-                //             <div className="form-group">
-                //                 <div className="col-xs-9 col-xs-offset-3 text-left">
-                //                     <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
-                //                         <i className="fa fa-check-square" aria-hidden="true"></i>
-                //                         Save
-
-                //   </button>
-                //                     <a className="btn btn-cancle">
-                //                         <i className="fa fa-close" aria-hidden="true"></i>
-                //                         Cancel
-                //   </a>
-                //                 </div>
-                //             </div>}
-                //     </form>
-                // </div>
             );
         }
 

@@ -28,7 +28,7 @@ class AddCustomerInfoForm extends Component {
         // this.handelCancelEdit = this.handelCancelEdit.bind(this);
     }
     _closeModal() {
-        document.getElementById("hidePopUpBtn").click();
+        document.getElementById('AddCustInfoClose').click();
     }
     _submitAndRedirect() {
         this.props.history.push("/customers")
@@ -136,24 +136,19 @@ class AddCustomerInfoForm extends Component {
                             <h4 className="modal-title">Add Customer</h4>
                         </div>
                         <div className="modal-body">
-
-
-                            {/* <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button> */}
                             <div className="clearfix"></div>
                             <form className="form-horizontal label-left"
                                 onSubmit={this.props.handleSubmit((history) => { this.props.submitAddCustomerInfoForm(this.props.formValues.values, history).then(this._closeModal).then(this._submitAndRedirect) })}>
                                 {this.renderFields()}
                                 {
-                                    // this.state.disabled === true ? "" :
+
                                     <div className="form-group">
                                         <div className="col-xs-9 col-xs-offset-3 text-left">
                                             <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
                                                 <i className="fa fa-check-square" aria-hidden="true"></i>
                                                 Save</button>
-                                            <button id="hidePopUpBtn" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                            {/* <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
-                                                    <i className="fa fa-close" aria-hidden="true"></i>
-                                                    Cancel</a> */}
+                                            <button type="button" id="AddCustInfoClose" className="btn btn-default" data-dismiss="modal">Cancel</button>
+
                                         </div>
                                     </div>
                                 }
@@ -166,31 +161,6 @@ class AddCustomerInfoForm extends Component {
 
                 </div>
             </div>
-
-
-            // <div>
-            //     <button className="pull-right icon_well" ><i className="fa fa-times-circle fa-2x" aria-hidden="true"></i></button>
-            //     <div className="clearfix"></div>
-            //     <form
-            //         className="form-horizontal label-left"
-            //         onSubmit={this.props.handleSubmit((history) => { this.props.submitCallLogInfoForm(this.props.formValues.values, this.props.match.params.customerId, history) })}>
-            //         {this.renderFields()}
-            //         {
-            //             <div className="form-group">
-            //                 <div className="col-xs-9 col-xs-offset-3 text-left">
-            //                     <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
-            //                         <i className="fa fa-check-square" aria-hidden="true"></i>
-            //                         Save
-
-            //   </button>
-            //                     <a className="btn btn-cancle">
-            //                         <i className="fa fa-close" aria-hidden="true"></i>
-            //                         Cancel
-            //   </a>
-            //                 </div>
-            //             </div>}
-            //     </form>
-            // </div>
         );
 
 
