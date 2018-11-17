@@ -10,21 +10,21 @@ const LeftSideBar = () => {
                     </Link>
                 </div>
                 <div className="list-group" id="sidebar-nav-menu">
-                    <Link to="#" className="list-group-item Summary" >Summary</Link>
-                    <Link to="#" className="list-group-item Customer_Info">Customer Info</Link>
-                    <Link to="#" className="list-group-item">Target Areas</Link>
-                    <Link to="#" className="list-group-item Call_Log">Query / Support Trend</Link>
-                    <Link to="#" className="list-group-item Phone">Call Log</Link>
-                    <Link to="#" className="list-group-item Emails">Email Log</Link>
-                    <Link to="#" className="list-group-item">Avalon Info</Link>
-                    <Link to="#" className="list-group-item">Billing Info</Link>
-                    <Link to="#" className="list-group-item">Website Info</Link>
-                    <Link to="#" className="list-group-item">Product Info</Link>
-                    <Link to="#" className="list-group-item">ASHI Micro-Website Info</Link>
-                    <Link to="#" className="list-group-item">Domain Info</Link>
-                    <Link to="#" className="list-group-item">SSL Info</Link>
-                    <Link to="#" className="list-group-item">Business Email Info</Link>
-                    <Link to="#" className="list-group-item">Email Marketing Account Info</Link>
+                    <Link to="#Summary" data-toggle="collapse" data-parent="#undefined" aria-expanded="true" className="list-group-item Summary" >Summary</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#Customer_Info" aria-expanded="true" className="list-group-item Customer_Info">Customer Info</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#TargetAreas" aria-expanded="true" className="list-group-item">Target Areas</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#SupportQuery" aria-expanded="true" className="list-group-item Call_Log">Query / Support Trend</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#callLog" aria-expanded="true" className="list-group-item Phone">Call Log</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#Emails" aria-expanded="true" className="list-group-item Emails">Email Log</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#Avalon_Info" aria-expanded="true" className="list-group-item">Avalon Info</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#Billing_Form" aria-expanded="true" className="list-group-item">Billing Info</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#WebsiteInfoForm" aria-expanded="true" className="list-group-item">Website Info</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#ProductInfoForm" aria-expanded="true" className="list-group-item">Product Info</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#AshiMicroWebsiteForm" aria-expanded="true" className="list-group-item">ASHI Micro-Website Info</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#DomainInfoForm" aria-expanded="true" className="list-group-item">Domain Info</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#SSLInfoForm" aria-expanded="true" className="list-group-item">SSL Info</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#BusinessEmailInfoForm" aria-expanded="true" className="list-group-item">Business Email Info</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#EmailMarketingAccountInfoForm" aria-expanded="true" className="list-group-item">Email Marketing Account Info</Link>
                 </div>
             </nav>
         </div>

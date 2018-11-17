@@ -27,7 +27,8 @@ import {
   FETCH_PRODUCTINFO,
   FETCH_PREVIOUSCALLTYPE,
   FETCH_CALLLOGINFO,
-  FETCH_CALLLOGINFO_LIST
+  FETCH_CALLLOGINFO_LIST,
+  FETCH_BUYINGGROUPSALLDATA
 } from "./types";
 
 //Store Autocomplete_ID
@@ -172,6 +173,13 @@ export const submitQuery = (values, history) => async dispatch => {
   //const res = storylist;
   dispatch({ type: FETCH_QUERY, payload: res.data[0] });
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
+};
+
+
+// Fetch Buying Group list all data
+export const fetchBuyingGrpList = () => async dispatch => {
+  const res = await axios.get("/api/BuyingGroupsAllData");
+  dispatch({ type: FETCH_BUYINGGROUPSALLDATA, payload: res.data });
 };
 
 // Fetch last phone call communication data by Customer id

@@ -5,12 +5,12 @@ const { Schema } = mongoose;
 
 //define schema for our customer
 const buyingGroupInfoSchema = new Schema({
-    name: String,
+    _buyinggroups: String,
     acitve: Boolean,
-    displayorder: {type: Number, default: 0},
+    displayorder: { type: Number, default: 0 },
     createDate: Date,
     updateDate: Date
 
 });
 // create modal based on schema
-mongoose.model('buyinggroup', buyingGroupInfoSchema);
+mongoose.model('buyinggroup', buyingGroupInfoSchema, 'buyinggroup');

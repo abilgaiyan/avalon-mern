@@ -55,3 +55,5 @@ export const FETCH_PREVIOUSCALLTYPE = "fetch_previouscalltype";
 export const FETCH_CALLLOGINFO = "fetch_callloginfo";
 
 export const FETCH_CALLLOGINFO_LIST = "fetch_callloginfo_list";
+
+export const FETCH_BUYINGGROUPSALLDATA = "fetch_buyinggroupsalldata";

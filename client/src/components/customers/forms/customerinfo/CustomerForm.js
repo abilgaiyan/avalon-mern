@@ -3,14 +3,14 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { reduxForm, Field, initialize } from "redux-form";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+
 import CustomerField from "./CustomerField";
 import CustomerDropdownField from "./CustomerDropdown";
+import MultiselectField from "./MultiselectField"
 import validateEmails from "../../../../utils/validateEmails";
 import formFields from "./formFields";
-import { withRouter } from "react-router-dom";
 import * as actions from "../../../../actions";
-
 
 
 class CustomerForm extends Component {
@@ -91,16 +91,29 @@ class CustomerForm extends Component {
       }
 
       if (type === "checkbox") {
-        return (
-          <Field
-            key={name}
-            component={CustomerField}
-            type={type}
-            label={label}
-            name={name}
-            disabled={(this.state.disabled) ? "disabled" : ""}
-          />
-        );
+        let optiondata = [];
+        //let itemdata = [];
+        if (name === "_buyinggroups" && this.props.buyingGroup) {
+          // console.clear();
+          // console.log("Array of objs", this.props.buyingGroup);
+          optiondata = this.props.buyingGroup;
+          //itemdata = this.props.buyingGroup.map((data, index) => (data._buyinggroups));
+          // console.clear();
+          // console.log("Array of objs", optiondata);
+          return (
+            <Field
+              key={name}
+              component={MultiselectField}
+              type={type}
+              label={label}
+              name={name}
+              optionData={optiondata}
+              //itemData={itemdata}
+              disabled={(this.state.disabled) ? "true" : ""}
+            />);
+        }
+
+
       }
 
       if (type === "dropdown") {
@@ -171,10 +184,11 @@ function validate(values) {
 }
 function mapStateToProps(state) {
   // console.clear();
-  // console.log(state.customerForm);
+  // console.log(state.buyingGroup);
   return {
     formValues: state.form.customerInfoForm,
-    customerForm: state.customerForm
+    customerForm: state.customerForm,
+    buyingGroup: state.buyingGroup
   };
 }
 

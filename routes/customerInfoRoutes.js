@@ -2,9 +2,26 @@ const _ = require("lodash");
 const Path = require("path-parser");
 const { URL } = require("url");
 const mongoose = require("mongoose");
+const BuyingGroup = mongoose.model('buyinggroup');
 const CustomerInfo = mongoose.model("customerinfo");
 
+
 module.exports = app => {
+
+  //List of all Buying Groups
+  app.get('/api/BuyingGroupsAllData', async (req, res) => {
+    const buyinggroupsAllData = await BuyingGroup.find({});
+    //console.log(buyinggroupsAllData);
+    //res.send(buyinggroupsAllData);
+
+    if (buyinggroupsAllData) {
+      res.send(buyinggroupsAllData);
+    } else {
+      res.send("no data");
+    }
+
+  });
+
   //Get Customer info data
   app.get("/api/customerinfo/:customerid", async (req, res) => {
     const customerId = req.params.customerid.toString();
@@ -12,7 +29,7 @@ module.exports = app => {
     const customerinfo = await CustomerInfo.find({
       _id: mongoose.Types.ObjectId(customerId)
     }, { createDate: 0, updateDate: 0 }).populate('_salesPerson')
-      .populate('_buyinggroups')
+      //.populate('_buyinggroups')
       .populate('_avalonInfo')
       // .populate('_billingInfo')
       .populate({
@@ -85,7 +102,7 @@ module.exports = app => {
       customerType,
       comment,
       _salesPerson: null,
-      _buyinggroups: null,
+      _buyinggroups: [],
       _avalonInfo: null,
       _billingInfo: null,
       _websiteInfo: null,
@@ -128,6 +145,11 @@ module.exports = app => {
   app.post("/api/customerinfo", async (req, res) => {
 
     const customerinfo = { ...req.body };
+    // const customerinfo_temp = { ...req.body };
+    // const buyingGrp_id_temp = customerinfo_temp._buyinggroups
+    // const buyingGrp_onlyid = buyingGrp_id_temp.map((onlyid) => { return onlyid.id });
+    // customerinfo._buyinggroups = buyingGrp_onlyid;
+
     //console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------", customerinfo)
     customerinfo.updateDate = Date.now();
     const customerId = req.body.customerId;

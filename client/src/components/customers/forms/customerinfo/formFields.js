@@ -177,7 +177,7 @@ export default [
   },
   {
     label: "Buying Group :",
-    name: "buyingGroup",
+    name: "_buyinggroups",
     type: "checkbox",
     isvalidationApplied: "false",
     validationmessage: "",

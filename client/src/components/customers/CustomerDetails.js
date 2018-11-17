@@ -31,6 +31,7 @@ class CustomerDetails extends Component {
   componentWillMount() {
     const customerId = this.props.autoCompleteId || this.props.match.params.customerId;
     this.props.fetchCustomerInfo(customerId);
+    this.props.fetchBuyingGrpList()
     this.props.fetchWebsiteStatusDropdown();
     this.props.fetchAvalonInfo(customerId);
     this.props.fetchBillingInfoProductPlanDropdown();
