@@ -30,7 +30,14 @@ module.exports = app => {
       _id: mongoose.Types.ObjectId(customerId)
     }, { createDate: 0, updateDate: 0 }).populate('_salesPerson')
       //.populate('_buyinggroups')
-      .populate('_avalonInfo')
+      //.populate('_avalonInfo')
+      .populate({
+        path: '_avalonInfo',
+        populate: {
+          path: '_websitestatus',
+          model: 'websitestatus'
+        }
+      })
       // .populate('_billingInfo')
       .populate({
         path: '_billingInfo',
@@ -40,7 +47,14 @@ module.exports = app => {
         }
       })
       .populate('_websiteInfo')
-      .populate('_productInfo')
+      //.populate('_productInfo')
+      .populate({
+        path: '_productInfo',
+        populate: {
+          path: '_ashiProductStatus',
+          model: 'ashiproductstatus'
+        }
+      })
       .populate('_ashimicrowebsiteInfo')
       .populate('_domainInfo')
       .populate('_sslInfo')

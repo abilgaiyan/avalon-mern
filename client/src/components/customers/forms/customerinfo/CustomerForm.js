@@ -141,6 +141,11 @@ class CustomerForm extends Component {
   }
 
   render() {
+    if (!this.props.customerForm) {
+      return (
+        <div>Loading...</div>
+      )
+    }
     return (
       <div>
         <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button>

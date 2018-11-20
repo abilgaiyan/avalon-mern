@@ -33,9 +33,6 @@ class ProductInfoForm extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-
-        // console.clear();
-        // console.log("Product Info form: ", nextProps.productinfoForm);
         if (nextProps.productinfoForm && !this.state.isInitializeState) {
             // console.clear();
             // console.log("Product Info form: ", nextProps.productinfoForm);

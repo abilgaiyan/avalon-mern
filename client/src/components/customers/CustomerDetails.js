@@ -49,7 +49,6 @@ class CustomerDetails extends Component {
     this.props.fetchcallloginfoList(customerId);
     this.props.fetchpreviouscalltypeDropdown();
     this.props.fetchcallloginfo(customerId);
-
   }
 
 
@@ -157,7 +156,7 @@ class CustomerDetails extends Component {
               func={this.renderSummry()}
               active="True"
               AccId="Summary"
-              paraent="accordion1"
+              parent="accordion1"
               custmClass="orange"
             />
             {/* Summry End Here */}
@@ -168,7 +167,7 @@ class CustomerDetails extends Component {
               func={this.renderCustomerInfo()}
               active="True"
               AccId="Customer_Info"
-              paraent="accordion1"
+              parent="accordion1"
               custmClass=""
             />
             {/* Customer Info End Here */}
@@ -179,7 +178,7 @@ class CustomerDetails extends Component {
               func={this.renderAvalonInfo()}
               active="True"
               AccId="Avalon_Info"
-              paraent="accordion1"
+              parent="accordion1"
               custmClass=""
             />
 
@@ -189,7 +188,7 @@ class CustomerDetails extends Component {
               func={this.renderBillingForm()}
               active="True"
               AccId="Billing_Form"
-              paraent="accordion1"
+              parent="accordion1"
               custmClass=""
             />
 
@@ -199,7 +198,7 @@ class CustomerDetails extends Component {
               func={this.renderAshiMicroWebsiteForm()}
               active="True"
               AccId="AshiMicroWebsiteForm"
-              paraent="accordion1"
+              parent="accordion1"
               custmClass=""
             />
 
@@ -209,7 +208,7 @@ class CustomerDetails extends Component {
               func={this.renderDomainInfoForm()}
               active="True"
               AccId="DomainInfoForm"
-              paraent="accordion1"
+              parent="accordion1"
               custmClass=""
             />
             {/* SSL Info Form */}
@@ -218,7 +217,7 @@ class CustomerDetails extends Component {
               func={this.renderSSLInfoForm()}
               active="True"
               AccId="SSLInfoForm"
-              paraent="accordion1"
+              parent="accordion1"
               custmClass=""
             />
 
@@ -228,7 +227,7 @@ class CustomerDetails extends Component {
               func={this.renderBusinessEmailInfoForm()}
               active="True"
               AccId="BusinessEmailInfoForm"
-              paraent="accordion1"
+              parent="accordion1"
               custmClass=""
             />
 
@@ -238,7 +237,7 @@ class CustomerDetails extends Component {
               func={this.renderEmailMarketingAccountInfoForm()}
               active="True"
               AccId="EmailMarketingAccountInfoForm"
-              paraent="accordion1"
+              parent="accordion1"
               custmClass=""
             />
 
@@ -248,7 +247,7 @@ class CustomerDetails extends Component {
               func={this.renderwebsiteinfoForm()}
               active="True"
               AccId="WebsiteInfoForm"
-              paraent="accordion1"
+              parent="accordion1"
               custmClass=""
             />
 
@@ -258,7 +257,7 @@ class CustomerDetails extends Component {
               func={this.renderproductinfoForm()}
               active="True"
               AccId="ProductInfoForm"
-              paraent="accordion1"
+              parent="accordion1"
               custmClass=""
             />
 
