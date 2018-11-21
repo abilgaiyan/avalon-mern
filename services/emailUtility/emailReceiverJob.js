@@ -12,49 +12,75 @@ db.once("open", function (callback) {
 
 //register Model
 require('../../models/CustomerEmail');
+require('../../models/CustomerInfo');
 const EmailUtility = mongoose.model("customeremails");
+const CustomerInfo = mongoose.model("customerinfo");
 
+
+// var imap = {
+//     user: "vishaltiwari@avalonsolution.com",
+//     password: "varsha0882@",
+//     host: "imap.gmail.com",
+//     port: 993, // imap port
+//     tls: true,// use secure connection
+//     tlsOptions: { rejectUnauthorized: false }
+// };
 
 var imap = {
-    user: "vishaltiwari@avalonsolution.com",
-    password: "varsha0882@",
-    host: "imap.gmail.com",
-    port: 993, // imap port
-    tls: true,// use secure connection
-    tlsOptions: { rejectUnauthorized: false }
+    user: keys.user,
+    password: keys.password,
+    host: keys.host,
+    port: keys.port,
+    tls: keys.tls,
+    tlsOptions: keys.tlsOptions
 };
 
 
-notifier(imap).on('mail', function (mail) {
-    console.log(mail);
+notifier(imap).on('mail', async function (mail) {
+    var websiteurl = mail.headers.subject.split('[');
+    var type = websiteurl[1].substring(0, websiteurl[1].indexOf(']'));
+    var websiteurlname = websiteurl[2].substring(0, websiteurl[2].indexOf(']'));
+    var customerid = '';
+    console.log("------------------------------>>>>>>>>>>>>>>>>>START<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-----------------------------------");
 
-    // console.log(mail.headers.subject);
-    // console.log(mail.headers.from);
-    // console.log(mail.headers.to);
-    // console.log(mail.text);
-    // console.log(mail.date);
 
-    //Get Data from mail
-    var EmailDataToDB = new EmailUtility({
-        subject: mail.headers.subject,
-        text: mail.text,
-        from: mail.headers.from,
-        to: mail.headers.to,
-        type: "N.A",
-        hasattachment: "N.A",
-        emaildate: mail.date,
-        synced: true,
-        status: "Active",
-        createDate: Date.now(),
-        updateDate: Date.now(),
-        customerid: ""
-    });
+    await db.collection("customerinfo").find({ websiteUrl: websiteurlname }).toArray(function (err, result) {
+        if (err) throw err;
+        //console.log(result);
+        if (result) {
+            customerid = result[0]._id;
+            //console.log(customerid);
+            //console.log(mail.html)
+            var EmailDataToDB = new EmailUtility({
+                subject: mail.headers.subject,
+                text: mail.text,
+                html: mail.html,
+                from: mail.headers.from,
+                to: mail.headers.to,
+                type: type,
+                hasattachment: "N.A",
+                emaildate: mail.date,
+                synced: true,
+                status: "Active",
+                createDate: Date.now(),
+                updateDate: Date.now(),
+                customerid: customerid
+            });
 
-    //Save Mail Data to Database
-    EmailDataToDB.save(function (error) {
-        console.log("Your Mail Data has been saved!");
-        if (error) {
-            console.error(error);
+            EmailDataToDB.save(function (error) {
+                console.log("Your Mail Data has been saved!");
+                if (error) {
+                    console.error(error);
+                }
+            });
+
+            // db.close();
         }
+
+
     });
+
+    console.log("------------------------------>>>>>>>>>>>>>>>>>END<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-----------------------------------");
+
+
 }).start();

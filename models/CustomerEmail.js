@@ -12,6 +12,7 @@ const customeremailSchema = new Schema({
     type: String,
     hasattachment: String,
     // _customer: { type: Schema.Types.ObjectId, ref: 'customer' },
+    html: String,
     displayorder: { type: Number, default: 0 },
     emaildate: Date,
     synced: String,
