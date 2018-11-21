@@ -11,13 +11,13 @@ const LeftSideBar = () => {
                 </div>
                 <div className="list-group" id="sidebar-nav-menu">
                     <Link to="#Summary" data-toggle="collapse" data-parent="#undefined" aria-expanded="true" className="list-group-item Summary" >Summary</Link>
-                    <Link data-toggle="collapse" data-parent="#undefined" to="#Customer_Info" aria-expanded="true" className="list-group-item Customer_Info">Customer Info</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#CustomerInfo" aria-expanded="true" className="list-group-item Customer_Info">Customer Info</Link>
                     <Link data-toggle="collapse" data-parent="#undefined" to="#TargetAreas" aria-expanded="true" className="list-group-item">Target Areas</Link>
                     <Link data-toggle="collapse" data-parent="#undefined" to="#SupportQuery" aria-expanded="true" className="list-group-item Call_Log">Query / Support Trend</Link>
                     <Link data-toggle="collapse" data-parent="#undefined" to="#callLog" aria-expanded="true" className="list-group-item Phone">Call Log</Link>
                     <Link data-toggle="collapse" data-parent="#undefined" to="#Emails" aria-expanded="true" className="list-group-item Emails">Email Log</Link>
-                    <Link data-toggle="collapse" data-parent="#undefined" to="#Avalon_Info" aria-expanded="true" className="list-group-item">Avalon Info</Link>
-                    <Link data-toggle="collapse" data-parent="#undefined" to="#Billing_Form" aria-expanded="true" className="list-group-item">Billing Info</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#AvalonInfo" aria-expanded="true" className="list-group-item">Avalon Info</Link>
+                    <Link data-toggle="collapse" data-parent="#undefined" to="#BillingForm" aria-expanded="true" className="list-group-item">Billing Info</Link>
                     <Link data-toggle="collapse" data-parent="#undefined" to="#WebsiteInfoForm" aria-expanded="true" className="list-group-item">Website Info</Link>
                     <Link data-toggle="collapse" data-parent="#undefined" to="#ProductInfoForm" aria-expanded="true" className="list-group-item">Product Info</Link>
                     <Link data-toggle="collapse" data-parent="#undefined" to="#AshiMicroWebsiteForm" aria-expanded="true" className="list-group-item">ASHI Micro-Website Info</Link>

@@ -135,7 +135,7 @@ class CallLogInfoForm extends Component {
                                                 <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }} disabled={pristine || submitting}>
                                                     <i className="fa fa-check-square" aria-hidden="true"></i>
                                                     Save</button>
-                                                <button type="button" id="AddCallInfoClose" class="btn btn-default" data-dismiss="modal" onClick={reset}>Cancel</button>
+                                                <button type="button" id="AddCallInfoClose" className="btn btn-default" data-dismiss="modal" onClick={reset}>Cancel</button>
 
                                             </div>
                                         </div>

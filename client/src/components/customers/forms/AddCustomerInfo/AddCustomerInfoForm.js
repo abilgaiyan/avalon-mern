@@ -169,13 +169,20 @@ class AddCustomerInfoForm extends Component {
 
 function validate(values) {
     const errors = {};
-    errors.email = validateEmails(values.email || "");
+    // errors.email = validateEmails(values.email || "");
 
-    _.each(formFields, ({ name, is }) => {
-        if (!values[name]) {
-            errors[name] = "You must provide a value";
-        }
-    });
+    // _.each(formFields, ({ name, is }) => {
+    //     if (!values[name]) {
+    //         errors[name] = "You must provide a value";
+    //     }
+    // });
+
+    if (!values.jewelsoftId) {
+        errors.jewelsoftId = "You must provide a value"
+    }
+    if (!values.Name) {
+        errors.Name = "You must provide a value"
+    }
 
     return errors;
 }
@@ -195,6 +202,6 @@ AddCustomerInfoForm = connect(
 )(withRouter(AddCustomerInfoForm));
 
 export default reduxForm({
-    //validate,
+    validate,
     form: "addcustomerinfoReduxForm"
 })(withRouter(AddCustomerInfoForm));

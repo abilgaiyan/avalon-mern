@@ -16,7 +16,7 @@ const inputField = props => {
                             type={type}
                         />
                     </label>
-                    <div className="red-text">{/* {touched && error} */}</div>
+                    <div className="red-text">{touched && error}</div>
                 </div>
             </div>
         );
@@ -31,7 +31,7 @@ const inputField = props => {
                         type={type}
                     />
                     <div className="red-text" >
-                        {/* {touched && error} */}
+                        {touched && error}
                     </div>
                 </div>
             </div>

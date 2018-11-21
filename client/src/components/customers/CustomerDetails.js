@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import AccordianPanel from "./AccordianPanel"
 import Email from "./Email";
-import PhoneCall from "./PhoneCall";
-import CustomerQuery from "./CustomerQuery";
+// import PhoneCall from "./PhoneCall";
+//import CustomerQuery from "./CustomerQuery";
 import CallLogList from "../customers/forms/CallLogInfo/CallLogList";
 import CustomerSummary from "../customers/forms/summary/CustomerSummary";
 import CustomerForm from "../customers/forms/customerinfo/CustomerForm";
@@ -70,7 +70,7 @@ class CustomerDetails extends Component {
   // }
 
   renderSummry() {
-    if (!this.props.customerForm) return;
+    if (!this.props.customerForm) return (<div>Loading...</div>);
     //return <CustomerSummary customerSummary={this.props.customerForm} />;
     return <CustomerSummary />;
   }
@@ -118,7 +118,7 @@ class CustomerDetails extends Component {
   }
 
   renderTargetAreas() {
-    if (!this.props.customerForm) return;
+    if (!this.props.customerForm) return (<div>Loading...</div>);
     return <TargetAreasForm targetAreasData={this.props.customerForm} />;
   }
 
@@ -126,9 +126,9 @@ class CustomerDetails extends Component {
     return <Email customerId={this.props.match.params.customerId} />;
   }
 
-  renderPhone() {
-    return <PhoneCall customerId={this.props.match.params.customerId} />;
-  }
+  // renderPhone() {
+  //   return <PhoneCall customerId={this.props.match.params.customerId} />;
+  // }
 
   renderSupportQuery() {
     return (
@@ -140,9 +140,9 @@ class CustomerDetails extends Component {
     return <CallLogList />;
   }
 
-  renderQuery() {
-    return <CustomerQuery customerId={this.props.match.params.customerId} />;
-  }
+  // renderQuery() {
+  //   return <CustomerQuery customerId={this.props.match.params.customerId} />;
+  // }
 
   render() {
     return (
@@ -154,7 +154,7 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="Summary"
               func={this.renderSummry()}
-              active="True"
+              active={true}
               AccId="Summary"
               parent="accordion1"
               custmClass="orange"
@@ -165,8 +165,8 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="Customer Info"
               func={this.renderCustomerInfo()}
-              active="True"
-              AccId="Customer_Info"
+              active={false}
+              AccId="CustomerInfo"
               parent="accordion1"
               custmClass=""
             />
@@ -176,8 +176,8 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="Avalon Info"
               func={this.renderAvalonInfo()}
-              active="True"
-              AccId="Avalon_Info"
+              active={false}
+              AccId="AvalonInfo"
               parent="accordion1"
               custmClass=""
             />
@@ -186,8 +186,8 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="Billing Form"
               func={this.renderBillingForm()}
-              active="True"
-              AccId="Billing_Form"
+              active={false}
+              AccId="BillingForm"
               parent="accordion1"
               custmClass=""
             />
@@ -196,7 +196,7 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="Ashi Micro Website Form"
               func={this.renderAshiMicroWebsiteForm()}
-              active="True"
+              active={false}
               AccId="AshiMicroWebsiteForm"
               parent="accordion1"
               custmClass=""
@@ -206,7 +206,7 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="Domain Info Form"
               func={this.renderDomainInfoForm()}
-              active="True"
+              active={false}
               AccId="DomainInfoForm"
               parent="accordion1"
               custmClass=""
@@ -215,7 +215,7 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="SSL Info Form"
               func={this.renderSSLInfoForm()}
-              active="True"
+              active={false}
               AccId="SSLInfoForm"
               parent="accordion1"
               custmClass=""
@@ -225,7 +225,7 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="Business Email Info Form"
               func={this.renderBusinessEmailInfoForm()}
-              active="True"
+              active={false}
               AccId="BusinessEmailInfoForm"
               parent="accordion1"
               custmClass=""
@@ -235,7 +235,7 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="Email Marketing Account Info Form"
               func={this.renderEmailMarketingAccountInfoForm()}
-              active="True"
+              active={false}
               AccId="EmailMarketingAccountInfoForm"
               parent="accordion1"
               custmClass=""
@@ -245,7 +245,7 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="Website Info Form"
               func={this.renderwebsiteinfoForm()}
-              active="True"
+              active={false}
               AccId="WebsiteInfoForm"
               parent="accordion1"
               custmClass=""
@@ -255,7 +255,7 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="Product Info Form"
               func={this.renderproductinfoForm()}
-              active="True"
+              active={false}
               AccId="ProductInfoForm"
               parent="accordion1"
               custmClass=""
@@ -275,9 +275,10 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="TargetAreas"
               func={this.renderTargetAreas()}
-              active="True"
+              active={false}
               AccId="TargetAreas"
               parent="accordion"
+              custmClass=""
             />
             {/* TargetAreas End Here */}
 
@@ -285,9 +286,10 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="Query / Support Trend"
               func={this.renderSupportQuery()}
-              active="True"
+              active={false}
               AccId="SupportQuery"
               parent="accordion"
+              custmClass=""
             />
             {/* SupportQuery End Here */}
 
@@ -295,9 +297,10 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="Call Log"
               func={this.renderCallLog()}
-              active="True"
+              active={false}
               AccId="callLog"
               parent="accordion"
+              custmClass=""
             />
             {/* Call Log End Here */}
 
@@ -305,7 +308,7 @@ class CustomerDetails extends Component {
             <AccordianPanel
               title="Emails"
               func={this.renderEmail()}
-              active="True"
+              active={false}
               AccId="Emails"
               parent="accordion"
               custmClass=""
@@ -313,25 +316,25 @@ class CustomerDetails extends Component {
             {/* Emails Info End Here */}
 
             {/* Phone Info Start Here */}
-            <AccordianPanel
+            {/* <AccordianPanel
               title="Phone"
               func={this.renderPhone()}
-              active="True"
+              active={true}
               AccId="Phone"
               parent="accordion"
               custmClass=""
-            />
+            /> */}
             {/* Phone Info End Here */}
 
             {/* Query Info Start Here */}
-            <AccordianPanel
+            {/* <AccordianPanel
               title="Query"
               func={this.renderQuery()}
-              active="False"
+              active={false}
               AccId="Query"
               parent="accordion"
               custmClass=""
-            />
+            /> */}
             {/* Query Info End Here */}
           </div>
 
