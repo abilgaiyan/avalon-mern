@@ -34,7 +34,6 @@ class Header extends Component {
   }
   render() {
     return (
-      <div className="content-heading clearfix ">
         <nav className="navbar navbar-default navbar-fixed-top ">
           <div className="container-fluid">
             <div className="navbar-header col-sm-4">
@@ -78,7 +77,6 @@ class Header extends Component {
             </div>
           </div>
         </nav>
-      </div>
     );
   }
 }

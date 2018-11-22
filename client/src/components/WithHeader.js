@@ -6,8 +6,6 @@ import LeftSideBar from "./LeftSideBar";
 import Dashboard from "./customers/Dashboard";
 import CustomerDetails from "./customers/CustomerDetails";
 
-
-
 class MainWraper extends Component {
   constructor(props) {
     super(props);
@@ -25,9 +23,15 @@ class MainWraper extends Component {
     return (
       <div id="wrapper" className={"dashboard_wraper container-fluid" + (this.state.Toggle ? " toggle_menu" : "")}>
         <div className="row">
-          {!this.props.leftChoice ? null : <LeftSideBar onPress={this.LeftsidebarToggle} />}
-          <div className={"main_containt col-sm-12" + (!this.props.leftChoice || this.state.Toggle ? " col-md-12 full" : " col-md-10")}>
-
+          {/* {!this.props.leftChoice ? null : <LeftSideBar onPress={this.LeftsidebarToggle} Open={this.state.Toggle}/>} */}
+          {!this.props.leftChoice ? null : <LeftSideBar />}
+          <div className={"main_containt col-sm-12 col-md-12" + (!this.props.leftChoice || this.state.Toggle ? " full" : "")}>
+          {!this.props.leftChoice ? 
+          null :
+          <a onClick={this.LeftsidebarToggle} className="toggle_arrow" title={this.state.Toggle ? "Open Sidebar" : "Close Sidebar"}><i className={"fa" + (this.state.Toggle ? ' fa-angle-double-right' : ' fa-angle-double-left')} aria-hidden="true"></i></a> 
+          
+           }
+          
             <Header />
             <Route exact={true} path={this.props.path} component={this.props.content} />
           </div>

@@ -4,7 +4,7 @@ const LeftSideBar = (props) => {
     return (
         <div className="sidebar col-sm-2" id="sidebar-nav">
             <nav>
-                <a onClick={props.onPress} className="toggle_arrow"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+                {/* <a onClick={props.onPress} className="toggle_arrow"><i className={"fa" + (props.Open ? ' fa-angle-double-left' : ' fa-angle-double-right')} aria-hidden="true"></i></a> */}
                 <div className="site_logo well">
                     <Link to="/customers">
                         <img src={require('../images/logo.png')} className="img-responsive" />
