@@ -57,8 +57,8 @@ class CustomerSummary extends Component {
 }
 
 function mapStateToProps(state) {
-  console.clear();
-  console.log("state :", state.customerForm);
+  // console.clear();
+  // console.log("state :", state.customerForm);
   return {
     customerSummary: state.customerForm,
     buyingGroup: state.buyingGroup

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import AccordianPanel from "./AccordianPanel"
-import Email from "./Email";
+//import Email from "./Email";
+import EmailLogList from "../customers/forms/emaillog/EmailLogList";
 // import PhoneCall from "./PhoneCall";
 //import CustomerQuery from "./CustomerQuery";
 import CallLogList from "../customers/forms/CallLogInfo/CallLogList";
@@ -49,6 +50,7 @@ class CustomerDetails extends Component {
     this.props.fetchcallloginfoList(customerId);
     this.props.fetchpreviouscalltypeDropdown();
     this.props.fetchcallloginfo(customerId);
+    this.props.fetchemaildata(customerId);
   }
 
 
@@ -123,7 +125,7 @@ class CustomerDetails extends Component {
   }
 
   renderEmail() {
-    return <Email customerId={this.props.match.params.customerId} />;
+    return <EmailLogList customerId={this.props.match.params.customerId} />;
   }
 
   // renderPhone() {
@@ -306,7 +308,7 @@ class CustomerDetails extends Component {
 
             {/* Emails Info Start Here */}
             <AccordianPanel
-              title="Emails"
+              title="Email Log"
               func={this.renderEmail()}
               active={false}
               AccId="Emails"

@@ -22,4 +22,4 @@ const customeremailSchema = new Schema({
     customerid: String
 });
 // create modal based on schema
-mongoose.model('customeremails', customeremailSchema);
+mongoose.model('customeremails', customeremailSchema, 'customeremails');

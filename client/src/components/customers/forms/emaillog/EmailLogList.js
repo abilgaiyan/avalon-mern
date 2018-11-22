@@ -1,66 +1,58 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../actions";
-// import EmailPopup from "./EmailPopup";
-import EmailForm from "./forms/emaillog/EmailForm";
+import EmailPopUp from "./emailPopUp";
+import * as actions from "../../../../actions";
+//import EmailForm from "./EmailForm";
 
-class Email extends Component {
+class EmailLogList extends Component {
 
-  createListItem() {
-    return this.props.email.map((list) => {
-      return (
-        <tr key={list._id}>
-          {/* <td>{list._previousCallType._previouscalltype === "Incoming" ? <i className="fa fa-sign-in" aria-hidden="true"></i> : <i className="fa fa-sign-out" aria-hidden="true"></i>}</td> */}
-          <td>{list.subject}</td>
-          <td>{list.text}</td>
-          {/* <td>{list.followupcallTime === undefined ? '' : moment(list.followupcallTime).format('hh:mm A')}</td> */}
-          <td><i className="fa fa-search"></i></td>
-        </tr>
-      )
-    })
-  }
-
-  render() {
-    if (!this.props.email) {
-      // console.clear();
-      // console.log(this.props.productPlanDropdown[0].planName);
-      return (<div>Loading...</div>)
-    }
-    else {
-      return (
-        <div >
-
-          <div className=" icon_well">
-            <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#callLogModalnew"><i className="fa fa-plus-square"></i>Addffg</button>
-            <div className="clearfix"></div>
-
-          </div>
-
-
-
-
-          <div className="clearfix"></div>
-          <table className="table table-bordered table_list">
-            <thead>
-              <tr className="active">
-                <th>Subject</th>
-                <th>Text</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.createListItem()}
-            </tbody>
-          </table>
-
-
-          {/* test disgn */}
-        </div>
-        //   </div>
-      );
+    createListItem() {
+        return this.props.email.map((list) => {
+            return (
+                <tr key={list._id}>
+                    {/* <td>{list._previousCallType._previouscalltype === "Incoming" ? <i className="fa fa-sign-in" aria-hidden="true"></i> : <i className="fa fa-sign-out" aria-hidden="true"></i>}</td> */}
+                    <td>{list.subject}</td>
+                    <td>{list.text}</td>
+                    {/* <td>{list.followupcallTime === undefined ? '' : moment(list.followupcallTime).format('hh:mm A')}</td> */}
+                    <td><a data-toggle="modal" data-target="#emailLogModal"><i className="fa fa-search"></i></a></td>
+                </tr>
+            )
+        })
     }
 
-  }
+    render() {
+        if (!this.props.email) {
+            // console.clear();
+            // console.log(this.props.productPlanDropdown[0].planName);
+            return (<div>Loading...</div>)
+        }
+        else {
+            return (
+                <div >
+                    <div className=" icon_well">
+                        {/* <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#emailLogModal"><i className="fa fa-plus-square"></i>Addffg</button> */}
+                        <div className="clearfix"></div>
+                        {/* <EmailForm /> */}
+                        <EmailPopUp />
+                    </div>
+                    <div className="clearfix"></div>
+                    <table className="table table-bordered table_list">
+                        <thead>
+                            <tr className="active">
+                                <th>Subject</th>
+                                <th>Text</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.createListItem()}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
+
+    }
 }
 
 // renderEmail() {
@@ -162,14 +154,14 @@ class Email extends Component {
 
 
 function mapStateToProps(state) {
-  console.clear();
-  console.log(state.customerEmail);
-  return {
-    email: state.customerEmail,
-  };
+    // console.clear();
+    // console.log(state.customerEmail);
+    return {
+        email: state.customerEmail,
+    };
 }
 
 export default connect(
-  mapStateToProps,
-  actions
-)(Email);
+    mapStateToProps,
+    actions
+)(EmailLogList);

@@ -35,6 +35,7 @@ import callloginfoListReducer from "./callloginfoListReducer";
 import previouscalltypeDropdownReducer from "./previouscalltypeDropdownReducer";
 import callloginfoFormReducer from "./callloginfoFormReducer";
 import buyingGroupReducer from "./buyingGroupReducer";
+import customerEmailReducer from "./customerEmailReducer"
 
 
 export default combineReducers({
@@ -75,5 +76,6 @@ export default combineReducers({
   callloginfoListReducer: callloginfoListReducer,
   previousCallTypeDropdown: previouscalltypeDropdownReducer,
   callloginfo: callloginfoFormReducer,
-  buyingGroup: buyingGroupReducer
+  buyingGroup: buyingGroupReducer,
+  customerEmail: customerEmailReducer
 });

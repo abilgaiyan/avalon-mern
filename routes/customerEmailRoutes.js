@@ -2,21 +2,34 @@ const _ = require("lodash");
 const Path = require("path-parser");
 const { URL } = require("url");
 const mongoose = require("mongoose");
-const CustomerEmail = mongoose.model("customeremail");
+const CustomerEmail = mongoose.model("customeremails");
 
 module.exports = app => {
-  //Get Customer Email Communication
-  app.get("/api/customeremail/:customerId", async (req, res) => {
-    const customerid = req.params.customerId;
+  //Get Customer specific Emails
+  app.get("/api/emaildata/:customerId", async (req, res) => {
+    const custid = req.params.customerId;
     // console.log(customerid);
 
     //const customeremail = await CustomerEmail.find({_customer: customerid});
     const customeremail = await CustomerEmail.find({
-      _customer: customerid
+      customerid: custid
     }).sort({ createDate: -1 });
     // console.log(customeremail);
     res.send(customeremail);
   });
+
+  // //Get Customer Email Communication
+  // app.get("/api/customeremail/:customerId", async (req, res) => {
+  //   const customerid = req.params.customerId;
+  //   // console.log(customerid);
+
+  //   //const customeremail = await CustomerEmail.find({_customer: customerid});
+  //   const customeremail = await CustomerEmail.find({
+  //     _customer: customerid
+  //   }).sort({ createDate: -1 });
+  //   // console.log(customeremail);
+  //   res.send(customeremail);
+  // });
 
   // subject: String,
   // message: String,

@@ -28,7 +28,8 @@ import {
   FETCH_PREVIOUSCALLTYPE,
   FETCH_CALLLOGINFO,
   FETCH_CALLLOGINFO_LIST,
-  FETCH_BUYINGGROUPSALLDATA
+  FETCH_BUYINGGROUPSALLDATA,
+  FETCH_EMAILALLDATA
 } from "./types";
 
 //Store Autocomplete_ID
@@ -399,4 +400,11 @@ export const submitCallLogInfoForm = (values, customerId, history) => async disp
   const res = await axios.post("/api/customercallloginfo/", values);
   // history.push("/customers/");
   dispatch({ type: FETCH_CALLLOGINFO, payload: values });
+};
+
+
+// Email Data
+export const fetchemaildata = customerId => async dispatch => {
+  const res = await axios.get("/api/emaildata/" + customerId);
+  dispatch({ type: FETCH_EMAILALLDATA, payload: res.data });
 };

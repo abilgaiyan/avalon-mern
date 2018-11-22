@@ -8,29 +8,7 @@ import moment from 'moment';
 import CallLogInfoForm from "./CallLogInfoForm";
 
 class CallLogList extends Component {
-  //   componentDidMount() {
-  //     this.props.fetchCallLog();
-  //     // console.log(this.props.fetchCustomers());
-  //   }
 
-  //   renderCallLog() {
-  // if (!this.props.customers) return;
-  //console.log(this.props.fetchCustomers())
-  // return this.props.customers.map(customer => {
-  //   return (
-  // <div key={customer._id} className="row list-group-item">
-  //     <div className="col-sm-12"> <div className="col-sm-8">
-  //         <p className="card-title">{customer.jewelsoftId}</p>
-  //         {customer.customerName}
-  //     </div>
-  //         <div className="col-sm-4 card-link">
-  //             <Link className="alink" to={'customers/' + customer._id}>Go To Details</Link>
-  //         </div>
-  //     </div>
-  //     {/* }} */}
-  // </div>
-  // });
-  // }
 
   createListItem() {
     return this.props.callloginfoList.map((list) => {
@@ -56,40 +34,15 @@ class CallLogList extends Component {
     else {
       return (
         <div >
-          {/* test disgn */}
-          {/* <a href="#" className="pull-right icon_well">
-            <button type="submit" className="btn btn-primary center-block">
-              <i className="fa fa-plus-square"></i>
-              <span>Add</span>
-            </button>
-          </a> */}
+
           <div className=" icon_well">
             <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#callLogModal"><i className="fa fa-plus-square"></i>Add</button>
             <div className="clearfix"></div>
-            {/* <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> */}
             <CallLogInfoForm />
           </div>
 
 
 
-          {/* <div className="modal fade" id="callLogModal" role="dialog">
-            <div className="modal-dialog">
-
-              <div className="modal-content">
-                <div className="modal-header">
-                  <button type="button" className="close" data-dismiss="modal">&times;</button>
-                  <h4 className="modal-title">Modal Header</h4>
-                </div>
-                <div className="modal-body">
-                  <p>Some text in the modal.</p>
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-
-            </div>
-          </div> */}
 
           <div className="clearfix"></div>
           <table className="table table-bordered table_list">

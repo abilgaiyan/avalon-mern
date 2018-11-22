@@ -30,7 +30,7 @@ class EmailForm extends Component {
     return (
       <div
         className="col-xs-12 col-sm-6 col-sm-offset-3 modal fade"
-        id="myModal"
+
         role="dialog"
       >
         <div className="modal-dialog">

@@ -11,7 +11,7 @@ require('./models/Contactus');
 require('./models/CustomerStory');
 require('./models/Customer');
 require('./models/CustomerAllData');
-//require('./models/CustomerEmail');
+require('./models/CustomerEmail');
 require('./models/CustomerPhones');
 require('./models/CustomerQueries');
 //New Models
@@ -68,7 +68,7 @@ require('./routes/customerRoutes')(app);
 require('./routes/customerAllDataRoutes')(app);
 require('./routes/customerPhonesRoutes')(app);
 require('./routes/customerQueriesRoutes')(app);
-//require('./routes/customerEmailRoutes')(app);
+require('./routes/customerEmailRoutes')(app);
 //New Routes
 require('./routes/customerInfoRoutes')(app);
 require('./routes/avalonInfoRoutes')(app);
