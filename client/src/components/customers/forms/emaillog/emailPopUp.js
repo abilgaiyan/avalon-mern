@@ -4,26 +4,26 @@ import { Link } from "react-router-dom";
 
 const EmailPopUp = (props) => {
 
-    function createListItem() {
-        return props.email.map((list) => {
-            return (
-                <tr key={list._id}>
-                    {/* <td>{list._previousCallType._previouscalltype === "Incoming" ? <i className="fa fa-sign-in" aria-hidden="true"></i> : <i className="fa fa-sign-out" aria-hidden="true"></i>}</td> */}
-                    <td>{list.subject}</td>
-                    <td>{list.text}</td>
-                    {/* <td>{list.followupcallTime === undefined ? '' : moment(list.followupcallTime).format('hh:mm A')}</td> */}
-                    <td><a data-toggle="modal" data-target="#emailLogModal"><i className="fa fa-search"></i></a></td>
-                </tr>
-            )
-        })
+    function SelectedEmailItem() {
+        return (
+            <div>
+                <label>Customer Id: </label> <span>{props.emailSelected.customerid}</span><br />
+                <label>From: </label> <span>{props.emailSelected.from}</span><br />
+                <label>To: </label> <span>{props.emailSelected.to}</span><br />
+                <label>Email Date: </label> <span>{props.emailSelected.emaildate}</span><br />
+                <label>Subject: </label> <span>{props.emailSelected.subject}</span><br />
+                {/* <label>Text: </label> <span>{props.emailSelected.text}</span><br /> */}
+                <label>Html: </label> <div className="well render_email_html" dangerouslySetInnerHTML={{ __html: props.emailSelected.html }}></div>
+            </div>
+        )
     }
 
     return (
         <div
-            className="col-xs-12 col-sm-6 col-sm-offset-3 modal fade"
+            className="modal fade"
             id="emailLogModal"
             role="dialog">
-            <div className="modal-dialog">
+            <div className="modal-dialog modal-lg">
 
                 <div className="modal-content">
                     <div className="modal-header">
@@ -33,8 +33,7 @@ const EmailPopUp = (props) => {
                         <h4 className="modal-title">Email Details</h4>
                     </div>
                     <div className="modal-body">
-                        <h1>HI  THIS IS MODAL</h1>
-                        <p>{createListItem()}</p>
+                        <div>{props.emailSelected !== null ? SelectedEmailItem() : ''}</div>
                     </div>
                 </div>
             </div>
@@ -44,9 +43,10 @@ const EmailPopUp = (props) => {
 
 function mapStateToProps(state) {
     // console.clear();
-    // console.log(state.customerEmail);
+    // console.log(state.emailSelected);
     return {
         email: state.customerEmail,
+        emailSelected: state.emailSelected
     };
 }
 

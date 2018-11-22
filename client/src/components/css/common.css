@@ -198,14 +198,18 @@ ul {
     background-color: #383838;
     position: fixed;
     left: 0;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     padding-left: 0px;
     padding-right: 0px;
 }
+#wrapper .sidebar nav{position: relative;}
 
 .sidebar {
     margin-top: 0px;
     z-index: 9;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
     .sidebar .site_logo.well {
@@ -457,6 +461,9 @@ ul {
         width: calc(100% - 240px);
         left: auto;
         right: 0px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
 
     /*Main COntent */
@@ -530,3 +537,41 @@ ul {
     margin-top: 5px;
     text-align: left;
 }
+
+.render_email_html{
+    max-height: 500px;
+overflow: hidden;
+    overflow-y: hidden;
+overflow-y: auto;
+}
+.render_email_html img{display: block;
+    max-width: 100%;
+    height: auto;}
+
+.main_containt{position: relative;}
+.toggle_arrow{
+    width: 35px;
+    height: 35px;
+    background: #383838;
+    position: absolute;
+    z-index: 9999;
+    text-align: center;
+    line-height: 33px;
+    top: 75px;
+    color: #fff;
+    font-size: 26px;
+    right: -35px;
+    border-radius: 0px 6px 6px 0px;
+}
+
+
+    #wrapper.toggle_menu .sidebar{
+        -o-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        -webkit-transition: all 0.3s ease-in-out;
+   -o-transition: all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
+    }
