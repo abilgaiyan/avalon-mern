@@ -36,12 +36,12 @@ class Header extends Component {
     return (
         <nav className="navbar navbar-default navbar-fixed-top ">
           <div className="container-fluid">
-            <div className="navbar-header col-sm-4">
+            <div className="navbar-header col-xs-6 col-sm-4">
               <a className="navbar-brand" href="#">
                 Welcome {this.props.auth && this.props.auth.name ? this.props.auth.name : ''}
               </a>
             </div>
-            <div className="col-sm-4 search_wraper">
+            <div className="col-xs-4 col-sm-4 search_wraper hidden-xs">
               <form className="navbar-form navbar-left">
                 <div className="input-group">
                   <Search />
@@ -54,8 +54,8 @@ class Header extends Component {
                 </div>
               </form>
             </div>
-            <div className="col-sm-4 text-right">
-              <button type="button" className="btn btn-success navbar-btn" data-toggle="modal" data-target="#addcustomerinfoModal">ADD NEW CUSTOMER</button>
+            <div className="col-xs-6 col-sm-4 text-right noppading">
+              <button type="button" className="btn btn-success navbar-btn hidden-xs" data-toggle="modal" data-target="#addcustomerinfoModal">ADD NEW CUSTOMER</button>
               <AddCustomerInfoForm />
               {/* <button className="btn btn-success navbar-btn">
                 ADD NEW CUSTOMER
