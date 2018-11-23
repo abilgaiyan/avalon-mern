@@ -6,17 +6,67 @@ const CallLogPopUp = (props) => {
 
     function SelectedCallLogItem() {
         return (
-            <div>
-                <label>Previous Call Date: </label> <span>{moment(props.activeCallLog.previousCallDate).format('DD MMM YYYY')}</span><br />
-                <label>Previous Call Type: </label> <span>{props.activeCallLog._previousCallType._previouscalltype}</span><br />
-                <label>Call Person: </label> <span>{props.activeCallLog.callPerson}</span><br />
-                <label>Avalon Executive: </label> <span>{props.activeCallLog.avalonExcutive}</span><br />
-                <label>Topic: </label> <span>{props.activeCallLog.topic}</span><br />
-                <label>Summary: </label> <span>{props.activeCallLog.summary}</span><br />
-                <label>Comments: </label> <span>{props.activeCallLog.comments}</span><br />
-                <label>Followup Call Date: </label> <span>{moment(props.activeCallLog.followupcalldate).format('DD MMM YYYY')}</span><br />
-                <label>Followup Call Time: </label> <span>{moment(props.activeCallLog.followupcallTime).format('hh:mm A')}</span><br />
-            </div>
+            <table className="table table-hover table_list pop_up_table">
+                <thead>
+                    {/* <tr className="active">
+                        <th>Prev. Call Date</th>
+                        <th>Prev. Call Type</th>
+                        <th>Call Person</th>
+                        <th>Avalon Exec.</th>
+                        <th>Followup Time</th>
+                        <th></th>
+                    </tr> */}
+                </thead>
+                <tbody className="text-left">
+                    <tr>
+                        <td><label>Previous Call Date: </label></td>
+                        <td><span>{moment(props.activeCallLog.previousCallDate).format('DD MMM YYYY')}</span></td>
+                    </tr>
+                    <tr>
+                        <td><label>Previous Call Type: </label></td>
+                        <td><span>{props.activeCallLog._previousCallType._previouscalltype}</span></td>
+                    </tr>
+                    <tr>
+                        <td><label>Call Person: </label></td>
+                        <td><span>{props.activeCallLog.callPerson}</span></td>
+                    </tr>
+                    <tr>
+                        <td><label>Avalon Executive: </label></td>
+                        <td><span>{props.activeCallLog.avalonExcutive}</span></td>
+                    </tr>
+                    <tr>
+                        <td><label>Topic: </label></td>
+                        <td><span>{props.activeCallLog.topic}</span></td>
+                    </tr>
+                    <tr>
+                        <td><label>Summary: </label></td>
+                        <td><span>{props.activeCallLog.summary}</span></td>
+                    </tr>
+                    <tr>
+                        <td><label>Comments: </label></td>
+                        <td><span>{props.activeCallLog.comments}</span></td>
+                    </tr>
+                    <tr>
+                        <td><label>Followup Call Date: </label></td>
+                        <td><span>{moment(props.activeCallLog.followupcalldate).format('DD MMM YYYY')}</span></td>
+                    </tr>
+                    <tr>
+                        <td><label>Followup Call Time: </label></td>
+                        <td><span>{moment(props.activeCallLog.followupcallTime).format('hh:mm A')}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            // <div>
+            //     <label>Previous Call Date: </label> <span>{moment(props.activeCallLog.previousCallDate).format('DD MMM YYYY')}</span><br />
+            //     <label>Previous Call Type: </label> <span>{props.activeCallLog._previousCallType._previouscalltype}</span><br />
+            //     <label>Call Person: </label> <span>{props.activeCallLog.callPerson}</span><br />
+            //     <label>Avalon Executive: </label> <span>{props.activeCallLog.avalonExcutive}</span><br />
+            //     <label>Topic: </label> <span>{props.activeCallLog.topic}</span><br />
+            //     <label>Summary: </label> <span>{props.activeCallLog.summary}</span><br />
+            //     <label>Comments: </label> <span>{props.activeCallLog.comments}</span><br />
+            //     <label>Followup Call Date: </label> <span>{moment(props.activeCallLog.followupcalldate).format('DD MMM YYYY')}</span><br />
+            //     <label>Followup Call Time: </label> <span>{moment(props.activeCallLog.followupcallTime).format('hh:mm A')}</span><br />
+            // </div>
         )
     }
 
