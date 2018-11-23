@@ -29,7 +29,9 @@ import {
   FETCH_CALLLOGINFO,
   FETCH_CALLLOGINFO_LIST,
   FETCH_BUYINGGROUPSALLDATA,
-  FETCH_EMAILALLDATA
+  FETCH_EMAILALLDATA,
+  EMAIL_SELECTED,
+  CALLLOG_SELECTED
 } from "./types";
 
 //Store Autocomplete_ID
@@ -407,4 +409,15 @@ export const submitCallLogInfoForm = (values, customerId, history) => async disp
 export const fetchemaildata = customerId => async dispatch => {
   const res = await axios.get("/api/emaildata/" + customerId);
   dispatch({ type: FETCH_EMAILALLDATA, payload: res.data });
+};
+
+//Select Emalil on click
+export const SelectEmail = email => async dispatch => {
+  // alert(email)
+  dispatch({ type: EMAIL_SELECTED, payload: email });
+};
+
+//Select Call Log on click
+export const SelectCallLog = callLog => async dispatch => {
+  dispatch({ type: CALLLOG_SELECTED, payload: callLog });
 };

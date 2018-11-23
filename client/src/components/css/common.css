@@ -145,7 +145,7 @@ ul {
 /* header search css */
     .search_wraper .input-group > div, .search_wraper .input-group  input{width: 100%;border-radius: 0px;}
     .search_wraper .input-group input{    opacity: 1;padding: 10px 10px;
-        height: 40px;
+        height: 36px;
         border-radius: 0px;
         border: 1px solid #ccc;
             border-top-color: rgb(204, 204, 204);
@@ -201,23 +201,33 @@ ul {
     overflow-y: auto;
     padding-left: 0px;
     padding-right: 0px;
-}
-
-.sidebar {
     margin-top: 0px;
     z-index: 9;
-}
-
-    .sidebar .site_logo.well {
-        background: transparent;
-        border: 0px;
-        border-bottom: 1px solid #ccc;
-        border-radius: 0px;
-    }
-
-#wrapper #sidebar-nav {
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     padding-bottom: 30px;
 }
+#wrapper .sidebar nav{position: relative;}
+
+/* .sidebar {
+    margin-top: 0px;
+    z-index: 9;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+} */
+
+.sidebar .site_logo.well {
+    background: transparent;
+    border: 0px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0px;
+}
+
+/* #wrapper #sidebar-nav {
+    padding-bottom: 30px;
+} */
 
 .sidebar .list-group-item {
     border-top-left-radius: 0px;
@@ -243,9 +253,6 @@ ul {
         background-color: #66bb6a;
         border: 1px solid #66bb6a;
     }
-
-
-
 
 
 /*Accordian css*/
@@ -345,8 +352,6 @@ ul {
     background-color: #fff;
     color: #5e6773;
 }
-
-
 
 /*information table*/
 .no-margin {
@@ -457,6 +462,10 @@ ul {
         width: calc(100% - 240px);
         left: auto;
         right: 0px;
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        height: 73px;
     }
 
     /*Main COntent */
@@ -466,10 +475,12 @@ ul {
         -ms-transition: all 0.3s ease-in-out;
         -o-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
-        width: -moz-calc(100% - 240px);
+        /* width: -moz-calc(100% - 240px);
         width: -webkit-calc(100% - 240px);
         width: -o-calc(100% - 240px);
-        width: calc(100% - 240px);
+        width: calc(100% - 240px); */
+        padding: 120px 30px 0px;
+        padding-left: 270px;
         position: relative;
         float: right;
         left: 0;
@@ -483,7 +494,7 @@ ul {
     .navbar-form .input-group .form-control{
         background: #fff;
     }
-    #wrapper .main_containt{padding: 120px 30px 0px;}
+    
     
 }
 @media(min-width:1200px) {
@@ -491,8 +502,16 @@ ul {
 }
 
 
-.full.main_containt .navbar-fixed-top{width: 100%;}
-#wrapper .main_containt.full{width: 100%}
+/* .full.main_containt .navbar-fixed-top{
+    width: 100%;    
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+} */
+#wrapper .main_containt.full{
+    width: 100%;   
+    padding-left: 30px; 
+}
 
 .react-date-picker.react-date-picker--closed.react-date-picker--enabled,
 .react-date-picker.react-date-picker--open.react-date-picker--enabled{width: 100%;}
@@ -515,18 +534,61 @@ ul {
     width: -o-calc(100% - 257px);
     width: calc(100% - 257px);
  }
- 
+
  .full.main_containt .navbar-fixed-top {
-    width: auto;
-    left: 0;
+    width: 100%;
+    /* left: 0; */
+
  }
  
  .modal-open .full.main_containt .navbar-fixed-top{
     width: auto;
+    left: 0;
  }
  .red-text {
     color: red;
     font-size: 14px;
     margin-top: 5px;
     text-align: left;
+}
+
+.render_email_html{
+    max-height: 500px;
+    overflow: hidden;
+    overflow-y: hidden;
+    overflow-y: auto;
+}
+.render_email_html img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.toggle_arrow{
+    width: 35px;
+    height: 35px;
+    background: #383838;
+    position: fixed;
+    z-index: 9999;
+    text-align: center;
+    line-height: 33px;
+    top: 73px;
+    font-size: 26px;
+    left: 0px;
+    border-radius: 0px 6px 6px 0px;
+    color: #fff !important;
+    cursor: pointer;
+    margin-left: 240px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.toggle_menu .toggle_arrow{margin-left: 0}
+
+#wrapper.toggle_menu .sidebar{
+    -o-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
 }

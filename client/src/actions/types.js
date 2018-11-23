@@ -59,3 +59,7 @@ export const FETCH_CALLLOGINFO_LIST = "fetch_callloginfo_list";
 export const FETCH_BUYINGGROUPSALLDATA = "fetch_buyinggroupsalldata";
 
 export const FETCH_EMAILALLDATA = "fetch_emailalldata";
+
+export const EMAIL_SELECTED = "email_selected";
+
+export const CALLLOG_SELECTED = "calllog_selected";
