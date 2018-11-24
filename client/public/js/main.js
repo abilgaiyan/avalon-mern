@@ -13,9 +13,9 @@ $(function () {
 
 
     /* ensure any open panels are closed before showing selected */
-    $('#accordion1').on('show.bs.collapse', function () {
-        $('#accordion .in').collapse('hide');
-    });
+    // $('#accordion1').on('show.bs.collapse', function () {
+    //     $('#accordion1 .panel-collapse.in').collapse('hide');
+    // });
 
 });
 

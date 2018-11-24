@@ -22,8 +22,8 @@ class Dashboard extends Component {
             return (
                 <div key={customer._id} className="row list-group-item">
                     <div className="col-sm-12"> <div className="col-sm-8">
-                        <p className="card-title">{customer.jewelsoftId}</p>
-                        {customer.customerName}
+                        {/* <p className="card-title">{customer.jewelsoftId}</p> */}
+                        <p className="card-title">{customer.Name}</p>
                     </div>
                         <div className="col-sm-4 card-link">
                             <Link className="alink" to={'/customers/' + customer._id}>Go To Details</Link>
@@ -36,7 +36,7 @@ class Dashboard extends Component {
     }
     render() {
         return (
-            <div class="row">
+            <div className="row">
                 <div className="container marginTop30 list-group">
                     <h3 className="text-center">Avalon Customer's</h3>
                     {this.renderDashboard()}

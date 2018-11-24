@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <div className="container-fluid">
           <Route exact={true} path="/" component={Welcome} />
           <Route exact={true} path="/customers" component={CustomerList} />
           <Route exact={true} path="/customers/:customerId" component={CustomerDetailsWraper} />

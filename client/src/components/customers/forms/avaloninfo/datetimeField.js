@@ -13,7 +13,7 @@ const datetimeField = ({ input: { onChange, value }, label, type, disabled, meta
           className="form-control"
           type={type}
           disabled={disabled ? "disabled" : ""}
-          value={moment(value).format('DD MMM YYYY') === "Invalid date" ? null : moment(value).format('DD MMM YYYY')}
+          value={moment(value).format('DD MMM YYYY') === "Invalid date" ? "" : moment(value).format('DD MMM YYYY')}
         /> :
           <DateTimePicker
             //{...input}
@@ -21,7 +21,7 @@ const datetimeField = ({ input: { onChange, value }, label, type, disabled, meta
             onChange={onChange}
             format="DD MMM YYYY"
             time={showTime}
-            value={!value ? null : new Date(value)}
+            value={!value ? "" : new Date(value)}
           />}
         <div className="red-text" >
           {/* {touched && error} */}
