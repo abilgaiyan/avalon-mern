@@ -52,7 +52,7 @@ class Search extends Component {
 
 function mapStateToProps(state) {
     // console.clear();
-    // console.log(state);
+    // console.log(state.customers);
     return {
         allCustomers: state.customers,
         customerForm: state.customerForm,

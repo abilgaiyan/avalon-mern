@@ -34,7 +34,8 @@ class Header extends Component {
   }
   render() {
     return (
-        <nav className="navbar navbar-default navbar-fixed-top ">
+      <header className="navbar-fixed-top">
+        <nav className="navbar navbar-default ">
           <div className="container-fluid">
             <div className="navbar-header col-xs-6 col-sm-4">
               <a className="navbar-brand" href="#">
@@ -45,21 +46,12 @@ class Header extends Component {
               <form className="navbar-form navbar-left">
                 <div className="input-group">
                   <Search />
-                  {/* <input type="text" className="form-control" placeholder="Search" name="search" /> */}
-                  {/* <div className="input-group-btn">
-                                        <button className="btn btn-default" type="submit">
-                                            <i className="glyphicon glyphicon-search"></i>
-                                        </button>
-                                    </div> */}
                 </div>
               </form>
             </div>
             <div className="col-xs-6 col-sm-4 text-right noppading">
               <button type="button" className="btn btn-success navbar-btn hidden-xs" data-toggle="modal" data-target="#addcustomerinfoModal">ADD NEW CUSTOMER</button>
               <AddCustomerInfoForm />
-              {/* <button className="btn btn-success navbar-btn">
-                ADD NEW CUSTOMER
-              </button> */}
               <ul className="nav navbar-nav navbar-right user_wraper">
                 <li className="dropdown">
                   <a
@@ -72,11 +64,11 @@ class Header extends Component {
                     {this.renderHeader()}
                   </ul>
                 </li>
-                {/* <li>{this.renderHeader()}</li> */}
               </ul>
             </div>
           </div>
         </nav>
+        </header>
     );
   }
 }

@@ -94,8 +94,8 @@ const CallLogPopUp = (props) => {
 }
 
 function mapStateToProps(state) {
-    console.clear();
-    console.log(state.callloginfoListReducer);
+    // console.clear();
+    // console.log(state.callloginfoListReducer);
     return {
         activeCallLog: state.callLogSelected
     };

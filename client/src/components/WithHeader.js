@@ -21,42 +21,18 @@ class MainWraper extends Component {
 
   render() {
     return (
-      <div id="wrapper" className={"dashboard_wraper container-fluid" + (this.state.Toggle ? " toggle_menu" : "")}>
-        <div className="row">
-          {/* {!this.props.leftChoice ? null : <LeftSideBar onPress={this.LeftsidebarToggle} Open={this.state.Toggle}/>} */}
+        <div className={"row crm_wrapper" + (this.state.Toggle ? " toggle_menu" : "")}>
           {!this.props.leftChoice ? null : <LeftSideBar />}
-          <div className={"main_containt col-sm-12 col-md-12" + (!this.props.leftChoice || this.state.Toggle ? " full" : "")}>
-          {!this.props.leftChoice ? 
-          null :
-          <a onClick={this.LeftsidebarToggle} className="toggle_arrow" title={this.state.Toggle ? "Open Sidebar" : "Close Sidebar"}><i className={"fa" + (this.state.Toggle ? ' fa-angle-double-right' : ' fa-angle-double-left')} aria-hidden="true"></i></a> 
-          
-           }
-          
+          <div className={"col-sm-12 page_container" + (!this.props.leftChoice || this.state.Toggle ? " full" : "")}>
+            {!this.props.leftChoice ? null :<a onClick={this.LeftsidebarToggle} className="toggle_arrow" title={this.state.Toggle ? "Open Sidebar" : "Close Sidebar"}><i className={"fa" + (this.state.Toggle ? ' fa-angle-double-right' : ' fa-angle-double-left')} aria-hidden="true"></i></a> }
             <Header />
             <Route exact={true} path={this.props.path} component={this.props.content} />
+            <Footer />
           </div>
-          <Footer />
         </div>
-      </div>
     )
   }
 }
-
-// function MainWraper(props) {
-//   return (
-//     <div id="wrapper" className="dashboard_wraper container-fluid">
-//       <div className="row">
-//         {!props.leftChoice ? null : <LeftSideBar />}
-//         <button type="button" onClick={LeftsidebarToggle}>Toggle Sidebar</button>
-//         <div className={"main_containt col-sm-12" + (!props.leftChoice ? " col-md-12 full" : " col-md-10")}>
-//           <Header />
-//           <Route exact={true} path={props.path} component={props.content} />
-//         </div>
-//         <Footer />
-//       </div>
-//     </div>
-//   )
-// }
 
 export function CustomerList() {
   return (
