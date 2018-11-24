@@ -120,6 +120,4 @@ app.listen(PORT, () => {
     console.log('listening on port', PORT);
 })
 
-// https://protected-meadow-73392.herokuapp.com
-
-// https://git.heroku.com/protected-meadow-73392.git
+//https://avalon-mkt.herokuapp.com/ | https://git.heroku.com/avalon-mkt.git
