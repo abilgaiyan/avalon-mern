@@ -127,7 +127,7 @@ class AddCustomerInfoForm extends Component {
         // console.log(this.props.previousCallTypeDropdown);
         return (
             <div className="modal fade" id="addcustomerinfoModal" role="dialog" tabIndex="1" data-backdrop="false" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
-                <div className="modal-dialog">
+                <div className="modal-dialog modal-lg">
 
 
                     <div className="modal-content">
@@ -137,22 +137,24 @@ class AddCustomerInfoForm extends Component {
                         </div>
                         <div className="modal-body">
                             <div className="clearfix"></div>
-                            <form className="form-horizontal label-left"
-                                onSubmit={this.props.handleSubmit((history) => { this.props.submitAddCustomerInfoForm(this.props.formValues.values, history).then(this._closeModal).then(this._submitAndRedirect) })}>
-                                {this.renderFields()}
-                                {
+                            <div className="row">
+                                <form className="form-horizontal label-left"
+                                    onSubmit={this.props.handleSubmit((history) => { this.props.submitAddCustomerInfoForm(this.props.formValues.values, history).then(this._closeModal).then(this._submitAndRedirect) })}>
+                                    {this.renderFields()}
+                                    {
 
-                                    <div className="form-group">
-                                        <div className="col-xs-9 col-xs-offset-3 text-left">
-                                            <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
-                                                <i className="fa fa-check-square" aria-hidden="true"></i>
-                                                Save</button>
-                                            <button type="button" id="AddCustInfoClose" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <div className="form-group col-sm-12">
+                                            <div className="col-sm-12 text-right">
+                                                <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
+                                                    <i className="fa fa-check-square" aria-hidden="true"></i>
+                                                    Save</button>
+                                                <button type="button" id="AddCustInfoClose" className="btn btn-default" data-dismiss="modal">Cancel</button>
 
+                                            </div>
                                         </div>
-                                    </div>
-                                }
-                            </form>
+                                    }
+                                </form>
+                            </div>
 
 
                         </div>

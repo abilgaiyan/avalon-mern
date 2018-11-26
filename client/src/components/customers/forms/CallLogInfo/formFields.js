@@ -1,6 +1,6 @@
 export default [
     {
-        label: "Previous Call Date :",
+        label: "Previous Call Date ",
         name: "previousCallDate",
         type: "datetime",
         isvalidationApplied: true,
@@ -9,7 +9,7 @@ export default [
     },
 
     {
-        label: "Previous Call Type :",
+        label: "Previous Call Type ",
         name: "_previousCallType",
         type: "dropdown",
         isvalidationApplied: true,
@@ -18,7 +18,7 @@ export default [
     },
 
     {
-        label: "Call Person :",
+        label: "Call Person ",
         name: "callPerson",
         type: "text",
         isvalidationApplied: true,
@@ -27,7 +27,7 @@ export default [
     },
 
     {
-        label: "Avalon Excutive :",
+        label: "Avalon Excutive ",
         name: "avalonExcutive",
         type: "text",
         isvalidationApplied: true,
@@ -36,7 +36,7 @@ export default [
     },
 
     {
-        label: "Topic :",
+        label: "Topic ",
         name: "topic",
         type: "text",
         isvalidationApplied: true,
@@ -45,7 +45,7 @@ export default [
     },
 
     {
-        label: "Summary :",
+        label: "Summary ",
         name: "summary",
         type: "text",
         isvalidationApplied: true,
@@ -54,7 +54,7 @@ export default [
     },
 
     {
-        label: "Comments :",
+        label: "Comments ",
         name: "comments",
         type: "text",
         isvalidationApplied: true,
@@ -62,7 +62,7 @@ export default [
         value: ""
     },
     {
-        label: "Follow Up Call Date :",
+        label: "Follow Up Call Date ",
         name: "followupcalldate",
         type: "datetime",
         isvalidationApplied: true,
@@ -70,7 +70,7 @@ export default [
         value: ""
     },
     {
-        label: "Follow Up Call Time :",
+        label: "Follow Up Call Time ",
         name: "followupcallTime",
         type: "time",
         isvalidationApplied: true,

@@ -32,7 +32,8 @@ import {
   FETCH_EMAILALLDATA,
   EMAIL_SELECTED,
   CALLLOG_SELECTED,
-  FETCH_SUPPORTQUERY
+  FETCH_SUPPORTQUERY,
+  FETCH_COMMUNICATIONLOG
 } from "./types";
 
 //Store Autocomplete_ID
@@ -432,4 +433,11 @@ export const submitSupportQueryForm = (values, customerId, history) => async dis
   const res = await axios.post("/api/customerqueries/", values);
   // history.push("/customers/");
   dispatch({ type: FETCH_SUPPORTQUERY, payload: values });
+};
+
+
+// Communication Data
+export const fetchcommunicationlog = customerId => async dispatch => {
+  const res = await axios.get("/api/comunnicationLog/" + customerId);
+  dispatch({ type: FETCH_COMMUNICATIONLOG, payload: res.data });
 };

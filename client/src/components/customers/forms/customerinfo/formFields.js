@@ -1,6 +1,6 @@
 export default [
   {
-    label: "Jewelsoft Id :",
+    label: "Jewelsoft Id",
     name: "jewelsoftId",
     type: "text",
     isvalidationApplied: true,
@@ -9,7 +9,7 @@ export default [
   },
 
   {
-    label: "Avalon Id :",
+    label: "Avalon Id",
     name: "avalonId",
     type: "text",
     isvalidationApplied: true,
@@ -18,7 +18,7 @@ export default [
   },
 
   {
-    label: "Customer Name :",
+    label: "Customer Name",
     name: "Name",
     type: "text",
     isvalidationApplied: true,
@@ -27,7 +27,7 @@ export default [
   },
 
   {
-    label: "DBA :",
+    label: "DBA",
     name: "customerDBA",
     type: "text",
     isvalidationApplied: true,
@@ -36,7 +36,7 @@ export default [
   },
 
   {
-    label: "Company Logo :",
+    label: "Company Logo",
     name: "companyLogoUrl",
     type: "text",
     isvalidationApplied: true,
@@ -45,7 +45,7 @@ export default [
   },
 
   {
-    label: "Main Contact :",
+    label: "Main Contact",
     name: "mainContact",
     type: "text",
     isvalidationApplied: true,
@@ -54,7 +54,7 @@ export default [
   },
 
   {
-    label: "Contact Person :",
+    label: "Contact Person",
     name: "contactPersonName",
     type: "text",
     isvalidationApplied: true,
@@ -63,7 +63,7 @@ export default [
   },
 
   {
-    label: "Contact Person Position :",
+    label: "Contact Person Position",
     name: "position",
     type: "text",
     isvalidationApplied: true,
@@ -72,7 +72,7 @@ export default [
   },
 
   {
-    label: "Address 1 :",
+    label: "Address 1",
     name: "address1",
     type: "text",
     isvalidationApplied: true,
@@ -80,7 +80,7 @@ export default [
     value: ""
   },
   {
-    label: "Address 2 :",
+    label: "Address 2",
     name: "address2",
     type: "text",
     isvalidationApplied: true,
@@ -88,7 +88,7 @@ export default [
     value: ""
   },
   {
-    label: "City :",
+    label: "City",
     name: "city",
     type: "dropdown",
     isvalidationApplied: true,
@@ -96,7 +96,7 @@ export default [
     value: ""
   },
   {
-    label: "State :",
+    label: "State",
     name: "state",
     type: "text",
     isvalidationApplied: true,
@@ -104,7 +104,7 @@ export default [
     value: ""
   },
   {
-    label: "Zip :",
+    label: "Zip",
     name: "postalCode",
     type: "text",
     isvalidationApplied: true,
@@ -112,7 +112,7 @@ export default [
     value: ""
   },
   {
-    label: "Email Id :",
+    label: "Email Id",
     name: "contactpersonEmail",
     type: "text",
     isvalidationApplied: true,
@@ -120,7 +120,7 @@ export default [
     value: ""
   },
   {
-    label: "Mobile :",
+    label: "Mobile",
     name: "mobileNumber",
     type: "text",
     isvalidationApplied: true,
@@ -128,7 +128,7 @@ export default [
     value: ""
   },
   {
-    label: "Telephone 1 :",
+    label: "Telephone 1",
     name: "telephone1",
     type: "text",
     isvalidationApplied: true,
@@ -136,7 +136,7 @@ export default [
     value: ""
   },
   {
-    label: "Telephone 2 :",
+    label: "Telephone 2",
     name: "telephone2",
     type: "text",
     isvalidationApplied: true,
@@ -144,7 +144,7 @@ export default [
     value: ""
   },
   {
-    label: "Sales Person :",
+    label: "Sales Person",
     name: "salesPerson",
     type: "text",
     isvalidationApplied: true,
@@ -152,7 +152,7 @@ export default [
     value: ""
   },
   {
-    label: "Website :",
+    label: "Website",
     name: "websiteUrl",
     type: "text",
     isvalidationApplied: true,
@@ -160,7 +160,7 @@ export default [
     value: ""
   },
   {
-    label: "Website Provider :",
+    label: "Website Provider",
     name: "websiteProvider",
     type: "text",
     isvalidationApplied: true,
@@ -168,7 +168,7 @@ export default [
     value: ""
   },
   {
-    label: "Customer Type :",
+    label: "Customer Type",
     name: "customerType",
     type: "dropdown",
     isvalidationApplied: true,
@@ -176,7 +176,7 @@ export default [
     value: ""
   },
   {
-    label: "Buying Group :",
+    label: "Buying Group",
     name: "_buyinggroups",
     type: "checkbox",
     isvalidationApplied: "false",
@@ -184,7 +184,7 @@ export default [
     value: ""
   },
   {
-    label: "Comments :",
+    label: "Comments",
     name: "comment",
     type: "text",
     isvalidationApplied: "false",

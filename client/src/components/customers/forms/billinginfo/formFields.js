@@ -1,6 +1,6 @@
 export default [
     {
-        label: "Product Plan :",
+        label: "Product Plan ",
         name: "_productPlan",
         type: "dropdown",
         isvalidationApplied: true,
@@ -9,7 +9,7 @@ export default [
     },
 
     {
-        label: "Website Setup Price Amount :",
+        label: "Website Setup Price",
         name: "websiteSetupAmount",
         type: "text",
         isvalidationApplied: true,
@@ -18,7 +18,7 @@ export default [
     },
 
     {
-        label: "Buying Group Discount :",
+        label: "Buying Group Discount ",
         name: "buyingGroupDiscount",
         type: "text",
         isvalidationApplied: true,
@@ -27,7 +27,7 @@ export default [
     },
 
     {
-        label: "Setup Amount Received :",
+        label: "Setup Amount Received ",
         name: "setupAmountReceived",
         type: "text",
         isvalidationApplied: true,
@@ -36,7 +36,7 @@ export default [
     },
 
     {
-        label: "Setup Amount Pending :",
+        label: "Setup Amount Pending ",
         name: "setupAmountPending",
         type: "text",
         isvalidationApplied: true,
@@ -45,7 +45,7 @@ export default [
     },
 
     {
-        label: "Hosting Amount :",
+        label: "Hosting Amount ",
         name: "hostingAmount",
         type: "dropdown",
         isvalidationApplied: true,
@@ -54,7 +54,7 @@ export default [
     },
 
     {
-        label: "Comments :",
+        label: "Comments ",
         name: "comments",
         type: "text",
         isvalidationApplied: true,

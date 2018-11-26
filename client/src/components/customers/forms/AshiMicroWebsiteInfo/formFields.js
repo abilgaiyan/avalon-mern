@@ -1,6 +1,6 @@
 export default [
     {
-        label: "Ido Website Url:",
+        label: "Ido",
         name: "idoWebsiteUrl",
         type: "text",
         isvalidationApplied: true,
@@ -9,7 +9,7 @@ export default [
     },
 
     {
-        label: "Lovebright Website Url:",
+        label: "Lovebright",
         name: "lovebrightWebsiteUrl",
         type: "text",
         isvalidationApplied: true,
@@ -18,7 +18,7 @@ export default [
     },
 
     {
-        label: "Silverstones Website Url:",
+        label: "Silverstones",
         name: "silverstonesWebsiteUrl",
         type: "text",
         isvalidationApplied: true,
@@ -27,7 +27,7 @@ export default [
     },
 
     {
-        label: "Shop Holiday Website Url:",
+        label: "Shop Holiday",
         name: "shopholidayWebsiteUrl",
         type: "text",
         isvalidationApplied: true,

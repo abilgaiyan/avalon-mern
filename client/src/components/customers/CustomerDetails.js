@@ -23,6 +23,7 @@ import ProductInfoForm from "../customers/forms/productinfo/ProductInfoForm";
 import TargetAreasForm from "../customers/forms/targetareas/TargetAreasForm";
 import SupportQueryForm from "../customers/forms/supportquery/SupportQuery";
 //import AddCustomerInfoForm from "../customers/forms/AddCustomerInfo/AddCustomerInfoForm"
+import CommunicationLog from "../customers/forms/communicationLog/CommunicationLog";
 
 import "../css/common.css";
 
@@ -51,6 +52,7 @@ class CustomerDetails extends Component {
     this.props.fetchpreviouscalltypeDropdown();
     this.props.fetchcallloginfo(customerId);
     this.props.fetchemaildata(customerId);
+    this.props.fetchcommunicationlog(customerId);
   }
 
 
@@ -142,6 +144,10 @@ class CustomerDetails extends Component {
     return <CallLogList />;
   }
 
+  renderCommunicationlog() {
+    return <CommunicationLog />
+  }
+
   // renderQuery() {
   //   return <CustomerQuery customerId={this.props.match.params.customerId} />;
   // }
@@ -149,177 +155,188 @@ class CustomerDetails extends Component {
   render() {
     return (
       <section>
-      <div className="row">
-        <div className="col-sm-12 col-md-6">
-          {/* accordian */}
-          <div className="panel-group" id="accordion1">
-            {/* Summry Start Here */}
-            <AccordianPanel
-              title="Summary"
-              func={this.renderSummry()}
-              active={true}
-              AccId="Summary"
-              parent="accordion1"
-              custmClass="orange"
-            />
-            {/* Summry End Here */}
+        <div className="row">
+          <div className="col-sm-12 col-md-6">
+            {/* accordian */}
+            <div className="panel-group" id="accordion1">
+              {/* Summry Start Here */}
+              <AccordianPanel
+                title="Summary"
+                func={this.renderSummry()}
+                active={true}
+                AccId="Summary"
+                parent="accordion1"
+                custmClass="orange"
+              />
+              {/* Summry End Here */}
 
-            {/* Customer Info Start Here */}
-            <AccordianPanel
-              title="Customer Info"
-              func={this.renderCustomerInfo()}
-              active={false}
-              AccId="CustomerInfo"
-              parent="accordion1"
-              custmClass=""
-            />
-            {/* Customer Info End Here */}
+              {/* Customer Info Start Here */}
+              <AccordianPanel
+                title="Customer Info"
+                func={this.renderCustomerInfo()}
+                active={false}
+                AccId="CustomerInfo"
+                parent="accordion1"
+                custmClass=""
+              />
+              {/* Customer Info End Here */}
 
-            {/* Avalon info form */}
-            <AccordianPanel
-              title="Avalon Info"
-              func={this.renderAvalonInfo()}
-              active={false}
-              AccId="AvalonInfo"
-              parent="accordion1"
-              custmClass=""
-            />
+              {/* Avalon info form */}
+              <AccordianPanel
+                title="Avalon Info"
+                func={this.renderAvalonInfo()}
+                active={false}
+                AccId="AvalonInfo"
+                parent="accordion1"
+                custmClass=""
+              />
 
-            {/* Billing form */}
-            <AccordianPanel
-              title="Billing Form"
-              func={this.renderBillingForm()}
-              active={false}
-              AccId="BillingForm"
-              parent="accordion1"
-              custmClass=""
-            />
+              {/* Billing form */}
+              <AccordianPanel
+                title="Billing Form"
+                func={this.renderBillingForm()}
+                active={false}
+                AccId="BillingForm"
+                parent="accordion1"
+                custmClass=""
+              />
 
-            {/* AshiMicroWebsite Form */}
-            <AccordianPanel
-              title="Ashi Micro Website Form"
-              func={this.renderAshiMicroWebsiteForm()}
-              active={false}
-              AccId="AshiMicroWebsiteForm"
-              parent="accordion1"
-              custmClass=""
-            />
+              {/* AshiMicroWebsite Form */}
+              <AccordianPanel
+                title="Ashi Micro Website Form"
+                func={this.renderAshiMicroWebsiteForm()}
+                active={false}
+                AccId="AshiMicroWebsiteForm"
+                parent="accordion1"
+                custmClass=""
+              />
 
-            {/* Domain Info Form */}
-            <AccordianPanel
-              title="Domain Info Form"
-              func={this.renderDomainInfoForm()}
-              active={false}
-              AccId="DomainInfoForm"
-              parent="accordion1"
-              custmClass=""
-            />
-            {/* SSL Info Form */}
-            <AccordianPanel
-              title="SSL Info Form"
-              func={this.renderSSLInfoForm()}
-              active={false}
-              AccId="SSLInfoForm"
-              parent="accordion1"
-              custmClass=""
-            />
+              {/* Domain Info Form */}
+              <AccordianPanel
+                title="Domain Info Form"
+                func={this.renderDomainInfoForm()}
+                active={false}
+                AccId="DomainInfoForm"
+                parent="accordion1"
+                custmClass=""
+              />
+              {/* SSL Info Form */}
+              <AccordianPanel
+                title="SSL Info Form"
+                func={this.renderSSLInfoForm()}
+                active={false}
+                AccId="SSLInfoForm"
+                parent="accordion1"
+                custmClass=""
+              />
 
-            {/* Business Email Info Form */}
-            <AccordianPanel
-              title="Business Email Info Form"
-              func={this.renderBusinessEmailInfoForm()}
-              active={false}
-              AccId="BusinessEmailInfoForm"
-              parent="accordion1"
-              custmClass=""
-            />
+              {/* Business Email Info Form */}
+              <AccordianPanel
+                title="Business Email Info Form"
+                func={this.renderBusinessEmailInfoForm()}
+                active={false}
+                AccId="BusinessEmailInfoForm"
+                parent="accordion1"
+                custmClass=""
+              />
 
-            {/* Email Marketing Account Info Form */}
-            <AccordianPanel
-              title="Email Marketing Account Info Form"
-              func={this.renderEmailMarketingAccountInfoForm()}
-              active={false}
-              AccId="EmailMarketingAccountInfoForm"
-              parent="accordion1"
-              custmClass=""
-            />
+              {/* Email Marketing Account Info Form */}
+              <AccordianPanel
+                title="Email Marketing Account Info Form"
+                func={this.renderEmailMarketingAccountInfoForm()}
+                active={false}
+                AccId="EmailMarketingAccountInfoForm"
+                parent="accordion1"
+                custmClass=""
+              />
 
-            {/* Website Info Form */}
-            <AccordianPanel
-              title="Website Info Form"
-              func={this.renderwebsiteinfoForm()}
-              active={false}
-              AccId="WebsiteInfoForm"
-              parent="accordion1"
-              custmClass=""
-            />
+              {/* Website Info Form */}
+              <AccordianPanel
+                title="Website Info Form"
+                func={this.renderwebsiteinfoForm()}
+                active={false}
+                AccId="WebsiteInfoForm"
+                parent="accordion1"
+                custmClass=""
+              />
 
-            {/* Product Info Form */}
-            <AccordianPanel
-              title="Product Info Form"
-              func={this.renderproductinfoForm()}
-              active={false}
-              AccId="ProductInfoForm"
-              parent="accordion1"
-              custmClass=""
-            />
+              {/* Product Info Form */}
+              <AccordianPanel
+                title="Product Info Form"
+                func={this.renderproductinfoForm()}
+                active={false}
+                AccId="ProductInfoForm"
+                parent="accordion1"
+                custmClass=""
+              />
 
 
+            </div>
+            {/* end Accordian */}
           </div>
-          {/* end Accordian */}
-        </div>
 
-        {/* divided block */}
+          {/* divided block */}
 
-        <div className="col-sm-12 col-md-6">
-          {/* Start Accordian */}
-          <div className="panel-group" id="accordion">
-            {/* TargetAreas Start Here */}
-            <AccordianPanel
-              title="TargetAreas"
-              func={this.renderTargetAreas()}
-              active={false}
-              AccId="TargetAreas"
-              parent="accordion"
-              custmClass=""
-            />
-            {/* TargetAreas End Here */}
+          <div className="col-sm-12 col-md-6">
+            {/* Start Accordian */}
+            <div className="panel-group" id="accordion">
+              {/* TargetAreas Start Here */}
+              <AccordianPanel
+                title="Target Areas"
+                func={this.renderTargetAreas()}
+                active={false}
+                AccId="TargetAreas"
+                parent="accordion"
+                custmClass=""
+              />
+              {/* TargetAreas End Here */}
 
-            {/* SupportQuery Start Here */}
-            <AccordianPanel
-              title="Query / Support Trend"
-              func={this.renderSupportQuery()}
-              active={false}
-              AccId="SupportQuery"
-              parent="accordion"
-              custmClass=""
-            />
-            {/* SupportQuery End Here */}
+              {/* SupportQuery Start Here */}
+              <AccordianPanel
+                title="Query / Support Trend"
+                func={this.renderSupportQuery()}
+                active={false}
+                AccId="SupportQuery"
+                parent="accordion"
+                custmClass=""
+              />
+              {/* SupportQuery End Here */}
 
-            {/* Call Log Start Here */}
-            <AccordianPanel
-              title="Call Log"
-              func={this.renderCallLog()}
-              active={false}
-              AccId="callLog"
-              parent="accordion"
-              custmClass=""
-            />
-            {/* Call Log End Here */}
+              {/* Call Log Start Here */}
+              <AccordianPanel
+                title="Call Log"
+                func={this.renderCallLog()}
+                active={false}
+                AccId="callLog"
+                parent="accordion"
+                custmClass=""
+              />
+              {/* Call Log End Here */}
 
-            {/* Emails Info Start Here */}
-            <AccordianPanel
-              title="Email Log"
-              func={this.renderEmail()}
-              active={false}
-              AccId="Emails"
-              parent="accordion"
-              custmClass=""
-            />
-            {/* Emails Info End Here */}
+              {/* Emails Info Start Here */}
+              <AccordianPanel
+                title="Email Log"
+                func={this.renderEmail()}
+                active={false}
+                AccId="Emails"
+                parent="accordion"
+                custmClass=""
+              />
 
-            {/* Phone Info Start Here */}
-            {/* <AccordianPanel
+              {/* Communication Log Start Here */}
+              <AccordianPanel
+                title="Communication Log"
+                func={this.renderCommunicationlog()}
+                active={false}
+                AccId="CommunicationLog"
+                parent="accordion"
+                custmClass=""
+              />
+
+              {/* Emails Info End Here */}
+
+              {/* Phone Info Start Here */}
+              {/* <AccordianPanel
               title="Phone"
               func={this.renderPhone()}
               active={true}
@@ -327,10 +344,10 @@ class CustomerDetails extends Component {
               parent="accordion"
               custmClass=""
             /> */}
-            {/* Phone Info End Here */}
+              {/* Phone Info End Here */}
 
-            {/* Query Info Start Here */}
-            {/* <AccordianPanel
+              {/* Query Info Start Here */}
+              {/* <AccordianPanel
               title="Query"
               func={this.renderQuery()}
               active={false}
@@ -338,13 +355,13 @@ class CustomerDetails extends Component {
               parent="accordion"
               custmClass=""
             /> */}
-            {/* Query Info End Here */}
-          </div>
+              {/* Query Info End Here */}
+            </div>
 
-          {/* end Accordian */}
+            {/* end Accordian */}
+          </div>
+          {/* <AddCustomerInfoForm /> */}
         </div>
-        {/* <AddCustomerInfoForm /> */}
-      </div>
       </section>
     );
   }

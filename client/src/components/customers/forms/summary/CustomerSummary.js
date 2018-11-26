@@ -6,11 +6,13 @@ class CustomerSummary extends Component {
 
     return (
       <div >
+        <div className="logo_wraper pull-right">
         <img
           //src={this.props.customerSummary.logourl}
           src={this.props.customerSummary.logourl}
-          className="img-responsive pull-right"
+          className="img-responsive "
         />
+        </div>
         <p>
           {this.props.customerSummary.Name} <br />
           {this.props.customerSummary.city},{this.props.customerSummary.state}{" "}

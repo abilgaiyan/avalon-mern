@@ -1,48 +1,48 @@
 export default [
     {
-        label: "Domain Purchaser: ",
+        label: "Purchaser",
         name: "domainPurchaser",
         type: "text",
         isvalidationApplied: true,
         validationmessage: "Please enter valid Domain Purchaser"
     },
     {
-        label: "Domain Provider: ",
+        label: "Provider",
         name: "domainProvider",
         type: "text",
         isvalidationApplied: true,
         validationmessage: "Please enter valid Domain Provider"
     },
     {
-        label: "Domain Account Id: ",
+        label: "Account Id",
         name: "domainAccountId",
         type: "text",
         isvalidationApplied: true,
         validationmessage: "Please enter valid Domain Account Id"
     },
     {
-        label: "Domain Login User Name: ",
+        label: "User Name",
         name: "domainLoginUserName",
         type: "text",
         isvalidationApplied: true,
         validationmessage: "Please enter valid Domain Account Id"
     },
     {
-        label: "Domain Login User Password: ",
+        label: "Password",
         name: "domainLoginUserPassword",
         type: "text",
         isvalidationApplied: true,
         validationmessage: "Please enter valid Domain Login User Password"
     },
     {
-        label: "Buy Date: ",
+        label: "Buy Date",
         name: "buyDate",
         type: "datetime",
         isvalidationApplied: true,
         validationmessage: "Please enter Buy Date"
     },
     {
-        label: "Expiry Date: ",
+        label: "Expiry Date",
         name: "expiryDate",
         type: "datetime",
         isvalidationApplied: true,

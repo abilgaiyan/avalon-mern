@@ -1,6 +1,6 @@
 export default [
     {
-        label: "Ashi Product Status :",
+        label: "Ashi Product Status",
         name: "_ashiProductStatus",
         type: "dropdown",
         isvalidationApplied: true,
@@ -9,7 +9,7 @@ export default [
     },
 
     {
-        label: "Restriction From :",
+        label: "Restriction From",
         name: "restrictionFrom",
         type: "text",
         isvalidationApplied: true,
@@ -18,7 +18,7 @@ export default [
     },
 
     {
-        label: "Jewel Exchange Signup Status :",
+        label: "Jewel Exchange Signup Status",
         name: "jewelExchangeSignupStatus",
         type: "text",
         isvalidationApplied: true,
@@ -27,7 +27,7 @@ export default [
     },
 
     {
-        label: "Jewel Exchange Signup Date :",
+        label: "Jewel Exchange Signup Date",
         name: "jewelExchangeSignupDate",
         type: "datetime",
         isvalidationApplied: true,
@@ -36,7 +36,7 @@ export default [
     },
 
     {
-        label: "Jewel Exchange Plan :",
+        label: "Jewel Exchange Plan",
         name: "jewelExchangePlan",
         type: "text",
         isvalidationApplied: true,
@@ -45,7 +45,7 @@ export default [
     },
 
     {
-        label: "Suppliers Activated :",
+        label: "Suppliers Activated",
         name: "suppliersActivated",
         type: "dropdown",
         isvalidationApplied: true,

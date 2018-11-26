@@ -137,7 +137,7 @@ ul li {
     font-size: 16px;
     border-radius: 0px;
 }
-.sidebar .list-group-item:hover {
+.sidebar .list-group-item:hover , .sidebar .list-group-item:focus, .sidebar .list-group-item.active{
     color: #fff;
     background-color: #66bb6a;
     border: 1px solid #66bb6a;
@@ -267,6 +267,7 @@ ul li {
     font-size: 18px;
 }
 .user_wraper .fa{margin-right: 10px;}
+.user_wraper .dropdown-menu{text-align: center}
 
 /* .sidebar {
     margin-top: 0px;
@@ -288,6 +289,7 @@ ul li {
 }
 .panel-default > .panel-heading.active {
     background-color: #66bb6a;
+    border-color: #fff;
 }
 .panel-default > .panel-heading.active.orange {
     background-color: #d8ce81;
@@ -392,9 +394,9 @@ ul li {
 .table-info tbody > tr > td:first-child {
     width: 160px;
 }
-.table-info tbody > tr > td:last-child {
+/* .table-info tbody > tr > td:last-child {
     font-weight:bold;
-}
+} */
 /* Table borderd table_list */
 .table.table_list>thead>tr>th, .table>thead>tr>td, .table.table_list>tbody>tr>td{
    text-align: center;
@@ -581,10 +583,43 @@ ul li {
     .navbar-header{margin: 0px !important;padding: 0px;}
     .navbar-default .navbar-brand{padding: 15px 0px;}
     .user_wraper{height: 35px;}
-    .user_item {    margin-top: 0;
+    .user_item {margin-top: 0;
         float: right;}
 }
 
 .pop_up_table.table.table_list>tbody>tr>td{text-align: left}
 .pop_up_table.table.table_list>tbody>tr>td:first-child{width: 175px;text-align: right}
 .pop_up_table.table.table_list>tbody>tr:first-child>td{border: 0px;}
+
+
+/* New Demo */
+.form-group {
+    margin-bottom: 5px;
+}
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left:0px;
+}
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #66bb6a;
+    color: #fff;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.modal-title {
+    margin: 0;
+    line-height: 1.42857143;
+    color: #fff;
+}
+.modal-header .close {outline: none;opacity: 0.9;color: #fff; font-size: 28px;}
+.form-horizontal .control-label{font-size: 14px;font-weight: normal;}
+
+.logo_wraper {
+    max-width: 260px;
+    background: #e8e8e8;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}

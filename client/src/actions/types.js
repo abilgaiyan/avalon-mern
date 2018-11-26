@@ -64,4 +64,6 @@ export const EMAIL_SELECTED = "email_selected";
 
 export const CALLLOG_SELECTED = "calllog_selected";
 
-export const FETCH_SUPPORTQUERY = "fetch_supportquery"
+export const FETCH_SUPPORTQUERY = "fetch_supportquery";
+
+export const FETCH_COMMUNICATIONLOG = "fetch_communicationlog";

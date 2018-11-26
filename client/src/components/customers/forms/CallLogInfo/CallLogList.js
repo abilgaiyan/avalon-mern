@@ -6,7 +6,7 @@ import moment from 'moment';
 // import { fetchCustomers } from "../../actions";
 // import { Link } from "react-router-dom";
 import CallLogInfoForm from "./CallLogInfoForm";
-import CallLogPopUp from "./callLogPopUp";
+//import CallLogPopUp from "./callLogPopUp";
 
 class CallLogList extends Component {
 
@@ -21,7 +21,7 @@ class CallLogList extends Component {
           <td>{list.callPerson}</td>
           <td>{list.avalonExcutive}</td>
           <td>{list.followupcallTime === undefined ? '' : moment(list.followupcallTime).format('hh:mm A')}</td>
-          <td><a data-toggle="modal" data-target="#callLogPopupModal"><i className="fa fa-search"></i></a></td>
+          {/* <td><a data-toggle="modal" data-target="#callLogPopupModal"><i className="fa fa-search"></i></a></td> */}
           {/* <td><i className="fa fa-search"></i></td> */}
         </tr>
       )
@@ -42,7 +42,7 @@ class CallLogList extends Component {
             <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#callLogModal"><i className="fa fa-plus-square"></i>Add</button>
             <div className="clearfix"></div>
             <CallLogInfoForm />
-            <CallLogPopUp />
+            {/* <CallLogPopUp /> */}
           </div>
 
 

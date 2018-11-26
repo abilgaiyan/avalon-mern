@@ -24,7 +24,7 @@ module.exports = app => {
             //_id: mongoose.Types.ObjectId(custCallLogInfoId)
             _id: { $in: custCallLogInfoIds }
         }, { createDate: 0, updateDate: 0 }).populate('_previousCallType');
-        console.log('callloginfo', callloginfo);
+        //console.log('callloginfo', callloginfo);
         //res.send(callloginfo);
         if (callloginfo) {
             // console.log("-------------->>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<------------------------")
@@ -40,7 +40,7 @@ module.exports = app => {
             customerid: customerId
         }).sort({ createDate: -1 });
 
-        console.log('customeremail', customeremail);
+        //console.log('customeremail', customeremail);
 
         if (customeremail)
             //      communicationLogData.push(customeremail);//.forEach(element => { element.Type = "email"; }));
@@ -49,10 +49,10 @@ module.exports = app => {
             })
 
 
-        console.log('communicationLogData', communicationLogData)
+        //console.log('communicationLogData', communicationLogData)
 
         if (customeremail || callloginfo) {
-            communicationLogData = [[...customeremail], [...callloginfo]];
+            communicationLogData = [...customeremail, ...callloginfo];
             res.send(communicationLogData);
         }
         else

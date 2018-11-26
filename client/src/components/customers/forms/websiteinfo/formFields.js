@@ -1,6 +1,6 @@
 export default [
     {
-        label: "Product Plan :",
+        label: "Product Plan",
         name: "_productplan",
         type: "dropdown",
         isvalidationApplied: true,
@@ -9,7 +9,7 @@ export default [
     },
 
     {
-        label: "Live Date :",
+        label: "Live Date",
         name: "liveDate",
         type: "datetime",
         isvalidationApplied: true,
@@ -18,7 +18,7 @@ export default [
     },
 
     {
-        label: "Hold Date :",
+        label: "Hold Date",
         name: "holdDate",
         type: "datetime",
         isvalidationApplied: true,
@@ -27,7 +27,7 @@ export default [
     },
 
     {
-        label: "Reason To Leave :",
+        label: "Reason To Leave",
         name: "reasontoLeave",
         type: "text",
         isvalidationApplied: true,
@@ -36,7 +36,7 @@ export default [
     },
 
     {
-        label: "Designe Type :",
+        label: "Designe Type",
         name: "_designeType",
         type: "dropdown",
         isvalidationApplied: true,
@@ -45,7 +45,7 @@ export default [
     },
 
     {
-        label: "Responsive Website Released Date :",
+        label: "Released Date",
         name: "responsiveWebsiteReleasedDate",
         type: "datetime",
         isvalidationApplied: true,
@@ -54,7 +54,7 @@ export default [
     },
 
     {
-        label: "Shopping Cart Status :",
+        label: "Shopping Cart Status",
         name: "shoppingcartStatus",
         type: "text",
         isvalidationApplied: true,
@@ -62,7 +62,7 @@ export default [
         value: ""
     },
     {
-        label: "Comments :",
+        label: "Comments",
         name: "comments",
         type: "text",
         isvalidationApplied: true,

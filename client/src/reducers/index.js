@@ -40,6 +40,8 @@ import emailSelectedReducer from "./emailSelectedReducer";
 import callLogSelectedReducer from "./callLogSelectedReducer";
 
 import supportqueryReducer from "./supportQueryReducer";
+import communicationLogReducer from "./communicationLogReducer"
+
 
 
 export default combineReducers({
@@ -85,5 +87,6 @@ export default combineReducers({
   emailSelected: emailSelectedReducer,
   callLogSelected: callLogSelectedReducer,
 
-  supportQuery: supportqueryReducer
+  supportQuery: supportqueryReducer,
+  communicationLog: communicationLogReducer
 });

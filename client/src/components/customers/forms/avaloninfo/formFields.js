@@ -1,6 +1,6 @@
 export default [
   {
-    label: "Website Status:",
+    label: "Website Status",
     name: "_websitestatus",
     type: "dropdown",
     isvalidationApplied: true,
@@ -8,7 +8,7 @@ export default [
   },
 
   {
-    label: "Signup Date:",
+    label: "Signup Date",
     name: "signupDate",
     type: "datetime",
     isvalidationApplied: true,
@@ -16,7 +16,7 @@ export default [
   },
 
   {
-    label: "# Of Days from Signup:",
+    label: "# Of Days from Signup",
     name: "numberOfDaysFromSignup",
     type: "text",
     isvalidationApplied: true,
@@ -24,7 +24,7 @@ export default [
   },
 
   {
-    label: "Layout Sent Date:",
+    label: "Layout Sent Date",
     name: "layoutSentDate",
     type: "datetime",
     isvalidationApplied: true,
@@ -32,7 +32,7 @@ export default [
   },
 
   {
-    label: "Layout Approved Date:",
+    label: "Layout Approved Date",
     name: "layoutAprrovedDate",
     type: "datetime",
     isvalidationApplied: true,
@@ -40,7 +40,7 @@ export default [
   },
 
   {
-    label: "Beta on Review Date:",
+    label: "Beta on Review Date",
     name: "betaOnReviewDate",
     type: "datetime",
     isvalidationApplied: true,
@@ -48,7 +48,7 @@ export default [
   },
 
   {
-    label: "Comments:",
+    label: "Comments",
     name: "comments",
     type: "text",
     isvalidationApplied: true,

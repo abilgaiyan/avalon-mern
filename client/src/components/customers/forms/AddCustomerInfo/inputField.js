@@ -6,9 +6,9 @@ const inputField = props => {
     // console.log({ ...props });
     if (type === "checkbox") {
         return (
-            <div className="form-group">
-                <label className="control-label col-sm-3">{label}</label>
-                <div className="checkbox col-sm-9">
+            <div className="form-group col-sm-6">
+                <label className="control-label col-sm-4">{label}</label>
+                <div className="checkbox col-sm-8">
                     <label>
                         <input
                             {...input}
@@ -22,9 +22,9 @@ const inputField = props => {
         );
     } else {
         return (
-            <div className="form-group">
-                <label className="control-label col-sm-3">{label}</label>
-                <div className="col-sm-9 ">
+            <div className="form-group col-sm-6">
+                <label className="control-label col-sm-4">{label}</label>
+                <div className="col-sm-8 ">
                     <input
                         {...input}
                         className="form-control"

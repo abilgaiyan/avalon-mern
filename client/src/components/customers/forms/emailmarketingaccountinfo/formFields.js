@@ -1,27 +1,27 @@
 export default [
     {
-        label: "Email Marketing Account Status: ",
+        label: "Account Status",
         name: "emailMarketingAccountStatus",
         type: "text",
         isvalidationApplied: true,
         validationmessage: "Please enter valid Email Marketing Account Status"
     },
     {
-        label: "Email Marketing Plan: ",
+        label: "Plan",
         name: "emailMarketingPlan",
         type: "text",
         isvalidationApplied: true,
         validationmessage: "Please enter valid Email Marketing Plan"
     },
     {
-        label: "Email Marketing User Name: ",
+        label: "User Name",
         name: "emailMarketingUserName",
         type: "text",
         isvalidationApplied: true,
         validationmessage: "Please enter valid Email Marketing User Name"
     },
     {
-        label: "Email Marketing Password: ",
+        label: "Password",
         name: "emailMarketingPassword",
         type: "text",
         isvalidationApplied: true,
