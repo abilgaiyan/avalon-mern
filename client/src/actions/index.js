@@ -31,7 +31,8 @@ import {
   FETCH_BUYINGGROUPSALLDATA,
   FETCH_EMAILALLDATA,
   EMAIL_SELECTED,
-  CALLLOG_SELECTED
+  CALLLOG_SELECTED,
+  FETCH_SUPPORTQUERY
 } from "./types";
 
 //Store Autocomplete_ID
@@ -420,4 +421,15 @@ export const SelectEmail = email => async dispatch => {
 //Select Call Log on click
 export const SelectCallLog = callLog => async dispatch => {
   dispatch({ type: CALLLOG_SELECTED, payload: callLog });
+};
+
+
+
+// Set Support Query Entry Info Form
+export const submitSupportQueryForm = (values, customerId, history) => async dispatch => {
+  values.customerId = customerId;
+  console.log('querylog', values)
+  const res = await axios.post("/api/customerqueries/", values);
+  // history.push("/customers/");
+  dispatch({ type: FETCH_SUPPORTQUERY, payload: values });
 };

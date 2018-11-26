@@ -44,20 +44,6 @@ module.exports = app => {
     }
 
   });
-  // app.get('/api/customercallloginfo/:callloginfoid', async(req, res) =>{
-  //     const custCallLogInfoId= req.params.callloginfoid;
-  //     const callloginfo = await CustomerCalllogInfo.find({
-  //     _id: mongoose.Types.ObjectId(custCallLogInfoId)
-  //     },{createDate: 0, updateDate: 0 });
-  //     //console.log(callloginfo);
-  //     //res.send(callloginfo);
-  //     if (callloginfo) {
-  //         res.send(callloginfo);
-  //       } else {
-  //         res.send("no data");
-  //       }
-
-  // });
 
   //New
   //Post Request to Customer Telephonic Communication
@@ -93,7 +79,6 @@ module.exports = app => {
         }
 
       });
-
       //console.log("--------------------------------->>>>>>>>>>>>>>>>>>>>callinfo ID->>>>>>>>>>>>>>>>>>>>>>>>", data);
       res.send(CustomerCalllogInfoData);
     }
@@ -102,40 +87,4 @@ module.exports = app => {
     }
     res.end();
   });
-
-  // app.post("/api/customercallloginfo", async (req, res) => {
-
-  //   const callloginfo = { ...req.body };
-  //   callloginfo.updateDate = Date.now();
-  //   if (req.body.custCallLogInfoId = 0) {
-  //     callloginfo.createDate = Date.now();
-  //   }
-
-  //   const customerId = req.body.customerId;
-
-  //   //console.log(callloginfo);
-  //   CustomerCalllogInfo.findOneAndUpdate(
-  //     {
-  //       _id: req.body.custCallLogInfoId
-  //     },
-  //     callloginfo,
-  //     { upsert: true },
-  //     (err, res) => {
-  //       // Deal with the response data/error
-  //       console.log(err);
-  //       // console.log(res);
-  //       if (res) {
-
-  //         CustomerInfo.update({ _id: customerId }, {
-  //           _callLogInfo: res._id
-  //         }, function (err, affected, resp) {
-  //           console.log(resp);
-  //         })
-  //       }
-  //     }
-  //   );
-
-  //   res.end();
-  // });
-
 }

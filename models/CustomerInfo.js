@@ -14,6 +14,7 @@ const businessEmailInfoSchema = require("./BusinessEmailInfo");
 const emailmarketingaccountInfoSchema = require("./EmailMarketingAccountInfo");
 const targetAreaInfoSchema = require("./TargetAreas");
 const callLogInfoSchema = require("./CallLog");
+const customerQuriesSchema = require("./CustomerQueries");
 const buyingGroupInfoSchema = require("./BuyingGroups");
 
 
@@ -54,7 +55,7 @@ const customerinfoSchema = new Schema({
   _domainInfo: { type: Schema.Types.ObjectId, ref: "domaininfo" },
   _sslInfo: { type: Schema.Types.ObjectId, ref: "sslinfo" },
   _businessEmailInfo: { type: Schema.Types.ObjectId, ref: "businessemailinfo" },
-  _querysupportInfo: { type: Schema.Types.ObjectId, ref: "querysupportinfo" },
+  _querysupportInfo: [{ type: Schema.Types.ObjectId, ref: "customerqueries" }],
   _emailmarketingAccountInfo: { type: Schema.Types.ObjectId, ref: "emailmarketingaccountinfo" },
   _targetAreaInfo: { type: Schema.Types.ObjectId, ref: "targetareainfo" },
   _callLogInfo: [{ type: Schema.Types.ObjectId, ref: "callloginfo" }],

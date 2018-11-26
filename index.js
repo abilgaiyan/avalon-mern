@@ -84,6 +84,7 @@ require('./routes/targetAreasRoutes')(app);
 require('./routes/callLogRoutes')(app);
 require('./routes/productplanRoutes')(app);
 require('./routes/hostingAmountRoutes')(app);
+require('./routes/communicationLogRouter')(app);
 
 
 

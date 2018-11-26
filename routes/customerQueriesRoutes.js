@@ -4,25 +4,30 @@ const { URL } = require('url');
 const mongoose = require('mongoose');
 
 const CustomerQueries = mongoose.model('customerqueries');
-
+const CustomerInfo = mongoose.model("customerinfo");
 
 module.exports = app => {
 
 
     //Get Customer Queries Communication
-    app.get('/api/customerqueries/:customerId', async (req, res) => {
-        var customerid = req.params.customerId
-        const customerqueries = await CustomerQueries.find({ _customer: customerid }).sort({ createDate: -1 });;
-        res.send(customerqueries);
-    });
+    // app.get('/api/customerqueries/:customerId', async (req, res) => {
+    //     var customerid = req.params.customerId
+    //     const customerqueries = await CustomerQueries.find({ _customer: customerid }).sort({ createDate: -1 });;
+    //     res.send(customerqueries);
+    // });
+
+
+    //New
 
     //Post Request to Customer Queries Communication
     app.post('/api/customerqueries', async (req, res) => {
-
-        const { subject, message, customerId } = req.body;
+        console.log('----------------------------->>>>>>>>><<<<<<<<<<<<<<<<-----------------------')
+        console.log('req.body', req.body)
+        const { qrysubject, qrytext, qryrelated, customerId } = req.body;
         const CustomerQueriesData = new CustomerQueries({
-            subject,
-            message,
+            qrysubject,
+            qrytext,
+            qryrelated,
             _customer: customerId,
             displayorder: 0,
             status: 'Active',
@@ -30,8 +35,31 @@ module.exports = app => {
             updateDate: Date.now()
 
         });
+
+
         //Save Data
-        await CustomerQueriesData.save();
+        if (CustomerQueriesData) {
+            await CustomerQueriesData.save(async (err, supportquery) => {
+                if (err) {
+                    res.send('Error in saving', err);
+                }
+                if (supportquery) {
+                    //Push CallLogId from CallLogInfo collection to CustomerInfo Table
+                    await CustomerInfo.update(
+                        { _id: req.body.customerId },
+                        { $push: { _querysupportInfo: mongoose.Types.ObjectId(supportquery._id) } }
+                    );
+                }
+
+            });
+
+            //console.log("--------------------------------->>>>>>>>>>>>>>>>>>>>callinfo ID->>>>>>>>>>>>>>>>>>>>>>>>", data);
+            res.send(CustomerQueriesData);
+        }
+        else {
+            res.send("Error!!");
+        }
         res.end();
     });
+
 }

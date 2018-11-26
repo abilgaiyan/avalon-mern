@@ -39,6 +39,8 @@ import customerEmailReducer from "./customerEmailReducer";
 import emailSelectedReducer from "./emailSelectedReducer";
 import callLogSelectedReducer from "./callLogSelectedReducer";
 
+import supportqueryReducer from "./supportQueryReducer";
+
 
 export default combineReducers({
   auth: authReducer,
@@ -81,5 +83,7 @@ export default combineReducers({
   buyingGroup: buyingGroupReducer,
   customerEmail: customerEmailReducer,
   emailSelected: emailSelectedReducer,
-  callLogSelected: callLogSelectedReducer
+  callLogSelected: callLogSelectedReducer,
+
+  supportQuery: supportqueryReducer
 });
