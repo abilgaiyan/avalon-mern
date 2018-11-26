@@ -148,6 +148,7 @@ class CustomerDetails extends Component {
 
   render() {
     return (
+      <section>
       <div className="row">
         <div className="col-sm-12 col-md-6">
           {/* accordian */}
@@ -344,6 +345,7 @@ class CustomerDetails extends Component {
         </div>
         {/* <AddCustomerInfoForm /> */}
       </div>
+      </section>
     );
   }
 }
