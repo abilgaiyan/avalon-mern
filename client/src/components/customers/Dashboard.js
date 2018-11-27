@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCustomers } from '../../actions';
-import CustomerDetails from './CustomerDetails';
 import { Link } from 'react-router-dom';
+
+import CustomerDetails from './CustomerDetails';
+
 
 class Dashboard extends Component {
 
@@ -34,16 +36,7 @@ class Dashboard extends Component {
             )
         })
     }
-    render() {
-        return (
-            <div className="row">
-                <div className="container marginTop30 list-group">
-                    <h3 className="text-center">Avalon Customer's</h3>
-                    {this.renderDashboard()}
-                </div>
-            </div>
-        );
-    }
+
 
     render() {
         return (
@@ -55,9 +48,12 @@ class Dashboard extends Component {
     }
 }
 
-function mapStateToProps({ customers }) {
-    // console.log({customers})
-    return { customers };
+function mapStateToProps(state) {
+    // console.clear();
+    // console.log(state);
+    return {
+        customers: state.customers
+    };
 }
 
 export default connect(

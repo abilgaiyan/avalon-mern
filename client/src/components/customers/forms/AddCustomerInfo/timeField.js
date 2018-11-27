@@ -13,14 +13,15 @@ const timeField = ({ input, label, type, meta: { touched, error } }) => {
                     //inputProps={{ component: props => <input {...props} readOnly /> }}
                     //readOnly
                     onChange={input.onChange}
+                    className={touched && error}
                     timeFormat='hh:mm A'
                     date={false}
                     value={!input.value ? "" : new Date(input.value)}
                 //value={!input.value ? null : new Date(moment(input.value).format("DD MMM YYYY"))}
                 />
-                <div className="red-text" >
+                {/* <div className="red-text" > */}
                     {/* {touched && error} */}
-                </div>
+                {/* </div> */}
             </div>
         </div>
     );

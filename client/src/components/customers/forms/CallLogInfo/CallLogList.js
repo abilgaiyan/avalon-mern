@@ -5,7 +5,7 @@ import { Link, withRouter } from "react-router-dom";
 import moment from 'moment';
 // import { fetchCustomers } from "../../actions";
 // import { Link } from "react-router-dom";
-import CallLogInfoForm from "./CallLogInfoForm";
+// import CallLogInfoForm from "./CallLogInfoForm";
 //import CallLogPopUp from "./callLogPopUp";
 
 class CallLogList extends Component {
@@ -41,7 +41,7 @@ class CallLogList extends Component {
           <div className=" icon_well">
             <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#callLogModal"><i className="fa fa-plus-square"></i>Add</button>
             <div className="clearfix"></div>
-            <CallLogInfoForm />
+            {/* <CallLogInfoForm /> */}
             {/* <CallLogPopUp /> */}
           </div>
 

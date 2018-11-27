@@ -8,7 +8,7 @@ const datetimeField = ({ input: { onChange, value }, label, type, meta: { touche
     // let finalDate = moment(value).format('DD MMM YYYY')
 
     return (
-        <div className="form-group">
+        <div className="form-group ">
             <label className="control-label col-sm-3">{label}</label>
             <div className="col-sm-9 ">
                 <DateTimePicker
@@ -16,15 +16,16 @@ const datetimeField = ({ input: { onChange, value }, label, type, meta: { touche
                     inputProps={{ component: props => <input {...props} readOnly /> }}
                     //readOnly
                     onChange={onChange}
+                    className={touched && error}
                     format="DD MMM YYYY"
                     time={showTime}
                     value={!value ? "" : new Date(value)}
                 //value={!input.value ? null : new Date(input.value)}
                 //value={!input.value ? null : new Date(moment(input.value).format("DD MMM YYYY"))}
                 />
-                <div className="red-text" >
+                {/* <div className="red-text" >
                     {touched && error}
-                </div>
+                </div> */}
             </div>
         </div>
     );

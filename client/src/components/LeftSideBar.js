@@ -14,8 +14,9 @@ const LeftSideBar = (props) => {
                     <Link data-toggle="collapse" data-parent="#accordion1" to="#CustomerInfo" aria-expanded="true" className="list-group-item Customer_Info">Customer Info</Link>
                     <Link data-toggle="collapse" data-parent="#accordion" to="#TargetAreas" aria-expanded="true" className="list-group-item">Target Areas</Link>
                     <Link data-toggle="collapse" data-parent="#accordion" to="#SupportQuery" aria-expanded="true" className="list-group-item Call_Log">Query / Support Trend</Link>
-                    <Link data-toggle="collapse" data-parent="#accordion" to="#callLog" aria-expanded="true" className="list-group-item Phone">Call Log</Link>
-                    <Link data-toggle="collapse" data-parent="#accordion" to="#Emails" aria-expanded="true" className="list-group-item Emails">Email Log</Link>
+                    {/* <Link data-toggle="collapse" data-parent="#accordion" to="#callLog" aria-expanded="true" className="list-group-item Phone">Call Log</Link>
+                    <Link data-toggle="collapse" data-parent="#accordion" to="#Emails" aria-expanded="true" className="list-group-item Emails">Email Log</Link> */}
+                    <Link data-toggle="collapse" data-parent="#accordion" to="#CommunicationLog" aria-expanded="true" className="list-group-item CommunicationLog">Communication Log</Link>
                     <Link data-toggle="collapse" data-parent="#accordion1" to="#AvalonInfo" aria-expanded="true" className="list-group-item">Avalon Info</Link>
                     <Link data-toggle="collapse" data-parent="#accordion1" to="#BillingForm" aria-expanded="true" className="list-group-item">Billing Info</Link>
                     <Link data-toggle="collapse" data-parent="#accordion1" to="#WebsiteInfoForm" aria-expanded="true" className="list-group-item">Website Info</Link>

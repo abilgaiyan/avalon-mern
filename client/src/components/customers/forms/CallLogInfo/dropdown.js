@@ -18,11 +18,13 @@ const dropdown = ({ input, label, optionData, meta: { touched, error } }) => {
         <div className="form-group">
             <label className="control-label col-sm-3">{label}</label>
             <div className="col-sm-9">
-                <select {...input} className="form-control">
+                <select {...input} className={"form-control " + (touched && error) }>
                     {optionItems}
                     {/* {hostingAmountItems} */}
                 </select>
-                <div className="red-text">{touched && error}</div>
+                 {/* <div className="red-text" >
+                    {touched && error}
+                </div> */}
             </div>
         </div>
     );

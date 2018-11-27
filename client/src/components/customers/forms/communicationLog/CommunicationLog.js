@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import EmailPopUp from "../emaillog/emailPopUp";
 import CallLogPopUp from "../CallLogInfo/callLogPopUp";
+import CallLogInfoForm from "../CallLogInfo/CallLogInfoForm";
 import * as actions from "../../../../actions";
 import moment from 'moment';
 //import EmailForm from "./EmailForm";
@@ -21,7 +22,12 @@ class CommunicationLog extends Component {
         else {
             return (
                 <div>
-
+                    <div class=" icon_well text-right ">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#callLogModal"><i class="fa fa-phone"></i>Add</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#comentPopUp"><i class="fa fa-comments"></i>Add</button>
+                        <div class="clearfix"></div>
+                        </div>
+                   
                     <ReactTable
                         data={this.props.communicationLog}
                         filterable
@@ -29,7 +35,7 @@ class CommunicationLog extends Component {
                             String(row[filter.id]) === filter.value}
                         columns={[
                             {
-                                Header: "Email Log",
+                               Header: "Communication Log",
                                 columns: [
                                     {
                                         Header: "Date",
@@ -40,13 +46,7 @@ class CommunicationLog extends Component {
                                             matchSorter(rows, filter.value, { keys: ["emaildate"] || ["previousCallDate"] }),
                                         filterAll: true
                                     },
-                                    {
-                                        Header: "Type",
-                                        id: "ctype",
-                                        filterable: false,
-                                        className: 'text-center',
-                                        accessor: d => d.ctype === "email" ? <i className="fa fa-envelope" aria-hidden="true"></i> : <i className="fa fa-phone" aria-hidden="true"></i>
-                                    },
+                                   
                                     {
                                         Header: "Subject",
                                         id: "subject",
@@ -76,14 +76,15 @@ class CommunicationLog extends Component {
                                         Header: "View",
                                         accessor: "ctype",
                                         id: "view",
-                                        className: 'text-center',
+                                        className: 'text-center view_icon',
                                         //accessor: d => d.emaildate
                                         //accessor: d => d.ctype === "email" ? <i className="fa fa-envelope" aria-hidden="true"></i> : <i className="fa fa-phone" aria-hidden="true"></i>,
                                         // Cell: row => (
                                         //     // <div dangerouslySetInnerHTML={{ __html: row.original.html }} />
                                         //     <div>view</div>
                                         // )
-                                        Cell: ({ value }) => (value === "email" ? <a data-toggle="modal" data-target="#emailLogModal"><i className="fa fa-envelope" aria-hidden="true"></i></a> : <a data-toggle="modal" data-target="#callLogPopupModal"><i className="fa fa-phone" aria-hidden="true"></i></a>),
+                                        Cell: row => (row.value === "email" ? <a data-toggle="modal" data-target="#emailLogModal" onClick={() => this.props.SelectEmail(row.original)}><i className="fa fa-envelope" aria-hidden="true"></i></a> : <a data-toggle="modal" data-target="#callLogPopupModal" onClick={() => this.props.SelectCallLog(row.original)}><i className="fa fa-phone" aria-hidden="true"></i></a>),
+                                        
                                         filterMethod: (filter, row) => {
                                             console.log(row)
                                             if (filter.value === "all") {
@@ -104,9 +105,6 @@ class CommunicationLog extends Component {
                                                 <option value="true">Email</option>
                                                 <option value="false">Call</option>
                                             </select>
-
-
-
                                     }
                                 ]
                             }
@@ -114,6 +112,7 @@ class CommunicationLog extends Component {
                         defaultPageSize={10}
                         className="-striped -highlight table table_list"
                     />
+                    <CallLogInfoForm />
                     <CallLogPopUp />
                     <EmailPopUp />
                 </div>

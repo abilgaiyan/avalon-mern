@@ -165,7 +165,7 @@ function validate(values) {
     // });
 
     if (!values._previousCallType) {
-        errors._previousCallType = "You must provide a value"
+        errors._previousCallType = "invalid_message"
     }
 
 

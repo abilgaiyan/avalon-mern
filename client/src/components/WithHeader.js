@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { connect } from 'react-redux';
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import LeftSideBar from "./LeftSideBar";
 import Dashboard from "./customers/Dashboard";
 import CustomerDetails from "./customers/CustomerDetails";
+import Welcome from "./Welcome";
 
 class MainWraper extends Component {
   constructor(props) {
@@ -20,17 +22,23 @@ class MainWraper extends Component {
   }
 
   render() {
-    return (
+    if (!this.props.auth) {
+      return <Redirect to={{ pathname: "/" }}
+      />
+    }
+    else {
+      return (
         <div className={"row crm_wrapper" + (this.state.Toggle ? " toggle_menu" : "")}>
           {!this.props.leftChoice ? null : <LeftSideBar />}
           <div className={"col-sm-12 page_container" + (!this.props.leftChoice || this.state.Toggle ? " full" : "")}>
-            {!this.props.leftChoice ? null :<a onClick={this.LeftsidebarToggle} className="toggle_arrow" title={this.state.Toggle ? "Open Sidebar" : "Close Sidebar"}><i className={"fa" + (this.state.Toggle ? ' fa-angle-double-right' : ' fa-angle-double-left')} aria-hidden="true"></i></a> }
+            {!this.props.leftChoice ? null : <a onClick={this.LeftsidebarToggle} className="toggle_arrow" title={this.state.Toggle ? "Open Sidebar" : "Close Sidebar"}><i className={"fa" + (this.state.Toggle ? ' fa-angle-double-right' : ' fa-angle-double-left')} aria-hidden="true"></i></a>}
             <Header />
             <Route exact={true} path={this.props.path} component={this.props.content} />
             <Footer />
           </div>
         </div>
-    )
+      )
+    }
   }
 }
 
@@ -46,4 +54,16 @@ export function CustomerDetailsWraper() {
 }
 
 
-export default MainWraper;
+//export default MainWraper;
+
+function mapStateToProps(state) {
+  // console.clear();
+  // console.log(state);
+  return {
+    auth: state.auth
+  };
+}
+
+export default connect(
+  mapStateToProps
+)(MainWraper);

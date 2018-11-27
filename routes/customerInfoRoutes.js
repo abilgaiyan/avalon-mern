@@ -1,6 +1,7 @@
 const _ = require("lodash");
 const Path = require("path-parser");
 const { URL } = require("url");
+const requireLogin = require('../middlewares/requireLogin');
 const mongoose = require("mongoose");
 const BuyingGroup = mongoose.model('buyinggroup');
 const CustomerInfo = mongoose.model("customerinfo");
@@ -74,7 +75,7 @@ module.exports = app => {
   });
 
 
-  app.get("/api/customerallinfo", async (req, res) => {
+  app.get("/api/customerallinfo", requireLogin, async (req, res) => {
     const customeralldata = await CustomerInfo.find({});
     // console.log(customeralldata);
     res.send(customeralldata);

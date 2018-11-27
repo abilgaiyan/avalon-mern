@@ -122,7 +122,7 @@ class AddCustomerInfoForm extends Component {
 
 
     render() {
-
+        const { pristine, reset, submitting } = this.props;
         // console.clear();
         // console.log(this.props.previousCallTypeDropdown);
         return (
@@ -132,7 +132,7 @@ class AddCustomerInfoForm extends Component {
 
                     <div className="modal-content">
                         <div className="modal-header text-left">
-                            <button type="button" className="close" data-dismiss="modal">&times;</button>
+                            <button type="button" className="close" data-dismiss="modal" onClick={reset}>&times;</button>
                             <h4 className="modal-title">Add Customer</h4>
                         </div>
                         <div className="modal-body">
@@ -145,10 +145,10 @@ class AddCustomerInfoForm extends Component {
 
                                         <div className="form-group col-sm-12">
                                             <div className="col-sm-12 text-right">
-                                                <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
+                                                <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }} disabled={pristine || submitting}>
                                                     <i className="fa fa-check-square" aria-hidden="true"></i>
                                                     Save</button>
-                                                <button type="button" id="AddCustInfoClose" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                <button type="button" id="AddCustInfoClose" className="btn btn-default" data-dismiss="modal" onClick={reset}>Cancel</button>
 
                                             </div>
                                         </div>
@@ -180,10 +180,10 @@ function validate(values) {
     // });
 
     if (!values.jewelsoftId) {
-        errors.jewelsoftId = "You must provide a value"
+        errors.jewelsoftId = "invalid_message"
     }
     if (!values.Name) {
-        errors.Name = "You must provide a value"
+        errors.Name = "invalid_message"
     }
 
     return errors;

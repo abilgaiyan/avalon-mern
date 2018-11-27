@@ -134,9 +134,10 @@ class CustomerDetails extends Component {
   //   return <PhoneCall customerId={this.props.match.params.customerId} />;
   // }
 
-  renderSupportQuery() {
+  renderSupportQueryForm() {
     return (
-      <SupportQueryForm supportQueryData={this.props.match.params.customerId} />
+      //<SupportQueryForm supportQueryData={this.props.match.params.customerId} />
+      <SupportQueryForm/>
     );
   }
 
@@ -294,7 +295,7 @@ class CustomerDetails extends Component {
               {/* SupportQuery Start Here */}
               <AccordianPanel
                 title="Query / Support Trend"
-                func={this.renderSupportQuery()}
+                func={this.renderSupportQueryForm()}
                 active={false}
                 AccId="SupportQuery"
                 parent="accordion"
@@ -303,25 +304,25 @@ class CustomerDetails extends Component {
               {/* SupportQuery End Here */}
 
               {/* Call Log Start Here */}
-              <AccordianPanel
+              {/* <AccordianPanel
                 title="Call Log"
                 func={this.renderCallLog()}
                 active={false}
                 AccId="callLog"
                 parent="accordion"
                 custmClass=""
-              />
+              /> */}
               {/* Call Log End Here */}
 
               {/* Emails Info Start Here */}
-              <AccordianPanel
+              {/* <AccordianPanel
                 title="Email Log"
                 func={this.renderEmail()}
                 active={false}
                 AccId="Emails"
                 parent="accordion"
                 custmClass=""
-              />
+              /> */}
 
               {/* Communication Log Start Here */}
               <AccordianPanel

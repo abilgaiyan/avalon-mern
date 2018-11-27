@@ -13,14 +13,15 @@ const datetimeField = ({ input, label, type, meta: { touched, error }, showTime 
                     //inputProps={{ component: props => <input {...props} readOnly /> }}
                     //readOnly
                     onChange={input.onChange}
+                    className={touched && error}
                     format="DD MMM YYYY"
                     time={showTime}
                     value={!input.value ? "" : new Date(input.value)}
                 //value={!input.value ? null : new Date(moment(input.value).format("DD MMM YYYY"))}
                 />
-                <div className="red-text" >
-                    {/* {touched && error} */}
-                </div>
+                {/* <div className="red-text" >
+                    {touched && error}
+                </div> */}
             </div>
         </div>
     );
