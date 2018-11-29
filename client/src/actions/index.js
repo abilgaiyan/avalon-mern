@@ -33,7 +33,8 @@ import {
   EMAIL_SELECTED,
   CALLLOG_SELECTED,
   FETCH_SUPPORTQUERY,
-  FETCH_COMMUNICATIONLOG
+  FETCH_COMMUNICATIONLOG,
+  COMMENT_SELECTED
 } from "./types";
 
 //Store Autocomplete_ID
@@ -406,7 +407,6 @@ export const submitCallLogInfoForm = (values, customerId, history) => async disp
   dispatch({ type: FETCH_CALLLOGINFO, payload: values });
 };
 
-
 // Email Data
 export const fetchemaildata = customerId => async dispatch => {
   const res = await axios.get("/api/emaildata/" + customerId);
@@ -429,7 +429,7 @@ export const SelectCallLog = callLog => async dispatch => {
 // Set Support Query Entry Info Form
 export const submitSupportQueryForm = (values, customerId, history) => async dispatch => {
   values.customerId = customerId;
-  console.log('querylog', values)
+  console.log('querylog', values);
   const res = await axios.post("/api/customerqueries/", values);
   // history.push("/customers/");
   dispatch({ type: FETCH_SUPPORTQUERY, payload: values });
@@ -440,4 +440,9 @@ export const submitSupportQueryForm = (values, customerId, history) => async dis
 export const fetchcommunicationlog = customerId => async dispatch => {
   const res = await axios.get("/api/comunnicationLog/" + customerId);
   dispatch({ type: FETCH_COMMUNICATIONLOG, payload: res.data });
+};
+
+//Select COMMENT on click
+export const SelectComment = comment => async dispatch => {
+  dispatch({ type: COMMENT_SELECTED, payload: comment });
 };

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import EmailPopUp from "../emaillog/emailPopUp";
 import CallLogPopUp from "../CallLogInfo/callLogPopUp";
 import CallLogInfoForm from "../CallLogInfo/CallLogInfoForm";
+import QueryForm from "../supportquery/queryForm";
+import SupportQueryPopup from "../supportquery/supportqueryPopup";
 import * as actions from "../../../../actions";
 import moment from 'moment';
 //import EmailForm from "./EmailForm";
@@ -24,10 +26,10 @@ class CommunicationLog extends Component {
                 <div>
                     <div className=" icon_well text-right ">
                         <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#callLogModal"><i className="fa fa-phone"></i>Add</button>
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#comentPopUp"><i className="fa fa-comments"></i>Add</button>
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#queryLogModal"><i className="fa fa-comments"></i>Add</button>
                         <div className="clearfix"></div>
-                        </div>
-                   
+                    </div>
+
                     <ReactTable
                         data={this.props.communicationLog}
                         filterable
@@ -35,7 +37,7 @@ class CommunicationLog extends Component {
                             String(row[filter.id]) === filter.value}
                         columns={[
                             {
-                               Header: "Communication Log",
+                                Header: "Communication Log",
                                 columns: [
                                     {
                                         Header: "Date",
@@ -43,26 +45,26 @@ class CommunicationLog extends Component {
                                         className: 'text-center',
                                         accessor: d => moment(d.emaildate || d.previousCallDate).format('DD MMM YYYY'),
                                         filterMethod: (filter, rows) =>
-                                            matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.STARTS_WITH, keys: ["emaildate"] || ["previousCallDate"] }),
+                                            matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.STARTS_WITH, keys: ["emaildate"] || ["previousCallDate"] }),
                                         filterAll: true
                                     },
-                                   
+
                                     {
                                         Header: "Subject",
                                         id: "subject",
                                         className: 'text-center',
-                                        accessor: d => d.subject || d.summary,
+                                        accessor: d => d.subject || d.summary || d.qrysubject,
                                         filterMethod: (filter, rows) =>
-                                            matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.STARTS_WITH, keys: ["subject"] || ["summary"] }),
+                                            matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.STARTS_WITH, keys: ["subject"] || ["summary"] || ["qrysubject"] }),
                                         filterAll: true
                                     },
                                     {
                                         Header: "Text",
                                         id: "text",
                                         className: 'text-center',
-                                        accessor: d => d.text || d.topic,
+                                        accessor: d => d.text || d.topic || d.qrytext,
                                         filterMethod: (filter, rows) =>
-                                            matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.STARTS_WITH, keys: ["text"] || ["topic"] }),
+                                            matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.STARTS_WITH, keys: ["text"] || ["topic"] || ["qrytext"] }),
                                         filterAll: true
                                     },
                                     {
@@ -70,7 +72,7 @@ class CommunicationLog extends Component {
                                         id: "type",
                                         filterable: false,
                                         className: 'text-center',
-                                        accessor: d => (d.type || d._previousCallType._previouscalltype !== "comment") ? (d.type || d._previousCallType._previouscalltype === ("Incoming" || "In") ? <i className="fa fa-sign-in" aria-hidden="true"></i> : <i className="fa fa-sign-out" aria-hidden="true"></i>) : <i className="fa fa-comments" aria-hidden="true"></i>
+                                        accessor: d => (d.ctype !== "comment") ? (d.type || d._previousCallType._previouscalltype === ("Incoming" || "In") ? <i className="fa fa-sign-in" aria-hidden="true"></i> : <i className="fa fa-sign-out" aria-hidden="true"></i>) : <i className="fa fa-sign-out" aria-hidden="true"></i>
                                     },
                                     {
                                         Header: "View",
@@ -83,14 +85,17 @@ class CommunicationLog extends Component {
                                         //     // <div dangerouslySetInnerHTML={{ __html: row.original.html }} />
                                         //     <div>view</div>
                                         // )
-                                        Cell: row => (row.value === "email" ? <a data-toggle="modal" data-target="#emailLogModal" onClick={() => this.props.SelectEmail(row.original)}><i className="fa fa-envelope" aria-hidden="true"></i></a> : <a data-toggle="modal" data-target="#callLogPopupModal" onClick={() => this.props.SelectCallLog(row.original)}><i className="fa fa-phone" aria-hidden="true"></i></a>),
-                                        
+                                        Cell: row => (row.value === "comment") ? <a data-toggle="modal" data-target="#commentPopupModal" onClick={() => this.props.SelectComment(row.original)}><i className="fa fa-comments" aria-hidden="true"></i></a> : (row.value === "email" ? <a data-toggle="modal" data-target="#emailLogModal" onClick={() => this.props.SelectEmail(row.original)}><i className="fa fa-envelope" aria-hidden="true"></i></a> : <a data-toggle="modal" data-target="#callLogPopupModal" onClick={() => this.props.SelectCallLog(row.original)}><i className="fa fa-phone" aria-hidden="true"></i></a>),
+
                                         filterMethod: (filter, row) => {
                                             if (filter.value === "all") {
                                                 return true;
                                             }
-                                            if (filter.value === "true") {
+                                            if (filter.value === "email") {
                                                 return row[filter.id] === "email";
+                                            }
+                                            else if (filter.value === "comment") {
+                                                return row[filter.id] === "comment";
                                             }
                                             return row[filter.id] === "call";
                                         },
@@ -101,8 +106,9 @@ class CommunicationLog extends Component {
                                                 value={filter ? filter.value : "all"}
                                             >
                                                 <option value="all">Show All</option>
-                                                <option value="true">Email</option>
-                                                <option value="false">Call</option>
+                                                <option value="email">Email</option>
+                                                <option value="call">Call</option>
+                                                <option value="comment">Comment</option>
                                             </select>
                                     }
                                 ]
@@ -114,6 +120,8 @@ class CommunicationLog extends Component {
                     <CallLogInfoForm />
                     <CallLogPopUp />
                     <EmailPopUp />
+                    <QueryForm />
+                    <SupportQueryPopup />
                 </div>
             );
         }

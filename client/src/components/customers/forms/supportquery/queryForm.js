@@ -131,7 +131,7 @@ function mapStateToProps(state) {
     return {
         formValues: state.form.QueryinfoReduxForm,
         SupportQueryInfoForm: state.supportQuery,
-        previousCallTypeDropdown: state.previousCallTypeDropdown
+        //previousCallTypeDropdown: state.previousCallTypeDropdown
     };
 }
 

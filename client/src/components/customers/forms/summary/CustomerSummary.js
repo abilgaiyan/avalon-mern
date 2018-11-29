@@ -7,11 +7,11 @@ class CustomerSummary extends Component {
     return (
       <div >
         <div className="logo_wraper pull-right">
-        <img alt={this.props.customerSummary.Name}
-          //src={this.props.customerSummary.logourl}
-          src={this.props.customerSummary.logourl}
-          className="img-responsive "
-        />
+          <img alt={this.props.customerSummary.Name}
+            //src={this.props.customerSummary.logourl}
+            src={this.props.customerSummary.logourl}
+            className="img-responsive "
+          />
         </div>
         <p>
           {this.props.customerSummary.Name} <br />
@@ -37,7 +37,8 @@ class CustomerSummary extends Component {
               <tr>
                 <td>Website Plan:</td>
                 <td align="right">
-                  {this.props.customerSummary._billingInfo === null ? "" : this.props.customerSummary._billingInfo._productPlan._productPlan}
+                  {/* {this.props.customerSummary._billingInfo === null ? "" : this.props.customerSummary._billingInfo._productPlan._productPlan} */}
+                  {this.props.customerSummary._billingInfo === null ? "" : this.props.customerSummary._billingInfo._productPlan === undefined ? "" : this.props.customerSummary._billingInfo._productPlan._productPlan}
                 </td>
               </tr>
               <tr>

@@ -10,19 +10,19 @@ module.exports = app => {
 
 
     //Get Customer Queries Communication
-    // app.get('/api/customerqueries/:customerId', async (req, res) => {
-    //     var customerid = req.params.customerId
-    //     const customerqueries = await CustomerQueries.find({ _customer: customerid }).sort({ createDate: -1 });;
-    //     res.send(customerqueries);
-    // });
+    app.get('/api/customerqueries/:customerId', async (req, res) => {
+        var customerid = req.params.customerId
+        const customerqueries = await CustomerQueries.find({ _customer: customerid }).sort({ createDate: -1 });;
+        res.send(customerqueries);
+    });
 
 
     //New
 
     //Post Request to Customer Queries Communication
     app.post('/api/customerqueries', async (req, res) => {
-        console.log('----------------------------->>>>>>>>><<<<<<<<<<<<<<<<-----------------------')
-        console.log('req.body', req.body)
+        // console.log('----------------------------->>>>>>>>><<<<<<<<<<<<<<<<-----------------------');
+        // console.log('req.body', req.body);
         const { qrysubject, qrytext, qryrelated, customerId } = req.body;
         const CustomerQueriesData = new CustomerQueries({
             qrysubject,
@@ -35,7 +35,6 @@ module.exports = app => {
             updateDate: Date.now()
 
         });
-
 
         //Save Data
         if (CustomerQueriesData) {
@@ -52,7 +51,6 @@ module.exports = app => {
                 }
 
             });
-
             //console.log("--------------------------------->>>>>>>>>>>>>>>>>>>>callinfo ID->>>>>>>>>>>>>>>>>>>>>>>>", data);
             res.send(CustomerQueriesData);
         }
