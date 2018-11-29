@@ -22,10 +22,10 @@ class CommunicationLog extends Component {
         else {
             return (
                 <div>
-                    <div class=" icon_well text-right ">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#callLogModal"><i class="fa fa-phone"></i>Add</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#comentPopUp"><i class="fa fa-comments"></i>Add</button>
-                        <div class="clearfix"></div>
+                    <div className=" icon_well text-right ">
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#callLogModal"><i className="fa fa-phone"></i>Add</button>
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#comentPopUp"><i className="fa fa-comments"></i>Add</button>
+                        <div className="clearfix"></div>
                         </div>
                    
                     <ReactTable
@@ -43,7 +43,7 @@ class CommunicationLog extends Component {
                                         className: 'text-center',
                                         accessor: d => moment(d.emaildate || d.previousCallDate).format('DD MMM YYYY'),
                                         filterMethod: (filter, rows) =>
-                                            matchSorter(rows, filter.value, { keys: ["emaildate"] || ["previousCallDate"] }),
+                                            matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.STARTS_WITH, keys: ["emaildate"] || ["previousCallDate"] }),
                                         filterAll: true
                                     },
                                    
@@ -53,7 +53,7 @@ class CommunicationLog extends Component {
                                         className: 'text-center',
                                         accessor: d => d.subject || d.summary,
                                         filterMethod: (filter, rows) =>
-                                            matchSorter(rows, filter.value, { keys: ["subject"] || ["summary"] }),
+                                            matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.STARTS_WITH, keys: ["subject"] || ["summary"] }),
                                         filterAll: true
                                     },
                                     {
@@ -62,7 +62,7 @@ class CommunicationLog extends Component {
                                         className: 'text-center',
                                         accessor: d => d.text || d.topic,
                                         filterMethod: (filter, rows) =>
-                                            matchSorter(rows, filter.value, { keys: ["text"] || ["topic"] }),
+                                            matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.STARTS_WITH, keys: ["text"] || ["topic"] }),
                                         filterAll: true
                                     },
                                     {
@@ -86,7 +86,6 @@ class CommunicationLog extends Component {
                                         Cell: row => (row.value === "email" ? <a data-toggle="modal" data-target="#emailLogModal" onClick={() => this.props.SelectEmail(row.original)}><i className="fa fa-envelope" aria-hidden="true"></i></a> : <a data-toggle="modal" data-target="#callLogPopupModal" onClick={() => this.props.SelectCallLog(row.original)}><i className="fa fa-phone" aria-hidden="true"></i></a>),
                                         
                                         filterMethod: (filter, row) => {
-                                            console.log(row)
                                             if (filter.value === "all") {
                                                 return true;
                                             }

@@ -7,7 +7,7 @@ class CustomerSummary extends Component {
     return (
       <div >
         <div className="logo_wraper pull-right">
-        <img
+        <img alt={this.props.customerSummary.Name}
           //src={this.props.customerSummary.logourl}
           src={this.props.customerSummary.logourl}
           className="img-responsive "

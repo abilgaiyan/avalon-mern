@@ -19,7 +19,7 @@ const datetimeField = ({ input: { onChange, value }, label, type, meta: { touche
                     className={touched && error}
                     format="DD MMM YYYY"
                     time={showTime}
-                    value={!value ? "" : new Date(value)}
+                    value={!value ? null : new Date(value)}
                 //value={!input.value ? null : new Date(input.value)}
                 //value={!input.value ? null : new Date(moment(input.value).format("DD MMM YYYY"))}
                 />

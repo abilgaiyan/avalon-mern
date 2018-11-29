@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class AccordianPanel extends Component {
   render() {
     return (
-      <div className="panel panel-default new">
+      <div className="panel panel-default">
         <div className={"panel-heading " + this.props.custmClass + (this.props.active ? " active" : " ")}>
           <h4 className="panel-title">
             <a
