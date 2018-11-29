@@ -74,8 +74,13 @@ module.exports = app => {
     }
   });
 
-
-  app.get("/api/customerallinfo", requireLogin, async (req, res) => {
+  //------------------->>>>>>>>>Dont Remove below Comment (This is to show user data only on login)<<<<<<<<<<<<<<<<<<-----------------------
+  // app.get("/api/customerallinfo", requireLogin, async (req, res) => {
+  //   const customeralldata = await CustomerInfo.find({});
+  //   // console.log(customeralldata);
+  //   res.send(customeralldata);
+  // });
+  app.get("/api/customerallinfo", async (req, res) => {
     const customeralldata = await CustomerInfo.find({});
     // console.log(customeralldata);
     res.send(customeralldata);

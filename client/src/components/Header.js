@@ -33,50 +33,50 @@ class Header extends Component {
     }
   }
   render() {
-    if (this.props.auth === false) {
-      return <Redirect to="/" />
-    }
-    else {
-      return (
-        <header className="navbar-fixed-top">
-          <nav className="navbar navbar-default ">
-            <div className="container-fluid">
-              <div className="navbar-header col-xs-6 col-sm-4">
-                <a className="navbar-brand" href="#">
-                  Welcome {this.props.auth && this.props.auth.name ? this.props.auth.name : ''}
-                </a>
-              </div>
-              <div className="col-xs-4 col-sm-4 search_wraper hidden-xs">
-                <form className="navbar-form navbar-left">
-                  <div className="input-group">
-                    <Search />
-                  </div>
-                </form>
-              </div>
-              <div className="col-xs-6 col-sm-4 text-right noppading">
-                <button type="button" className="btn btn-success navbar-btn hidden-xs" data-toggle="modal" data-target="#addcustomerinfoModal">ADD NEW CUSTOMER</button>
-                <AddCustomerInfoForm />
-                <ul className="nav navbar-nav navbar-right user_wraper">
-                  <li className="dropdown">
-                    <a
-                      className="user_item dropdown-toggle"
-                      data-toggle="dropdown"
-                    >
-                      <span className="glyphicon glyphicon-user" />
-                    </a>
-                    <ul className="dropdown-menu text-center">
-                      {this.renderHeader()}
-                    </ul>
-                  </li>
-                </ul>
-              </div>
+    // if (this.props.auth === false) {
+    //   return <Redirect to="/" />
+    // }
+    // else {
+    return (
+      <header className="navbar-fixed-top">
+        <nav className="navbar navbar-default ">
+          <div className="container-fluid">
+            <div className="navbar-header col-xs-6 col-sm-4">
+              <a className="navbar-brand" href="#">
+                Welcome {this.props.auth && this.props.auth.name ? this.props.auth.name : ''}
+              </a>
             </div>
-          </nav>
-        </header>
-      );
-    }
+            <div className="col-xs-4 col-sm-4 search_wraper hidden-xs">
+              <form className="navbar-form navbar-left">
+                <div className="input-group">
+                  <Search />
+                </div>
+              </form>
+            </div>
+            <div className="col-xs-6 col-sm-4 text-right noppading">
+              <button type="button" className="btn btn-success navbar-btn hidden-xs" data-toggle="modal" data-target="#addcustomerinfoModal">ADD NEW CUSTOMER</button>
+              <AddCustomerInfoForm />
+              <ul className="nav navbar-nav navbar-right user_wraper">
+                <li className="dropdown">
+                  <a
+                    className="user_item dropdown-toggle"
+                    data-toggle="dropdown"
+                  >
+                    <span className="glyphicon glyphicon-user" />
+                  </a>
+                  <ul className="dropdown-menu text-center">
+                    {this.renderHeader()}
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+    );
   }
 }
+// }
 
 function mapStateToProps(state) {
   return {
