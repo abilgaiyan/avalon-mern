@@ -13,7 +13,7 @@
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client \"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true  npm install && yarn --prefix client && yarn build --prefix client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true  npm install && yarn --prefix client && yarn run  build --prefix client",
     "webhook": "forever sendgrid_webhook.js"
   },
   "keywords": [],
