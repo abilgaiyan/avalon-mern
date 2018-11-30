@@ -87,19 +87,20 @@ require('./routes/hostingAmountRoutes')(app);
 require('./routes/communicationLogRouter')(app);
 
 
-
+console.log('environment', process.env.NODE_ENV);
+console.log('environment', process.env.NODE_ENV === 'production');
 // For Production environment
 if (process.env.NODE_ENV === 'production') {
     // Express will serve up production assets
     // like our main.js or main.css file!
-    app.use(express.static('/client/build'));
-    //   app.use(express.static('/client/build/css'));
-    //   app.use(express.static('/client/build/fonts'));
-    //   app.use(express.static('/client/build/img'));
-    //   app.use(express.static('/client/build/static'));
-    //   app.use(express.static('/client/build/static/css'));
-    //   app.use(express.static('/client/build/static/js'));
-    //   app.use(express.static('/client/build/static/js/vendor'));
+    app.use(express.static( __dirname + '/client/build'));
+    //    app.use(express.static('/client/build/css'));
+    //    app.use(express.static('/client/build/fonts'));
+    //    app.use(express.static('/client/build/img'));
+    //    app.use(express.static('/client/build/static'));
+    //    app.use(express.static('/client/build/static/css'));
+    //    app.use(express.static('/client/build/static/js'));
+    //    app.use(express.static('/client/build/static/js/vendor'));
 
 
     // app.use(express.static('/client/public'));
@@ -110,9 +111,13 @@ if (process.env.NODE_ENV === 'production') {
     // code will execute for client side router defined 
 
     const path = require('path');
+    
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+        console.log('req',req);
     });
+    
+  
 }
 
 const PORT = process.env.PORT || 5000;
@@ -122,3 +127,4 @@ app.listen(PORT, () => {
 })
 
 //https://avalon-mkt.herokuapp.com/ | https://git.heroku.com/avalon-mkt.git
+//  "homepage" : "http://myname.github.io/myapp",
