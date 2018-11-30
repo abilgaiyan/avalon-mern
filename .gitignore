@@ -2,3 +2,4 @@ node_modules
 dev.js
 dbstart.bat
 package-lock.json
+build
