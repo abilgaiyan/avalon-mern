@@ -2,6 +2,7 @@ const _ = require("lodash");
 const Path = require("path-parser");
 const { URL } = require("url");
 const requireLogin = require('../middlewares/requireLogin');
+const requirePermission = require('../middlewares/requirePermission');
 const mongoose = require("mongoose");
 const BuyingGroup = mongoose.model('buyinggroup');
 const CustomerInfo = mongoose.model("customerinfo");
@@ -75,16 +76,16 @@ module.exports = app => {
   });
 
   //------------------->>>>>>>>>Dont Remove below Comment (This is to show user data only on login)<<<<<<<<<<<<<<<<<<-----------------------
-  // app.get("/api/customerallinfo", requireLogin, async (req, res) => {
-  //   const customeralldata = await CustomerInfo.find({});
-  //   // console.log(customeralldata);
-  //   res.send(customeralldata);
-  // });
-  app.get("/api/customerallinfo", async (req, res) => {
+  app.get("/api/customerallinfo", requireLogin, requirePermission, async (req, res) => {
     const customeralldata = await CustomerInfo.find({});
     // console.log(customeralldata);
     res.send(customeralldata);
   });
+  // app.get("/api/customerallinfo", async (req, res) => {
+  //   const customeralldata = await CustomerInfo.find({});
+  //   // console.log(customeralldata);
+  //   res.send(customeralldata);
+  // });
 
   app.post("/api/searchcustomer", async (req, res) => {
     const search = req.body.search;
