@@ -9,35 +9,56 @@ import { CustomerList, CustomerDetailsWraper } from "./WithHeader"
 import PermissionAccess from "./PermissionAccess";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { permission: 0 }
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { permission: 0 }
+  // }
 
   componentDidMount() {
     this.props.fetchUser();
   }
 
-  componentWillReceiveProps(nextProps) {
-    // console.clear();
-    // console.log("header.js, checking permission: ", nextProps.auth.permission);
+  // componentWillReceiveProps(nextProps) {
+  //   // console.clear();
+  //   // console.log("header.js, checking permission: ", nextProps.auth.permission);
 
-    this.setState({ permission: nextProps.auth.permission });
+  //   this.setState({ permission: nextProps.auth.permission });
+  // }
+
+  //BrowserRouter handler
+
+  BrowserRouterHandler = () => {
+    return (<BrowserRouter>
+      <div className="container-fluid">
+        <Route exact={true} path="/" component={Welcome} />
+        <Route exact={true} path="/customers" component={CustomerList} />
+        <Route exact={true} path="/customers/:customerId" component={CustomerDetailsWraper} />
+        {/* <Route exact={true} path="/customers" component={this.state.permission === 0 ? PermissionAccess : CustomerList} />
+          <Route exact={true} path="/customers/:customerId" component={this.state.permission === 0 ? PermissionAccess : CustomerDetailsWraper} /> */}
+      </div>
+    </BrowserRouter>)
   }
 
   render() {
-    // console.log(this.props.auth.permission);
-    return (
-      <BrowserRouter>
-        <div className="container-fluid">
-          <Route exact={true} path="/" component={Welcome} />
-          {/* <Route exact={true} path="/customers" component={CustomerList} />
-          <Route exact={true} path="/customers/:customerId" component={CustomerDetailsWraper} /> */}
-          <Route exact={true} path="/customers" component={this.state.permission === 0 ? PermissionAccess : CustomerList} />
-          <Route exact={true} path="/customers/:customerId" component={this.state.permission === 0 ? PermissionAccess : CustomerDetailsWraper} />
-        </div>
-      </BrowserRouter>
-    );
+    if (this.props.auth === null) {
+      // console.log('Null auth');
+      return '';
+    }
+    if (this.props.auth !== null) {
+      // console.log('Get Permission', this.props.auth.permission)
+      return (this.props.auth.permission === 0 ? <PermissionAccess /> : this.BrowserRouterHandler())
+    }
+    // return (
+    //   <BrowserRouter>
+    //     <div className="container-fluid">
+    //       <Route exact={true} path="/" component={Welcome} />
+    //       <Route exact={true} path="/customers" component={CustomerList} />
+    //       <Route exact={true} path="/customers/:customerId" component={CustomerDetailsWraper} />
+    //       {/* <Route exact={true} path="/customers" component={this.state.permission === 0 ? PermissionAccess : CustomerList} />
+    //       <Route exact={true} path="/customers/:customerId" component={this.state.permission === 0 ? PermissionAccess : CustomerDetailsWraper} /> */}
+    //     </div>
+    //   </BrowserRouter>
+    // );
   }
 }
 
