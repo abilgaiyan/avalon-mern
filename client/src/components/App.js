@@ -27,6 +27,18 @@ class App extends Component {
 
   //BrowserRouter handler
 
+  PermissionHandler = () => {
+    return (<BrowserRouter>
+      <div className="container-fluid">
+        <Route exact={true} path="/" component={Welcome} />
+        <Route exact={true} path="/customers" component={PermissionAccess} />
+        <Route exact={true} path="/customers/:customerId" component={PermissionAccess} />
+        {/* <Route exact={true} path="/customers" component={this.state.permission === 0 ? PermissionAccess : CustomerList} />
+          <Route exact={true} path="/customers/:customerId" component={this.state.permission === 0 ? PermissionAccess : CustomerDetailsWraper} /> */}
+      </div>
+    </BrowserRouter>)
+  }
+
   BrowserRouterHandler = () => {
     return (<BrowserRouter>
       <div className="container-fluid">
@@ -46,7 +58,7 @@ class App extends Component {
     }
     if (this.props.auth !== null) {
       // console.log('Get Permission', this.props.auth.permission)
-      return (this.props.auth.permission === 0 ? <PermissionAccess /> : this.BrowserRouterHandler())
+      return (this.props.auth.permission === 0 ? this.PermissionHandler() : this.BrowserRouterHandler())
     }
     // return (
     //   <BrowserRouter>

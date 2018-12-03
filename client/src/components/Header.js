@@ -66,7 +66,7 @@ class Header extends Component {
                       className="user_item dropdown-toggle"
                       data-toggle="dropdown"
                     >
-                      <span className="glyphicon glyphicon-user" />
+                    <i className="fa fa-user" aria-hidden="true"></i>
                     </a>
                     <ul className="dropdown-menu text-center">
                       {this.renderHeader()}

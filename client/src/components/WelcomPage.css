@@ -1,80 +1,100 @@
 .LoginForm {
-    background-image: url(../images/login_bg.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    padding: 10px;
-    height: 100vh;
+  background-image: url(../images/login_bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 10px;
+  height: 100vh;
 }
 
 .LoginForm .form-heading { color:#fff; font-size:23px;}
 .LoginForm .panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
 .LoginForm .panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
 .LoginForm .login-form .form-control {
-  background: #f7f7f7 none repeat scroll 0 0;
-  border: 1px solid #d4d4d4;
-  border-radius: 0px;
-  font-size: 14px;
-  height: 40px;
-  line-height: 50px;
+background: #f7f7f7 none repeat scroll 0 0;
+border: 1px solid #d4d4d4;
+border-radius: 0px;
+font-size: 14px;
+height: 40px;
+line-height: 50px;
 }
 .LoginForm .main-div {
-  background: #ffffff none repeat scroll 0 0;
-  border-radius: 2px;
-  margin: 10px auto 30px;
-  max-width: 38%;
-  padding: 50px 70px 50px 71px;
-  box-shadow: 0 0 32px 0 rgba(0,0,0,.15);
+background: #ffffff none repeat scroll 0 0;
+border-radius: 2px;
+margin: 10px auto 30px;
+
+padding: 50px 70px 50px 71px;
+box-shadow: 0 0 32px 0 rgba(0,0,0,.15);
 }
 
 .LoginForm .login-form .form-group {
-  margin-bottom:10px;
+margin-bottom:10px;
 }
 .LoginForm .login-form{ text-align:center;transform: translateY(33%);
-    position: relative;}
+  position: relative;}
 .LoginForm .forgot a {
-  color: #777777;
-  font-size: 14px;
-  text-decoration: underline;
+color: #777777;
+font-size: 14px;
+text-decoration: underline;
 }
 .LoginForm .login-form  .btn.btn-primary {
-  background: #e3714d none repeat scroll 0 0;
-  border-color: #e3714d;
-  color: #ffffff;
-  font-size: 14px;
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  padding: 0;
-  border-radius: 0px;
+background: #e3714d none repeat scroll 0 0;
+border-color: #e3714d;
+color: #ffffff;
+font-size: 14px;
+width: 100%;
+height: 40px;
+line-height: 40px;
+padding: 0;
+border-radius: 0px;
 }
 .LoginForm .forgot {
-  text-align: left; margin-bottom:30px;
+text-align: left; margin-bottom:30px;
 }
 .LoginForm .botto-text {
-  color: #ffffff;
-  font-size: 14px;
-  margin: auto;
+color: #ffffff;
+font-size: 14px;
+margin: auto;
 }
 .LoginForm .login-form .btn.btn-primary.reset {
-  background: #ff9900 none repeat scroll 0 0;
+background: #ff9900 none repeat scroll 0 0;
 }
 .LoginForm .back { text-align: left; margin-top:10px;}
 .LoginForm .back a {color: #444444; font-size: 13px;text-decoration: none;}
 
 
 .LoginForm .gmail_wraper .gmail_item {
-    
-    display: inline-block;
-    border: 1px solid #e24545;
-    background: transparent url(../images/gplus-icon.png) no-repeat 16px;
-    background-size: 28px auto;
-    color: #e24545;
-    width: 100%;
-    font-size: 15px;
-    border-radius: 2px;
-    padding: 8px 42px 8px 54px;
-    margin-top: 20px;
-    font-weight: bold;
+  
+  display: inline-block;
+  border: 1px solid #e24545;
+  background: transparent url(../images/gplus-icon.png) no-repeat 16px;
+  background-size: 28px auto;
+  color: #e24545;
+  width: 100%;
+  font-size: 15px;
+  border-radius: 2px;
+  padding: 8px 42px 8px 54px;
+  margin-top: 20px;
+  font-weight: bold;
 }
-.LoginForm .gmail_wraper{display:inline-block;width: 100%}
+.LoginForm .gmail_wraper, .LoginForm .btn_wraper{display:inline-block;width: 100%}
+.LoginForm .btn_wraper .btn_xl{
+  display: inline-block;
+  border: 1px solid #e24545;
+  color: #e24545;
+  width: 100%;
+  font-size: 15px;
+  border-radius: 2px;
+  padding: 8px 42px 8px 42px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+@media(min-width:768px) {
+.LoginForm .main-div{max-width: 38%;max-width: 433px;}
+
+}
+@media(max-width:767px){
+  .LoginForm .main-div{max-width: 433px;padding: 50px;}
+  
+}
