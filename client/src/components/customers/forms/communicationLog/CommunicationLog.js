@@ -14,7 +14,13 @@ import matchSorter from 'match-sorter'
 import 'react-table/react-table.css'
 
 class CommunicationLog extends Component {
+    constructor() {
+        super()
+        this.state = {
+            search: ''
+        }
 
+    }
     render() {
         if (!this.props.communicationLog) {
             // console.clear();
@@ -22,16 +28,40 @@ class CommunicationLog extends Component {
             return (<div>Loading...</div>)
         }
         else {
+            let data = this.props.communicationLog
+            if (this.state.search) {
+                data = data.filter(row => {
+                    console.log(row.emaildate)
+                    return String(row.emaildate).includes(Date(this.state.search).trim())
+                    // console.log(row.Name.toLowerCase().includes((this.state.search).trim()))
+                    // return row.emaildate.includes((this.state.search).trim()) || 
+                    // String(row.jewelsoftId).includes((this.state.search).trim()) || 
+                    // String(row.jewelsoftId).includes((this.state.search).trim()) ||
+                    // String(row.jewelsoftId).includes((this.state.search).trim()) ||
+                    // String(row.jewelsoftId).includes((this.state.search).trim()) ||
+                    // String(row.jewelsoftId).includes((this.state.search).trim()) ||
+                    // String(row.jewelsoftId).includes((this.state.search).trim()) ||
+                })
+            }
             return (
                 <div>
+                    <div className="form-group col-xs-12 col-sm-4 table_search">
+                        {/* <label class="control-label">
+                        Serach
+                        </label>  */}
+                        <div className="inner-addon right-addon">
+                            <i className="glyphicon glyphicon-search"></i>
+                            <input type="text" className="form-control" placeholder="Search" value={this.state.search} onChange={e => this.setState({ search: e.target.value })} />
+                        </div>
+                    </div>
                     <div className=" icon_well text-right ">
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#callLogModal"><i className="fa fa-phone"></i>Add</button>
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#queryLogModal"><i className="fa fa-comments"></i>Add</button>
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#callLogModal"><i class="fas fa-plus"></i><i class="fas fa-phone"></i></button>
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#queryLogModal"><i class="fas fa-plus"></i><i class="fas fa-comment"></i></button>
                         <div className="clearfix"></div>
                     </div>
 
                     <ReactTable
-                        data={this.props.communicationLog}
+                        data={data}
                         filterable
                         defaultFilterMethod={(filter, row) =>
                             String(row[filter.id]) === filter.value}
@@ -43,7 +73,7 @@ class CommunicationLog extends Component {
                                         Header: "Date",
                                         id: "emaildate",
                                         className: 'text-center',
-                                        accessor: d => moment(d.emaildate || d.previousCallDate).format('DD MMM YYYY'),
+                                        accessor: d => moment(d.emaildate || d.previousCallDate).format('MMM DD YYYY'),
                                         filterMethod: (filter, rows) =>
                                             matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.STARTS_WITH, keys: ["emaildate"] || ["previousCallDate"] }),
                                         filterAll: true
@@ -58,15 +88,15 @@ class CommunicationLog extends Component {
                                             matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.STARTS_WITH, keys: ["subject"] || ["summary"] || ["qrysubject"] }),
                                         filterAll: true
                                     },
-                                    {
-                                        Header: "Text",
-                                        id: "text",
-                                        className: 'text-center',
-                                        accessor: d => d.text || d.topic || d.qrytext,
-                                        filterMethod: (filter, rows) =>
-                                            matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.STARTS_WITH, keys: ["text"] || ["topic"] || ["qrytext"] }),
-                                        filterAll: true
-                                    },
+                                    //{
+                                    //    Header: "Text",
+                                    //    id: "text",
+                                    //    className: 'text-center',
+                                    //    accessor: d => d.text || d.topic || d.qrytext,
+                                    //    filterMethod: (filter, rows) =>
+                                    //        matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.STARTS_WITH, keys: ["text"] || ["topic"] || ["qrytext"] }),
+                                    //    filterAll: true
+                                    //},
                                     {
                                         Header: "In/Out",
                                         id: "type",

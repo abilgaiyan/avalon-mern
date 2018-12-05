@@ -16,7 +16,7 @@ class CallLogList extends Component {
       return (
         <tr key={list._id}
           onClick={() => this.props.SelectCallLog(list)}>
-          <td>{moment(list.previousCallDate).format('DD MMM YYYY')}</td>
+          <td>{moment(list.previousCallDate).format('MMM DD YYYY')}</td>
           <td>{list._previousCallType._previouscalltype === "Incoming" ? <i className="fa fa-sign-in" aria-hidden="true"></i> : <i className="fa fa-sign-out" aria-hidden="true"></i>}</td>
           <td>{list.callPerson}</td>
           <td>{list.avalonExcutive}</td>

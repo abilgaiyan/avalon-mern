@@ -12,21 +12,21 @@ const LeftSideBar = (props) => {
                 </div>
                 <div className="list-group" id="sidebar-nav-menu">
                     <Link to="#Summary" data-toggle="collapse" data-parent="#accordion1" aria-expanded="true" className="list-group-item Summary active"  onClick={(e) => SidebarClick(e)}>Summary</Link>
-                    <Link onClick={(e) => SidebarClick(e)}  data-toggle="collapse" data-parent="#accordion1" to="#CustomerInfo" aria-expanded="true" className="list-group-item Customer_Info">Customer Info</Link>
                     <Link onClick={(e) => SidebarClick(e)} data-toggle="collapse" data-parent="#accordion" to="#TargetAreas" aria-expanded="true" className="list-group-item">Target Areas</Link>
                     <Link onClick={(e) => SidebarClick(e)} data-toggle="collapse" data-parent="#accordion" to="#SupportQuery" aria-expanded="true" className="list-group-item Call_Log">Query / Support Trend</Link>
                     {/* <Link data-toggle="collapse" data-parent="#accordion" to="#callLog" aria-expanded="true" className="list-group-item Phone">Call Log</Link>
                     <Link data-toggle="collapse" data-parent="#accordion" to="#Emails" aria-expanded="true" className="list-group-item Emails">Email Log</Link> */}
                     <Link onClick={(e) => SidebarClick(e)} data-toggle="collapse" data-parent="#accordion" to="#CommunicationLog" aria-expanded="true" className="list-group-item CommunicationLog">Communication Log</Link>
+                    <Link onClick={(e) => SidebarClick(e)}  data-toggle="collapse" data-parent="#accordion1" to="#CustomerInfo" aria-expanded="true" className="list-group-item Customer_Info">Customer Info</Link>
                     <Link onClick={(e) => SidebarClick(e)} data-toggle="collapse" data-parent="#accordion1" to="#AvalonInfo" aria-expanded="true" className="list-group-item">Avalon Info</Link>
                     <Link onClick={(e) => SidebarClick(e)} data-toggle="collapse" data-parent="#accordion1" to="#BillingForm" aria-expanded="true" className="list-group-item">Billing Info</Link>
-                    <Link onClick={(e) => SidebarClick(e)} data-toggle="collapse" data-parent="#accordion1" to="#WebsiteInfoForm" aria-expanded="true" className="list-group-item">Website Info</Link>
-                    <Link onClick={(e) => SidebarClick(e)} data-toggle="collapse" data-parent="#accordion1" to="#ProductInfoForm" aria-expanded="true" className="list-group-item">Product Info</Link>
                     <Link onClick={(e) => SidebarClick(e)} data-toggle="collapse" data-parent="#accordion1" to="#AshiMicroWebsiteForm" aria-expanded="true" className="list-group-item">ASHI Micro-Website Info</Link>
                     <Link onClick={(e) => SidebarClick(e)} data-toggle="collapse" data-parent="#accordion1" to="#DomainInfoForm" aria-expanded="true" className="list-group-item">Domain Info</Link>
                     <Link onClick={(e) => SidebarClick(e)} data-toggle="collapse" data-parent="#accordion1" to="#SSLInfoForm" aria-expanded="true" className="list-group-item">SSL Info</Link>
                     <Link onClick={(e) => SidebarClick(e)} data-toggle="collapse" data-parent="#accordion1" to="#BusinessEmailInfoForm" aria-expanded="true" className="list-group-item">Business Email Info</Link>
                     <Link onClick={(e) => SidebarClick(e)} data-toggle="collapse" data-parent="#accordion1" to="#EmailMarketingAccountInfoForm" aria-expanded="true" className="list-group-item">Email Marketing Account Info</Link>
+                    <Link onClick={(e) => SidebarClick(e)} data-toggle="collapse" data-parent="#accordion1" to="#WebsiteInfoForm" aria-expanded="true" className="list-group-item">Website Info</Link>
+                    <Link onClick={(e) => SidebarClick(e)} data-toggle="collapse" data-parent="#accordion1" to="#ProductInfoForm" aria-expanded="true" className="list-group-item">Product Info</Link>
                 </div>
             </nav>
         </div>

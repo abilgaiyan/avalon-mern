@@ -14,10 +14,10 @@ const datetimeField = ({ input, label, type, meta: { touched, error }, showTime 
                     //readOnly
                     onChange={input.onChange}
                     className={touched && error}
-                    format="DD MMM YYYY"
+                    format="MMM DD YYYY"
                     time={showTime}
                     value={!input.value ? "" : new Date(input.value)}
-                //value={!input.value ? null : new Date(moment(input.value).format("DD MMM YYYY"))}
+                //value={!input.value ? null : new Date(moment(input.value).format("MMM DD YYYY"))}
                 />
                 {/* <div className="red-text" >
                     {touched && error}

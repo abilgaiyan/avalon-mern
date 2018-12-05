@@ -14,6 +14,11 @@ class CustomerSummary extends Component {
               <br />
               {this.props.customerSummary.contactPersonName}
             </p>
+            <p>
+              <i class="fas fa-globe"></i> {this.props.customerSummary.websiteUrl} <br />
+              <i class="fas fa-phone"></i> {this.props.customerSummary.mobileNumber}<br />
+              <i class="fas fa-envelope"></i> {this.props.customerSummary.contactpersonEmail}
+            </p>
           </div>
           <div className="col-sm-4">
             <div className="logo_wraper pull-right">

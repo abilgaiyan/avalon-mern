@@ -17,7 +17,7 @@ const timeField = ({ input: { onChange, value }, label, type, meta: { touched, e
                     className={touched && error}
                     date={false}
                     value={!value ? null : new Date(value)}
-                //value={!input.value ? null : new Date(moment(input.value).format("DD MMM YYYY"))}
+                //value={!input.value ? null : new Date(moment(input.value).format("MMM DD YYYY"))}
                 />
                  {/* <div className="red-text" >
                     {touched && error}
@@ -42,7 +42,7 @@ const timeField = ({ input: { onChange, value }, label, type, meta: { touched, e
 //                     timeFormat='hh:mm A'
 //                     date={false}
 //                     value={!input.value ? "" : new Date(input.value)}
-//                 //value={!input.value ? "" : new Date(moment(input.value).format("DD MMM YYYY"))}
+//                 //value={!input.value ? "" : new Date(moment(input.value).format("MMM DD YYYY"))}
 //                 />
 //                 <div className="red-text" >
 //                     {/* {touched && error} */}

@@ -20,7 +20,7 @@ const CallLogPopUp = (props) => {
                 <tbody className="text-left">
                     <tr>
                         <td><label>Call Date: </label></td>
-                        <td><span>{moment(props.activeCallLog.previousCallDate).format('DD MMM YYYY')}</span></td>
+                        <td><span>{moment(props.activeCallLog.previousCallDate).format('MMM DD YYYY')}</span></td>
                     </tr>
                     <tr>
                         <td><label>Call Type: </label></td>
@@ -48,7 +48,7 @@ const CallLogPopUp = (props) => {
                     </tr>
                     <tr>
                         <td><label>Followup Call Date: </label></td>
-                        <td><span>{moment(props.activeCallLog.followupcalldate).format('DD MMM YYYY')}</span></td>
+                        <td><span>{moment(props.activeCallLog.followupcalldate).format('MMM DD YYYY')}</span></td>
                     </tr>
                     <tr>
                         <td><label>Followup Call Time: </label></td>
@@ -61,14 +61,14 @@ const CallLogPopUp = (props) => {
                 </tbody>
             </table>
             // <div>
-            //     <label>Previous Call Date: </label> <span>{moment(props.activeCallLog.previousCallDate).format('DD MMM YYYY')}</span><br />
+            //     <label>Previous Call Date: </label> <span>{moment(props.activeCallLog.previousCallDate).format('MMM DD YYYY')}</span><br />
             //     <label>Previous Call Type: </label> <span>{props.activeCallLog._previousCallType._previouscalltype}</span><br />
             //     <label>Call Person: </label> <span>{props.activeCallLog.callPerson}</span><br />
             //     <label>Avalon Executive: </label> <span>{props.activeCallLog.avalonExcutive}</span><br />
             //     <label>Topic: </label> <span>{props.activeCallLog.topic}</span><br />
             //     <label>Summary: </label> <span>{props.activeCallLog.summary}</span><br />
             //     <label>Comments: </label> <span>{props.activeCallLog.comments}</span><br />
-            //     <label>Followup Call Date: </label> <span>{moment(props.activeCallLog.followupcalldate).format('DD MMM YYYY')}</span><br />
+            //     <label>Followup Call Date: </label> <span>{moment(props.activeCallLog.followupcalldate).format('MMM DD YYYY')}</span><br />
             //     <label>Followup Call Time: </label> <span>{moment(props.activeCallLog.followupcallTime).format('hh:mm A')}</span><br />
             // </div>
         )

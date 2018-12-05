@@ -66,8 +66,7 @@ class Header extends Component {
               </div>
               <div className="col-xs-6 col-sm-4 text-right noppading">
                 {this.props.authbtn ? <OrphenEmailLogList /> : ''}
-
-                <button type="button" className="btn btn-success navbar-btn hidden-xs" data-toggle="modal" data-target="#addcustomerinfoModal">ADD NEW CUSTOMER</button>
+                <button type="button" className="btn btn-success navbar-btn hidden-xs" data-toggle="modal" data-target="#addcustomerinfoModal"><i className="fa fa-plus" aria-hidden="true"></i>CUSTOMER</button>
                 <AddCustomerInfoForm />
                 <ul className="nav navbar-nav navbar-right user_wraper">
                   <li className="dropdown">

@@ -16,7 +16,7 @@ class Welcome extends Component {
                 return <a href="/auth/google" className="gmail_wraper"><span className="gmail_item" >Login with Google</span></a>;
             default:
                 // console.log("Auth Value: ", this.props.auth)
-                return <a key="1" href="/api/logout"><span className="" >Logout</span></a>
+                return <a key="1" href="/api/logout" className="btn_wraper"><span className="btn_xl" >Logout</span></a>
         }
     }
 

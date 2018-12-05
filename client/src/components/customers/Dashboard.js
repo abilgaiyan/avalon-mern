@@ -75,7 +75,7 @@ class Dashboard extends Component {
                                 {
                                     Header: "Jewelsoft Id",
                                     id: "jewelsoftId",
-                                    className: 'text-center',
+                                    className: 'text-left',
                                     accessor: d => String(d.jewelsoftId).toLowerCase() === 'undefined' ? '-' : String(d.jewelsoftId).toLowerCase(),
                                     filterMethod: (filter, rows) =>
                                         matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["jewelsoftId"] }),
@@ -84,7 +84,7 @@ class Dashboard extends Component {
                                 {
                                     Header: "Avalon Id",
                                     id: "avalonId",
-                                    className: 'text-center',
+                                    className: 'text-left',
                                     accessor: d => String(d.avalonId).toLowerCase() === 'undefined' ? '-' : String(d.avalonId).toLowerCase(),
                                     //filterMethod: (filter, rows) =>
                                     //    matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["avalonId"] }),
@@ -94,7 +94,7 @@ class Dashboard extends Component {
                                 {
                                     Header: "City",
                                     id: "city",
-                                    className: 'text-center',
+                                    className: 'text-left',
                                     accessor: d => String(d.city).toLowerCase() === 'undefined' ? '-' : String(d.city).toLowerCase(),
                                     // filterMethod: (filter, rows) =>
                                     //       matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["city"] }),
@@ -104,7 +104,7 @@ class Dashboard extends Component {
                                 {
                                     Header: "State",
                                     id: "state",
-                                    className: 'text-center',
+                                    className: 'text-left',
                                     accessor: d => d.state,
                                     //filterMethod: (filter, rows) =>
                                     //                matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["state"] }),
@@ -115,10 +115,10 @@ class Dashboard extends Component {
                                 {
                                     Header: "Website",
                                     id: "websiteUrl",
-                                    className: 'text-center',
+                                    className: 'text-left',
                                     accessor: "websiteUrl",
                                     Cell: row => (
-                                        <Link className="alink" to={'/' + row.value}>{String(row.value).toLowerCase()}</Link>
+                                        <Link className="alink" to={"//" + row.value} target="_blank">{String(row.value).toLowerCase()}</Link>
                                     ),
                                     //filterMethod: (filter, rows) =>
                                     //                matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["websiteUrl"] }),
@@ -127,7 +127,7 @@ class Dashboard extends Component {
                                 {
                                     Header: "View",
                                     id: "view",
-                                    className: 'text-center',
+                                    className: 'text-left',
                                     accessor: "_id",
                                     Cell: row => (
                                         <div className="card-link">
@@ -141,7 +141,8 @@ class Dashboard extends Component {
                             ]
                         }
                     ]}
-                    defaultPageSize={10}
+                    pageSizeOptions={[25, 50, 100]}
+                    defaultPageSize={100}
                     showPaginationTop
                     className="-striped -highlight table table_list without_border"
                 />
