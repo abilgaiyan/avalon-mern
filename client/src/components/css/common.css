@@ -137,10 +137,15 @@ ul li {
     font-size: 16px;
     border-radius: 0px;
 }
-.sidebar .list-group-item:hover , .sidebar .list-group-item:focus, .sidebar .list-group-item.active{
+.sidebar .list-group-item:hover , .sidebar .list-group-item.active,  .sidebar .list-group-item.active:focus{
     color: #fff;
     background-color: #66bb6a;
     border: 1px solid #66bb6a;
+}
+.sidebar .list-group-item:focus{
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid transparent;
 }
 
 /* MAIN CONTAINER */

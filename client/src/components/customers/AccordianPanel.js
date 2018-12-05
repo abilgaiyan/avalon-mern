@@ -1,16 +1,27 @@
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
+import {onClick_Acc} from './accordiancontrol/AccordianClick';
+
+export let SidebarClick = function(event) {
+  onClick_Acc(event);
+ }
 
 class AccordianPanel extends Component {
+  constructor(props) {
+    super(props);
+    
+  }
   render() {
     return (
       <div className="panel panel-default">
-        <div className={"panel-heading " + this.props.custmClass + (this.props.active ? " active" : " ")}>
+        <div className={"panel-heading " + this.props.custmClass + (this.props.active  ? " active" : " ")}>
           <h4 className="panel-title">
             <a
               className={this.props.active ? "" : "collapsed"}
               data-toggle="collapse"
               data-parent={"#" + this.props.parent}
               href={"#" + this.props.AccId}
+              onClick={(e) => onClick_Acc(e)}
             >
               {this.props.title}
             </a>
