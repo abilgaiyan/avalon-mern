@@ -18,6 +18,20 @@ module.exports = app => {
     res.send(customeremail);
   });
 
+
+
+  app.get("/api/orphenemaildata/", async (req, res) => {
+    //const custid = req.params.customerId;
+    // console.log(customerid);
+
+    //const customeremail = await CustomerEmail.find({_customer: customerid});
+    const customerorphenemail = await CustomerEmail.find({
+      customerid: 'orphen'
+    }).sort({ createDate: -1 });
+    // console.log(customeremail);
+    res.send(customerorphenemail);
+  });
+
   // //Get Customer Email Communication
   // app.get("/api/customeremail/:customerId", async (req, res) => {
   //   const customerid = req.params.customerId;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCustomers } from '../../actions';
+import { fetchCustomers, fetchorphenEmail } from '../../actions';
 import { Link } from 'react-router-dom';
 
 import CustomerDetails from './CustomerDetails';
@@ -14,6 +14,7 @@ class Dashboard extends Component {
 
     componentDidMount() {
         this.props.fetchCustomers();
+        this.props.fetchorphenEmail();
         // console.log(this.props.fetchCustomers());
     }
 
@@ -41,67 +42,67 @@ class Dashboard extends Component {
         })
     }
 
-    
+
     render() {
         return (
 
             <ReactTable
-            data={this.props.customers}
-                        filterable
-                        defaultFilterMethod={(filter, row) =>
-                            String(row[filter.id]) === filter.value}
-                        columns={[
+                data={this.props.customers}
+                filterable
+                defaultFilterMethod={(filter, row) =>
+                    String(row[filter.id]) === filter.value}
+                columns={[
+                    {
+                        Header: "Avalon Customer List",
+                        columns: [
                             {
-                                Header: "Avalon Customer List",
-                                columns: [
-                                    {
-                                        Header: "Customer Name",
-                                        id: "Name",
-                                        className: 'text-left',
-                                        accessor: d => d.Name,
-                                        filterMethod: (filter, rows) =>
-                                            matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["Name"] }),
-                                        filterAll: true
-                                    },
-                                    {
-                                        Header: "Jewelsoft Id",
-                                        id: "jewelsoftId",
-                                        className: 'text-center',
-                                        accessor: d => d.jewelsoftId,
-                                        filterMethod: (filter, rows) =>
-                                            matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["jewelsoftId"] }),
-                                        filterAll: true
-                                    },
-                                    
-                                    {
-                                        Header: "Website",
-                                        id: "websiteUrl",
-                                        className: 'text-center',
-                                        accessor: "websiteUrl",
-                                        Cell : row => (
-                                                <Link className="alink" to={'/' + row.value}>{row.value}</Link>
-                                        ),
-                                        filterMethod: (filter, rows) =>
-                                            matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["websiteUrl"] }),
-                                        filterAll: true
-                                    },
-                                    {
-                                        Header: "View",
-                                        id: "view",
-                                        className: 'text-center',
-                                        accessor: "_id",
-                                        Cell : row => (
-                                            <div className="card-link">
-                                                <Link className="alink" to={'/customers/' + row.value}>Go To Details</Link>
-                                            </div>
-                                        ),
-                                        filterable: false,
-                                    }
-                                ]
+                                Header: "Customer Name",
+                                id: "Name",
+                                className: 'text-left',
+                                accessor: d => d.Name,
+                                filterMethod: (filter, rows) =>
+                                    matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["Name"] }),
+                                filterAll: true
+                            },
+                            {
+                                Header: "Jewelsoft Id",
+                                id: "jewelsoftId",
+                                className: 'text-center',
+                                accessor: d => d.jewelsoftId,
+                                filterMethod: (filter, rows) =>
+                                    matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["jewelsoftId"] }),
+                                filterAll: true
+                            },
+
+                            {
+                                Header: "Website",
+                                id: "websiteUrl",
+                                className: 'text-center',
+                                accessor: "websiteUrl",
+                                Cell: row => (
+                                    <Link className="alink" to={'/' + row.value}>{row.value}</Link>
+                                ),
+                                filterMethod: (filter, rows) =>
+                                    matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["websiteUrl"] }),
+                                filterAll: true
+                            },
+                            {
+                                Header: "View",
+                                id: "view",
+                                className: 'text-center',
+                                accessor: "_id",
+                                Cell: row => (
+                                    <div className="card-link">
+                                        <Link className="alink" to={'/customers/' + row.value}>Go To Details</Link>
+                                    </div>
+                                ),
+                                filterable: false,
                             }
-                        ]}
-                        defaultPageSize={20}
-                        className="-striped -highlight table table_list"
+                        ]
+                    }
+                ]}
+                defaultPageSize={20}
+                className="-striped -highlight table table_list"
             />
             // <div className="container marginTop30 list-group">
             //     <h3 className="text-center">Avalon Customer's</h3>
@@ -121,5 +122,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    { fetchCustomers }
+    { fetchCustomers, fetchorphenEmail }
 )(Dashboard);

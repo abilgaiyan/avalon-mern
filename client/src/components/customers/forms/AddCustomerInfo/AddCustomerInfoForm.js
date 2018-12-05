@@ -75,7 +75,7 @@ class AddCustomerInfoForm extends Component {
                     optiondata = ["New York", "Jew Jercy", "Verginia", "TEXARKANA"];
                 }
                 if (name === "customerType") {
-                    optiondata = ["Customer", "Prospect", "Lead"];
+                    optiondata = ["Avalon Customer", "ASHI Customer", "Prospects", "Lead"];
                 }
 
                 return (

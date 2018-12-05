@@ -19,15 +19,15 @@ const CallLogPopUp = (props) => {
                 </thead>
                 <tbody className="text-left">
                     <tr>
-                        <td><label>Previous Call Date: </label></td>
+                        <td><label>Call Date: </label></td>
                         <td><span>{moment(props.activeCallLog.previousCallDate).format('DD MMM YYYY')}</span></td>
                     </tr>
                     <tr>
-                        <td><label>Previous Call Type: </label></td>
+                        <td><label>Call Type: </label></td>
                         <td><span>{props.activeCallLog._previousCallType._previouscalltype}</span></td>
                     </tr>
                     <tr>
-                        <td><label>Call Person: </label></td>
+                        <td><label>Customer Contact: </label></td>
                         <td><span>{props.activeCallLog.callPerson}</span></td>
                     </tr>
                     <tr>
@@ -35,15 +35,15 @@ const CallLogPopUp = (props) => {
                         <td><span>{props.activeCallLog.avalonExcutive}</span></td>
                     </tr>
                     <tr>
-                        <td><label>Topic: </label></td>
+                        <td><label>Subject: </label></td>
                         <td><span>{props.activeCallLog.topic}</span></td>
                     </tr>
                     <tr>
-                        <td><label>Summary: </label></td>
+                        <td><label>Requet Summary: </label></td>
                         <td><span>{props.activeCallLog.summary}</span></td>
                     </tr>
                     <tr>
-                        <td><label>Comments: </label></td>
+                        <td><label>Executive Response: </label></td>
                         <td><span>{props.activeCallLog.comments}</span></td>
                     </tr>
                     <tr>
@@ -52,6 +52,10 @@ const CallLogPopUp = (props) => {
                     </tr>
                     <tr>
                         <td><label>Followup Call Time: </label></td>
+                        <td><span>{moment(props.activeCallLog.followupcallTime).format('hh:mm A')}</span></td>
+                    </tr>
+                    <tr>
+                        <td><label>Followup Regarding: </label></td>
                         <td><span>{moment(props.activeCallLog.followupcallTime).format('hh:mm A')}</span></td>
                     </tr>
                 </tbody>

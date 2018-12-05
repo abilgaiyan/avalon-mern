@@ -3,9 +3,18 @@ import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import Search from "./Search";
 import AddCustomerInfoForm from "./customers/forms/AddCustomerInfo/AddCustomerInfoForm"
+import OrphenEmailLogList from "./OrphenEmails";
 
 class Header extends Component {
+
+
+  renderEmail() {
+    return <OrphenEmailLogList />;
+  }
+
   renderHeader() {
+   
+     
     switch (this.props.auth) {
       case null:
         // console.log("Auth Value: ", this.props.auth)
@@ -54,6 +63,8 @@ class Header extends Component {
               </form>
             </div>
             <div className="col-xs-6 col-sm-4 text-right noppading">
+              <button type="button" className="btn btn-success navbar-btn hidden-xs" data-toggle="modal" data-target="#orphenemailsModal">ORPHEN EMAILS</button>
+              <OrphenEmailLogList />
               <button type="button" className="btn btn-success navbar-btn hidden-xs" data-toggle="modal" data-target="#addcustomerinfoModal">ADD NEW CUSTOMER</button>
               <AddCustomerInfoForm />
               <ul className="nav navbar-nav navbar-right user_wraper">

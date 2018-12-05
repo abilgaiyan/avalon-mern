@@ -52,9 +52,9 @@ class CallLogList extends Component {
           <table className="table table-bordered table_list">
             <thead>
               <tr className="active">
-                <th>Prev. Call Date</th>
-                <th>Prev. Call Type</th>
-                <th>Call Person</th>
+                <th>Call Date</th>
+                <th>Call Type</th>
+                <th>Customer Contact Person</th>
                 <th>Avalon Exec.</th>
                 <th>Followup Time</th>
                 <th></th>
