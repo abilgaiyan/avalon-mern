@@ -34,7 +34,8 @@ import {
   CALLLOG_SELECTED,
   FETCH_SUPPORTQUERY,
   FETCH_COMMUNICATIONLOG,
-  COMMENT_SELECTED
+  COMMENT_SELECTED,
+  FETCH_ORPHENEMAILALLDATA
 } from "./types";
 
 //Store Autocomplete_ID
@@ -445,4 +446,16 @@ export const fetchcommunicationlog = customerId => async dispatch => {
 //Select COMMENT on click
 export const SelectComment = comment => async dispatch => {
   dispatch({ type: COMMENT_SELECTED, payload: comment });
+};
+
+
+
+// Fetch last email communication data by Customer id
+export const fetchorphenEmail = () => async dispatch => {
+  //console.log(customerId)
+  const res = await axios.get("/api/orphenemaildata/");
+
+  //const res = storylist;
+  dispatch({ type: FETCH_ORPHENEMAILALLDATA, payload: res.data });
+  // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
 };

@@ -1,7 +1,7 @@
 
 //  new WOW().init();
 
-$(function () {
+// $(function () {
     // $('.panel-collapse').on('show.bs.collapse', function () {
     //     $(this).siblings('.panel-heading').addClass('active');
     // });
@@ -27,7 +27,7 @@ $(function () {
     //     $('#accordion1 .panel-collapse.in').collapse('hide');
     // });
 
-});
+// });
 
 
 

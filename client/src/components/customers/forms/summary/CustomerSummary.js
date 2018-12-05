@@ -7,24 +7,24 @@ class CustomerSummary extends Component {
     return (
       <div >
         <div className="row">
-        <div className="col-sm-8">
-          <p>
-            {this.props.customerSummary.Name} <br />
-            {this.props.customerSummary.city},{this.props.customerSummary.state}{" "}
-            <br />
-            {this.props.customerSummary.contactPersonName}
-          </p>
-        </div>
-        <div className="col-sm-4">
-          <div className="logo_wraper pull-right">
-            <img alt={this.props.customerSummary.Name}
-              //src={this.props.customerSummary.logourl}
-              src={this.props.customerSummary.logourl}
-              className="img-responsive "
-            />
+          <div className="col-sm-8">
+            <p>
+              {this.props.customerSummary.Name} <br />
+              {this.props.customerSummary.city},{this.props.customerSummary.state}{" "}
+              <br />
+              {this.props.customerSummary.contactPersonName}
+            </p>
+          </div>
+          <div className="col-sm-4">
+            <div className="logo_wraper pull-right">
+              <img alt={this.props.customerSummary.Name}
+                //src={this.props.customerSummary.logourl}
+                src={this.props.customerSummary.logourl}
+                className="img-responsive "
+              />
+            </div>
           </div>
         </div>
-      </div>
         <div className="info-section">
           <table className="table table-info no-margin">
             <tbody>

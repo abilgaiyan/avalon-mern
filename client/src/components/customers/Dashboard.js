@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCustomers } from '../../actions';
+import { fetchCustomers, fetchorphenEmail } from '../../actions';
 import { Link } from 'react-router-dom';
 import ReactTable from "react-table";
 import matchSorter from 'match-sorter';
@@ -20,6 +20,7 @@ class Dashboard extends Component {
 
     componentDidMount() {
         this.props.fetchCustomers();
+        this.props.fetchorphenEmail();
     }
 
     render() {
@@ -27,7 +28,7 @@ class Dashboard extends Component {
         if (this.state.search) {
             data = data.filter(row => {
                 // console.log(row.Name.toLowerCase().includes((this.state.search).trim()))
-                return row.Name.toLowerCase().includes((this.state.search).trim()) || String(row.jewelsoftId).toLowerCase().includes((this.state.search).trim()) || String(row.avalonId).toLowerCase().includes((this.state.search).trim()) || String(row.city).toLowerCase().includes((this.state.search).trim()) || String(row.state).toLowerCase().includes((this.state.search).trim()) || String(row.websiteUrl).toLowerCase().includes((this.state.search).trim())
+                return row.Name.includes((this.state.search).trim()) || String(row.jewelsoftId).toLowerCase().includes((this.state.search).trim()) || String(row.avalonId).toLowerCase().includes((this.state.search).trim()) || String(row.city).toLowerCase().includes((this.state.search).trim()) || String(row.state).toLowerCase().includes((this.state.search).trim()) || String(row.websiteUrl).toLowerCase().includes((this.state.search).trim())
             })
         }
         return (
@@ -75,7 +76,7 @@ class Dashboard extends Component {
                                     Header: "Jewelsoft Id",
                                     id: "jewelsoftId",
                                     className: 'text-center',
-                                    accessor: d => String(d.jewelsoftId).toLowerCase(),
+                                    accessor: d => String(d.jewelsoftId).toLowerCase() === 'undefined' ? '-' : String(d.jewelsoftId).toLowerCase(),
                                     filterMethod: (filter, rows) =>
                                         matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["jewelsoftId"] }),
                                     filterAll: true
@@ -84,7 +85,7 @@ class Dashboard extends Component {
                                     Header: "Avalon Id",
                                     id: "avalonId",
                                     className: 'text-center',
-                                    accessor: d => String(d.avalonId).toLowerCase(),
+                                    accessor: d => String(d.avalonId).toLowerCase() === 'undefined' ? '-' : String(d.avalonId).toLowerCase(),
                                     //filterMethod: (filter, rows) =>
                                     //    matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["avalonId"] }),
                                     //filterAll: true
@@ -94,7 +95,7 @@ class Dashboard extends Component {
                                     Header: "City",
                                     id: "city",
                                     className: 'text-center',
-                                    accessor: d => String(d.city).toLowerCase(),
+                                    accessor: d => String(d.city).toLowerCase() === 'undefined' ? '-' : String(d.city).toLowerCase(),
                                     // filterMethod: (filter, rows) =>
                                     //       matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["city"] }),
                                     // filterAll: true
@@ -104,7 +105,7 @@ class Dashboard extends Component {
                                     Header: "State",
                                     id: "state",
                                     className: 'text-center',
-                                    accessor: d => String(d.state).toLowerCase(),
+                                    accessor: d => d.state,
                                     //filterMethod: (filter, rows) =>
                                     //                matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["state"] }),
                                     //            filterAll: true
@@ -165,5 +166,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    { fetchCustomers }
+    { fetchCustomers, fetchorphenEmail }
 )(Dashboard);

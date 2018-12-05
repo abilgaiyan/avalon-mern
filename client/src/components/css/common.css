@@ -85,6 +85,11 @@ ul li {
     background-color: #fff;
     border: 1px solid #e1e3ea;
 }
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #eee;
+    opacity: 1;
+    background-color: rgba(0,0,0,0.03);
+}
 
 /* Icon common css */
 .fa-2x {
@@ -668,7 +673,7 @@ ul li {
 
 .logo_wraper {
     max-width: 260px;
-    background: #e8e8e8;
+    /* background: #e8e8e8; */
     padding: 10px;
     border-radius: 6px;
     border: 1px solid #ccc;

@@ -69,3 +69,5 @@ export const FETCH_SUPPORTQUERY = "fetch_supportquery";
 export const FETCH_COMMUNICATIONLOG = "fetch_communicationlog";
 
 export const COMMENT_SELECTED = "comment_selected";
+
+export const FETCH_ORPHENEMAILALLDATA = "fetch_orphenemaildata";

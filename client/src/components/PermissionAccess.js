@@ -3,7 +3,7 @@ import React from 'react'
 const PermissionAccess = () => {
     return (
         <div>
-            <h1>You don't have permission to access this site.</h1>
+            <h1>You are not authorised to access this Application.Please request to admin for access rights</h1>
         </div>
     )
 }

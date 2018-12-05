@@ -7,7 +7,6 @@ const userSchema = new Schema({
     credits: { type: Number, default: 0 },
     name: String,
     permission: { type: Number, default: 0 }
-
 });
 
 //Create model

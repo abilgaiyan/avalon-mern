@@ -122,7 +122,7 @@ class CustomerForm extends Component {
           optiondata = ["New York", "Jew Jercy", "Verginia", "TEXARKANA"];
         }
         if (name === "customerType") {
-          optiondata = ["Customer", "Prospect", "Lead"];
+          optiondata = ["Avalon Customer", "ASHI Customer", "Prospects", "Lead"];
         }
 
         return (
@@ -146,32 +146,35 @@ class CustomerForm extends Component {
         <div>Loading...</div>
       )
     }
-    return (
-      <div>
-        <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button>
-        <div className="clearfix"></div>
-        <form
-          className="form-horizontal label-left"
-          onSubmit={this.props.handleSubmit((history) => { this.props.submitCustomerInfo(this.props.formValues.values, this.props.match.params.customerId, history).then(this.setState({ disabled: true })) })}>
-          {this.renderFields()}
-          {
-            this.state.disabled === true ? "" :
-              <div className="form-group">
-                <div className="col-xs-9 col-xs-offset-3 text-left">
-                  <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
-                    <i className="fa fa-check-square" aria-hidden="true"></i>
-                    Save
+    if (this.props.auth !== null) {
+      return (
+        <div>
+          <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.props.auth.permission === 1 ? (this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x") : ""} aria-hidden="true"></i></button>
+          <div className="clearfix"></div>
+          <form
+            className="form-horizontal label-left"
+            onSubmit={this.props.handleSubmit((history) => { this.props.submitCustomerInfo(this.props.formValues.values, this.props.match.params.customerId, history).then(this.setState({ disabled: true })) })}>
+            {this.renderFields()}
+            {
+              this.state.disabled === true ? "" :
+                <div className="form-group">
+                  <div className="col-xs-9 col-xs-offset-3 text-left">
+                    <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
+                      <i className="fa fa-check-square" aria-hidden="true"></i>
+                      Save
 
               </button>
-                  <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
-                    <i className="fa fa-close" aria-hidden="true"></i>
-                    Cancel
+                    <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
+                      <i className="fa fa-close" aria-hidden="true"></i>
+                      Cancel
               </a>
-                </div>
-              </div>}
-        </form>
-      </div>
-    );
+                  </div>
+                </div>}
+          </form>
+        </div>
+      );
+    }
+    <div>Loading...</div>
   }
 }
 
@@ -191,6 +194,7 @@ function mapStateToProps(state) {
   // console.clear();
   // console.log(state.buyingGroup);
   return {
+    auth: state.auth,
     formValues: state.form.customerInfoForm,
     customerForm: state.customerForm,
     buyingGroup: state.buyingGroup

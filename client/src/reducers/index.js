@@ -43,6 +43,9 @@ import supportqueryReducer from "./supportQueryReducer";
 import communicationLogReducer from "./communicationLogReducer";
 import commentSelectedReducer from "./commentSelectedReducer"
 
+import orphenEmailsReducer from "./orphenEmailReducer"
+
+
 
 
 export default combineReducers({
@@ -90,5 +93,6 @@ export default combineReducers({
 
   supportQuery: supportqueryReducer,
   communicationLog: communicationLogReducer,
-  commentSelected: commentSelectedReducer
+  commentSelected: commentSelectedReducer,
+  orphenEmails: orphenEmailsReducer
 });

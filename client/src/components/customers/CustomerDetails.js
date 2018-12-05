@@ -137,7 +137,7 @@ class CustomerDetails extends Component {
   renderSupportQueryForm() {
     return (
       //<SupportQueryForm supportQueryData={this.props.match.params.customerId} />
-      <SupportQueryForm/>
+      <SupportQueryForm />
     );
   }
 
@@ -372,6 +372,7 @@ function mapStateToProps(state) {
   // console.clear();
   // console.log(state);
   return {
+    auth: state.auth,
     customerForm: state.customerForm,
     autoCompleteId: state.autoCompleteId
   };

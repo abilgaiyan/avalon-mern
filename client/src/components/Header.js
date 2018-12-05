@@ -3,11 +3,18 @@ import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import Search from "./Search";
 import AddCustomerInfoForm from "./customers/forms/AddCustomerInfo/AddCustomerInfoForm"
-
+import OrphenEmailLogList from "./OrphenEmails";
 
 class Header extends Component {
 
+
+  // renderEmail() {
+  //   // return <OrphenEmailLogList />;
+  // }
+
   renderHeader() {
+
+
     switch (this.props.auth) {
       case null:
         // console.log("Auth Value: ", this.props.auth)
@@ -34,9 +41,9 @@ class Header extends Component {
         );
     }
   }
-
-
   render() {
+    // console.clear()
+    // console.log(this.props.auth);
     if (this.props.auth === false) {
       return <Redirect to="/" />
     }
@@ -58,6 +65,8 @@ class Header extends Component {
                 </form>
               </div>
               <div className="col-xs-6 col-sm-4 text-right noppading">
+                {this.props.authbtn ? <OrphenEmailLogList /> : ''}
+
                 <button type="button" className="btn btn-success navbar-btn hidden-xs" data-toggle="modal" data-target="#addcustomerinfoModal">ADD NEW CUSTOMER</button>
                 <AddCustomerInfoForm />
                 <ul className="nav navbar-nav navbar-right user_wraper">
@@ -66,7 +75,7 @@ class Header extends Component {
                       className="user_item dropdown-toggle"
                       data-toggle="dropdown"
                     >
-                    <i className="fa fa-user" aria-hidden="true"></i>
+                      <span className="glyphicon glyphicon-user" />
                     </a>
                     <ul className="dropdown-menu text-center">
                       {this.renderHeader()}
@@ -83,8 +92,6 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.clear();
-  // console.log("AuthData", state.auth);
   return {
     auth: state.auth
   };
