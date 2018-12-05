@@ -116,6 +116,7 @@ function mapStateToProps(state) {
     // console.clear();
     // console.log(state);
     return {
+        auth: state.auth,
         customers: state.customers
     };
 }

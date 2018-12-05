@@ -8,13 +8,13 @@ import OrphenEmailLogList from "./OrphenEmails";
 class Header extends Component {
 
 
-  renderEmail() {
-    return <OrphenEmailLogList />;
-  }
+  // renderEmail() {
+  //   // return <OrphenEmailLogList />;
+  // }
 
   renderHeader() {
-   
-     
+
+
     switch (this.props.auth) {
       case null:
         // console.log("Auth Value: ", this.props.auth)
