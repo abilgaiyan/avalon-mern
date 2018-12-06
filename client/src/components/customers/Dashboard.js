@@ -69,7 +69,7 @@ class Dashboard extends Component {
                                     //filterMethod: (filter, rows) =>
                                     //    matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["Name"] }),
                                     //filterAll: true
-                                    width: 400,
+                                   
                                     maxWidth: 400,
                                 },
                                 {
@@ -79,7 +79,8 @@ class Dashboard extends Component {
                                     accessor: d => String(d.jewelsoftId).toLowerCase() === 'undefined' ? '-' : String(d.jewelsoftId).toLowerCase(),
                                     filterMethod: (filter, rows) =>
                                         matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["jewelsoftId"] }),
-                                    filterAll: true
+                                    filterAll: true,
+                                    maxWidth: 200,
                                 },
                                 {
                                     Header: "Avalon Id",
@@ -89,6 +90,7 @@ class Dashboard extends Component {
                                     //filterMethod: (filter, rows) =>
                                     //    matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["avalonId"] }),
                                     //filterAll: true
+                                    maxWidth: 200,
 
                                 },
                                 {
@@ -99,6 +101,7 @@ class Dashboard extends Component {
                                     // filterMethod: (filter, rows) =>
                                     //       matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["city"] }),
                                     // filterAll: true
+                                    maxWidth: 200,
 
                                 },
                                 {
@@ -109,7 +112,7 @@ class Dashboard extends Component {
                                     //filterMethod: (filter, rows) =>
                                     //                matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["state"] }),
                                     //            filterAll: true
-
+                                    maxWidth: 200,
                                 },
 
                                 {
@@ -122,7 +125,8 @@ class Dashboard extends Component {
                                     ),
                                     //filterMethod: (filter, rows) =>
                                     //                matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["websiteUrl"] }),
-                                    //            filterAll: true
+                                    //            filterAll: true 
+                                    maxWidth: 400,
                                 },
                                 {
                                     Header: "View",
@@ -144,7 +148,7 @@ class Dashboard extends Component {
                     pageSizeOptions={[25, 50, 100]}
                     defaultPageSize={100}
                     showPaginationTop
-                    className="-striped -highlight table table_list without_border"
+                    className="-striped -highlight table table_list without_border text-left"
                 />
                 {/* <div className="container marginTop30 list-group">
                <h3 className="text-center">Avalon Customer's</h3>

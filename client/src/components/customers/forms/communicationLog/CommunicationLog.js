@@ -55,8 +55,18 @@ class CommunicationLog extends Component {
                         </div>
                     </div>
                     <div className=" icon_well text-right ">
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#callLogModal"><i className="fas fa-plus"></i><i className="fas fa-phone"></i></button>
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#queryLogModal"><i className="fas fa-plus"></i><i className="fas fa-comment"></i></button>
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#callLogModal" title="Add Phone">
+                            <span class="fa-stack icon_plus">
+                                <i class="fas fa-phone fa-stack-1x icon_plus_out fa-flip-horizontal"></i>
+                                <i class="fas fa-plus fa-stack-1x icon_plus_in"></i>
+                            </span>
+                        </button>
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#queryLogModal" title="Add Comment">
+                            <span class="fa-stack icon_plus">
+                                <i class="fas fa-comment fa-stack-2x fa-inverse"></i>
+                                <i class="fas fa-plus fa-stack-1x"></i>
+                            </span>
+                        </button>
                         <div className="clearfix"></div>
                     </div>
 
@@ -102,7 +112,7 @@ class CommunicationLog extends Component {
                                         id: "type",
                                         filterable: false,
                                         className: 'text-center',
-                                        accessor: d => (d.ctype !== "comment") ? (d.type || d._previousCallType._previouscalltype === ("Incoming" || "In") ? <i className="fa fa-sign-in" aria-hidden="true"></i> : <i className="fa fa-sign-out" aria-hidden="true"></i>) : <i className="fa fa-sign-out" aria-hidden="true"></i>
+                                        accessor: d => (d.ctype !== "comment") ? (d.type || d._previousCallType._previouscalltype === ("Incoming" || "In") ? <i className="fa fa-sign-in" aria-hidden="true" title="Incoming"></i> : <i className="fa fa-sign-out" aria-hidden="true" title="Outgoing"></i>) : <i className="fa fa-sign-out" aria-hidden="true" title="Outgoing"></i>
                                     },
                                     {
                                         Header: "View",
@@ -115,7 +125,7 @@ class CommunicationLog extends Component {
                                         //     // <div dangerouslySetInnerHTML={{ __html: row.original.html }} />
                                         //     <div>view</div>
                                         // )
-                                        Cell: row => (row.value === "comment") ? <a data-toggle="modal" data-target="#commentPopupModal" onClick={() => this.props.SelectComment(row.original)}><i className="fa fa-comments" aria-hidden="true"></i></a> : (row.value === "email" ? <a data-toggle="modal" data-target="#emailLogModal" onClick={() => this.props.SelectEmail(row.original)}><i className="fa fa-envelope" aria-hidden="true"></i></a> : <a data-toggle="modal" data-target="#callLogPopupModal" onClick={() => this.props.SelectCallLog(row.original)}><i className="fa fa-phone" aria-hidden="true"></i></a>),
+                                        Cell: row => (row.value === "comment") ? <a data-toggle="modal" data-target="#commentPopupModal" onClick={() => this.props.SelectComment(row.original)} title="View Comment" style={{ cursor: 'pointer' }}><i className="fa fa-comments" aria-hidden="true"></i></a> : (row.value === "email" ? <a data-toggle="modal" data-target="#emailLogModal" onClick={() => this.props.SelectEmail(row.original)} title="View Email" style={{ cursor: 'pointer' }}><i className="fa fa-envelope" aria-hidden="true"></i></a> : <a data-toggle="modal" data-target="#callLogPopupModal" onClick={() => this.props.SelectCallLog(row.original)} title="View Phone" style={{ cursor: 'pointer' }}><i className="fa fa-phone" aria-hidden="true"></i></a>),
 
                                         filterMethod: (filter, row) => {
                                             if (filter.value === "all") {

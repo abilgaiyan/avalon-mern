@@ -180,13 +180,23 @@ class CustomerForm extends Component {
 
 function validate(values) {
   const errors = {};
-  errors.email = validateEmails(values.email || "");
+  errors.contactpersonEmail = validateEmails(values.contactpersonEmail || "");
 
-  _.each(formFields, ({ name, is }) => {
-    if (!values[name]) {
-      errors[name] = "You must provide a value";
-    }
-  });
+  // _.each(formFields, ({ name, is }) => {
+  //     if (!values[name]) {
+  //         errors[name] = "You must provide a value";
+  //     }
+  // });
+
+  if (!values.jewelsoftId) {
+    errors.jewelsoftId = "invalid_message"
+  }
+  if (!values.Name) {
+    errors.Name = "invalid_message"
+  }
+  if (!values.contactpersonEmail) {
+    errors.contactpersonEmail = "invalid_message"
+  }
 
   return errors;
 }
@@ -207,7 +217,7 @@ CustomerForm = connect(
 )(withRouter(CustomerForm));
 
 export default reduxForm({
-  //validate,
+  validate,
   form: "customerInfoForm"
 })(withRouter(CustomerForm));
 

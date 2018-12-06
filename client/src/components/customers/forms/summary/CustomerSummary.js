@@ -14,14 +14,14 @@ class CustomerSummary extends Component {
               <br />
               {this.props.customerSummary.contactPersonName}
             </p>
-            <p>
-              <i className="fas fa-globe"></i> {this.props.customerSummary.websiteUrl} <br />
-              <i className="fas fa-phone"></i> {this.props.customerSummary.mobileNumber}<br />
+            <p className="text_with_icon">
+              <i className="fas fa-globe"></i> <a href={"//" + this.props.customerSummary.websiteUrl} target="_blank">{this.props.customerSummary.websiteUrl}</a> <br />
+              <i className="fas fa-phone fa-flip-horizontal"></i> {this.props.customerSummary.mobileNumber}<br />
               <i className="fas fa-envelope"></i> {this.props.customerSummary.contactpersonEmail}
             </p>
           </div>
           <div className="col-sm-4">
-            <div className="logo_wraper pull-right">
+            <div className="logo_wraper">
               <img alt={this.props.customerSummary.Name}
                 //src={this.props.customerSummary.logourl}
                 src={this.props.customerSummary.logourl}

@@ -37,7 +37,7 @@ export default [
 
   {
     label: "Company Logo",
-    name: "companyLogoUrl",
+    name: "logourl",
     type: "text",
     isvalidationApplied: true,
     validationmessage: "Please enter valida jewelsoft Id",

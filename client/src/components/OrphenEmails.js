@@ -102,7 +102,10 @@ class OrphenEmailLogList extends Component {
                                                 }
                                             ]}
                                             defaultPageSize={10}
-                                            className="-striped -highlight"
+                                            style={{
+                                                height: "550px" // This will force the table body to overflow and scroll, since there is not enough room
+                                            }}
+                                            className="-striped -highlight table table_list without_border text-left"
                                         />
 
                                     </div>

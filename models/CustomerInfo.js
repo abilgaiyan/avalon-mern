@@ -37,6 +37,7 @@ const customerinfoSchema = new Schema({
   mobileNumber: Number,
   telephone1: Number,
   telephone2: Number,
+  logourl: String,
   _salesPerson: { type: Schema.Types.ObjectId, ref: "salesperson" },
   websiteUrl: String,
   websiteProvider: String,

@@ -12,7 +12,7 @@ const inputField = props => {
                     <label>
                         <input
                             {...input}
-                            className={" " + touched && error }
+                            className={" " + touched && error}
                             type={type}
                         />
                     </label>
@@ -27,7 +27,7 @@ const inputField = props => {
                 <div className="col-sm-8 ">
                     <input
                         {...input}
-                        className={"form-control " + (touched && error) }
+                        className={"form-control " + (touched && error)}
                         type={type}
                     />
                     {/* <div className="red-text" >

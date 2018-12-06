@@ -131,10 +131,10 @@ class AshiMicroWebsiteForm extends Component {
                         {
                             this.state.disabled === true ? "" :
                                 <div className="form-group">
-                                    <div className="col-xs-9 col-xs-offset-3 text-left">
+                                    <div className="col-xs-8 col-xs-offset-4 text-left">
                                         <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
                                             <i className="fa fa-check-square" aria-hidden="true"></i>
-                                            Save sadfsad
+                                            Save
 
                         </button>
                                         <a className="btn btn-cancle" onClick={this.handelCancelEdit}>

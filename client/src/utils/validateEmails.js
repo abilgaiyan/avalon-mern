@@ -7,7 +7,8 @@ export default emails => {
     .filter(email => re.test(email) === false);
 
   if (invalidEmails.length) {
-    return `These emails are invalid: ${invalidEmails}`;
+    // return `This email is invalid: ${invalidEmails}`;
+    return "invalid_message"
   }
 
   return;

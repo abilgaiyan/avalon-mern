@@ -24,15 +24,41 @@ class SupportQuery extends Component {
       })
     }
     return (
+      <div className="info-section">
+        <table className="table table-info no-margin">
+          <tbody>
+            <tr>
+              <td>Email Count:</td>
+              <td align="right">
+                {emailCount}
+              </td>
+            </tr>
 
-      <div className=" icon_well">
-        {/* <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#queryLogModal"><i className="fa fa-plus-square"></i>Add</button> */}
-        <div className="clearfix"></div>
-        {/* <QueryForm /> */}
-        <div><label>Email Count:{emailCount}</label></div>
-        <div><label>Comment Count:{callCount}</label></div>
-        <div><label>Call Count:{commentCount}</label></div>
+            <tr>
+              <td>Comment Count:</td>
+              <td align="right">
+                {callCount}
+              </td>
+            </tr>
+            <tr>
+              <td>Call Count:</td>
+              <td align="right">
+                {commentCount}
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
       </div>
+
+      // <div className=" icon_well">
+      //   {/* <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#queryLogModal"><i className="fa fa-plus-square"></i>Add</button> */}
+      //   <div className="clearfix"></div>
+      //   {/* <QueryForm /> */}
+      //   <div><label>Email Count:{emailCount}</label></div>
+      //   <div><label>Comment Count:{callCount}</label></div>
+      //   <div><label>Call Count:{commentCount}</label></div>
+      // </div>
     );
   }
 }

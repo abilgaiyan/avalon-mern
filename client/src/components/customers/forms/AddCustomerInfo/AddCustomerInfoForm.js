@@ -171,7 +171,7 @@ class AddCustomerInfoForm extends Component {
 
 function validate(values) {
     const errors = {};
-    // errors.email = validateEmails(values.email || "");
+    errors.contactpersonEmail = validateEmails(values.contactpersonEmail || "");
 
     // _.each(formFields, ({ name, is }) => {
     //     if (!values[name]) {
@@ -184,6 +184,9 @@ function validate(values) {
     }
     if (!values.Name) {
         errors.Name = "invalid_message"
+    }
+    if (!values.contactpersonEmail) {
+        errors.contactpersonEmail = "invalid_message"
     }
 
     return errors;

@@ -108,4 +108,23 @@ export let handelClick = (event) => {
         ele.classList.remove("active");
       }
     });
+
+    document.querySelectorAll('.panel-collapse .collapse ').forEach(function(ele, idx) {
+      var prevattr = ele.getAttribute('href');
+      
+      if(select_id.indexOf(prevattr.slice(1)) !== -1){
+        if(ele.parentNode.parentNode.classList.contains('active')){
+          ele.parentNode.parentNode.classList.remove("active");
+        }
+        else{
+          ele.parentNode.parentNode.classList.add("active");
+          setTimeout(() => {
+            SmoothScroll.scrollTo(null, ele.parentNode.parentNode.nextSibling.id);
+          }, 500);
+        }
+      }
+      else{
+        ele.parentNode.parentNode.classList.remove("active");
+      }
+    });
   }
