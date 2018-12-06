@@ -5,39 +5,33 @@ import { connect } from "react-redux";
 class SupportQuery extends Component {
   render() {
     let emailCount = 0;
+    let callCount = 0;
+    let commentCount = 0;
     if (!this.props.communicationLog) {
       return "Loading...";
     }
     else {
-      //emailCount = this.props.communicationLog.ctype;
+      this.props.communicationLog.map(chkType => {
+        if (chkType.ctype === "email") {
+          emailCount = chkType.email_count
+        }
+        else if (chkType.ctype === "call") {
+          callCount = chkType.call_count
+        }
+        else if (chkType.ctype === "comment") {
+          commentCount = chkType.comment_count
+        }
+      })
     }
     return (
-      // <div className="info-section">
-      //   <table className="table table-info no-margin">
-      //     <tbody>
-      //       <tr>
-      //         <td>Avg Monthly Queries:</td>
-      //         <td align="right">
-      //           {this.props.supportQueryData.responsivestatus}
-      //         </td>
-      //       </tr>
-      //       <tr>
-      //         <td>Avg Yearly Queries:</td>
-      //         <td align="right">
-      //           {this.props.supportQueryData.websitedesignupdatedate}
-      //         </td>
-      //       </tr>
-      //     </tbody>
-      //   </table>
-      // </div>
+
       <div className=" icon_well">
         {/* <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#queryLogModal"><i className="fa fa-plus-square"></i>Add</button> */}
         <div className="clearfix"></div>
         {/* <QueryForm /> */}
-
-        <label>Email Count:{emailCount}</label>
-        <label>Comment Count:</label>
-        <label>Call Count:</label>
+        <div><label>Email Count:{emailCount}</label></div>
+        <div><label>Comment Count:{callCount}</label></div>
+        <div><label>Call Count:{commentCount}</label></div>
       </div>
     );
   }
@@ -47,8 +41,8 @@ class SupportQuery extends Component {
 
 
 function mapStateToProps(state) {
-  console.clear();
-  console.log(state.communicationLog);
+  // console.clear();
+  // console.log(state.communicationLog);
   return {
     communicationLog: state.communicationLog,
   };
