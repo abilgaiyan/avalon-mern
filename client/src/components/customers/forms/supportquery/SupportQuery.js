@@ -9,7 +9,7 @@ class SupportQuery extends Component {
       return "Loading...";
     }
     else {
-      emailCount = this.props.communicationLog.ctype.length;
+      //emailCount = this.props.communicationLog.ctype;
     }
     return (
       // <div className="info-section">
