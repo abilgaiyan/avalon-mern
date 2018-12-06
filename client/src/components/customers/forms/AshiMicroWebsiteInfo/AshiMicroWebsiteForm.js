@@ -110,7 +110,7 @@ class AshiMicroWebsiteForm extends Component {
     }
 
     render() {
-        console.log('mwebsite', this.props.auth)
+        // console.log('mwebsite', this.props.auth)
         if (!this.props.ashimicrowebsiteForm) {
             // console.clear();
             // console.log(this.props.productPlanDropdown[0].planName);

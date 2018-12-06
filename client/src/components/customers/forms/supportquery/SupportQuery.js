@@ -4,6 +4,13 @@ import { connect } from "react-redux";
 // import QueryForm from "./queryForm";
 class SupportQuery extends Component {
   render() {
+    let emailCount = 0;
+    if (!this.props.communicationLog) {
+      return "Loading...";
+    }
+    else {
+      emailCount = this.props.communicationLog.ctype.length;
+    }
     return (
       // <div className="info-section">
       //   <table className="table table-info no-margin">
@@ -27,26 +34,27 @@ class SupportQuery extends Component {
         {/* <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#queryLogModal"><i className="fa fa-plus-square"></i>Add</button> */}
         <div className="clearfix"></div>
         {/* <QueryForm /> */}
-        <label>Monthly Email Count:</label>
-        <label>Monthly Comment Count:</label>
-        <label>Monthly Call Count:</label>
+
+        <label>Email Count:{emailCount}</label>
+        <label>Comment Count:</label>
+        <label>Call Count:</label>
       </div>
     );
   }
 }
 
-export default SupportQuery;
+// export default SupportQuery;
 
 
-// function mapStateToProps(state) {
-//   console.clear();
-//   console.log(state.communicationLog);
-//   return {
-//     communicationLog: state.communicationLog,
-//   };
-// }
+function mapStateToProps(state) {
+  console.clear();
+  console.log(state.communicationLog);
+  return {
+    communicationLog: state.communicationLog,
+  };
+}
 
-// export default connect(
-//   mapStateToProps
-// )(SupportQuery);
+export default connect(
+  mapStateToProps
+)(SupportQuery);
 

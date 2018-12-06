@@ -32,7 +32,7 @@ class CommunicationLog extends Component {
             if (this.state.search) {
                 data = data.filter(row => {
                     console.log(row.emaildate)
-                    return String(row.emaildate).includes(Date(this.state.search).trim())
+                    return String(row.emaildate).includes(Date(this.state.search).trim()) || String(row.subject).toLowerCase().includes((this.state.search).trim()) || String(row.summary).toLowerCase().includes((this.state.search).trim()) || String(row.qrysubject).toLowerCase().includes((this.state.search).trim())
                     // console.log(row.Name.toLowerCase().includes((this.state.search).trim()))
                     // return row.emaildate.includes((this.state.search).trim()) || 
                     // String(row.jewelsoftId).includes((this.state.search).trim()) || 
@@ -55,8 +55,8 @@ class CommunicationLog extends Component {
                         </div>
                     </div>
                     <div className=" icon_well text-right ">
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#callLogModal"><i class="fas fa-plus"></i><i class="fas fa-phone"></i></button>
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#queryLogModal"><i class="fas fa-plus"></i><i class="fas fa-comment"></i></button>
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#callLogModal"><i className="fas fa-plus"></i><i className="fas fa-phone"></i></button>
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#queryLogModal"><i className="fas fa-plus"></i><i className="fas fa-comment"></i></button>
                         <div className="clearfix"></div>
                     </div>
 

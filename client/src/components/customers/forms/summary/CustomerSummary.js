@@ -15,9 +15,9 @@ class CustomerSummary extends Component {
               {this.props.customerSummary.contactPersonName}
             </p>
             <p>
-              <i class="fas fa-globe"></i> {this.props.customerSummary.websiteUrl} <br />
-              <i class="fas fa-phone"></i> {this.props.customerSummary.mobileNumber}<br />
-              <i class="fas fa-envelope"></i> {this.props.customerSummary.contactpersonEmail}
+              <i className="fas fa-globe"></i> {this.props.customerSummary.websiteUrl} <br />
+              <i className="fas fa-phone"></i> {this.props.customerSummary.mobileNumber}<br />
+              <i className="fas fa-envelope"></i> {this.props.customerSummary.contactpersonEmail}
             </p>
           </div>
           <div className="col-sm-4">
