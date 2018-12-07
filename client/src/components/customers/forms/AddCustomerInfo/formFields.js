@@ -65,7 +65,7 @@ export default [
   {
     label: "Position",
     name: "position",
-    type: "text",
+    type: "dropdown",
     isvalidationApplied: true,
     validationmessage: "Please enter valida jewelsoft Id",
     value: ""

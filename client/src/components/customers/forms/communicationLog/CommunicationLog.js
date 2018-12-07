@@ -17,7 +17,7 @@ class CommunicationLog extends Component {
     constructor() {
         super()
         this.state = {
-            search: ''
+            search: '',selectsearch:'all'
         }
 
     }
@@ -31,22 +31,27 @@ class CommunicationLog extends Component {
             let data = this.props.communicationLog
             if (this.state.search) {
                 data = data.filter(row => {
-                    console.log(row.emaildate)
-                    return String(row.emaildate).includes(Date(this.state.search).trim()) || String(row.subject).toLowerCase().includes((this.state.search).trim()) || String(row.summary).toLowerCase().includes((this.state.search).trim()) || String(row.qrysubject).toLowerCase().includes((this.state.search).trim())
-                    // console.log(row.Name.toLowerCase().includes((this.state.search).trim()))
-                    // return row.emaildate.includes((this.state.search).trim()) || 
-                    // String(row.jewelsoftId).includes((this.state.search).trim()) || 
-                    // String(row.jewelsoftId).includes((this.state.search).trim()) ||
-                    // String(row.jewelsoftId).includes((this.state.search).trim()) ||
-                    // String(row.jewelsoftId).includes((this.state.search).trim()) ||
-                    // String(row.jewelsoftId).includes((this.state.search).trim()) ||
-                    // String(row.jewelsoftId).includes((this.state.search).trim()) ||
+                    let datefield = moment(row.emaildate || row.previousCallDate).format('MMM DD YYYY');
+                    // alert(datefield)
+                    return String(datefield).toLowerCase().includes((this.state.search).toLowerCase().trim()) || String(row.subject).toLowerCase().includes((this.state.search).toLowerCase().trim()) || String(row.summary).toLowerCase().includes((this.state.search).toLowerCase().trim()) || String(row.qrysubject).toLowerCase().includes((this.state.search).toLowerCase().trim())
                 })
             }
+            if (this.state.selectsearch !== 'all') {
+                data = data.filter(row => {
+                    return String(row.ctype).includes(this.state.selectsearch);
+                });
+            }
+            else{
+                data = data.filter(row => {
+                return true;
+                });
+            }
+            
             return (
                 <div>
-                    <div className="form-group col-xs-12 col-sm-4 table_search">
-                        {/* <label class="control-label">
+                    <div className="row">
+                    <div className="form-group col-xs-12 col-sm-12 col-md-12 col-lg-4 table_search">
+                        {/* <label className="control-label">
                         Serach
                         </label>  */}
                         <div className="inner-addon right-addon">
@@ -54,25 +59,36 @@ class CommunicationLog extends Component {
                             <input type="text" className="form-control" placeholder="Search" value={this.state.search} onChange={e => this.setState({ search: e.target.value })} />
                         </div>
                     </div>
-                    <div className=" icon_well text-right ">
+                    <div className="form-group col-xs-12 col-sm-6 col-md-6 col-lg-4 table_search">
+                        <select className="form-control"
+                            onChange={e => this.setState({ selectsearch: e.target.value })}
+                            style={{ width: "100%" }}>
+                            <option value="all">Show All</option>
+                            <option value="email">Email</option>
+                            <option value="call">Call</option>
+                            <option value="comment">Comment</option>
+                        </select>
+                    </div>               
+                    <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 icon_well text-right" style={{paddingLeft:'15px',paddingRight:'15px' }}>
                         <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#callLogModal" title="Add Phone">
-                            <span class="fa-stack icon_plus">
-                                <i class="fas fa-phone fa-stack-1x icon_plus_out fa-flip-horizontal"></i>
-                                <i class="fas fa-plus fa-stack-1x icon_plus_in"></i>
+                            <span className="fa-stack icon_plus">
+                                <i className="fas fa-phone fa-stack-1x icon_plus_out fa-flip-horizontal"></i>
+                                <i className="fas fa-plus fa-stack-1x icon_plus_in"></i>
                             </span>
                         </button>
                         <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#queryLogModal" title="Add Comment">
-                            <span class="fa-stack icon_plus">
-                                <i class="fas fa-comment fa-stack-2x fa-inverse"></i>
-                                <i class="fas fa-plus fa-stack-1x"></i>
+                            <span className="fa-stack icon_plus">
+                                <i className="fas fa-comment fa-stack-2x fa-inverse"></i>
+                                <i className="fas fa-plus fa-stack-1x"></i>
                             </span>
                         </button>
                         <div className="clearfix"></div>
                     </div>
+                    </div>
 
                     <ReactTable
                         data={data}
-                        filterable
+                        filterable={false}
                         defaultFilterMethod={(filter, row) =>
                             String(row[filter.id]) === filter.value}
                         columns={[
@@ -86,7 +102,7 @@ class CommunicationLog extends Component {
                                         accessor: d => moment(d.emaildate || d.previousCallDate).format('MMM DD YYYY'),
                                         filterMethod: (filter, rows) =>
                                             matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.STARTS_WITH, keys: ["emaildate"] || ["previousCallDate"] }),
-                                        filterAll: true
+                                        filterable: false,
                                     },
 
                                     {
@@ -96,7 +112,7 @@ class CommunicationLog extends Component {
                                         accessor: d => d.subject || d.summary || d.qrysubject,
                                         filterMethod: (filter, rows) =>
                                             matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.STARTS_WITH, keys: ["subject"] || ["summary"] || ["qrysubject"] }),
-                                        filterAll: true
+                                        filterable: false,
                                     },
                                     //{
                                     //    Header: "Text",
@@ -127,29 +143,29 @@ class CommunicationLog extends Component {
                                         // )
                                         Cell: row => (row.value === "comment") ? <a data-toggle="modal" data-target="#commentPopupModal" onClick={() => this.props.SelectComment(row.original)} title="View Comment" style={{ cursor: 'pointer' }}><i className="fa fa-comments" aria-hidden="true"></i></a> : (row.value === "email" ? <a data-toggle="modal" data-target="#emailLogModal" onClick={() => this.props.SelectEmail(row.original)} title="View Email" style={{ cursor: 'pointer' }}><i className="fa fa-envelope" aria-hidden="true"></i></a> : <a data-toggle="modal" data-target="#callLogPopupModal" onClick={() => this.props.SelectCallLog(row.original)} title="View Phone" style={{ cursor: 'pointer' }}><i className="fa fa-phone" aria-hidden="true"></i></a>),
 
-                                        filterMethod: (filter, row) => {
-                                            if (filter.value === "all") {
-                                                return true;
-                                            }
-                                            if (filter.value === "email") {
-                                                return row[filter.id] === "email";
-                                            }
-                                            else if (filter.value === "comment") {
-                                                return row[filter.id] === "comment";
-                                            }
-                                            return row[filter.id] === "call";
-                                        },
-                                        Filter: ({ filter, onChange }) =>
-                                            <select
-                                                onChange={event => onChange(event.target.value)}
-                                                style={{ width: "100%" }}
-                                                value={filter ? filter.value : "all"}
-                                            >
-                                                <option value="all">Show All</option>
-                                                <option value="email">Email</option>
-                                                <option value="call">Call</option>
-                                                <option value="comment">Comment</option>
-                                            </select>
+                                       // filterMethod: (filter, row) => {
+                                       //     if (filter.value === "all") {
+                                       //         return true;
+                                       //     }
+                                       //     if (filter.value === "email") {
+                                       //         return row[filter.id] === "email";
+                                       //     }
+                                       //     else if (filter.value === "comment") {
+                                       //         return row[filter.id] === "comment";
+                                       //     }
+                                       //     return row[filter.id] === "call";
+                                       // },
+                                       // Filter: ({ filter, onChange }) =>
+                                       //     <select
+                                       //         onChange={event => onChange(event.target.value)}
+                                       //         style={{ width: "100%" }}
+                                       //         value={filter ? filter.value : "all"}
+                                       //     >
+                                       //         <option value="all">Show All</option>
+                                       //         <option value="email">Email</option>
+                                       //         <option value="call">Call</option>
+                                       //         <option value="comment">Comment</option>
+                                       //     </select>
                                     }
                                 ]
                             }

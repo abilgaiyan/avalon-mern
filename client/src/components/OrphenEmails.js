@@ -40,8 +40,8 @@ class OrphenEmailLogList extends Component {
         // }
         else {
             return (
-                <span style={{ paddingRight: '10px' }}>
-                    <button type="button" className="btn btn-success navbar-btn hidden-xs" data-toggle="modal" data-target="#orphenemailsModal">ORPHEN EMAILS</button>
+                <span className="orphen_wraper">
+                    <button className="navbar-btn hidden-xs text_btn" data-toggle="modal" data-target="#orphenemailsModal">ORPHAN EMAILS</button>
                     <div className="modal fade" id="orphenemailsModal" role="dialog" tabIndex="1" data-backdrop="false" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
                         <div className="modal-dialog modal-lg">
 

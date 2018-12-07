@@ -46,10 +46,10 @@ export let handelClick = (event) => {
       event.target.classList.add("active");
     }
 
-    //Add and Remove Active Class On Accordian Behalf of id 
+    //Add and Remove Active Class On Accordian Behalf of id
     var select_id = event.target.getAttribute("href");
     var dataParent = event.target.getAttribute('data-parent');
-    
+
     document.querySelectorAll(dataParent + ' .panel-heading a').forEach(function(ele, idx) {
       var prevattr = ele.getAttribute('href');
       if(select_id.indexOf(prevattr.slice(1)) !== -1){
@@ -67,16 +67,16 @@ export let handelClick = (event) => {
         ele.parentNode.parentNode.classList.remove("active");
       }
     });
-    
+
   };
 
   export let onClick_Acc = (event) => {
-      //Add and Remove Active Class On Accordian Behalf of id 
+      //Add and Remove Active Class On Accordian Behalf of id
     var select_id = event.target.getAttribute("href");
     var dataParent = event.target.getAttribute('data-parent');
-    document.querySelectorAll(dataParent + ' .panel-heading a').forEach(function(ele, idx) {
+    document.querySelectorAll('.panel-heading a').forEach(function(ele, idx) {
       var prevattr = ele.getAttribute('href');
-      
+
       if(select_id.indexOf(prevattr.slice(1)) !== -1){
         if(ele.parentNode.parentNode.classList.contains('active')){
           ele.parentNode.parentNode.classList.remove("active");
@@ -90,8 +90,16 @@ export let handelClick = (event) => {
       }
       else{
         ele.parentNode.parentNode.classList.remove("active");
+        if(ele.parentNode.parentNode.nextSibling.classList.contains('in')){
+          ele.parentNode.parentNode.nextSibling.classList.remove("in");
+          ele.parentNode.parentNode.nextSibling.setAttribute('aria-expanded',"false")
+          ele.classList.add("collapsed");
+          ele.setAttribute('aria-expanded',"false")
+        }
+        
       }
     });
+   
     //Add and remove Class On Active Sidebar link Behalf of id
     document.querySelectorAll('#sidebar-nav-menu .list-group-item').forEach(function(ele, idx) {
       var prevattr = ele.getAttribute('href');
@@ -104,27 +112,8 @@ export let handelClick = (event) => {
         }
       }
       else{
-        if(ele.getAttribute('data-parent') === dataParent)
+        // if(ele.getAttribute('data-parent') === dataParent)
         ele.classList.remove("active");
-      }
-    });
-
-    document.querySelectorAll('.panel-collapse .collapse ').forEach(function(ele, idx) {
-      var prevattr = ele.getAttribute('href');
-      
-      if(select_id.indexOf(prevattr.slice(1)) !== -1){
-        if(ele.parentNode.parentNode.classList.contains('active')){
-          ele.parentNode.parentNode.classList.remove("active");
-        }
-        else{
-          ele.parentNode.parentNode.classList.add("active");
-          setTimeout(() => {
-            SmoothScroll.scrollTo(null, ele.parentNode.parentNode.nextSibling.id);
-          }, 500);
-        }
-      }
-      else{
-        ele.parentNode.parentNode.classList.remove("active");
       }
     });
   }

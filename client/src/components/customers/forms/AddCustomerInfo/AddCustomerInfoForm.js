@@ -77,6 +77,9 @@ class AddCustomerInfoForm extends Component {
                 if (name === "customerType") {
                     optiondata = ["Avalon Customer", "ASHI Customer", "Prospects", "Lead"];
                 }
+                if (name === "position") {
+                    optiondata = ["Partner", "Director", "CEO", "President", "V. President", "Store Manager", "Marketing Manager", "Technology Manager", "Account Manager", "Customer Service Manager", "Store Staff", "Advertising Agency", "Consultant", "Other"];
+                }
 
                 return (
                     <Field
