@@ -139,7 +139,10 @@ module.exports = app => {
 
   //New
   app.post('/api/addcustomerinfo', async (req, res) => {
-    const { jewelsoftId, Name, address1, city, state, telephone, websiteUrl, avalonId, customerDBA, mainContact, position, address2, postalCode, contactpersonEmail, telephone1, telephone2, salesPerson, websiteProvider, customersince, customerType, comment } = req.body;
+    const { jewelsoftId, Name, address1, city, state, telephone, websiteUrl, avalonId, customerDBA, mainContact, position,
+      address2, postalCode, contactpersonEmail, telephone1, telephone2, websiteProvider, customersince, customerType, comment,
+      salesPerson, _buyinggroups } = req.body;
+
     const AddCustomerInfoData = new CustomerInfo({
       jewelsoftId,
       Name,
@@ -162,7 +165,7 @@ module.exports = app => {
       customerType,
       comment,
       _salesPerson: salesPerson,
-      _buyinggroups: [],
+      _buyinggroups: _buyinggroups,
       _avalonInfo: null,
       _billingInfo: null,
       _websiteInfo: null,
@@ -205,9 +208,10 @@ module.exports = app => {
   app.post("/api/customerinfo", async (req, res) => {
 
     const customerinfo = { ...req.body };
+
     //const _salesPerson = req.body.salesPerson;
     customerinfo._salesPerson = req.body.salesPerson;
-    //console.log("---------------Salesperson----------------------", customerinfo);
+    // console.log("---------------Salesperson----------------------", customerinfo);
     // const customerinfo_temp = { ...req.body };
     // const buyingGrp_id_temp = customerinfo_temp._buyinggroups
     // const buyingGrp_onlyid = buyingGrp_id_temp.map((onlyid) => { return onlyid.id });

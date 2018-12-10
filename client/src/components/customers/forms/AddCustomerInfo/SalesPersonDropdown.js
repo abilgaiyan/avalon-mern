@@ -21,7 +21,7 @@ const SalesPersonDropdown = ({
         <div className="form-group col-sm-6">
             <label className="control-label col-sm-4">{label}</label>
             <div className="col-sm-8">
-                <select {...input} className="form-control" disabled={disabled ? "disabled" : ""} id="sales_person">
+                <select {...input} className="form-control" disabled={disabled ? "disabled" : ""} id="sales_person_addcustomerinfo">
                     {optionItems}
                 </select>
                 {/* <div className="red-text">{touched && error}</div> */}

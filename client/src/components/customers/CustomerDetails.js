@@ -53,6 +53,7 @@ class CustomerDetails extends Component {
     this.props.fetchcallloginfo(customerId);
     this.props.fetchemaildata(customerId);
     this.props.fetchcommunicationlog(customerId);
+    this.props.fetchStateList();
   }
 
 

@@ -11,7 +11,8 @@ const SalesPersonDropdown = ({
     //console.log(optionData);
 
     let planets = optionData;
-    // console.log("planet |-" , planets);
+    // console.clear()
+    // console.log("OptionData_SalesPerson |-", planets);
 
     let optionItems = planets.map((planet, index) => (
         <option key={planet.sales_person_code}>{planet.Salesmen_Name}</option>
@@ -21,7 +22,7 @@ const SalesPersonDropdown = ({
         <div className="form-group">
             <label className="control-label col-sm-3">{label}</label>
             <div className="col-sm-9">
-                <select {...input} className="form-control" disabled={disabled ? "disabled" : ""} id="sales_person">
+                <select {...input} className="form-control" disabled={disabled ? "disabled" : ""} id="sales_person_customerinfo">
                     {optionItems}
                 </select>
                 <div className="red-text">{touched && error}</div>

@@ -37,7 +37,7 @@ class CustomerForm extends Component {
     // console.log('componentWillReceiveProps', nextProps.customerForm);
     // console.log("customer form: ", nextProps);
 
-    this.props.fetchStateList();
+
 
     if (nextProps.customerForm && !this.state.isInitializeState) {
       const initData = nextProps.customerForm;
@@ -217,7 +217,7 @@ class CustomerForm extends Component {
   handleChange = (event) => {
     this.props.fetchSalesPersonList(event.target.value);
     console.log('test id', event.target.value);
-    document.getElementById('sales_person').focus();
+    document.getElementById('sales_person_customerinfo').focus();
   };
 
   // handleChange = () => {

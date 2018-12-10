@@ -25,15 +25,29 @@ class AddCustomerInfoForm extends Component {
     constructor(props) {
         super(props);
 
-        //this.state = { modalOpen: false }
+        this.state = { disabled: false }
         this._closeModal = this._closeModal.bind(this);
         this._submitAndRedirect = this._submitAndRedirect.bind(this);
         // this.handelCancelEdit = this.handelCancelEdit.bind(this);
     }
 
+    componentWillMount() {
+        this.props.fetchBuyingGrpList();
+        this.props.fetchSalesPersonList("XX");
+    }
+
     componentWillReceiveProps() {
         this.props.fetchStateList();
+
+
     }
+
+
+    handleChange = (event) => {
+        this.props.fetchSalesPersonList(event.target.value);
+        console.log('test id', event.target.value);
+        document.getElementById('sales_person_addcustomerinfo').focus();
+    };
 
     _closeModal() {
         document.getElementById('AddCustInfoClose').click();
@@ -99,8 +113,6 @@ class AddCustomerInfoForm extends Component {
                             disabled={(this.state.disabled) ? "true" : ""}
                         />);
                 }
-
-
             }
             if (type === "dropdown") {
                 let optiondata = [];
@@ -192,11 +204,7 @@ class AddCustomerInfoForm extends Component {
         });
     }
 
-    handleChange = (event) => {
-        this.props.fetchSalesPersonList(event.target.value);
-        console.log('test id', event.target.value);
-        document.getElementById('sales_person').focus();
-    };
+
 
     render() {
         const { pristine, reset, submitting } = this.props;
@@ -274,6 +282,7 @@ function mapStateToProps(state) {
     return {
         formValues: state.form.addcustomerinfoReduxForm,
         addcustomerinfoForm: state.addcustomerinfo,
+        buyingGroup: state.buyingGroup,
         salesPerson: state.salesPerson,
         stateAllData: state.statedata
         //previousCallTypeDropdown: state.previousCallTypeDropdown

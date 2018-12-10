@@ -41,7 +41,7 @@ class OrphenEmailLogList extends Component {
         else {
             return (
                 <span className="orphen_wraper">
-                    <button className="navbar-btn hidden-xs text_btn" data-toggle="modal" data-target="#orphenemailsModal">ORPHAN EMAILS</button>
+                    <button className="navbar-btn hidden-xs hidden-sm text_btn" data-toggle="modal" data-target="#orphenemailsModal">ORPHAN EMAILS</button>
                     <div className="modal fade" id="orphenemailsModal" role="dialog" tabIndex="1" data-backdrop="false" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
                         <div className="modal-dialog modal-lg">
 

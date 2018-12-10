@@ -23,9 +23,9 @@ const MultiselectField = ({ input, label, optionData, valueField, textField, dis
 
 
     return (
-        <div className="form-group">
-            <label className="control-label col-sm-3">{label}</label>
-            <div className="col-sm-9">
+        <div className="form-group col-sm-6">
+            <label className="control-label col-sm-4">{label}</label>
+            <div className="col-sm-8 text-left">
                 <Multiselect disabled={disabled ? true : ""}
                     {...input}
                     onBlur={() => input.onBlur()}

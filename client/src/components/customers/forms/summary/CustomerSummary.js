@@ -42,25 +42,26 @@ class CustomerSummary extends Component {
               <tr>
                 <td>Buying Group:</td>
                 <td align="right">
-                  {this.props.customerSummary._buyinggroups.join(', ')}
+                  {this.props.customerSummary._buyinggroups === null || this.props.customerSummary._buyinggroups === undefined ? "" : this.props.customerSummary._buyinggroups.join(', ')}
+                  {/* {this.props.customerSummary._buyinggroups.join(', ')} */}
                 </td>
               </tr>
               <tr>
                 <td>Website Plan:</td>
                 <td align="right">
                   {/* {this.props.customerSummary._billingInfo === null ? "" : this.props.customerSummary._billingInfo._productPlan._productPlan} */}
-                  {this.props.customerSummary._billingInfo === null ? "" : this.props.customerSummary._billingInfo._productPlan === undefined ? "" : this.props.customerSummary._billingInfo._productPlan._productPlan}
+                  {this.props.customerSummary._billingInfo === null || this.props.customerSummary._billingInfo === undefined ? "" : this.props.customerSummary._billingInfo._productPlan === undefined ? "" : this.props.customerSummary._billingInfo._productPlan._productPlan}
                 </td>
               </tr>
               <tr>
                 <td>Website Status:</td>
                 <td align="right">
-                  {this.props.customerSummary._avalonInfo === null ? "" : this.props.customerSummary._avalonInfo._websitestatus._websitestatus}
+                  {this.props.customerSummary._avalonInfo === null || this.props.customerSummary._avalonInfo === undefined ? "" : this.props.customerSummary._avalonInfo._websitestatus._websitestatus}
                 </td>
               </tr>
               <tr>
                 <td>ASHI Feed:</td>
-                <td align="right">{this.props.customerSummary._productInfo === null ? "" : this.props.customerSummary._productInfo._ashiProductStatus._ashiProductStatus}</td>
+                <td align="right">{this.props.customerSummary._productInfo === null || this.props.customerSummary._productInfo === undefined ? "" : this.props.customerSummary._productInfo._ashiProductStatus._ashiProductStatus}</td>
               </tr>
             </tbody>
           </table>
