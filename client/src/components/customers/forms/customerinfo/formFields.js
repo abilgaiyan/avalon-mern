@@ -98,7 +98,7 @@ export default [
   {
     label: "State",
     name: "state",
-    type: "text",
+    type: "dropdown",
     isvalidationApplied: true,
     validationmessage: "",
     value: ""
@@ -146,7 +146,7 @@ export default [
   {
     label: "Sales Person",
     name: "salesPerson",
-    type: "text",
+    type: "dropdown",
     isvalidationApplied: true,
     validationmessage: "",
     value: ""

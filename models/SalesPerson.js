@@ -4,12 +4,21 @@ const { Schema } = mongoose;
 
 //define schema for Sales Person
 const salespersonSchema = new Schema({
-    name: String,
+    statecode: String,
+    statename: String,
+    countryid: String,
+    salesmen_name: String,
+    salesmen_email: String,
+    salesmen_tel: String,
+    salesmen_cell: String,
+    salesmen_homeaddress: String,
+    salesmen_fax: String,
+    sales_person_code: String,
     active: Boolean,
-    displayorder: {type: Number, default: 0},
+    displayorder: { type: Number, default: 0 },
     createDate: Date,
     updateDate: Date
-
 });
+
 // create modal based on schema
-mongoose.model('salesperson', salespersonSchema);
+mongoose.model('salesperson', salespersonSchema, 'salesperson');

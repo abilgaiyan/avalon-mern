@@ -35,7 +35,9 @@ import {
   FETCH_SUPPORTQUERY,
   FETCH_COMMUNICATIONLOG,
   COMMENT_SELECTED,
-  FETCH_ORPHENEMAILALLDATA
+  FETCH_ORPHENEMAILALLDATA,
+  FETCH_SALESPERSONALLDATA,
+  FETCH_STATEDATA
 } from "./types";
 
 //Store Autocomplete_ID
@@ -459,3 +461,29 @@ export const fetchorphenEmail = () => async dispatch => {
   dispatch({ type: FETCH_ORPHENEMAILALLDATA, payload: res.data });
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
 };
+
+
+// Fetch Sales Person list all data
+export const fetchStateList = () => async dispatch => {
+  const res = await axios.get("/api/SalesPersonAllData");
+  dispatch({ type: FETCH_STATEDATA, payload: res.data });
+};
+
+
+// Fetch Sales Person list all data
+// export const fetchSalesPersonList = () => async dispatch => {
+//   const res = await axios.get("/api/SalesPersonAllData");
+//   dispatch({ type: FETCH_SALESPERSONALLDATA, payload: res.data });
+// };
+
+// Fetch Sales Person list all data by state code
+export const fetchSalesPersonList = stateCode => async dispatch => {
+  //console.log(customerId)
+  const res = await axios.get("/api/SalesPersonAllData/" + stateCode);
+
+  //const res = storylist;
+  dispatch({ type: FETCH_SALESPERSONALLDATA, payload: res.data });
+  // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
+};
+
+

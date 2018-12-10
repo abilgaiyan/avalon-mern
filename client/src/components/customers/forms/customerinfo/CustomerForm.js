@@ -7,6 +7,8 @@ import { withRouter } from "react-router-dom";
 
 import CustomerField from "./CustomerField";
 import CustomerDropdownField from "./CustomerDropdown";
+import SalesPersonDropdown from "./SalesPersonDropdown";
+import StateDropdown from "./StateDropdown"
 import MultiselectField from "./MultiselectField"
 import validateEmails from "../../../../utils/validateEmails";
 import formFields from "./formFields";
@@ -30,21 +32,29 @@ class CustomerForm extends Component {
   }
 
 
-
   componentWillReceiveProps(nextProps) {
     // console.clear();
     // console.log('componentWillReceiveProps', nextProps.customerForm);
     // console.log("customer form: ", nextProps);
+
+    this.props.fetchStateList();
+
     if (nextProps.customerForm && !this.state.isInitializeState) {
       const initData = nextProps.customerForm;
+      //console.log("CustomerForm", initData);
+      this.props.fetchSalesPersonList(initData.state);
+
       nextProps.initialize(initData);
       this.setState({ isInitializeState: true });
     }
   }
 
+  // componentDidMount() {
+  //   this.props.fetchSalesPersonList('CA');
+  // }
 
   renderFields() {
-    return _.map(formFields, ({ label, name, type }) => {
+    return _.map(formFields, ({ label, name, type, id }) => {
       // console.log(this.props.customerDetails[name]);
       if (type === "text") {
         if (name !== "comment") {
@@ -120,29 +130,108 @@ class CustomerForm extends Component {
         let optiondata = [];
         if (name === "city") {
           optiondata = ["New York", "Jew Jercy", "Verginia", "TEXARKANA"];
+          return (
+            <Field
+              key={name}
+              component={CustomerDropdownField}
+              type={type}
+              label={label}
+              name={name}
+              optionData={optiondata}
+              disabled={(this.state.disabled) ? "disabled" : ""}
+            />
+          );
         }
+
+
+
+
         if (name === "customerType") {
           optiondata = ["Avalon Customer", "ASHI Customer", "Prospects", "Lead"];
+          return (
+            <Field
+              key={name}
+              component={CustomerDropdownField}
+              type={type}
+              label={label}
+              name={name}
+              optionData={optiondata}
+              disabled={(this.state.disabled) ? "disabled" : ""}
+            />
+          );
         }
+
         if (name === "position") {
           optiondata = ["Partner", "Director", "CEO", "President", "V. President", "Store Manager", "Marketing Manager", "Technology Manager", "Account Manager", "Customer Service Manager", "Store Staff", "Advertising Agency", "Consultant", "Other"];
+
+          return (
+            <Field
+              key={name}
+              component={CustomerDropdownField}
+              type={type}
+              label={label}
+              name={name}
+              optionData={optiondata}
+              disabled={(this.state.disabled) ? "disabled" : ""}
+            />
+          );
         }
 
+        if (name === "salesPerson" && this.props.salesPerson) {
+          optiondata = this.props.salesPerson
+          return (
+            < Field
+              key={name}
+              component={SalesPersonDropdown}
+              type={type}
+              label={label}
+              name={name}
+              optionData={optiondata}
+              disabled={(this.state.disabled) ? "disabled" : ""
+              }
+            />
+          );
+        }
 
-        return (
-          <Field
-            key={name}
-            component={CustomerDropdownField}
-            type={type}
-            label={label}
-            name={name}
-            optionData={optiondata}
-            disabled={(this.state.disabled) ? "disabled" : ""}
-          />
-        );
+        if (name === "state" && this.props.stateAllData) {
+          optiondata = this.props.stateAllData;
+          // console.log('optiondata', optiondata)
+          return (
+            <Field
+              key={name}
+              component={StateDropdown}
+              type={type}
+              label={label}
+              name={name}
+              optionData={optiondata}
+              disabled={(this.state.disabled) ? "disabled" : ""}
+              onChange={this.handleChange}
+            />
+          );
+        }
+
       }
     });
   }
+
+  handleChange = (event) => {
+    this.props.fetchSalesPersonList(event.target.value);
+    console.log('test id', event.target.value);
+    document.getElementById('sales_person').focus();
+  };
+
+  // handleChange = () => {
+  //   // this.props.fetchSalesPersonList(stateCode);
+  //   alert('t')
+  //   // this.setState({
+  //   //   [name]: value,
+  //   // });
+  // };
+  // componentDidMount() {
+  //   this.props.fetchSalesPersonList();
+  // }
+
+
 
   render() {
     if (!this.props.customerForm) {
@@ -182,6 +271,8 @@ class CustomerForm extends Component {
   }
 }
 
+
+
 function validate(values) {
   const errors = {};
   errors.contactpersonEmail = validateEmails(values.contactpersonEmail || "");
@@ -211,7 +302,9 @@ function mapStateToProps(state) {
     auth: state.auth,
     formValues: state.form.customerInfoForm,
     customerForm: state.customerForm,
-    buyingGroup: state.buyingGroup
+    buyingGroup: state.buyingGroup,
+    salesPerson: state.salesPerson,
+    stateAllData: state.statedata
   };
 }
 

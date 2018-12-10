@@ -10,6 +10,9 @@ import momentLocaliser from "react-widgets-moment";
 import formFields from "./formFields";
 import inputField from "./inputField";
 import dropdown from "./dropdown";
+import SalesPersonDropdown from "./SalesPersonDropdown";
+import StateDropdown from "./StateDropdown"
+import MultiselectField from "./MultiselectField"
 import datetimeField from "./datetimeField";
 import timeField from "./timeField"
 import validateEmails from "../../../../utils/validateEmails";
@@ -27,6 +30,11 @@ class AddCustomerInfoForm extends Component {
         this._submitAndRedirect = this._submitAndRedirect.bind(this);
         // this.handelCancelEdit = this.handelCancelEdit.bind(this);
     }
+
+    componentWillReceiveProps() {
+        this.props.fetchStateList();
+    }
+
     _closeModal() {
         document.getElementById('AddCustInfoClose').click();
     }
@@ -69,6 +77,31 @@ class AddCustomerInfoForm extends Component {
             //         );
             //     }
             // }
+            if (type === "checkbox") {
+                let optiondata = [];
+                //let itemdata = [];
+                if (name === "_buyinggroups" && this.props.buyingGroup) {
+                    // console.clear();
+                    // console.log("Array of objs", this.props.buyingGroup);
+                    optiondata = this.props.buyingGroup;
+                    //itemdata = this.props.buyingGroup.map((data, index) => (data._buyinggroups));
+                    // console.clear();
+                    // console.log("Array of objs", optiondata);
+                    return (
+                        <Field
+                            key={name}
+                            component={MultiselectField}
+                            type={type}
+                            label={label}
+                            name={name}
+                            optionData={optiondata}
+                            //itemData={itemdata}
+                            disabled={(this.state.disabled) ? "true" : ""}
+                        />);
+                }
+
+
+            }
             if (type === "dropdown") {
                 let optiondata = [];
                 if (name === "city") {
@@ -81,17 +114,51 @@ class AddCustomerInfoForm extends Component {
                     optiondata = ["Partner", "Director", "CEO", "President", "V. President", "Store Manager", "Marketing Manager", "Technology Manager", "Account Manager", "Customer Service Manager", "Store Staff", "Advertising Agency", "Consultant", "Other"];
                 }
 
-                return (
-                    <Field
-                        key={name}
-                        component={dropdown}
-                        type={type}
-                        label={label}
-                        name={name}
-                        optionData={optiondata}
-                    //disabled={(this.state.disabled) ? "disabled" : ""}
-                    />
-                );
+                if (name !== "salesPerson" && name !== "state") {
+                    return (
+                        <Field
+                            key={name}
+                            component={dropdown}
+                            type={type}
+                            label={label}
+                            name={name}
+                            optionData={optiondata}
+                        //disabled={(this.state.disabled) ? "disabled" : ""}
+                        />
+                    );
+                }
+
+                if (name === "salesPerson" && this.props.salesPerson) {
+                    optiondata = this.props.salesPerson
+                    return (
+                        < Field
+                            key={name}
+                            component={SalesPersonDropdown}
+                            type={type}
+                            label={label}
+                            name={name}
+                            optionData={optiondata}
+                        //disabled={(this.state.disabled) ? "disabled" : "" }
+                        />
+                    );
+                }
+
+                if (name === "state" && this.props.stateAllData) {
+                    optiondata = this.props.stateAllData;
+                    // console.log('optiondata', optiondata)
+                    return (
+                        <Field
+                            key={name}
+                            component={StateDropdown}
+                            type={type}
+                            label={label}
+                            name={name}
+                            optionData={optiondata}
+                            //disabled={(this.state.disabled) ? "disabled" : ""}
+                            onChange={this.handleChange}
+                        />
+                    );
+                }
             }
 
             if (type === "datetime") {
@@ -120,9 +187,16 @@ class AddCustomerInfoForm extends Component {
                     />
                 );
             }
+
+
         });
     }
 
+    handleChange = (event) => {
+        this.props.fetchSalesPersonList(event.target.value);
+        console.log('test id', event.target.value);
+        document.getElementById('sales_person').focus();
+    };
 
     render() {
         const { pristine, reset, submitting } = this.props;
@@ -200,6 +274,8 @@ function mapStateToProps(state) {
     return {
         formValues: state.form.addcustomerinfoReduxForm,
         addcustomerinfoForm: state.addcustomerinfo,
+        salesPerson: state.salesPerson,
+        stateAllData: state.statedata
         //previousCallTypeDropdown: state.previousCallTypeDropdown
     };
 }

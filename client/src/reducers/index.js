@@ -45,6 +45,10 @@ import commentSelectedReducer from "./commentSelectedReducer"
 
 import orphenEmailsReducer from "./orphenEmailReducer"
 
+import salesPersonReducer from "./salesPersonReducer"
+import statedataReducer from "./stateReducer"
+
+
 
 
 
@@ -94,5 +98,8 @@ export default combineReducers({
   supportQuery: supportqueryReducer,
   communicationLog: communicationLogReducer,
   commentSelected: commentSelectedReducer,
-  orphenEmails: orphenEmailsReducer
+  orphenEmails: orphenEmailsReducer,
+  salesPerson: salesPersonReducer,
+  statedata: statedataReducer
+
 });

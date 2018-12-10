@@ -87,13 +87,14 @@ require('./routes/hostingAmountRoutes')(app);
 require('./routes/communicationLogRouter')(app);
 
 
+
 console.log('environment', process.env.NODE_ENV);
 console.log('environment', process.env.NODE_ENV === 'production');
 // For Production environment
 if (process.env.NODE_ENV === 'production') {
     // Express will serve up production assets
     // like our main.js or main.css file!
-    app.use(express.static( __dirname + '/client/build'));
+    app.use(express.static(__dirname + '/client/build'));
     //    app.use(express.static('/client/build/css'));
     //    app.use(express.static('/client/build/fonts'));
     //    app.use(express.static('/client/build/img'));
@@ -111,19 +112,20 @@ if (process.env.NODE_ENV === 'production') {
     // code will execute for client side router defined 
 
     const path = require('path');
-    
+
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-        console.log('req',req);
+        console.log('req', req);
     });
-    
-  
+
+
 }
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
     console.log('listening on port', PORT);
+
 })
 
 //https://avalon-mkt.herokuapp.com/ | https://git.heroku.com/avalon-mkt.git
