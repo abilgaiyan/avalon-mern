@@ -15,13 +15,13 @@ const datetimeField = ({ input: { onChange, value }, label, type, disabled, meta
           className="form-control"
           type={type}
           disabled={disabled ? "disabled" : ""}
-          value={moment(value).format('DD MMM YYYY') === "Invalid date" ? "" : moment(value).format('DD MMM YYYY')}
+          value={moment(value).format('MMM DD YYYY') === "Invalid date" ? "" : moment(value).format('MMM DD YYYY')}
         /> :
           <DateTimePicker
             //{...input}
             inputProps={{ component: props => <input {...props} readOnly /> }}
             onChange={onChange}
-            format="DD MMM YYYY"
+            format="MMM DD YYYY"
             time={showTime}
             value={!value ? "" : new Date(value)}
           />}

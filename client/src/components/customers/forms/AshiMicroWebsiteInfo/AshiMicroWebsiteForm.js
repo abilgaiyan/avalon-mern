@@ -110,17 +110,19 @@ class AshiMicroWebsiteForm extends Component {
     }
 
     render() {
+        // console.log('mwebsite', this.props.auth)
         if (!this.props.ashimicrowebsiteForm) {
             // console.clear();
             // console.log(this.props.productPlanDropdown[0].planName);
             return (<div>Loading...</div>)
         }
-        else {
+        if (this.props.auth !== null) {
             // console.clear();
-            // console.log(this.props.productPlanDropdown);
+            // console.log(this.props.auth !== null);
             return (
-                <div>
-                    <button className="pull-right icon_well" onClick={this.handelEdit}><i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button>
+                < div >
+                    {/* < button className="pull-right icon_well" onClick={this.handelEdit} > <i className={this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x"} aria-hidden="true"></i></button > */}
+                    < button className="pull-right icon_well" onClick={this.handelEdit} > <i className={this.props.auth.permission === 1 ? (this.state.disabled === true ? "fa fa-pencil-square-o fa-2x" : "fa fa-times-circle fa-2x") : ""} aria-hidden="true"></i></button >
                     <div className="clearfix"></div>
                     <form
                         className="form-horizontal label-left"
@@ -129,22 +131,24 @@ class AshiMicroWebsiteForm extends Component {
                         {
                             this.state.disabled === true ? "" :
                                 <div className="form-group">
-                                    <div className="col-xs-9 col-xs-offset-3 text-left">
+                                    <div className="col-xs-8 col-xs-offset-4 text-left">
                                         <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }}>
                                             <i className="fa fa-check-square" aria-hidden="true"></i>
                                             Save
 
-                  </button>
+                        </button>
                                         <a className="btn btn-cancle" onClick={this.handelCancelEdit}>
                                             <i className="fa fa-close" aria-hidden="true"></i>
                                             Cancel
-                  </a>
+                        </a>
                                     </div>
                                 </div>}
                     </form>
-                </div>
+                </div >
             );
         }
+
+        return (<div>Loading...</div>)
 
     }
 }
@@ -163,8 +167,9 @@ function validate(values) {
 }
 function mapStateToProps(state) {
     // console.clear();
-    // console.log(state);
+    // console.log('permission', state.auth);
     return {
+        auth: state.auth,
         formValues: state.form.AshiMicroWebsiteReduxForm,
         ashimicrowebsiteForm: state.ashiMicroWebsiteInfo
     };

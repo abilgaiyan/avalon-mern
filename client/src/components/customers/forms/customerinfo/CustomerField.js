@@ -18,12 +18,12 @@ const CustomerField = props => {
           <label>
             <input
               {...input}
-              className=""
+              className={"" + (touched && error)}
               type={type}
               disabled={disabled ? "disabled" : ""}
             />
           </label>
-          <div className="red-text">{/* {touched && error} */}</div>
+          {/* <div className="red-text">{touched && error}</div> */}
         </div>
       </div>
     );
@@ -34,13 +34,13 @@ const CustomerField = props => {
         <div className="col-sm-9 ">
           <input
             {...input}
-            className="form-control"
+            className={"form-control " + (touched && error)}
             type={type}
             disabled={disabled ? "disabled" : ""}
           />
-          <div className="red-text" >
-            {/* {touched && error} */}
-          </div>
+          {/* <div className="red-text" >
+            {touched && error}
+          </div> */}
         </div>
       </div>
     );

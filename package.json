@@ -11,8 +11,9 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
+    "emailUtility": "node services\/emailUtility\/emailReceiverJob.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client \"",
+    "dev": "concurrently \"npm run server\" \"npm run emailUtility\" \"npm run client \"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true  npm install && npm install --prefix client &&  npm run build --prefix client",
     "webhook": "forever sendgrid_webhook.js"
   },

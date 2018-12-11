@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCustomers } from '../../actions';
+import { fetchCustomers, fetchorphenEmail } from '../../actions';
 import { Link } from 'react-router-dom';
 import ReactTable from "react-table";
 import matchSorter from 'match-sorter';
@@ -20,6 +20,7 @@ class Dashboard extends Component {
 
     componentDidMount() {
         this.props.fetchCustomers();
+        this.props.fetchorphenEmail();
     }
 
     render() {
@@ -27,7 +28,7 @@ class Dashboard extends Component {
         if (this.state.search) {
             data = data.filter(row => {
                 // console.log(row.Name.toLowerCase().includes((this.state.search).trim()))
-                return row.Name.toLowerCase().includes((this.state.search).trim()) || String(row.jewelsoftId).toLowerCase().includes((this.state.search).trim()) || String(row.avalonId).toLowerCase().includes((this.state.search).trim()) || String(row.city).toLowerCase().includes((this.state.search).trim()) || String(row.state).toLowerCase().includes((this.state.search).trim()) || String(row.websiteUrl).toLowerCase().includes((this.state.search).trim())
+                return row.Name.includes((this.state.search).trim()) || String(row.jewelsoftId).toLowerCase().includes((this.state.search).trim()) || String(row.avalonId).toLowerCase().includes((this.state.search).trim()) || String(row.city).toLowerCase().includes((this.state.search).trim()) || String(row.state).toLowerCase().includes((this.state.search).trim()) || String(row.websiteUrl).toLowerCase().includes((this.state.search).trim())
             })
         }
         return (
@@ -68,65 +69,69 @@ class Dashboard extends Component {
                                     //filterMethod: (filter, rows) =>
                                     //    matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["Name"] }),
                                     //filterAll: true
-                                    width: 400,
+                                   
                                     maxWidth: 400,
                                 },
                                 {
                                     Header: "Jewelsoft Id",
                                     id: "jewelsoftId",
-                                    className: 'text-center',
-                                    accessor: d => String(d.jewelsoftId).toLowerCase(),
+                                    className: 'text-left',
+                                    accessor: d => String(d.jewelsoftId).toLowerCase() === 'undefined' ? '-' : String(d.jewelsoftId).toLowerCase(),
                                     filterMethod: (filter, rows) =>
                                         matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["jewelsoftId"] }),
-                                    filterAll: true
+                                    filterAll: true,
+                                    maxWidth: 200,
                                 },
                                 {
                                     Header: "Avalon Id",
                                     id: "avalonId",
-                                    className: 'text-center',
-                                    accessor: d => String(d.avalonId).toLowerCase(),
+                                    className: 'text-left',
+                                    accessor: d => String(d.avalonId).toLowerCase() === 'undefined' ? '-' : String(d.avalonId).toLowerCase(),
                                     //filterMethod: (filter, rows) =>
                                     //    matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["avalonId"] }),
                                     //filterAll: true
+                                    maxWidth: 200,
 
                                 },
                                 {
                                     Header: "City",
                                     id: "city",
-                                    className: 'text-center',
-                                    accessor: d => String(d.city).toLowerCase(),
+                                    className: 'text-left',
+                                    accessor: d => String(d.city).toLowerCase() === 'undefined' ? '-' : String(d.city).toLowerCase(),
                                     // filterMethod: (filter, rows) =>
                                     //       matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["city"] }),
                                     // filterAll: true
+                                    maxWidth: 200,
 
                                 },
                                 {
                                     Header: "State",
                                     id: "state",
-                                    className: 'text-center',
-                                    accessor: d => String(d.state).toLowerCase(),
+                                    className: 'text-left',
+                                    accessor: d => d.state,
                                     //filterMethod: (filter, rows) =>
                                     //                matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["state"] }),
                                     //            filterAll: true
-
+                                    maxWidth: 200,
                                 },
 
                                 {
                                     Header: "Website",
                                     id: "websiteUrl",
-                                    className: 'text-center',
+                                    className: 'text-left',
                                     accessor: "websiteUrl",
                                     Cell: row => (
-                                        <Link className="alink" to={'/' + row.value}>{String(row.value).toLowerCase()}</Link>
+                                        <Link className="alink" to={"//" + row.value} target="_blank">{String(row.value).toLowerCase()}</Link>
                                     ),
                                     //filterMethod: (filter, rows) =>
                                     //                matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["websiteUrl"] }),
-                                    //            filterAll: true
+                                    //            filterAll: true 
+                                    maxWidth: 400,
                                 },
                                 {
                                     Header: "View",
                                     id: "view",
-                                    className: 'text-center',
+                                    className: 'text-left',
                                     accessor: "_id",
                                     Cell: row => (
                                         <div className="card-link">
@@ -140,9 +145,10 @@ class Dashboard extends Component {
                             ]
                         }
                     ]}
-                    defaultPageSize={10}
+                    pageSizeOptions={[25, 50, 100]}
+                    defaultPageSize={100}
                     showPaginationTop
-                    className="-striped -highlight table table_list without_border"
+                    className="-striped -highlight table table_list without_border text-left"
                 />
                 {/* <div className="container marginTop30 list-group">
                <h3 className="text-center">Avalon Customer's</h3>
@@ -165,5 +171,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    { fetchCustomers }
+    { fetchCustomers, fetchorphenEmail }
 )(Dashboard);

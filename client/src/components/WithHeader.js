@@ -26,7 +26,7 @@ class MainWraper extends Component {
         {!this.props.leftChoice ? null : <LeftSideBar />}
         <div className={"col-sm-12 page_container" + (!this.props.leftChoice || this.state.Toggle ? " full" : "")}>
           {!this.props.leftChoice ? null : <a onClick={this.LeftsidebarToggle} className="toggle_arrow" title={this.state.Toggle ? "Open Sidebar" : "Close Sidebar"}><i className={"fa" + (this.state.Toggle ? ' fa-angle-double-right' : ' fa-angle-double-left')} aria-hidden="true"></i></a>}
-          <Header />
+          <Header authbtn={this.props.authbtn} />
           <Route exact={true} path={this.props.path} component={this.props.content} />
           <Footer />
         </div>
@@ -37,7 +37,7 @@ class MainWraper extends Component {
 
 export function CustomerList() {
   return (
-    <MainWraper content={Dashboard} path="/customers/" leftChoice={false} />
+    <MainWraper content={Dashboard} path="/customers/" leftChoice={false} authbtn={true} />
   )
 }
 export function CustomerDetailsWraper() {

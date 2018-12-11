@@ -37,7 +37,7 @@ export default [
 
   {
     label: "Company Logo",
-    name: "companyLogoUrl",
+    name: "logourl",
     type: "text",
     isvalidationApplied: true,
     validationmessage: "Please enter valida jewelsoft Id",
@@ -65,7 +65,7 @@ export default [
   {
     label: "Contact Person Position",
     name: "position",
-    type: "text",
+    type: "dropdown",
     isvalidationApplied: true,
     validationmessage: "Please enter valida jewelsoft Id",
     value: ""
@@ -98,7 +98,7 @@ export default [
   {
     label: "State",
     name: "state",
-    type: "text",
+    type: "dropdown",
     isvalidationApplied: true,
     validationmessage: "",
     value: ""
@@ -146,7 +146,7 @@ export default [
   {
     label: "Sales Person",
     name: "salesPerson",
-    type: "text",
+    type: "dropdown",
     isvalidationApplied: true,
     validationmessage: "",
     value: ""

@@ -14,7 +14,7 @@ class EmailLogList extends Component {
   //   return this.props.email.map((list) => {
   //     return (
   //       <tr key={list._id} onClick={() => this.props.SelectEmail(list)}  >
-  //         <td>{moment(list.emaildate).format('DD MMM YYYY')}</td>
+  //         <td>{moment(list.emaildate).format('MMM DD YYYY')}</td>
   //         <td>{list.type === "In" ? <i className="fa fa-sign-in" aria-hidden="true"></i> : <i className="fa fa-sign-out" aria-hidden="true"></i>}</td>
   //         <td>{list.subject}</td>
   //         {/* <td>{list.text.length > 50 ? list.text.slice(1, 50) + "...." : list.text}</td> */}

@@ -9,17 +9,17 @@ const dropdown = ({
 }) => {
   //console.log(optionData);
 
-  let planets = optionData;
-  // console.log("planet |-" + planets);
-  let optionItems = planets.map((planet, index) => (
-    <option key={index}>{planet}</option>
+  let DropDownLists = optionData;
+  // console.log("dropdownElement |-" + DropDownLists);
+  let optionItems = DropDownLists.map((dropdownElement, index) => (
+    <option key={index}>{dropdownElement}</option>
   ));
 
   return (
     <div className="form-group col-sm-6">
       <label className="control-label col-sm-4">{label}</label>
       <div className="col-sm-8">
-        <select {...input} className={"form-control " + (touched && error) } disabled={disabled ? "disabled" : ""}>
+        <select {...input} className={"form-control " + (touched && error)} disabled={disabled ? "disabled" : ""}>
           {optionItems}
         </select>
         {/* <div className="red-text" >

@@ -17,7 +17,7 @@ const timeField = ({ input, label, type, meta: { touched, error } }) => {
                     timeFormat='hh:mm A'
                     date={false}
                     value={!input.value ? "" : new Date(input.value)}
-                //value={!input.value ? null : new Date(moment(input.value).format("DD MMM YYYY"))}
+                //value={!input.value ? null : new Date(moment(input.value).format("MMM DD YYYY"))}
                 />
                 {/* <div className="red-text" > */}
                     {/* {touched && error} */}

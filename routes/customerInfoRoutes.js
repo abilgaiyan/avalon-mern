@@ -5,7 +5,9 @@ const requireLogin = require('../middlewares/requireLogin');
 const requirePermission = require('../middlewares/requirePermission');
 const mongoose = require("mongoose");
 const BuyingGroup = mongoose.model('buyinggroup');
+const SalesPerson = mongoose.model('salesperson');
 const CustomerInfo = mongoose.model("customerinfo");
+
 
 
 module.exports = app => {
@@ -24,13 +26,50 @@ module.exports = app => {
 
   });
 
+  //List of all State List 
+  app.get('/api/SalesPersonAllData', async (req, res) => {
+    const salespersonAllData = await SalesPerson.find({});
+
+    // let result = [];
+    // for (let index = 0; index < salespersonAllData.length; index++) {
+    //   let el = salespersonAllData[index].sales_person_code;
+    //   if (result.indexOf(el) === -1) result.push(el);
+    // }
+
+    // salespersonAllData = result;
+    //console.log(buyinggroupsAllData);
+    //res.send(buyinggroupsAllData);
+    if (salespersonAllData) {
+      res.send(salespersonAllData);
+    } else {
+      res.send("no data");
+    }
+  });
+
+
+  //List of all Salesman Data
+  app.get('/api/SalesPersonAllData/:salespersonstate', async (req, res) => {
+    const salespersonstate = req.params.salespersonstate.toString();
+    const salespersonAllData = await SalesPerson.find({ StateCode: salespersonstate });
+
+    //console.log(buyinggroupsAllData);
+    //res.send(buyinggroupsAllData);
+    if (salespersonAllData) {
+      res.send(salespersonAllData);
+    } else {
+      res.send("no data");
+    }
+  });
+
+
   //Get Customer info data
   app.get("/api/customerinfo/:customerid", async (req, res) => {
     const customerId = req.params.customerid.toString();
+
     //console.log(customerId);
     const customerinfo = await CustomerInfo.find({
       _id: mongoose.Types.ObjectId(customerId)
-    }, { createDate: 0, updateDate: 0 }).populate('_salesPerson')
+    }, { createDate: 0, updateDate: 0 })
       //.populate('_buyinggroups')
       //.populate('_avalonInfo')
       .populate({
@@ -100,7 +139,10 @@ module.exports = app => {
 
   //New
   app.post('/api/addcustomerinfo', async (req, res) => {
-    const { jewelsoftId, Name, address1, city, state, telephone, websiteUrl, avalonId, customerDBA, mainContact, position, address2, postalCode, contactpersonEmail, telephone1, telephone2, websiteProvider, customersince, customerType, comment } = req.body;
+    const { jewelsoftId, Name, address1, city, state, telephone, websiteUrl, avalonId, customerDBA, mainContact, position,
+      address2, postalCode, contactpersonEmail, telephone1, telephone2, websiteProvider, customersince, customerType, comment,
+      salesPerson, _buyinggroups } = req.body;
+
     const AddCustomerInfoData = new CustomerInfo({
       jewelsoftId,
       Name,
@@ -122,8 +164,8 @@ module.exports = app => {
       customersince,
       customerType,
       comment,
-      _salesPerson: null,
-      _buyinggroups: [],
+      _salesPerson: salesPerson,
+      _buyinggroups: _buyinggroups,
       _avalonInfo: null,
       _billingInfo: null,
       _websiteInfo: null,
@@ -166,6 +208,10 @@ module.exports = app => {
   app.post("/api/customerinfo", async (req, res) => {
 
     const customerinfo = { ...req.body };
+
+    //const _salesPerson = req.body.salesPerson;
+    customerinfo._salesPerson = req.body.salesPerson;
+    // console.log("---------------Salesperson----------------------", customerinfo);
     // const customerinfo_temp = { ...req.body };
     // const buyingGrp_id_temp = customerinfo_temp._buyinggroups
     // const buyingGrp_onlyid = buyingGrp_id_temp.map((onlyid) => { return onlyid.id });

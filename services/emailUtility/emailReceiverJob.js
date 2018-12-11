@@ -43,40 +43,42 @@ notifier(imap).on('mail', async function (mail) {
     var customerid = '';
     console.log("------------------------------>>>>>>>>>>>>>>>>>START<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-----------------------------------");
 
-
+    //console.log(websiteurlname)
     await db.collection("customerinfo").find({ websiteUrl: websiteurlname }).toArray(function (err, result) {
         if (err) throw err;
-        //console.log(result);
-        if (result) {
+        //console.log(result.length);
+        // console.log(result[0]._id);
+        if (result.length > 0) {
             customerid = result[0]._id;
-            //console.log(customerid);
-            //console.log(mail.html)
-            var EmailDataToDB = new EmailUtility({
-                subject: mail.headers.subject,
-                text: mail.text,
-                html: mail.html,
-                from: mail.headers.from,
-                to: mail.headers.to,
-                type: type,
-                hasattachment: "N.A",
-                emaildate: mail.date,
-                synced: true,
-                status: "Active",
-                createDate: Date.now(),
-                updateDate: Date.now(),
-                customerid: customerid
-            });
-
-            EmailDataToDB.save(function (error) {
-                console.log("Your Mail Data has been saved!");
-                if (error) {
-                    console.error(error);
-                }
-            });
-
-            // db.close();
+        } else {
+            customerid = 'orphen';
         }
 
+        console.log(customerid);
+        console.log(mail.html)
+
+        var EmailDataToDB = new EmailUtility({
+            subject: mail.headers.subject,
+            text: mail.text,
+            html: mail.html,
+            from: mail.headers.from,
+            to: mail.headers.to,
+            type: type,
+            hasattachment: "N.A",
+            emaildate: mail.date,
+            synced: true,
+            status: "Active",
+            createDate: Date.now(),
+            updateDate: Date.now(),
+            customerid: customerid
+        });
+
+        EmailDataToDB.save(function (error) {
+            console.log("Your Mail Data has been saved!");
+            if (error) {
+                console.error(error);
+            }
+        });
 
     });
 

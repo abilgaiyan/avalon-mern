@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import ReactAutocomplete from "react-autocomplete";
 import { withRouter } from "react-router-dom";
 import * as actions from "../actions";
-import {customerlistSearch} from './customers/Dashboard'
+import { customerlistSearch } from './customers/Dashboard'
 
 class Search extends Component {
 
@@ -36,8 +36,10 @@ class Search extends Component {
                     </div>
                 }
                 value={this.state.value}
-                onChange={e => {this.setState({ value: e.target.value });
-                customerlistSearch(e.target.value)}}
+                onChange={e => {
+                    this.setState({ value: e.target.value });
+                    customerlistSearch(e.target.value)
+                }}
                 //onSelect={value => this.setState({ value })}
                 onSelect={(item, value) => window.location.assign("/customers/" + value._id)}
             // onSelect={(item, value) => {

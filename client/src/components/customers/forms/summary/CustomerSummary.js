@@ -7,24 +7,29 @@ class CustomerSummary extends Component {
     return (
       <div >
         <div className="row">
-        <div className="col-sm-8">
-          <p>
-            {this.props.customerSummary.Name} <br />
-            {this.props.customerSummary.city},{this.props.customerSummary.state}{" "}
-            <br />
-            {this.props.customerSummary.contactPersonName}
-          </p>
-        </div>
-        <div className="col-sm-4">
-          <div className="logo_wraper pull-right">
-            <img alt={this.props.customerSummary.Name}
-              //src={this.props.customerSummary.logourl}
-              src={this.props.customerSummary.logourl}
-              className="img-responsive "
-            />
+          <div className="col-sm-8">
+            <p>
+              {this.props.customerSummary.Name} <br />
+              {this.props.customerSummary.city},{this.props.customerSummary.state}{" "}
+              <br />
+              {this.props.customerSummary.contactPersonName}
+            </p>
+            <p className="text_with_icon">
+              <i className="fas fa-globe"></i> <a href={"//" + this.props.customerSummary.websiteUrl} target="_blank">{this.props.customerSummary.websiteUrl}</a> <br />
+              <i className="fas fa-phone fa-flip-horizontal"></i> {this.props.customerSummary.mobileNumber}<br />
+              <i className="fas fa-envelope"></i> {this.props.customerSummary.contactpersonEmail}
+            </p>
+          </div>
+          <div className="col-sm-4">
+            <div className="logo_wraper">
+              <img alt={this.props.customerSummary.Name}
+                //src={this.props.customerSummary.logourl}
+                src={this.props.customerSummary.logourl}
+                className="img-responsive "
+              />
+            </div>
           </div>
         </div>
-      </div>
         <div className="info-section">
           <table className="table table-info no-margin">
             <tbody>
@@ -37,25 +42,26 @@ class CustomerSummary extends Component {
               <tr>
                 <td>Buying Group:</td>
                 <td align="right">
-                  {this.props.customerSummary._buyinggroups.join(', ')}
+                  {this.props.customerSummary._buyinggroups === null || this.props.customerSummary._buyinggroups === undefined ? "" : this.props.customerSummary._buyinggroups.join(', ')}
+                  {/* {this.props.customerSummary._buyinggroups.join(', ')} */}
                 </td>
               </tr>
               <tr>
                 <td>Website Plan:</td>
                 <td align="right">
                   {/* {this.props.customerSummary._billingInfo === null ? "" : this.props.customerSummary._billingInfo._productPlan._productPlan} */}
-                  {this.props.customerSummary._billingInfo === null ? "" : this.props.customerSummary._billingInfo._productPlan === undefined ? "" : this.props.customerSummary._billingInfo._productPlan._productPlan}
+                  {this.props.customerSummary._billingInfo === null || this.props.customerSummary._billingInfo === undefined ? "" : this.props.customerSummary._billingInfo._productPlan === undefined ? "" : this.props.customerSummary._billingInfo._productPlan._productPlan}
                 </td>
               </tr>
               <tr>
                 <td>Website Status:</td>
                 <td align="right">
-                  {this.props.customerSummary._avalonInfo === null ? "" : this.props.customerSummary._avalonInfo._websitestatus._websitestatus}
+                  {this.props.customerSummary._avalonInfo === null || this.props.customerSummary._avalonInfo === undefined ? "" : this.props.customerSummary._avalonInfo._websitestatus._websitestatus}
                 </td>
               </tr>
               <tr>
                 <td>ASHI Feed:</td>
-                <td align="right">{this.props.customerSummary._productInfo === null ? "" : this.props.customerSummary._productInfo._ashiProductStatus._ashiProductStatus}</td>
+                <td align="right">{this.props.customerSummary._productInfo === null || this.props.customerSummary._productInfo === undefined ? "" : this.props.customerSummary._productInfo._ashiProductStatus._ashiProductStatus}</td>
               </tr>
             </tbody>
           </table>

@@ -6,8 +6,8 @@ const timeField = ({ input: { onChange, value }, label, type, meta: { touched, e
 
     return (
         <div className="form-group">
-            <label className="control-label col-sm-3">{label}</label>
-            <div className="col-sm-9 ">
+            <label className="control-label col-sm-4">{label}</label>
+            <div className="col-sm-8 ">
                 <DateTimePicker
                     //{...input}
                     inputProps={{ component: props => <input {...props} readOnly /> }}
@@ -17,7 +17,7 @@ const timeField = ({ input: { onChange, value }, label, type, meta: { touched, e
                     className={touched && error}
                     date={false}
                     value={!value ? null : new Date(value)}
-                //value={!input.value ? null : new Date(moment(input.value).format("DD MMM YYYY"))}
+                //value={!input.value ? null : new Date(moment(input.value).format("MMM DD YYYY"))}
                 />
                  {/* <div className="red-text" >
                     {touched && error}
@@ -42,7 +42,7 @@ const timeField = ({ input: { onChange, value }, label, type, meta: { touched, e
 //                     timeFormat='hh:mm A'
 //                     date={false}
 //                     value={!input.value ? "" : new Date(input.value)}
-//                 //value={!input.value ? "" : new Date(moment(input.value).format("DD MMM YYYY"))}
+//                 //value={!input.value ? "" : new Date(moment(input.value).format("MMM DD YYYY"))}
 //                 />
 //                 <div className="red-text" >
 //                     {/* {touched && error} */}

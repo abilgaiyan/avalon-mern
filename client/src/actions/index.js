@@ -34,7 +34,10 @@ import {
   CALLLOG_SELECTED,
   FETCH_SUPPORTQUERY,
   FETCH_COMMUNICATIONLOG,
-  COMMENT_SELECTED
+  COMMENT_SELECTED,
+  FETCH_ORPHENEMAILALLDATA,
+  FETCH_SALESPERSONALLDATA,
+  FETCH_STATEDATA
 } from "./types";
 
 //Store Autocomplete_ID
@@ -215,6 +218,7 @@ export const submitCustomerInfo = (values, customerId, history) => async dispatc
 // Set Add Customer Info Form
 export const submitAddCustomerInfoForm = (values, history) => async dispatch => {
   //values.customerId = customerId;
+  console.log('values testtt', values)
   const res = await axios.post("/api/addcustomerinfo/", values);
   // history.push("/customers/");
   dispatch({ type: FETCH_CUSTOMERINFO, payload: values });
@@ -446,3 +450,41 @@ export const fetchcommunicationlog = customerId => async dispatch => {
 export const SelectComment = comment => async dispatch => {
   dispatch({ type: COMMENT_SELECTED, payload: comment });
 };
+
+
+
+// Fetch last email communication data by Customer id
+export const fetchorphenEmail = () => async dispatch => {
+  //console.log(customerId)
+  const res = await axios.get("/api/orphenemaildata/");
+
+  //const res = storylist;
+  dispatch({ type: FETCH_ORPHENEMAILALLDATA, payload: res.data });
+  // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
+};
+
+
+// Fetch Sales Person list all data
+export const fetchStateList = () => async dispatch => {
+  const res = await axios.get("/api/SalesPersonAllData");
+  dispatch({ type: FETCH_STATEDATA, payload: res.data });
+};
+
+
+// Fetch Sales Person list all data
+// export const fetchSalesPersonList = () => async dispatch => {
+//   const res = await axios.get("/api/SalesPersonAllData");
+//   dispatch({ type: FETCH_SALESPERSONALLDATA, payload: res.data });
+// };
+
+// Fetch Sales Person list all data by state code
+export const fetchSalesPersonList = stateCode => async dispatch => {
+  //console.log(customerId)
+  const res = await axios.get("/api/SalesPersonAllData/" + stateCode);
+
+  //const res = storylist;
+  dispatch({ type: FETCH_SALESPERSONALLDATA, payload: res.data });
+  // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
+};
+
+

@@ -21,6 +21,7 @@ module.exports = app => {
         // console.log("-------------->>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<------------------------")
         // console.log(custCallLogInfoIds);
 
+        let callCount = await CustomerCalllogInfo.find({ _id: { $in: custCallLogInfoIds } }).count();
         let callloginfo = await CustomerCalllogInfo.find({
             //_id: mongoose.Types.ObjectId(custCallLogInfoId)
             _id: { $in: custCallLogInfoIds }
@@ -32,7 +33,7 @@ module.exports = app => {
             // console.log(callloginfo);
             //communicationLogData.push(callloginfo);//.forEach(element => { element.Type = "call"; }))
             callloginfo = await callloginfo.map(element => {
-                return { ...element._doc, ctype: "call" }
+                return { ...element._doc, ctype: "call", call_count: callCount }
             })
             //res.send(callloginfo);
         }
@@ -40,6 +41,7 @@ module.exports = app => {
         const custCommentInfoIds_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _querysupportInfo: 1, _id: 0 });
         const custCommentLogInfoIds = custCommentInfoIds_temp[0]._querysupportInfo;
 
+        let commentCount = await CustomerComment.find({ _id: { $in: custCommentLogInfoIds } }).count();
         let commentinfo = await CustomerComment.find({
             //_id: mongoose.Types.ObjectId(custCallLogInfoId)
             _id: { $in: custCommentLogInfoIds }
@@ -51,12 +53,12 @@ module.exports = app => {
             // console.log(commentinfo);
             //communicationLogData.push(commentinfo);//.forEach(element => { element.Type = "call"; }))
             commentinfo = await commentinfo.map(element => {
-                return { ...element._doc, ctype: "comment" }
+                return { ...element._doc, ctype: "comment", comment_count: commentCount }
             })
             //res.send(commentinfo);
         }
 
-
+        let emailCount = await CustomerEmail.find({ customerid: customerId }).count();
         let customeremail = await CustomerEmail.find({
             customerid: customerId
         }).sort({ createDate: -1 });
@@ -66,7 +68,7 @@ module.exports = app => {
         if (customeremail)
             //      communicationLogData.push(customeremail);//.forEach(element => { element.Type = "email"; }));
             customeremail = await customeremail.map(element => {
-                return { ...element._doc, ctype: "email" }
+                return { ...element._doc, ctype: "email", email_count: emailCount }
             })
 
 

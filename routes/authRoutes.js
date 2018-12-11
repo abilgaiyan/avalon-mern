@@ -21,7 +21,6 @@ module.exports = app => {
         res.redirect('/');
     })
     app.get('/api/current_user', (req, res) => {
-        // console.log("------------------------->>>>>>>>>>>>>>>Current User<<<<<<<<<<<<<<<<<<<<<<<<----------------------------")
         // console.log(req.user);
         res.send(req.user);
     })

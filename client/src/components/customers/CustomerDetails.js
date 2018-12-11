@@ -53,6 +53,7 @@ class CustomerDetails extends Component {
     this.props.fetchcallloginfo(customerId);
     this.props.fetchemaildata(customerId);
     this.props.fetchcommunicationlog(customerId);
+    this.props.fetchStateList();
   }
 
 
@@ -137,7 +138,7 @@ class CustomerDetails extends Component {
   renderSupportQueryForm() {
     return (
       //<SupportQueryForm supportQueryData={this.props.match.params.customerId} />
-      <SupportQueryForm/>
+      <SupportQueryForm />
     );
   }
 
@@ -194,7 +195,7 @@ class CustomerDetails extends Component {
 
               {/* Billing form */}
               <AccordianPanel
-                title="Billing Form"
+                title="Billing Info"
                 func={this.renderBillingForm()}
                 active={false}
                 AccId="BillingForm"
@@ -204,7 +205,7 @@ class CustomerDetails extends Component {
 
               {/* AshiMicroWebsite Form */}
               <AccordianPanel
-                title="Ashi Micro Website Form"
+                title="Ashi Micro Website Info"
                 func={this.renderAshiMicroWebsiteForm()}
                 active={false}
                 AccId="AshiMicroWebsiteForm"
@@ -214,7 +215,7 @@ class CustomerDetails extends Component {
 
               {/* Domain Info Form */}
               <AccordianPanel
-                title="Domain Info Form"
+                title="Domain Info"
                 func={this.renderDomainInfoForm()}
                 active={false}
                 AccId="DomainInfoForm"
@@ -223,7 +224,7 @@ class CustomerDetails extends Component {
               />
               {/* SSL Info Form */}
               <AccordianPanel
-                title="SSL Info Form"
+                title="SSL Info"
                 func={this.renderSSLInfoForm()}
                 active={false}
                 AccId="SSLInfoForm"
@@ -233,7 +234,7 @@ class CustomerDetails extends Component {
 
               {/* Business Email Info Form */}
               <AccordianPanel
-                title="Business Email Info Form"
+                title="Business Email Info"
                 func={this.renderBusinessEmailInfoForm()}
                 active={false}
                 AccId="BusinessEmailInfoForm"
@@ -243,7 +244,7 @@ class CustomerDetails extends Component {
 
               {/* Email Marketing Account Info Form */}
               <AccordianPanel
-                title="Email Marketing Account Info Form"
+                title="Email Marketing Account Info"
                 func={this.renderEmailMarketingAccountInfoForm()}
                 active={false}
                 AccId="EmailMarketingAccountInfoForm"
@@ -253,7 +254,7 @@ class CustomerDetails extends Component {
 
               {/* Website Info Form */}
               <AccordianPanel
-                title="Website Info Form"
+                title="Website Info"
                 func={this.renderwebsiteinfoForm()}
                 active={false}
                 AccId="WebsiteInfoForm"
@@ -263,7 +264,7 @@ class CustomerDetails extends Component {
 
               {/* Product Info Form */}
               <AccordianPanel
-                title="Product Info Form"
+                title="Product Info"
                 func={this.renderproductinfoForm()}
                 active={false}
                 AccId="ProductInfoForm"
@@ -372,6 +373,7 @@ function mapStateToProps(state) {
   // console.clear();
   // console.log(state);
   return {
+    auth: state.auth,
     customerForm: state.customerForm,
     autoCompleteId: state.autoCompleteId
   };
