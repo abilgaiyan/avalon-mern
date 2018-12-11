@@ -6,8 +6,10 @@ import ReactTable from "react-table";
 import matchSorter from 'match-sorter';
 import 'react-table/react-table.css'
 
-export let customerlistSearch = function (search) {
-    this.setState({ search });
+export let customerlistSearch = function (search, pathname) {
+    if (String(pathname).split("/").splice(-1) == 'customers') {
+        this.setState({ search });
+    }
 }
 class Dashboard extends Component {
     constructor() {

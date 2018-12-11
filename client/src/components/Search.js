@@ -38,7 +38,7 @@ class Search extends Component {
                 value={this.state.value}
                 onChange={e => {
                     this.setState({ value: e.target.value });
-                    customerlistSearch(e.target.value)
+                    customerlistSearch(e.target.value, window.location)
                 }}
                 //onSelect={value => this.setState({ value })}
                 onSelect={(item, value) => window.location.assign("/customers/" + value._id)}
