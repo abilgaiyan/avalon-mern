@@ -69,7 +69,7 @@ class Dashboard extends Component {
                                     //filterMethod: (filter, rows) =>
                                     //    matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["Name"] }),
                                     //filterAll: true
-                                   
+
                                     maxWidth: 400,
                                 },
                                 {
@@ -121,7 +121,7 @@ class Dashboard extends Component {
                                     className: 'text-left',
                                     accessor: "websiteUrl",
                                     Cell: row => (
-                                        <Link className="alink" to={"//" + row.value} target="_blank">{String(row.value).toLowerCase()}</Link>
+                                        String(row.value).toLowerCase() === 'undefined' ? '-' : <Link className="alink" to={"//" + row.value} target="_blank">{String(row.value).toLowerCase()}</Link>
                                     ),
                                     //filterMethod: (filter, rows) =>
                                     //                matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["websiteUrl"] }),

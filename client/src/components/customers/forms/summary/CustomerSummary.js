@@ -15,9 +15,9 @@ class CustomerSummary extends Component {
               {this.props.customerSummary.contactPersonName}
             </p>
             <p className="text_with_icon">
-              <i className="fas fa-globe"></i> <a href={"//" + this.props.customerSummary.websiteUrl} target="_blank">{this.props.customerSummary.websiteUrl}</a> <br />
-              <i className="fas fa-phone fa-flip-horizontal"></i> {this.props.customerSummary.mobileNumber}<br />
-              <i className="fas fa-envelope"></i> {this.props.customerSummary.contactpersonEmail}
+              <div className={this.props.customerSummary.websiteUrl ? '' : 'hide'}> <i className="fas fa-globe"></i> <a href={"//" + this.props.customerSummary.websiteUrl} target="_blank">{this.props.customerSummary.websiteUrl}</a> <br /></div>
+              <div className={this.props.customerSummary.mobileNumber ? '' : 'hide'}><i className="fas fa-phone fa-flip-horizontal"></i> {this.props.customerSummary.mobileNumber}<br /></div>
+              <div className={this.props.customerSummary.contactpersonEmail ? '' : 'hide'}><i className="fas fa-envelope"></i> {this.props.customerSummary.contactpersonEmail}</div>
             </p>
           </div>
           <div className="col-sm-4">
@@ -56,7 +56,7 @@ class CustomerSummary extends Component {
               <tr>
                 <td>Website Status:</td>
                 <td align="right">
-                  {this.props.customerSummary._avalonInfo === null || this.props.customerSummary._avalonInfo === undefined ? "" : this.props.customerSummary._avalonInfo._websitestatus._websitestatus}
+                  {this.props.customerSummary._avalonInfo === null || this.props.customerSummary._avalonInfo === undefined ? "" : this.props.customerSummary._avalonInfo._websitestatus === undefined ? "" : this.props.customerSummary._avalonInfo._websitestatus._websitestatus}
                 </td>
               </tr>
               <tr>

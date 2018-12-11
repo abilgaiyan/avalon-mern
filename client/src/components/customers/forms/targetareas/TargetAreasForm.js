@@ -10,7 +10,7 @@ class TargetAreasForm extends Component {
     let sslhttps = '';
 
     if (this.props.targetAreasData._avalonInfo) {
-      responsiveStatus = this.props.targetAreasData._avalonInfo._websitestatus._websitestatus;
+      responsiveStatus = this.props.targetAreasData._avalonInfo._websitestatus === undefined ? "" : this.props.targetAreasData._avalonInfo._websitestatus._websitestatus;
     }
     if (this.props.targetAreasData._productInfo) {
       jewelexchange = this.props.targetAreasData._productInfo.jewelExchangeSignupStatus;

@@ -480,10 +480,19 @@ export const fetchStateList = () => async dispatch => {
 // Fetch Sales Person list all data by state code
 export const fetchSalesPersonList = stateCode => async dispatch => {
   //console.log(customerId)
-  const res = await axios.get("/api/SalesPersonAllData/" + stateCode);
 
-  //const res = storylist;
-  dispatch({ type: FETCH_SALESPERSONALLDATA, payload: res.data });
+  // if (stateCode === null || stateCode === '' || stateCode === 'undefined') {
+  //   return;
+  // }
+
+  if (stateCode !== null || stateCode !== '' || stateCode !== 'undefined') {
+    const res = await axios.get("/api/SalesPersonAllData/" + stateCode)
+    //const res = storylist;
+    dispatch({ type: FETCH_SALESPERSONALLDATA, payload: res.data });
+  }
+  else {
+    dispatch({ type: FETCH_SALESPERSONALLDATA, payload: "" });
+  }
   // dispatch({ type: FETCH_CUSTOMER, payload: customerId });
 };
 
