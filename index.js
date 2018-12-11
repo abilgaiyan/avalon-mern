@@ -1,4 +1,5 @@
 const express = require('express');
+const ipfilter = require('express-ipfilter').IpFilter;
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
@@ -44,6 +45,12 @@ mongoose.connect(keys.mongodbURL);
 //mongoose.connect('mongodb://Avalon:Avalon@ds145178.mlab.com:45178/Avalon-dev');
 
 const app = express();
+
+// const ips = keys.allowIps;
+// const allowIpRestriction = keys.allowIpRestriction;
+// if (allowIpRestriction){
+//   app.use(ipfilter(ips), {mode: 'allow'})
+// }
 
 app.use(bodyParser.json());
 app.use(
