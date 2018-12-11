@@ -7,9 +7,9 @@ import OrphenEmailLogList from "./OrphenEmails";
 
 class Header extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = {searchClass : false}
+    this.state = { searchClass: false }
   }
 
   // renderEmail() {
@@ -17,7 +17,7 @@ class Header extends Component {
   // }
 
   searchClickhandler = () => {
-    this.setState({searchClass: !this.state.searchClass})
+    this.setState({ searchClass: !this.state.searchClass })
   }
 
   renderHeader() {
@@ -65,7 +65,7 @@ class Header extends Component {
                   Welcome {this.props.auth && this.props.auth.name ? this.props.auth.name : ''}
                 </a>
               </div>
-              <div className={"col-xs-12 col-sm-4 search_wraper" + (this.state.searchClass ? ' click': '')}>
+              <div className={"col-xs-12 col-sm-4 search_wraper" + (this.state.searchClass ? ' click' : '')}>
                 <form className="navbar-form navbar-left">
                   <div className="input-group">
                     <Search />
@@ -74,7 +74,7 @@ class Header extends Component {
               </div>
               <div className="col-xs-5 col-sm-4 text-right noppading">
                 {this.props.authbtn ? <OrphenEmailLogList /> : ''}
-                <button type="button" className="btn btn-success navbar-btn hidden-xs" data-toggle="modal" data-target="#addcustomerinfoModal"><i className="fa fa-plus" aria-hidden="true"></i>CUSTOMER</button>
+                <button type="button" className="btn btn-success navbar-btn hidden-xs hidden-sm" data-toggle="modal" data-target="#addcustomerinfoModal"><i className="fa fa-plus" aria-hidden="true"></i>CUSTOMER</button>
                 <AddCustomerInfoForm />
                 <ul className="nav navbar-nav navbar-right user_wraper">
                   <li className="hidden-sm hidden-md hidden-lg">
@@ -90,10 +90,11 @@ class Header extends Component {
                       <span className="glyphicon glyphicon-user" />
                     </a>
                     <ul className="dropdown-menu text-center">
-                    <li><a className="hidden-md hidden-lg" data-toggle="modal" data-target="#addcustomerinfoModal">ADD CUSTOMER</a></li>
-                    <li role="separator" className="divider hidden-md hidden-lg"></li>
-                    <li><a className="hidden-md hidden-lg" data-toggle="modal" data-target="#orphenemailsModal">ORPHAN EMAILS</a></li>
-                    <li role="separator" className="divider hidden-md hidden-lg"></li>
+                      <li><a className="hidden-md hidden-lg" data-toggle="modal" data-target="#addcustomerinfoModal">ADD CUSTOMER</a></li>
+                      {this.props.authbtn ? <React.Fragment><li role="separator" className="divider hidden-md hidden-lg"></li>
+                        <li><a className="hidden-md hidden-lg" data-toggle="modal" data-target="#orphenemailsModal">ORPHAN EMAILS</a></li></React.Fragment> : ''}
+
+                      <li role="separator" className="divider hidden-md hidden-lg"></li>
                       {this.renderHeader()}
                     </ul>
                   </li>
