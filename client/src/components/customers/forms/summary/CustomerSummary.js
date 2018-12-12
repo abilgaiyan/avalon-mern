@@ -22,9 +22,10 @@ class CustomerSummary extends Component {
           </div>
           <div className="col-sm-4">
             <div className="logo_wraper">
+             
               <img alt={this.props.customerSummary.Name}
                 //src={this.props.customerSummary.logourl}
-                src={this.props.customerSummary.logourl}
+                src={this.props.customerSummary.logourl ? this.props.customerSummary.logourl : require('../../../../images/no_image.png')}
                 className="img-responsive "
               />
             </div>

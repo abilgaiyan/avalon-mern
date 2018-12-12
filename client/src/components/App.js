@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import Welcome from "./Welcome";
 import './css/common.css';
 import { CustomerList, CustomerDetailsWraper } from "./WithHeader"
-
 import PermissionAccess from "./PermissionAccess";
+import NotFound from "./Notfound";
 
 class App extends Component {
   // constructor(props) {
@@ -30,11 +30,10 @@ class App extends Component {
   PermissionHandler = () => {
     return (<BrowserRouter>
       <div className="container-fluid">
-        <Route exact={true} path="/" component={Welcome} />
-        <Route exact={true} path="/customers" component={PermissionAccess} />
-        <Route exact={true} path="/customers/:customerId" component={PermissionAccess} />
-        {/* <Route exact={true} path="/customers" component={this.state.permission === 0 ? PermissionAccess : CustomerList} />
-          <Route exact={true} path="/customers/:customerId" component={this.state.permission === 0 ? PermissionAccess : CustomerDetailsWraper} /> */}
+        <Switch>
+          <Route exact={true} path="/" component={Welcome} />
+          <Route component={PermissionAccess} />
+        </Switch>
       </div>
     </BrowserRouter>)
   }
@@ -42,11 +41,12 @@ class App extends Component {
   BrowserRouterHandler = () => {
     return (<BrowserRouter>
       <div className="container-fluid">
-        <Route exact={true} path="/" component={Welcome} />
-        <Route exact={true} path="/customers" component={CustomerList} />
-        <Route exact={true} path="/customers/:customerId" component={CustomerDetailsWraper} />
-        {/* <Route exact={true} path="/customers" component={this.state.permission === 0 ? PermissionAccess : CustomerList} />
-          <Route exact={true} path="/customers/:customerId" component={this.state.permission === 0 ? PermissionAccess : CustomerDetailsWraper} /> */}
+        <Switch>
+          <Route exact={true} path="/" component={Welcome} />
+          <Route exact={true} path="/customers" component={CustomerList} />
+          <Route exact={true} path="/customers/:customerId" component={CustomerDetailsWraper} />
+          <Route component={NotFound} />
+        </Switch>
       </div>
     </BrowserRouter>)
   }
