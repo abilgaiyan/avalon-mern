@@ -96,7 +96,7 @@ ul li {
 /*Form Field css */
 .form-control, .form-control, fieldset .form-control {
     opacity: 1;
-    height: 40px;
+    height: 34px;
     border-radius: 0px;
     background-color: #fff;
     border: 1px solid #e1e3ea;
@@ -108,7 +108,7 @@ ul li {
 }
 
 .form-group .rw-input, .form-group .rw-dropdown-list-autofill, .form-group .rw-filter-input {
-    height: 38px;
+    height: 32px;
     -webkit-box-shadow: none;
     box-shadow: none;
     border-radius: 2px;
@@ -814,6 +814,45 @@ select.form-control{padding: 6px 12px 6px 9px;}
 
 
 
+.form-horizontal .form-group .rw-multiselect .rw-input-reset{height: 40px; width: 0;padding: 0;}
+.form-horizontal .form-group .rw-widget>.rw-widget-container{-webkit-box-shadow:none;box-shadow: none;}
+
+.ReactTable.table.table_list .rt-thead .rt-th.-sort-asc, 
+.ReactTable.table.table_list .rt-thead .rt-td.-sort-asc,
+.ReactTable.table.table_list .rt-thead .rt-th.-sort-desc, 
+.ReactTable.table.table_list .rt-thead .rt-td.-sort-desc{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+}
+.ReactTable.table.table_list:not(.without_border) .rt-thead .rt-th.-sort-desc,
+.ReactTable.table.table_list:not(.without_border) .rt-thead .rt-td.-sort-desc,
+.ReactTable.table.table_list:not(.without_border) .rt-thead .rt-th.-sort-asc,
+.ReactTable.table.table_list:not(.without_border) .rt-thead .rt-td.-sort-asc{justify-content: center}
+
+.ReactTable.table.table_list .rt-thead .rt-th.-sort-asc:after, 
+.ReactTable.table.table_list .rt-thead .rt-td.-sort-asc:after, 
+.ReactTable.table.table_list .rt-thead .rt-th.-sort-desc:after, 
+.ReactTable.table.table_list .rt-thead .rt-td.-sort-desc:after{
+    content: "\f160";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+    margin-left: 10px;
+}
+.ReactTable.table.table_list .rt-thead .rt-th.-sort-desc:after, 
+.ReactTable.table.table_list .rt-thead .rt-td.-sort-desc:after{    
+    -webkit-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);}
+
+.ReactTable.table.table_list .rt-thead .rt-resizable-header:focus{outline: none;}
 
 @media(min-width:768px) {
     .crm_wrapper .sidebar{
@@ -867,54 +906,64 @@ select.form-control{padding: 6px 12px 6px 9px;}
    }
 
    .ReactTable.without_border .-pagination .-center{
-    justify-content: flex-end;
-    flex: 0 0 60.666667%;
-    max-width: 100%;
-    margin-left: auto!important;
-}
-.ReactTable.without_border .-pagination .-previous, 
-.ReactTable.without_border .-pagination .-next {
-    -ms-flex: 0;
-    text-align: center;
-    flex: 0 0 43%;
-    max-width: 120px;
-    min-width: 120px;
-    -ms-flex-order: 12;
-    order: 12;
-    /* padding: 0px 10px; */
-}
-.ReactTable.without_border .-pagination .-next{
-    padding-left: 10px;
-}
-.pagination-top{position: absolute;
-    top: -65px;
-    right: 0;
-    width: 100%;
-}
-.ReactTable.without_border .pagination-bottom .-pagination, 
-.ReactTable.without_border .pagination-top .-pagination{
-    box-shadow: none;
-    border: 0px;
-}
-.ReactTable.without_border .pagination-bottom{position: absolute;
-    bottom: -65px;
-    right: 0px;
-    width: 100%;
-}
-.modal .ReactTable.without_border{margin-bottom: 65px;}
-.modal .ReactTable.without_border .pagination-bottom {
-    position: absolute;
-    bottom: -65px;
-    right: 15px;
-    width: auto;
-    left: 15px;
-}
+        justify-content: flex-end;
+        flex: 0 0 60.666667%;
+        max-width: 100%;
+        margin-left: auto!important;
+    }
+    .ReactTable.without_border .-pagination .-previous, 
+    .ReactTable.without_border .-pagination .-next {
+        -ms-flex: 0;
+        text-align: center;
+        flex: 0 0 43%;
+        max-width: 120px;
+        min-width: 120px;
+        -ms-flex-order: 12;
+        order: 12;
+        /* padding: 0px 10px; */
+    }
+    .ReactTable.without_border .-pagination .-next{
+        padding-left: 10px;
+    }
+    .pagination-top{position: absolute;
+        top: -65px;
+        right: 0;
+        width: 100%;
+    }
+    .ReactTable.without_border .pagination-bottom .-pagination, 
+    .ReactTable.without_border .pagination-top .-pagination{
+        box-shadow: none;
+        border: 0px;
+    }
+    .ReactTable.without_border .pagination-bottom{position: absolute;
+        bottom: -65px;
+        right: 0px;
+        width: 100%;
+    }
+    .modal .ReactTable.without_border{margin-bottom: 65px;}
+    .modal .ReactTable.without_border .pagination-bottom {
+        position: absolute;
+        bottom: -65px;
+        right: 15px;
+        width: auto;
+        left: 15px;
+    }
    
+}
+@media(min-width:1367px){
+    .form-control, fieldset .form-control{
+        height: 40px;
+    }
 }
 @media(min-width:1200px) {
     body{
        font-size: 15px;
    }
+}
+@media(max-width:1366px){
+    .form-group .rw-widget-picker{height: 34px;font-size: 14px;}
+    .form-group .rw-multiselect-tag{margin-top: 1px;}
+    .form-horizontal .form-group .rw-multiselect .rw-input-reset{height: 32px; width: 0;padding: 0;}
 }
 @media (max-width:1500px){
     .table_heading h3 {
@@ -1007,5 +1056,65 @@ select.form-control{padding: 6px 12px 6px 9px;}
         }
 }
 
-.form-horizontal .form-group .rw-multiselect .rw-input-reset{height: 40px;}
-.form-horizontal .form-group .rw-widget>.rw-widget-container{-webkit-box-shadow:none;box-shadow: none;}
+
+.ErrorPage #MainMid {
+    margin-top: 15px;
+    padding: 50px;
+    background-color: #fff;
+    border: solid 1px #e0dddd;
+}
+.ErrorPage #MainMid {
+    position: relative;
+    width: 80%;
+    max-width: 900px;
+}
+.ErrorPage{display: table;
+    height: 100vh;
+    width: 100%;}
+    .ErrorPage .Errorwraper{display: table-cell;
+    vertical-align: middle;}
+.ErrorPage h1 {
+    font-size: 70px;
+    font-family: "Lato";
+    color: #449d44;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 3px 6.44px rgba(0, 0, 0, 0.18);
+    position: absolute;
+    top: -22%;
+    left: 50%;
+    background: #fff;
+    margin: 0;
+    transform: translate(-50%, 0);
+    padding: 0px 22px;
+}
+.ErrorPage .MiddleContent h3 {
+    font-size: 18px;
+}
+.ErrorPage .MiddleContent p {
+    text-align: center;
+    font-size: 17px;
+}
+.ErrorPage .btn_home,.ErrorPage .btn_home:hover, .ErrorPage .btn_home:focus {
+    background: #449d44;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    font-weight: 500;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    margin: 0;
+    transform: translate(-50%, 0);
+}
+.ErrorPage .btn_home img {
+    padding-right: 10px;
+    display: inline-block;
+    vertical-align: bottom;
+}

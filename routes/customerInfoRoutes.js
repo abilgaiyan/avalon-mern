@@ -141,7 +141,7 @@ module.exports = app => {
   app.post('/api/addcustomerinfo', async (req, res) => {
     const { jewelsoftId, Name, address1, city, state, telephone, websiteUrl, avalonId, customerDBA, mainContact, position,
       address2, postalCode, contactpersonEmail, telephone1, telephone2, websiteProvider, customersince, customerType, comment,
-      salesPerson, _buyinggroups } = req.body;
+      salesPerson, _buyinggroups, logourl } = req.body;
 
     const AddCustomerInfoData = new CustomerInfo({
       jewelsoftId,
@@ -166,6 +166,7 @@ module.exports = app => {
       comment,
       _salesPerson: salesPerson,
       _buyinggroups: _buyinggroups,
+      logourl: logourl,
       _avalonInfo: null,
       _billingInfo: null,
       _websiteInfo: null,
@@ -186,22 +187,22 @@ module.exports = app => {
     if (AddCustomerInfoData) {
       await AddCustomerInfoData.save((err, NewCustomer) => {
         if (err) {
-          res.send('Error in saving', err);
+          // console.log(">>>>>>>>>>>>>>>>>>>Error because jewelsoftId already Exists!!<<<<<<<<<<<<<<<<<<<<<<<<");
+          res.send(err);
         }
         if (NewCustomer) {
           //New Customer Inserted
-          console.log(NewCustomer)
+          // console.log(NewCustomer)
+          res.send(AddCustomerInfoData);
         }
 
       });
 
       //console.log("--------------------------------->>>>>>>>>>>>>>>>>>>>callinfo ID->>>>>>>>>>>>>>>>>>>>>>>>", data);
-      res.send(AddCustomerInfoData);
     }
     else {
       res.send("Error!!");
     }
-    res.end();
   });
 
   //Edit

@@ -218,10 +218,20 @@ export const submitCustomerInfo = (values, customerId, history) => async dispatc
 // Set Add Customer Info Form
 export const submitAddCustomerInfoForm = (values, history) => async dispatch => {
   //values.customerId = customerId;
-  console.log('values testtt', values)
+  // console.log('values testtt', values)
   const res = await axios.post("/api/addcustomerinfo/", values);
+  //Error Message due to JewelsoftId already exists!!
+  // console.log(res.data);
+  if (res.data.errmsg) {
+    // alert("JewelsoftId already exists!!");
+    dispatch({ type: FETCH_CUSTOMERINFO, payload: null });
+  }
+  else {
+    dispatch({ type: FETCH_CUSTOMERINFO, payload: values });
+  }
+
   // history.push("/customers/");
-  dispatch({ type: FETCH_CUSTOMERINFO, payload: values });
+
 };
 
 // Fetch Avalon Info Drop-down for website Status

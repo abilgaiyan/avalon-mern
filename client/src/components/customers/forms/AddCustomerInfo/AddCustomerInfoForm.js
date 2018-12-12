@@ -25,9 +25,10 @@ class AddCustomerInfoForm extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { disabled: false }
+        this.state = { disabled: false, removeErrorclass: '' }
         this._closeModal = this._closeModal.bind(this);
         this._submitAndRedirect = this._submitAndRedirect.bind(this);
+        this.removeErrorClass = this.removeErrorClass.bind(this);
         // this.handelCancelEdit = this.handelCancelEdit.bind(this);
     }
 
@@ -42,14 +43,35 @@ class AddCustomerInfoForm extends Component {
 
     }
 
+    // focusChange
 
     handleChange = (event) => {
         this.props.fetchSalesPersonList(event.target.value);
-        console.log('test id', event.target.value);
+        // console.log('test id', event.target.value);
         document.getElementById('sales_person_addcustomerinfo').focus();
+
     };
 
+    removeErrorClass() {
+        let element = document.getElementsByName("jewelsoftId");
+        element[0].classList.remove("invalid_message");
+    }
+
     _closeModal() {
+        // console.log(this.props.dupkey);
+        if (this.props.dupkey === null) {
+            // console.log(document.querySelectorAll('.modal-body .form-control'));
+            document.querySelectorAll('.modal-body .form-control').forEach(function (ele, idx) {
+                // alert(ele.getAttribute('name'))
+                if (ele.getAttribute('name') == "jewelsoftId") {
+                    ele.classList.add('invalid_message')
+                }
+                else {
+                    ele.classList.remove('invalid_message')
+                }
+            });
+            return;
+        }
         document.getElementById('AddCustInfoClose').click();
     }
     _submitAndRedirect() {
@@ -67,6 +89,7 @@ class AddCustomerInfoForm extends Component {
                         type={type}
                         label={label}
                         name={name}
+                        removeErrorClass={this.removeErrorClass}
                     //disabled={(this.state.disabled) ? "disabled" : ""}
                     />
                 );
@@ -210,6 +233,22 @@ class AddCustomerInfoForm extends Component {
         const { pristine, reset, submitting } = this.props;
         // console.clear();
         // console.log(this.props.previousCallTypeDropdown);
+        // if (!this.props.stateAllData) {
+        //     return ""
+        // }
+        // document.querySelectorAll('.modal-body .form-control').forEach(function (ele, idx) {
+        //     // alert(ele.getAttribute('name'))
+        //     if (ele.getAttribute('name') == "jewelsoftId") {
+        //         console.log(ele.getAttribute('class'));
+        //     }
+        //     else {
+
+        //     }
+        // });
+        //var ele = document.querySelectorAll('[name=jewelsoftId]');
+        //console.log(ele.getAttribute('class'));
+
+        // console.log(document.querySelectorAll('[name=jewelsoftId]'))
         return (
             <div className="modal fade" id="addcustomerinfoModal" role="dialog" tabIndex="1" data-backdrop="false" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
                 <div className="modal-dialog modal-lg">
@@ -227,7 +266,6 @@ class AddCustomerInfoForm extends Component {
                                     onSubmit={this.props.handleSubmit((history) => { this.props.submitAddCustomerInfoForm(this.props.formValues.values, history).then(this._closeModal).then(this._submitAndRedirect) })}>
                                     {this.renderFields()}
                                     {
-
                                         <div className="form-group col-sm-12">
                                             <div className="col-sm-12 text-right">
                                                 <button type="submit" className="btn btn-success" style={{ marginRight: '10px' }} disabled={pristine || submitting}>
@@ -240,8 +278,6 @@ class AddCustomerInfoForm extends Component {
                                     }
                                 </form>
                             </div>
-
-
                         </div>
 
                     </div>
@@ -278,13 +314,14 @@ function validate(values) {
 }
 function mapStateToProps(state) {
     // console.clear();
-    // console.log(state);
+    // console.log(state.customerForm);
     return {
         formValues: state.form.addcustomerinfoReduxForm,
         addcustomerinfoForm: state.addcustomerinfo,
         buyingGroup: state.buyingGroup,
         salesPerson: state.salesPerson,
-        stateAllData: state.statedata
+        stateAllData: state.statedata,
+        dupkey: state.customerForm
         //previousCallTypeDropdown: state.previousCallTypeDropdown
     };
 }

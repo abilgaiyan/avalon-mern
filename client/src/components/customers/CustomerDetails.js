@@ -168,7 +168,7 @@ class CustomerDetails extends Component {
                 active={true}
                 AccId="Summary"
                 parent="accordion1"
-                custmClass="orange"
+                custmClass=""
               />
               {/* Summry End Here */}
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 const inputField = props => {
-    const { input, label, type, meta: { touched, error } } = props;
+    const { input, label, type, meta: { touched, error }, removeErrorClass } = props;
 
     // console.log({ ...props });
     if (type === "checkbox") {
@@ -29,6 +29,7 @@ const inputField = props => {
                         {...input}
                         className={"form-control " + (touched && error)}
                         type={type}
+                        onClick={removeErrorClass}
                     />
                     {/* <div className="red-text" >
                         {touched && error}
