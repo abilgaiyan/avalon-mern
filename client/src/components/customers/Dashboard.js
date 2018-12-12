@@ -30,7 +30,8 @@ class Dashboard extends Component {
         if (this.state.search) {
             data = data.filter(row => {
                 // console.log(row.Name.toLowerCase().includes((this.state.search).trim()))
-                return row.Name.includes((this.state.search).trim()) || String(row.jewelsoftId).toLowerCase().includes((this.state.search).trim()) || String(row.avalonId).toLowerCase().includes((this.state.search).trim()) || String(row.city).toLowerCase().includes((this.state.search).trim()) || String(row.state).toLowerCase().includes((this.state.search).trim()) || String(row.websiteUrl).toLowerCase().includes((this.state.search).trim())
+                return row.Name.toLowerCase().startsWith((this.state.search).trim())
+                //|| String(row.jewelsoftId).toLowerCase().includes((this.state.search).trim()) || String(row.avalonId).toLowerCase().includes((this.state.search).trim()) || String(row.city).toLowerCase().includes((this.state.search).trim()) || String(row.state).toLowerCase().includes((this.state.search).trim()) || String(row.websiteUrl).toLowerCase().includes((this.state.search).trim())
             })
         }
         return (

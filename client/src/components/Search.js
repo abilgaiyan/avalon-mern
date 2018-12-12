@@ -25,7 +25,7 @@ class Search extends Component {
         return (
             <ReactAutocomplete className="form-control"
                 items={this.props.allCustomers}
-                shouldItemRender={(item, value) => item.Name.toLowerCase().indexOf(value.toLowerCase()) > -1}
+                shouldItemRender={(item, value) => item.Name.toLowerCase().startsWith((value).trim())}
                 getItemValue={item => item.Name}
                 renderItem={(item, highlighted) =>
                     <div
