@@ -7,7 +7,7 @@ const EmailPopUp = (props) => {
     function SelectedEmailItem() {
         return (
             <div>
-                <label>Customer Id: </label> <span>{props.emailSelected.customerid}</span><br />
+                {/* <label>Customer Id: </label> <span>{props.emailSelected.customerid}</span><br /> */}
                 <label>From: </label> <span>{props.emailSelected.from}</span><br />
                 <label>To: </label> <span>{props.emailSelected.to}</span><br />
                 <label>Email Date: </label> <span>{props.emailSelected.emaildate}</span><br />
