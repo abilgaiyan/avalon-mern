@@ -144,6 +144,7 @@ class Dashboard extends Component {
                                     width: 100,
                                     maxWidth: 100,
                                     filterable: false,
+                                    sortable: false
                                 }
                             ]
                         }

@@ -1,6 +1,6 @@
 export default [
     {
-        label: "Previous Call Date ",
+        label: "Call Date ",
         name: "previousCallDate",
         type: "datetime",
         isvalidationApplied: true,
@@ -9,7 +9,7 @@ export default [
     },
 
     {
-        label: "Previous Call Type ",
+        label: "Call Type ",
         name: "_previousCallType",
         type: "dropdown",
         isvalidationApplied: true,

@@ -10,11 +10,21 @@ const StateDropdown = ({
 }) => {
     //console.log(optionData);
 
-    let planets = optionData;
-    // console.log("planet |-", planets);
-    if (planets !== null) {
-        let optionItems = planets.map((planet, index) => (
-            <option key={planet._id} value={planet.StateCode}>{planet.StateName}</option>
+    // let planets = optionData;
+    // // console.log("planet |-", planets);
+    // if (planets !== null) {
+    //     let optionItems = planets.map((planet, index) => (
+    //         <option key={planet._id} value={planet.StateCode}>{planet.StateName}</option>
+    //     ));
+    if (optionData !== null) {
+        let optionItems = optionData.sort((a, b) => {
+            if (a.StateCode.toLowerCase() < b.StateCode.toLowerCase()) //sort string ascending
+                return -1
+            if (a.StateCode.toLowerCase() > b.StateCode.toLowerCase())
+                return 1
+            return 0 //default return value (no sorting)
+        }).map((planet, index) => (
+            <option key={planet._id} value={planet.StateCode}>{planet.StateCode}-{planet.StateName}</option>
         ));
 
         return (
