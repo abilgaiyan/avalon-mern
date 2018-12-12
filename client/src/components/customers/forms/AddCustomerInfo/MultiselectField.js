@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Multiselect from 'react-widgets/lib/Multiselect';
 
-const MultiselectField = ({ input, label, optionData, valueField, textField, disabled, meta: { touched, error } }) => {
+const MultiselectField = ({ input, label, optionData, valueField, textField, meta: { touched, error } }) => {
 
     let buyingGrpData = optionData;
 
@@ -26,7 +26,7 @@ const MultiselectField = ({ input, label, optionData, valueField, textField, dis
         <div className="form-group col-sm-6">
             <label className="control-label col-sm-4">{label}</label>
             <div className="col-sm-8 text-left">
-                <Multiselect disabled={disabled ? true : ""}
+                <Multiselect
                     {...input}
                     onBlur={() => input.onBlur()}
                     value={input.value || []} // requires value to be an array
@@ -35,7 +35,7 @@ const MultiselectField = ({ input, label, optionData, valueField, textField, dis
                 //textField='name'
                 //itemComponent={ListItem}
                 />
-                <div className="red-text">{touched && error}</div>
+                {/* <div className="red-text">{touched && error}</div> */}
             </div>
         </div>
     );

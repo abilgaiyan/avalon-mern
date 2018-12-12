@@ -15,14 +15,14 @@ class CustomerSummary extends Component {
               {this.props.customerSummary.contactPersonName}
             </p>
             <p className="text_with_icon">
-              <div className={this.props.customerSummary.websiteUrl ? '' : 'hide'}> <i className="fas fa-globe"></i> <a href={"//" + this.props.customerSummary.websiteUrl} target="_blank">{this.props.customerSummary.websiteUrl}</a> <br /></div>
-              <div className={this.props.customerSummary.mobileNumber ? '' : 'hide'}><i className="fas fa-phone fa-flip-horizontal"></i> {this.props.customerSummary.mobileNumber}<br /></div>
-              <div className={this.props.customerSummary.contactpersonEmail ? '' : 'hide'}><i className="fas fa-envelope"></i> {this.props.customerSummary.contactpersonEmail}</div>
+              <span className={this.props.customerSummary.websiteUrl ? '' : 'hide'}> <i className="fas fa-globe"></i> <a href={"//" + this.props.customerSummary.websiteUrl} target="_blank">{this.props.customerSummary.websiteUrl}</a> <br /></span>
+              <span className={this.props.customerSummary.mobileNumber ? '' : 'hide'}><i className="fas fa-phone fa-flip-horizontal"></i> {this.props.customerSummary.mobileNumber}<br /></span>
+              <span className={this.props.customerSummary.contactpersonEmail ? '' : 'hide'}><i className="fas fa-envelope"></i> {this.props.customerSummary.contactpersonEmail}</span>
             </p>
           </div>
           <div className="col-sm-4">
             <div className="logo_wraper">
-             
+
               <img alt={this.props.customerSummary.Name}
                 //src={this.props.customerSummary.logourl}
                 src={this.props.customerSummary.logourl ? this.props.customerSummary.logourl : require('../../../../images/no_image.png')}

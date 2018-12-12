@@ -211,7 +211,7 @@ select.form-control{padding: 6px 12px 6px 9px;}
     height: 35px;
     background: #383838;
     position: fixed;
-    z-index: 9999;
+    z-index: 999;
     text-align: center;
     line-height: 33px;
     top: 73px;
@@ -620,6 +620,7 @@ select.form-control{padding: 6px 12px 6px 9px;}
     font-size: 14px;
     margin-top: 5px;
     text-align: left;
+    display: none !important;
 }
 .render_email_html{
     max-height: 500px;
