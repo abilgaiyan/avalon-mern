@@ -7,7 +7,7 @@ class CustomerSummary extends Component {
     return (
       <div >
         <div className="row">
-          <div className="col-sm-8">
+          <div className="col-sm-6">
             <p>
               {this.props.customerSummary.Name} <br />
               {this.props.customerSummary.city},{this.props.customerSummary.state}{" "}
@@ -20,7 +20,7 @@ class CustomerSummary extends Component {
               <span className={this.props.customerSummary.contactpersonEmail ? '' : 'hide'}><i className="fas fa-envelope"></i> {this.props.customerSummary.contactpersonEmail}</span>
             </p>
           </div>
-          <div className="col-sm-4">
+          <div className="col-sm-6">
             <div className="logo_wraper">
 
               <img alt={this.props.customerSummary.Name}
