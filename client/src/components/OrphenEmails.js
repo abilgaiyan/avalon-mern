@@ -7,6 +7,7 @@ import moment from 'moment';
 import ReactTable from "react-table";
 import matchSorter from 'match-sorter'
 import 'react-table/react-table.css'
+import EmailPopup from "./customers/EmailPopup"
 
 class OrphenEmailLogList extends Component {
 
@@ -42,7 +43,7 @@ class OrphenEmailLogList extends Component {
             return (
                 <span className="orphen_wraper">
                     <button className="navbar-btn hidden-xs hidden-sm text_btn" data-toggle="modal" data-target="#orphenemailsModal">ORPHAN EMAILS</button>
-                    <div className="modal fade" id="orphenemailsModal" role="dialog" tabIndex="1" data-backdrop="false" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
+                    <div className="modal " id="orphenemailsModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="orphenemailsModal" data-backdrop="false" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
                         <div className="modal-dialog modal-lg">
 
 
@@ -97,6 +98,21 @@ class OrphenEmailLogList extends Component {
                                                             id: "type",
                                                             className: 'text-center',
                                                             accessor: d => d.type
+                                                        },
+                                                        {
+                                                            Header: "View",
+                                                            id: "view",
+                                                            className: 'text-left',
+                                                            accessor: "_id",
+                                                            Cell: row => (
+                                                                <div className="card-link">
+                                                                    <a className="alink" data-toggle="modal" data-dismiss="modal" data-target="#orphanEmail"><i className="fa fa-search-plus" aria-hidden="true"></i></a>
+                                                                </div>
+                                                            ),
+                                                            width: 100,
+                                                            maxWidth: 100,
+                                                            filterable: false,
+                                                            sortable: false
                                                         }
                                                     ]
                                                 }
@@ -117,7 +133,7 @@ class OrphenEmailLogList extends Component {
 
                         </div>
                     </div>
-
+                    <EmailPopup />
                 </span>
             );
         }
