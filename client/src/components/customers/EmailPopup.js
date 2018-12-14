@@ -49,7 +49,7 @@ class EmailPopup extends Component {
         <div className="modal" id="orphanEmail" tabindex="-1" aria-labelledby="orphanEmail" role="dialog" aria-hidden="true" data-backdrop="false" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
           <div className="modal-dialog">
             <div className="modal-content">
-              <div className="modal-header">
+              <div className="modal-header text-left">
                 <button type="button" className="close" data-dismiss="modal">
                   &times;
                 </button>

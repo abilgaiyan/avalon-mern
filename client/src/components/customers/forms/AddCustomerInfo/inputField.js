@@ -2,7 +2,19 @@ import React from "react";
 
 const inputField = props => {
     const { input, label, type, meta: { touched, error }, removeErrorClass } = props;
-
+    const tel = <input
+        {...input}
+        className={"form-control " + (touched && error)}
+        type={type}
+        onClick={removeErrorClass}
+        maxLength="10"
+    />
+    const nonTel = <input
+        {...input}
+        className={"form-control " + (touched && error)}
+        type={type}
+        onClick={removeErrorClass}
+    />
     // console.log({ ...props });
     if (type === "checkbox") {
         return (
@@ -25,12 +37,7 @@ const inputField = props => {
             <div className="form-group col-sm-6">
                 <label className="control-label col-sm-4">{label}</label>
                 <div className="col-sm-8 ">
-                    <input
-                        {...input}
-                        className={"form-control " + (touched && error)}
-                        type={type}
-                        onClick={removeErrorClass}
-                    />
+                    {label === "Telephone 1" || "Mobile" || "Telephone 2" ? tel : nonTel}
                     {/* <div className="red-text" >
                         {touched && error}
                     </div> */}

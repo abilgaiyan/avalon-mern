@@ -51,6 +51,7 @@ class Dashboard extends Component {
                 {/* Search: <input value={this.state.search} onChange={e => this.setState({search: e.target.value})}/> */}
                 <ReactTable
                     data={data}
+                    noDataText="No Data found"
                     //filterable
                     //defaultFilterMethod={(filter, row) =>
                     //    String(row[filter.id]) === filter.value} 
@@ -153,6 +154,7 @@ class Dashboard extends Component {
                     defaultPageSize={100}
                     showPaginationTop
                     className="-striped -highlight table table_list without_border text-left"
+                    minRows={2}
                 />
                 {/* <div className="container marginTop30 list-group">
                <h3 className="text-center">Avalon Customer's</h3>

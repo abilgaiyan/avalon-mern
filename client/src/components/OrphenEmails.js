@@ -50,7 +50,7 @@ class OrphenEmailLogList extends Component {
                             <div className="modal-content">
                                 <div className="modal-header text-left">
                                     <button type="button" className="close" data-dismiss="modal" >&times;</button>
-                                    <h4 className="modal-title">Add Customer</h4>
+                                    <h4 className="modal-title">ORPHAN EMAILS</h4>
                                 </div>
                                 <div className="modal-body">
                                     <div className="clearfix"></div>
@@ -58,6 +58,7 @@ class OrphenEmailLogList extends Component {
 
                                         <ReactTable
                                             data={data}
+                                            noDataText="No Data found"
                                             columns={[
                                                 {
                                                     Header: "Email Log",

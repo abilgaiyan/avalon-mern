@@ -16,6 +16,7 @@ import MultiselectField from "./MultiselectField"
 import datetimeField from "./datetimeField";
 import timeField from "./timeField"
 import validateEmails from "../../../../utils/validateEmails";
+import validatePhoneNumber from "../../../../utils/validatePhoneNumber";
 import * as actions from "../../../../actions";
 
 momentLocaliser(moment);
@@ -293,6 +294,9 @@ class AddCustomerInfoForm extends Component {
 function validate(values) {
     const errors = {};
     errors.contactpersonEmail = validateEmails(values.contactpersonEmail || "");
+    errors.telephone1 = validatePhoneNumber(values.telephone1 || "");
+    errors.telephone2 = validatePhoneNumber(values.telephone2 || "");
+    errors.mobileNumber = validatePhoneNumber(values.mobileNumber || "");
 
     // _.each(formFields, ({ name, is }) => {
     //     if (!values[name]) {
@@ -308,6 +312,15 @@ function validate(values) {
     }
     if (!values.contactpersonEmail) {
         errors.contactpersonEmail = "invalid_message"
+    }
+    if (!values.telephone1) {
+        errors.telephone1 = "invalid_message"
+    }
+    if (!values.telephone2) {
+        errors.telephone2 = "invalid_message"
+    }
+    if (!values.mobileNumber) {
+        errors.mobileNumber = "invalid_message"
     }
 
     return errors;
