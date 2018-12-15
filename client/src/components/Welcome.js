@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './WelcomPage.css'
 
 class Welcome extends Component {
 
     renderContent() {
-        console.log('val', this.props.auth)
+        // console.log('val', this.props.auth)
         switch (this.props.auth) {
             case null:
                 console.log("Auth Value: ", this.props.auth)
@@ -21,6 +21,10 @@ class Welcome extends Component {
     }
 
     render() {
+        if (this.props.auth !== false) {
+            return <Redirect to="/customers" />
+        }
+        // console.log("location url:", window.location.pathname)
         return (
             <div className="row LoginForm">
                 <div className="container">

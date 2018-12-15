@@ -1236,3 +1236,24 @@ fieldset[disabled] .rw-widget-picker,
         font-size: 14px;
    }
 }
+
+.rw-widget .rw-i-calendar::before {
+    content: "\f073";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+        font-size: 14px;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.rw-widget .rw-i-clock-o::before {
+    content: "\f017";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+        font-size: 14px;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
