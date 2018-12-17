@@ -37,7 +37,8 @@ import {
   COMMENT_SELECTED,
   FETCH_ORPHENEMAILALLDATA,
   FETCH_SALESPERSONALLDATA,
-  FETCH_STATEDATA
+  FETCH_STATEDATA,
+  FETCH_CUSTOMERSEARCH
 } from "./types";
 
 //Store Autocomplete_ID
@@ -507,3 +508,9 @@ export const fetchSalesPersonList = stateCode => async dispatch => {
 };
 
 
+//Search Name with customer
+export const customerlistSearch = (search) => {
+  // alert(search)
+  // history.push(`/customers/${autocompleteId}`);
+  return { type: FETCH_CUSTOMERSEARCH, payload: search };
+};

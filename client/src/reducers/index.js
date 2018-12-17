@@ -47,6 +47,7 @@ import orphenEmailsReducer from "./orphenEmailReducer"
 
 import salesPersonReducer from "./salesPersonReducer"
 import statedataReducer from "./stateReducer"
+import customersearchReducer from "./customersearchReducer"
 
 
 
@@ -100,6 +101,7 @@ export default combineReducers({
   commentSelected: commentSelectedReducer,
   orphenEmails: orphenEmailsReducer,
   salesPerson: salesPersonReducer,
-  statedata: statedataReducer
+  statedata: statedataReducer,
 
+  customersearch: customersearchReducer
 });

@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCustomers, fetchorphenEmail } from '../../actions';
+import { fetchCustomers, fetchorphenEmail, customerlistSearch } from '../../actions';
 import { Link } from 'react-router-dom';
 import ReactTable from "react-table";
 import matchSorter from 'match-sorter';
-import 'react-table/react-table.css'
+import 'react-table/react-table.css';
 
-export let customerlistSearch = function (search, pathname) {
-    if (String(pathname).split("/").splice(-1) == 'customers') {
-        this.setState({ search });
-    }
-}
+
+// export let customerlistSearch = function (search, pathname) {
+//     if (String(pathname).split("/").splice(-1) == 'customers') {
+//         this.setState({ search });
+//     }
+// }
 class Dashboard extends Component {
     constructor() {
         super()
-        this.state = {
-            search: ''
-        }
-        customerlistSearch = customerlistSearch.bind(this)
+        // this.state = {
+        //     search: ""
+        // }
+        // customerlistSearch = customerlistSearch.bind(this)
     }
 
     componentDidMount() {
@@ -27,10 +28,10 @@ class Dashboard extends Component {
 
     render() {
         let data = this.props.customers
-        if (this.state.search) {
+        if (this.props.customersearch) {
             data = data.filter(row => {
                 // console.log(row.Name.toLowerCase().includes((this.state.search).trim()))
-                return row.Name.toLowerCase().startsWith((this.state.search.toLowerCase()).trim())
+                return row.Name.toLowerCase().startsWith((this.props.customersearch.toLowerCase()).trim())
                 //|| String(row.jewelsoftId).toLowerCase().includes((this.state.search).trim()) || String(row.avalonId).toLowerCase().includes((this.state.search).trim()) || String(row.city).toLowerCase().includes((this.state.search).trim()) || String(row.state).toLowerCase().includes((this.state.search).trim()) || String(row.websiteUrl).toLowerCase().includes((this.state.search).trim())
             })
         }
@@ -169,13 +170,14 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
     // console.clear();
-    // console.log(state);
+    // console.log(state.customersearch);
     return {
-        customers: state.customers
+        customers: state.customers,
+        customersearch: state.customersearch
     };
 }
 
 export default connect(
     mapStateToProps,
-    { fetchCustomers, fetchorphenEmail }
+    { fetchCustomers, fetchorphenEmail, customerlistSearch }
 )(Dashboard);

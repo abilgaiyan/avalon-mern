@@ -76,3 +76,4 @@ export const FETCH_SALESPERSONALLDATA = "fetch_salespersonalldata";
 
 export const FETCH_STATEDATA = "fetch_statealldata";
 
+export const FETCH_CUSTOMERSEARCH = "fetch_customersearch";
