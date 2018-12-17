@@ -7,7 +7,6 @@ const inputField = props => {
         className={"form-control " + (touched && error)}
         type={type}
         onClick={removeErrorClass}
-        maxLength="10"
     />
     const nonTel = <input
         {...input}
