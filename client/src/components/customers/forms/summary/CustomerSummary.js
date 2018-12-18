@@ -62,7 +62,7 @@ class CustomerSummary extends Component {
               </tr>
               <tr>
                 <td>ASHI Feed:</td>
-                <td align="right">{this.props.customerSummary._productInfo === null || this.props.customerSummary._productInfo === undefined ? "" : this.props.customerSummary._productInfo._ashiProductStatus._ashiProductStatus}</td>
+                <td align="right">{this.props.customerSummary._productInfo === null || this.props.customerSummary._productInfo === undefined ? "" : this.props.customerSummary._productInfo._ashiProductStatus === undefined ? "" : this.props.customerSummary._productInfo._ashiProductStatus._ashiProductStatus}</td>
               </tr>
             </tbody>
           </table>
