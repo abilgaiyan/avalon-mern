@@ -140,7 +140,7 @@ class Dashboard extends Component {
                                     accessor: "_id",
                                     Cell: row => (
                                         <div className="card-link">
-                                            <Link className="alink" to={'/customers/' + row.value}><i className="fa fa-search-plus" aria-hidden="true"></i></Link>
+                                            <a className="alink" href={'/customers/' + row.value}><i className="fa fa-search-plus" aria-hidden="true"></i></a>
                                         </div>
                                     ),
                                     width: 100,
