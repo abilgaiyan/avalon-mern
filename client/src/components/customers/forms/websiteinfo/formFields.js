@@ -45,7 +45,7 @@ export default [
     },
 
     {
-        label: "Released Date",
+        label: "Responsive Date",
         name: "responsiveWebsiteReleasedDate",
         type: "datetime",
         isvalidationApplied: true,
