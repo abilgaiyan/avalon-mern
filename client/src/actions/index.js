@@ -229,6 +229,7 @@ export const submitAddCustomerInfoForm = (values, history) => async dispatch => 
   }
   else {
     dispatch({ type: FETCH_CUSTOMERINFO, payload: values });
+    window.location.assign("/customers/");
   }
 
   // history.push("/customers/");

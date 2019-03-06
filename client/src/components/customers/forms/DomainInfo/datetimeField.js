@@ -23,7 +23,7 @@ const datetimeField = ({ input: { onChange, value }, label, type, disabled, meta
             onChange={onChange}
             format="MMM DD YYYY"
             time={showTime}
-            value={!value ? "" : new Date(value)}
+            value={!value ? new Date() : new Date(value)}
           />}
         <div className="red-text" >
           {/* {touched && error} */}

@@ -140,7 +140,7 @@ module.exports = app => {
   //New
   app.post('/api/addcustomerinfo', async (req, res) => {
     const { jewelsoftId, Name, address1, city, state, telephone, websiteUrl, avalonId, customerDBA, mainContact, position,
-      address2, postalCode, contactpersonEmail, telephone1, telephone2, websiteProvider, customersince, customerType, comment,
+      address2, postalCode, contactpersonEmail, telephone1, telephone2, mobileNumber, websiteProvider, customersince, customerType, comment,
       salesPerson, _buyinggroups, logourl } = req.body;
 
     const AddCustomerInfoData = new CustomerInfo({
@@ -160,6 +160,7 @@ module.exports = app => {
       contactpersonEmail,
       telephone1,
       telephone2,
+      mobileNumber,
       websiteProvider,
       customersince,
       customerType,

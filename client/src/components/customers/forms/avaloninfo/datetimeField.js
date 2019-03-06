@@ -3,7 +3,8 @@ import DateTimePicker from 'react-widgets/lib/DateTimePicker'
 import moment from 'moment';
 
 const datetimeField = ({ input: { onChange, value }, label, type, disabled, meta: { touched, error }, showTime }) => {
-
+  console.clear();
+  console.log(value);
   return (
     <div className="form-group">
       <label className="control-label col-sm-3">{label}</label>
@@ -21,7 +22,7 @@ const datetimeField = ({ input: { onChange, value }, label, type, disabled, meta
             onChange={onChange}
             format="MMM DD YYYY"
             time={showTime}
-            value={!value ? "" : new Date(value)}
+            value={!value ? new Date() : new Date(value)}
           />}
         <div className="red-text" >
           {/* {touched && error} */}
