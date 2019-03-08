@@ -303,9 +303,14 @@ export const submitBillingInfo = (values, customerId, history) => async dispatch
   const res = await axios.post("/api/avalonbillinginfo", values);
   // console.log(history);
   // history.push("/customers");
-
+  // console.log(res)
   //const res = storylist;
-  dispatch({ type: FETCH_BILLINGINFO, payload: values });
+  dispatch({ type: FETCH_BILLINGINFO, payload: res.data[0] });
+  window.location.assign(`/customers/${customerId}`);
+  // dispatch({ type: FETCH_WEBSITEINFO, payload: res.data[1] });
+  // submitwebsiteinfoForm(res.data[1], customerId, history)
+
+
 };
 
 // Fetch Ashi MicroWebsite Info

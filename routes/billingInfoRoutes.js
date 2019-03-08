@@ -4,6 +4,8 @@ const { URL } = require('url');
 const mongoose = require('mongoose');
 const AvalonBillingInfo = mongoose.model('billinginfo');
 const CustomerInfo = mongoose.model("customerinfo");
+const WebsiteInfo = mongoose.model('websiteinfo');
+
 const productplanInfo = mongoose.model("productplan");
 
 module.exports = app => {
@@ -43,6 +45,16 @@ module.exports = app => {
     const customerId = billinginfo.customerId;
     const billinginfoId_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _billingInfo: 1, _id: 0 });
     const billinginfoId = billinginfoId_temp[0]._billingInfo;
+    const websiteinfoId_temp = await CustomerInfo.find({ _id: mongoose.Types.ObjectId(customerId) }, { _websiteInfo: 1, _id: 0 });
+    const websiteinfoId = websiteinfoId_temp[0]._websiteInfo;
+    const productPlan = billinginfo._productPlan;
+    const finalWebsiteInfo_temp = await WebsiteInfo.find({ _id: mongoose.Types.ObjectId(websiteinfoId) });
+    let finalWebsiteInfo = finalWebsiteInfo_temp[0]._doc;
+    finalWebsiteInfo._productplan = productPlan;
+
+    // console.log(finalWebsiteInfo);
+    // console.log(websiteinfoId);
+    // console.log(productPlan);
     // console.log("--------------------->>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<-----------------------");
     // console.log(billinginfoId);
     // if (req.body.customerId = 0) {
@@ -93,8 +105,26 @@ module.exports = app => {
           }
           // console.log(res);
         });
-      res.send(billinginfo);
+
+      await WebsiteInfo.findOneAndUpdate(
+        {
+          _id: websiteinfoId
+        },
+        finalWebsiteInfo,
+        { upsert: false },
+        (err, res) => {
+          // Deal with the response data/error
+          if (err) {
+            console.log(err);
+          }
+          if (res) {
+            // console.log(res);
+          }
+          // console.log(res);
+        });
+      res.send([billinginfo, finalWebsiteInfo]);
     }
+
     res.end();
   });
 
