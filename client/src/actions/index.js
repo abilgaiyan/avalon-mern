@@ -265,10 +265,25 @@ export const fetchBillingInfoProductPlanDropdown = () => async dispatch => {
 };
 
 // Fetch Billing Info Drop-down for HostingAmount
+//below code commented by vishal tiwari on 08/03/2019
 export const fetchBillingInfoHostingAmountDropdown = () => async dispatch => {
   const res = await axios.get("/api/HostingAmountAllData");
   dispatch({ type: FETCH_BILLINGFORM_HOSTINGAMOUNT, payload: res.data });
 };
+
+
+// Fetch Hosting Amount list all data by planId code
+export const fetchBillingInfoHostingAmountDropdownForPlanId = planId => async dispatch => {
+  //console.log(customerId)
+  if (planId !== null || planId !== '' || planId !== 'undefined') {
+    const res = await axios.get("/api/HostingAmountAllDataForPlanId/" + planId)
+    dispatch({ type: FETCH_BILLINGFORM_HOSTINGAMOUNT, payload: res.data });
+  }
+  else {
+    dispatch({ type: FETCH_BILLINGFORM_HOSTINGAMOUNT, payload: "" });
+  }
+};
+
 
 // Fetch Billing Info Details by AvalonBillingId
 export const fetchBillingInfo = customerId => async dispatch => {
@@ -515,3 +530,7 @@ export const customerlistSearch = (search) => {
   // history.push(`/customers/${autocompleteId}`);
   return { type: FETCH_CUSTOMERSEARCH, payload: search };
 };
+
+
+
+

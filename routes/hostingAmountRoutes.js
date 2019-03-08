@@ -19,6 +19,18 @@ module.exports = app => {
 
     });
 
+
+    //Get Hosting Amount All Data By Plan Id
+    app.get('/api/HostingAmountAllDataForPlanId/:planid', async (req, res) => {
+        const planid = req.params.planid.toString();
+        const hostingamountalldata = await HostingAmountInfo.find({ _planName: planid });
+        if (hostingamountalldata) {
+            res.send(hostingamountalldata);
+        } else {
+            res.send("no data");
+        }
+    });
+
     //Get Website Product Plan Master info data 
     app.get('/api/HostingAmountInfo/:hostingamountid', async (req, res) => {
         const hostingamountId = req.params.hostingamountid;

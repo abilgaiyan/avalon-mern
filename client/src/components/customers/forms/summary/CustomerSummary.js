@@ -35,10 +35,15 @@ class CustomerSummary extends Component {
           <table className="table table-info no-margin">
             <tbody>
               <tr>
-                <td>Avalon Customer:</td>
+                {/* <td>Avalon Customer:</td>
                 <td align="right">
                   {this.props.customerSummary.customerType === "Customer" ? "Yes" : "No"}
+                </td> */}
+                <td>Customer Type:</td>
+                <td align="right">
+                  {this.props.customerSummary.customerType}
                 </td>
+
               </tr>
               <tr>
                 <td>Buying Group:</td>

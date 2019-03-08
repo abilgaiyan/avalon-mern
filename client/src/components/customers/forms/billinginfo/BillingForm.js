@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 import billingField from "./billingField";
 import productPlanDropdown from "./productPlanDropdown";
+import hostingAmountDropdown from "./hostingAmountDropdown";
 import validateEmails from "../../../../utils/validateEmails";
 import formFields from "./formFields";
 import { withRouter } from "react-router-dom";
@@ -30,6 +31,12 @@ class BillingForm extends Component {
         this.setState({ disabled: true })
     }
 
+    handleChange = (event) => {
+        this.props.fetchBillingInfoHostingAmountDropdownForPlanId(event.target.value);
+        // console.log('test id', event.target.value);
+        document.getElementById('hosting_amount').focus();
+
+    };
     // componentWillMount() {
     //     this.props.fetchBillingInfoProductPlanDropdown();
     // }
@@ -124,6 +131,7 @@ class BillingForm extends Component {
                             name={name}
                             optionData={optiondata}
                             disabled={(this.state.disabled) ? "disabled" : ""}
+                            onChange={this.handleChange}
                         />
                     );
                 }
@@ -132,7 +140,7 @@ class BillingForm extends Component {
                     return (
                         <Field
                             key={name}
-                            component={productPlanDropdown}
+                            component={hostingAmountDropdown}
                             type={type}
                             label={label}
                             name={name}
