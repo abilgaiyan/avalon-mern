@@ -76,7 +76,8 @@ class WebsiteInfoForm extends Component {
                             label={label}
                             name={name}
                             optionData={optiondata}
-                            disabled={(this.state.disabled) ? "disabled" : ""}
+                            //disabled={(this.state.disabled) ? "disabled" : ""}
+                            disabled={"disabled"}
                         />
                     );
                 }
