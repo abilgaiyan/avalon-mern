@@ -32,6 +32,17 @@ class WebsiteInfoForm extends Component {
         this.setState({ disabled: true })
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        // console.clear();
+        // console.log("componentDidUpdate", this.props.websiteinfoForm)
+        // console.log("prevProps", prevProps.websiteinfoForm);
+        // only update chart if the data has changed
+        if (prevProps.websiteinfoForm !== this.props.websiteinfoForm) {
+            const initData = this.props.websiteinfoForm;
+            this.props.initialize(initData);
+        }
+    }
+
     componentWillReceiveProps(nextProps) {
 
         // console.clear();

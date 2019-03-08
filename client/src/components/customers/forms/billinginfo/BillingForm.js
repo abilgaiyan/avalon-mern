@@ -33,6 +33,8 @@ class BillingForm extends Component {
 
     handleChange = (event) => {
         this.props.fetchBillingInfoHostingAmountDropdownForPlanId(event.target.value);
+        // alert(this.props.match.params.customerId)
+        this.props.fetchwebsiteinfo(this.props.match.params.customerId)
         // console.log('test id', event.target.value);
         document.getElementById('hosting_amount').focus();
 

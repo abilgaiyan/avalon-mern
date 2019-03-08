@@ -306,8 +306,8 @@ export const submitBillingInfo = (values, customerId, history) => async dispatch
   // console.log(res)
   //const res = storylist;
   dispatch({ type: FETCH_BILLINGINFO, payload: res.data[0] });
-  window.location.assign(`/customers/${customerId}`);
-  // dispatch({ type: FETCH_WEBSITEINFO, payload: res.data[1] });
+  // window.location.assign(`/customers/${customerId}`);
+  dispatch({ type: FETCH_WEBSITEINFO, payload: res.data[1] });
   // submitwebsiteinfoForm(res.data[1], customerId, history)
 
 
