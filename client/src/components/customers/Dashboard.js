@@ -74,30 +74,30 @@ class Dashboard extends Component {
                                     //filterMethod: (filter, rows) =>
                                     //    matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["Name"] }),
                                     //filterAll: true
-                                    
-                                   
+
+
                                 },
                                 {
-                                    Header: "Jewelsoft Id",
-                                    id: "jewelsoftId",
+                                    Header: "Customer Type",
+                                    id: "customerType",
                                     className: 'text-left',
-                                    accessor: d => String(d.jewelsoftId).toLowerCase() === 'undefined' ? '-' : String(d.jewelsoftId).toLowerCase(),
+                                    accessor: d => String(d.customerType).toLowerCase() === 'undefined' ? '-' : String(d.customerType).toLowerCase(),
                                     filterMethod: (filter, rows) =>
-                                        matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["jewelsoftId"] }),
+                                        matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["customerType"] }),
                                     filterAll: true,
                                     //width:160,
-                                    maxWidth: 160,
+                                    maxWidth: 200,
                                 },
                                 {
-                                    Header: "Avalon Id",
-                                    id: "avalonId",
+                                    Header: "Telephone",
+                                    id: "mobileNumber",
                                     className: 'text-left',
-                                    accessor: d => String(d.avalonId).toLowerCase() === 'undefined' ? '-' : String(d.avalonId).toLowerCase(),
+                                    accessor: d => String(d.mobileNumber) === '0' ? ' ' : String(d.mobileNumber),
                                     //filterMethod: (filter, rows) =>
                                     //    matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["avalonId"] }),
                                     //filterAll: true
                                     //width:200,
-                                    maxWidth: 200,
+                                    maxWidth: 160,
 
                                 },
                                 {
@@ -108,10 +108,33 @@ class Dashboard extends Component {
                                     // filterMethod: (filter, rows) =>
                                     //       matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["city"] }),
                                     // filterAll: true
-                                   // width:160,
+                                    // width:160,
                                     maxWidth: 160,
-
                                 },
+                                // {
+                                //     Header: "Avalon Id",
+                                //     id: "avalonId",
+                                //     className: 'text-left',
+                                //     accessor: d => String(d.avalonId).toLowerCase() === 'undefined' ? '-' : String(d.avalonId).toLowerCase(),
+                                //     //filterMethod: (filter, rows) =>
+                                //     //    matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["avalonId"] }),
+                                //     //filterAll: true
+                                //     //width:200,
+                                //     maxWidth: 200,
+
+                                // },
+                                // {
+                                //     Header: "City",
+                                //     id: "city",
+                                //     className: 'text-left',
+                                //     accessor: d => String(d.city).toLowerCase() === 'undefined' ? '-' : String(d.city).toLowerCase(),
+                                //     // filterMethod: (filter, rows) =>
+                                //     //       matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["city"] }),
+                                //     // filterAll: true
+                                //    // width:160,
+                                //     maxWidth: 160,
+
+                                // },
                                 {
                                     Header: "State",
                                     id: "state",
@@ -135,8 +158,8 @@ class Dashboard extends Component {
                                     //filterMethod: (filter, rows) =>
                                     //                matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["websiteUrl"] }),
                                     //            filterAll: true 
-                                   
-                                    
+
+
                                 },
                                 {
                                     Header: "View",
