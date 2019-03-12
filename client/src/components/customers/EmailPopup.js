@@ -46,7 +46,7 @@ class EmailPopup extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="modal" id="orphanEmail" tabindex="-1" aria-labelledby="orphanEmail" role="dialog" aria-hidden="true" data-backdrop="false" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
+        <div className="modal" id="orphanEmail" tabIndex="-1" aria-labelledby="orphanEmail" role="dialog" aria-hidden="true" data-backdrop="false" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header text-left">
@@ -109,12 +109,12 @@ class EmailPopup extends Component {
                       Save
                     </button> */}
 
-                    <div class="col-sm-12 text-right">
-                      <button type="submit" class="btn btn-success" disabled="" style={{ marginRight: "10px" }} onClick={e => {
+                    <div className="col-sm-12 text-right">
+                      <button type="submit" className="btn btn-success" disabled="" style={{ marginRight: "10px" }} onClick={e => {
                         this.handleSubmit();
-                      }}><i class="fa fa-check-square" aria-hidden="true"></i>Save</button>
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                      <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#orphenemailsModal">Back</button>
+                      }}><i className="fa fa-check-square" aria-hidden="true"></i>Save</button>
+                      <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                      <button type="button" className="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#orphenemailsModal">Back</button>
                     </div></div>
 
 

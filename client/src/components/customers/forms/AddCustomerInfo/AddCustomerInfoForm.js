@@ -295,7 +295,7 @@ function validate(values) {
     const errors = {};
     errors.contactpersonEmail = validateEmails(values.contactpersonEmail || "");
     errors.telephone1 = validatePhoneNumber(values.telephone1 || "");
-    errors.telephone2 = validatePhoneNumber(values.telephone2 || "");
+    // errors.telephone2 = validatePhoneNumber(values.telephone2 || "");
     errors.mobileNumber = validatePhoneNumber(values.mobileNumber || "");
 
     // _.each(formFields, ({ name, is }) => {
@@ -316,9 +316,9 @@ function validate(values) {
     if (!values.telephone1) {
         errors.telephone1 = "invalid_message"
     }
-    if (!values.telephone2) {
-        errors.telephone2 = "invalid_message"
-    }
+    // if (!values.telephone2) {
+    //     errors.telephone2 = "invalid_message"
+    // }
     if (!values.mobileNumber) {
         errors.mobileNumber = "invalid_message"
     }

@@ -37,13 +37,13 @@ class SupportQuery extends Component {
             <tr>
               <td>Comment Count:</td>
               <td align="right">
-                {callCount}
+                {commentCount}
               </td>
             </tr>
             <tr>
               <td>Call Count:</td>
               <td align="right">
-                {commentCount}
+                {callCount}
               </td>
             </tr>
 

@@ -104,6 +104,7 @@ class CommunicationLog extends Component {
                                         filterMethod: (filter, rows) =>
                                             matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.STARTS_WITH, keys: ["emaildate"] || ["previousCallDate"] }),
                                         filterable: false,
+                                        maxWidth: 120,
                                     },
 
                                     {
@@ -131,6 +132,7 @@ class CommunicationLog extends Component {
                                         className: 'text-center',
                                         accessor: d => (d.ctype !== "comment") ? (d.type || d._previousCallType._previouscalltype === ("Incoming" || "In") ? <i className="fa fa-sign-in" aria-hidden="true" title="Incoming"></i> : <i className="fa fa-sign-out" aria-hidden="true" title="Outgoing"></i>) : <i className="fa fa-sign-out" aria-hidden="true" title="Outgoing"></i>,
                                         sortable: false,
+                                        maxWidth: 80,
                                     },
                                     {
                                         Header: "View",
@@ -145,6 +147,7 @@ class CommunicationLog extends Component {
                                         // )
                                         Cell: row => (row.value === "comment") ? <a data-toggle="modal" data-target="#commentPopupModal" onClick={() => this.props.SelectComment(row.original)} title="View Comment" style={{ cursor: 'pointer' }}><i className="fa fa-comments" aria-hidden="true"></i></a> : (row.value === "email" ? <a data-toggle="modal" data-target="#emailLogModal" onClick={() => this.props.SelectEmail(row.original)} title="View Email" style={{ cursor: 'pointer' }}><i className="fa fa-envelope" aria-hidden="true"></i></a> : <a data-toggle="modal" data-target="#callLogPopupModal" onClick={() => this.props.SelectCallLog(row.original)} title="View Phone" style={{ cursor: 'pointer' }}><i className="fa fa-phone" aria-hidden="true"></i></a>),
                                         sortable: false,
+                                        maxWidth: 60,
                                         // filterMethod: (filter, row) => {
                                         //     if (filter.value === "all") {
                                         //         return true;

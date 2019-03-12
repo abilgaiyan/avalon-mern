@@ -13,13 +13,13 @@ import 'react-table/react-table.css';
 //     }
 // }
 class Dashboard extends Component {
-    constructor() {
-        super()
-        // this.state = {
-        //     search: ""
-        // }
-        // customerlistSearch = customerlistSearch.bind(this)
-    }
+    // constructor() {
+    //     super()
+    //     // this.state = {
+    //     //     search: ""
+    //     // }
+    //     // customerlistSearch = customerlistSearch.bind(this)
+    // }
 
     componentDidMount() {
         this.props.fetchCustomers();
@@ -74,8 +74,8 @@ class Dashboard extends Component {
                                     //filterMethod: (filter, rows) =>
                                     //    matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["Name"] }),
                                     //filterAll: true
-
-                                    maxWidth: 400,
+                                    
+                                   
                                 },
                                 {
                                     Header: "Jewelsoft Id",
@@ -85,7 +85,8 @@ class Dashboard extends Component {
                                     filterMethod: (filter, rows) =>
                                         matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["jewelsoftId"] }),
                                     filterAll: true,
-                                    maxWidth: 200,
+                                    //width:160,
+                                    maxWidth: 160,
                                 },
                                 {
                                     Header: "Avalon Id",
@@ -95,6 +96,7 @@ class Dashboard extends Component {
                                     //filterMethod: (filter, rows) =>
                                     //    matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["avalonId"] }),
                                     //filterAll: true
+                                    //width:200,
                                     maxWidth: 200,
 
                                 },
@@ -106,7 +108,8 @@ class Dashboard extends Component {
                                     // filterMethod: (filter, rows) =>
                                     //       matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["city"] }),
                                     // filterAll: true
-                                    maxWidth: 200,
+                                   // width:160,
+                                    maxWidth: 160,
 
                                 },
                                 {
@@ -117,7 +120,8 @@ class Dashboard extends Component {
                                     //filterMethod: (filter, rows) =>
                                     //                matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["state"] }),
                                     //            filterAll: true
-                                    maxWidth: 200,
+                                    // width:60,
+                                    maxWidth: 60,
                                 },
 
                                 {
@@ -131,7 +135,8 @@ class Dashboard extends Component {
                                     //filterMethod: (filter, rows) =>
                                     //                matchSorter(rows, filter.value.trim(), {threshold: matchSorter.rankings.WORD_STARTS_WITH, keys: ["websiteUrl"] }),
                                     //            filterAll: true 
-                                    maxWidth: 400,
+                                   
+                                    
                                 },
                                 {
                                     Header: "View",
@@ -143,8 +148,8 @@ class Dashboard extends Component {
                                             <a className="alink" href={'/customers/' + row.value}><i className="fa fa-search-plus" aria-hidden="true"></i></a>
                                         </div>
                                     ),
-                                    width: 100,
-                                    maxWidth: 100,
+                                    width: 55,
+                                    maxWidth: 55,
                                     filterable: false,
                                     sortable: false
                                 }

@@ -1,6 +1,6 @@
 export default [
     {
-        label: "Email Requirement",
+        label: "Requirement",
         name: "emailRequirement",
         type: "text",
         isvalidationApplied: true,

@@ -43,7 +43,7 @@ class OrphenEmailLogList extends Component {
             return (
                 <span className="orphen_wraper">
                     <button className="navbar-btn hidden-xs hidden-sm text_btn" data-toggle="modal" data-target="#orphenemailsModal">ORPHAN EMAILS</button>
-                    <div className="modal " id="orphenemailsModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="orphenemailsModal" data-backdrop="false" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
+                    <div className="modal " id="orphenemailsModal" tabIndex="-1" role="dialog" aria-hidden="true" aria-labelledby="orphenemailsModal" data-backdrop="false" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
                         <div className="modal-dialog modal-lg">
 
 
@@ -72,7 +72,8 @@ class OrphenEmailLogList extends Component {
                                                             accessor: d => moment(d.emaildate || d.previousCallDate).format('MMM DD YYYY'),
                                                             filterMethod: (filter, rows) =>
                                                                 matchSorter(rows, filter.value.trim(), { threshold: matchSorter.rankings.STARTS_WITH, keys: ["emaildate"] || ["previousCallDate"] }),
-                                                            filterAll: true
+                                                            filterAll: true,
+                                                            maxWidth: 120,
                                                         },
                                                         {
                                                             Header: "Subject",
@@ -98,7 +99,8 @@ class OrphenEmailLogList extends Component {
                                                             Header: "Type",
                                                             id: "type",
                                                             className: 'text-center',
-                                                            accessor: d => d.type
+                                                            accessor: d => d.type,
+                                                            maxWidth: 80,
                                                         },
                                                         {
                                                             Header: "View",
@@ -110,8 +112,7 @@ class OrphenEmailLogList extends Component {
                                                                     <a className="alink" data-toggle="modal" data-dismiss="modal" data-target="#orphanEmail"><i className="fa fa-search-plus" aria-hidden="true"></i></a>
                                                                 </div>
                                                             ),
-                                                            width: 100,
-                                                            maxWidth: 100,
+                                                            maxWidth: 60,
                                                             filterable: false,
                                                             sortable: false
                                                         }
@@ -119,10 +120,12 @@ class OrphenEmailLogList extends Component {
                                                 }
                                             ]}
                                             defaultPageSize={10}
+                                            minRows={1}
                                             style={{
-                                                height: "550px" // This will force the table body to overflow and scroll, since there is not enough room
+                                                maxHeight: "550px" // This will force the table body to overflow and scroll, since there is not enough room
                                             }}
                                             className="-striped -highlight table table_list without_border text-left"
+                                            
                                         />
 
                                     </div>

@@ -167,7 +167,7 @@ class CustomerDetails extends Component {
                 func={this.renderSummry()}
                 active={true}
                 AccId="Summary"
-                parent="accordion1"
+                parent=""
                 custmClass=""
               />
               {/* Summry End Here */}
@@ -178,7 +178,7 @@ class CustomerDetails extends Component {
                 func={this.renderCustomerInfo()}
                 active={false}
                 AccId="CustomerInfo"
-                parent="accordion1"
+                parent=""
                 custmClass=""
               />
               {/* Customer Info End Here */}
@@ -189,7 +189,7 @@ class CustomerDetails extends Component {
                 func={this.renderAvalonInfo()}
                 active={false}
                 AccId="AvalonInfo"
-                parent="accordion1"
+                parent=""
                 custmClass=""
               />
 
@@ -199,17 +199,17 @@ class CustomerDetails extends Component {
                 func={this.renderBillingForm()}
                 active={false}
                 AccId="BillingForm"
-                parent="accordion1"
+                parent=""
                 custmClass=""
               />
 
               {/* AshiMicroWebsite Form */}
               <AccordianPanel
-                title="Ashi Micro Website Info"
+                title="Ashi Micro-Website Info"
                 func={this.renderAshiMicroWebsiteForm()}
                 active={false}
                 AccId="AshiMicroWebsiteForm"
-                parent="accordion1"
+                parent=""
                 custmClass=""
               />
 
@@ -219,7 +219,7 @@ class CustomerDetails extends Component {
                 func={this.renderDomainInfoForm()}
                 active={false}
                 AccId="DomainInfoForm"
-                parent="accordion1"
+                parent=""
                 custmClass=""
               />
               {/* SSL Info Form */}
@@ -228,7 +228,7 @@ class CustomerDetails extends Component {
                 func={this.renderSSLInfoForm()}
                 active={false}
                 AccId="SSLInfoForm"
-                parent="accordion1"
+                parent=""
                 custmClass=""
               />
 
@@ -238,7 +238,7 @@ class CustomerDetails extends Component {
                 func={this.renderBusinessEmailInfoForm()}
                 active={false}
                 AccId="BusinessEmailInfoForm"
-                parent="accordion1"
+                parent=""
                 custmClass=""
               />
 
@@ -248,7 +248,7 @@ class CustomerDetails extends Component {
                 func={this.renderEmailMarketingAccountInfoForm()}
                 active={false}
                 AccId="EmailMarketingAccountInfoForm"
-                parent="accordion1"
+                parent=""
                 custmClass=""
               />
 
@@ -258,7 +258,7 @@ class CustomerDetails extends Component {
                 func={this.renderwebsiteinfoForm()}
                 active={false}
                 AccId="WebsiteInfoForm"
-                parent="accordion1"
+                parent=""
                 custmClass=""
               />
 
@@ -268,7 +268,7 @@ class CustomerDetails extends Component {
                 func={this.renderproductinfoForm()}
                 active={false}
                 AccId="ProductInfoForm"
-                parent="accordion1"
+                parent=""
                 custmClass=""
               />
 
@@ -288,7 +288,7 @@ class CustomerDetails extends Component {
                 func={this.renderTargetAreas()}
                 active={false}
                 AccId="TargetAreas"
-                parent="accordion"
+                parent=""
                 custmClass=""
               />
               {/* TargetAreas End Here */}
@@ -299,7 +299,7 @@ class CustomerDetails extends Component {
                 func={this.renderSupportQueryForm()}
                 active={false}
                 AccId="SupportQuery"
-                parent="accordion"
+                parent=""
                 custmClass=""
               />
               {/* SupportQuery End Here */}
@@ -331,7 +331,7 @@ class CustomerDetails extends Component {
                 func={this.renderCommunicationlog()}
                 active={false}
                 AccId="CommunicationLog"
-                parent="accordion"
+                parent=""
                 custmClass=""
               />
 

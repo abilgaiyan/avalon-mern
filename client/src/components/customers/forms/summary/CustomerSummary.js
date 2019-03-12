@@ -1,5 +1,15 @@
 import React, { Component } from "react";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+
+function formatPhoneNumber(phoneNumberString) {
+  var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
+  var match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/)
+  if (match) {
+    var intlCode = (match[1] ? '+1 ' : '')
+    return [intlCode, match[2], '-', match[3], '-', match[4]].join('')
+  }
+  return null
+}
 
 class CustomerSummary extends Component {
   render() {
@@ -9,14 +19,14 @@ class CustomerSummary extends Component {
         <div className="row">
           <div className="col-sm-6">
             <p>
-              {this.props.customerSummary.Name} <br />
-              {this.props.customerSummary.city},{this.props.customerSummary.state}{" "}
+              {this.props.customerSummary.Name.toLowerCase()} <br />
+              {this.props.customerSummary.city.toLowerCase()}, {this.props.customerSummary.state.toLowerCase()}{" "}
               <br />
-              {this.props.customerSummary.contactPersonName}
+              {this.props.customerSummary.contactPersonName.toLowerCase()}
             </p>
             <p className="text_with_icon">
               <span className={this.props.customerSummary.websiteUrl ? '' : 'hide'}> <i className="fas fa-globe"></i> <a href={"//" + this.props.customerSummary.websiteUrl} target="_blank">{this.props.customerSummary.websiteUrl}</a> <br /></span>
-              <span className={this.props.customerSummary.mobileNumber ? '' : 'hide'}><i className="fas fa-phone fa-flip-horizontal"></i> {this.props.customerSummary.mobileNumber}<br /></span>
+              <span className={this.props.customerSummary.mobileNumber ? '' : 'hide'}><i className="fas fa-phone fa-flip-horizontal"></i> {formatPhoneNumber(this.props.customerSummary.mobileNumber)}<br /></span>
               <span className={this.props.customerSummary.contactpersonEmail ? '' : 'hide'}><i className="fas fa-envelope"></i> {this.props.customerSummary.contactpersonEmail}</span>
             </p>
           </div>
